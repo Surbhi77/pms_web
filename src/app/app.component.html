@@ -1,0 +1,21 @@
+
+
+
+ <ng-container *ngIf="router.url !== '/login' ">
+    <app-header></app-header>
+
+ <div  class="main-body">
+    <app-sidebar ></app-sidebar>
+
+    <div class="right-body">
+        <router-outlet></router-outlet>
+    </div>
+ </div>
+    <app-footer></app-footer>
+ </ng-container>
+ 
+
+ <ng-container *ngIf="router.url === '/login' ">
+  
+ <router-outlet></router-outlet>
+ </ng-container>

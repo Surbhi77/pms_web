@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";  
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+html, body { height: 100%; }
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background: #F2F4F8;
+}
+
+:focus{
+    outline: none !important;
+}
+.page-content {
+    width: 100%;
+    padding: 15px 15px 50px;
+    margin-top: 60px;
+}
+
+.login-block label {
+    color: #333 !important;
+    font-size: 14px;
+}
+
+.right-body {
+    float: right;
+    width: calc(100% - 250px);
+}
+
+.page-title {
+    padding: 15px;
+    background: #e2e2e2;
+}
+
+.page-title h3 {
+    margin: 0;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+    background-color: #0f406b;
+    color: #fff;
+}
+
+.mat-radio-button.mat-primary .mat-radio-inner-circle, .mat-radio-button.mat-primary .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-primary.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-primary:active .mat-radio-persistent-ripple {
+    background-color: #0f406b;
+}
+.mat-radio-button.mat-primary.mat-radio-checked .mat-radio-outer-circle {
+    border-color: #0f406b;
+}
+.mat-primary .mat-slider-track-fill, .mat-primary .mat-slider-thumb, .mat-primary .mat-slider-thumb-label {
+    background-color: #0f406b;
+}
+.mat-checkbox-indeterminate.mat-primary .mat-checkbox-background, .mat-checkbox-checked.mat-primary .mat-checkbox-background {
+    background-color: #0f406b;
+}

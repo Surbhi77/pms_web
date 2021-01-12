@@ -1,0 +1,135 @@
+/* mobile-sitebar css */
+
+#sidebarMenu {
+    height: 100%;
+    position: fixed;
+    left: 0;
+    width: 250px;
+    transform: translateX(0);
+    transition: transform 250ms ease-in-out;
+    background: #0f406b;
+    margin-top: 60px;
+    z-index: 9;
+}
+
+#sidebarMenu h5 {
+    padding: 20px 15px;
+    color: #fff;
+}
+
+.sidebarMenuInner{
+    margin:0;
+    padding:0;
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+}
+.sidebarMenuInner li{
+    list-style: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.sidebarMenuInner li a {
+    text-transform: uppercase;
+    font-weight: 400;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 10px 15px 10px 40px;
+    display: block;
+    font-size: 15px;
+    color: #fff;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+.sidebarMenuInner li a:before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #f39d2d;
+    border-radius: 50%;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease-in-out;
+}
+
+.sidebarMenuInner li a:hover:before {
+    background: #fff;
+}
+
+.sidebarMenuInner li a:hover,
+.sidebarMenuInner li a.active {
+    background: #f39d2d;
+}
+
+input[type="checkbox"]:checked ~ #sidebarMenu {
+    transform: translateX(0);
+}
+
+input[type=checkbox] {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    display: none;
+}
+.sidebarIconToggle {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    cursor: pointer;
+    position: absolute;
+    z-index: 99;
+    height: 100%;
+    width: 100%;
+    top: 22px;
+    left: 15px;
+    height: 22px;
+    width: 22px;
+    display: none;
+}
+.spinner {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background-color: #fff;
+}
+.horizontal {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    margin-top: 3px;
+}
+.diagonal.part-1 {
+    position: relative;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    float: left;
+}
+.diagonal.part-2 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    float: left;
+    margin-top: 3px;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    opacity: 0;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(135deg);
+    margin-top: 8px;
+}
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(-135deg);
+    margin-top: -9px;
+}
+
+/* sitebar css */

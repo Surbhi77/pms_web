@@ -1,0 +1,11 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+.header-nav img {
+    width: 25px;
+}
+
+.setting-nav {
+    margin-right: 15px;
+}

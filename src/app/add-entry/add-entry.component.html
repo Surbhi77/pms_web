@@ -1,0 +1,1108 @@
+<div class="page-content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-title">
+                <h3>{{title}}</h3>
+            </div>
+        </div>
+    </div>
+
+    <mat-horizontal-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+            <ng-template matStepLabel>Demographic data</ng-template>
+            <form [formGroup]="firstFormGroup">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12 col-md-12">
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-12 col-md-12">
+                                <div class="check_nones mb-3">
+                                    <p>Pen Serial No.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Enter Pen Serial No.</mat-label>
+                                        <input formControlName="pen_serial" matInput placeholder="Ex. 123456" value="">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-form-field>
+                                        <mat-label>Date of Visit</mat-label>
+                                        <input matInput formControlName="date_visit" [matDatepicker]="visit_date">
+                                        <mat-datepicker-toggle matSuffix [for]="visit_date"></mat-datepicker-toggle>
+                                        <mat-datepicker #visit_date></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-12 col-md-12">
+                        <div class="check_nones">
+                            <p>Sex</p>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block radio-center">
+                                    <mat-radio-group color="primary" formControlName="sex" aria-label="Select an option">
+                                        <mat-radio-button value="male" class="mr-5">Male</mat-radio-button>
+                                        <mat-radio-button value="female">Female</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-form-field>
+                                        <mat-label>Date of Birth</mat-label>
+                                        <input formControlName="date_of_birth" matInput [matDatepicker]="birth_date">
+                                        <mat-datepicker-toggle matSuffix [for]="birth_date"></mat-datepicker-toggle>
+                                        <mat-datepicker #birth_date></mat-datepicker>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-12 col-md-12">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Enter Age in years</mat-label>
+                                        <input matInput formControlName="age" placeholder="Ex. 24 Year" value="">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-form-field>
+                                        <mat-label>Present Body Weight (Kg):</mat-label>
+                                        <mat-select formControlName="weight">
+
+                                            <mat-option value="60">60</mat-option>
+                                            <mat-option value="23">23</mat-option>
+                                            <mat-option value="50">50</mat-option>
+                                            <mat-option value="92">92</mat-option>
+                                            <mat-option value="30">30</mat-option>
+                                            <mat-option value="65">65</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-12 col-md-12">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-form-field>
+                                        <mat-label>Height (cm):</mat-label>
+                                        <mat-select formControlName="height">
+                                            <mat-option value="option1">Option 1</mat-option>
+                                            <mat-option value="option2">Option 2</mat-option>
+                                            <mat-option value="option3">Option 3</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Enter BMI in kg/m2</mat-label>
+                                        <input formControlName="bmi" matInput placeholder="Ex. 20kg/m2" value="">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-12 col-md-12">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Education</mat-label>
+                                        <input matInput formControlName="education" placeholder="Ex. Education" value="">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Employment</mat-label>
+                                        <input matInput formControlName="employment" placeholder="Ex. Employment" value="">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-12 col-md-12">
+                        <button mat-button class="next_btn">Save as Draft</button>
+                        <button mat-button matStepperNext class="next_btn">Next</button>
+                    </div>
+                </div>
+            </form>
+        </mat-step>
+
+        <mat-step [stepControl]="secondFormGroup">
+            <ng-template matStepLabel>Medical History</ng-template>
+            <form [formGroup]="secondFormGroup">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12 col-md-12 mb-3">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-form-field>
+                                        <mat-label>Duration of Diabetes</mat-label>
+                                        <mat-select formControlName="duration_diabetes">
+                                            <mat-option value="option1">0</mat-option>
+                                            <mat-option value="option2">Option 2</mat-option>
+                                            <mat-option value="option3">Option 3</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-form-field>
+                                        <mat-label>Treated for Diabetes since</mat-label>
+                                        <mat-select formControlName="treated_diabetes">
+                                            <mat-option value="option1">0</mat-option>
+                                            <mat-option value="option2">Option 2</mat-option>
+                                            <mat-option value="option3">Option 3</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-12 col-md-12 mb-3">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="check_nones">
+                                    <p>Age at Diabetes since</p>
+                                </div>
+
+                                <div class="entry-inputs-block">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Enter Age in years</mat-label>
+                                        <input formControlName="age_at_diabetes" matInput placeholder="Ex. Age in years" value="">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="check_nones mb-3">
+                                    <p>Family history of Diabetes:</p>
+                                </div>
+
+                                <div class="entry-inputs-block">
+                                    <mat-radio-group color="primary" formControlName="family_diabetes" aria-label="Select an option">
+                                        <mat-radio-button value="yes" class="mr-5">Yes</mat-radio-button>
+                                        <mat-radio-button value="no">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-12 col-md-12 mb-3">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-12">
+                                <div class="check_nones">
+                                    <p>Hypertension:</p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block radio-center">
+                                    <mat-radio-group color="primary" formControlName="hypertension" aria-label="Select an option">
+                                        <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
+                                        <mat-radio-button value="2">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-form-field>
+                                        <mat-label>Duration of Hypertension:</mat-label>
+                                        <mat-select formControlName="duration_hypertension">
+                                            <mat-option value="option1">0</mat-option>
+                                            <mat-option value="option2">Option 2</mat-option>
+                                            <mat-option value="option3">Option 3</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-12 col-md-12 mb-3">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-12">
+                                <div class="check_nones">
+                                    <p>Blood Pressure:</p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-form-field>
+                                        <mat-label>Blood Pressure</mat-label>
+                                        <mat-select formControlName="blood_pressure">
+                                            <mat-option value="option1">0</mat-option>
+                                            <mat-option value="option2">Option 2</mat-option>
+                                            <mat-option value="option3">Option 3</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-form-field>
+                                        <mat-label>Blood Pressure</mat-label>
+                                        <mat-select formControlName="systolic">
+                                            <mat-option value="option1">0</mat-option>
+                                            <mat-option value="option2">Option 2</mat-option>
+                                            <mat-option value="option3">Option 3</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-form-field>
+                                        <mat-label>Blood Pressure</mat-label>
+                                        <mat-select formControlName="diastolic">
+                                            <mat-option value="option1">0</mat-option>
+                                            <mat-option value="option2">Option 2</mat-option>
+                                            <mat-option value="option3">Option 3</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-12 col-md-12  mb-3">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-12 mb-3">
+                                <div class="check_nones mb-3">
+                                    <p>Smoking :</p>
+                                </div>
+
+                                <div class="entry-inputs-block">
+                                    <mat-radio-group formControlName="smoking" color="primary" aria-label="Select an option">
+                                        <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
+                                        <mat-radio-button value="2">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12 mb-3">
+                                <div class="check_nones mb-3">
+                                    <p>Alcohol :</p>
+                                </div>
+
+                                <div class="entry-inputs-block">
+                                    <mat-radio-group color="primary" formControlName="alcohol" aria-label="Select an option">
+                                        <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
+                                        <mat-radio-button value="2">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-12 col-md-12 mb-3">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-12 mb-3">
+                                <div class="check_nones mb-3">
+                                    <p>Any vascular Complications present at diagnosis :</p>
+                                </div>
+
+                                <div class="entry-inputs-block">
+                                    <mat-radio-group formControlName="vascular_dignosis" (change)="onclick($event)" color="primary" aria-label="Select an option">
+                                        <mat-radio-button value="yes" class="mr-5">Yes</mat-radio-button>
+                                        <mat-radio-button value="no">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12 mb-3">
+                                <div class="check_nones mb-3">
+                                    <p>Does the subject have any co morbid medical conditions ?</p>
+                                </div>
+
+                                <div class="entry-inputs-block">
+                                    <mat-radio-group formControlName="medical_condition" (change)="onchange($event)" color="primary" aria-label="Select an option">
+                                        <mat-radio-button value="yes" class="mr-5">Yes</mat-radio-button>
+                                        <mat-radio-button value="no">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-12 col-md-12 mb-3" *ngIf="complications">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="check_nones">
+                                    <p>Kindly provide details of the complicatuins at diagnosis :</p>
+                                </div>
+
+                                <div class="entry-inputs-block">
+                                    <mat-form-field class="example-full-width">
+                                        <mat-label>Enter details of the complications</mat-label>
+                                        <input matInput formControlName="complication" placeholder="Ex. Enter details" value="">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-12 col-md-12 mb-3" *ngIf="medication">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="check_nones mb-3">
+                                    <p>Condition</p>
+                                </div>
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" formControlName="hypertension_dur" (change)="oncheked($event)" class="example-margin d-block mb-2">Hypertension</mat-checkbox>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12" *ngIf="hypertension">
+                                <div class="check_nones">
+                                    <p>Duration</p>
+                                </div>
+                                <div class="entry-inputs-block">
+                                    <mat-form-field>
+                                        <mat-label>Duration</mat-label>
+                                        <mat-select formControlName="duration">
+                                            <mat-option value="option1">0</mat-option>
+                                            <mat-option value="option2">Option 2</mat-option>
+                                            <mat-option value="option3">Option 3</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12" *ngIf="hypertension">
+                                <div class="check_nones mb-3">
+                                    <p>Medication :</p>
+                                </div>
+                                <div class="entry-inputs-block">
+                                    <mat-radio-group color="primary" formControlName="medications" aria-label="Select an option">
+                                        <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
+                                        <mat-radio-button value="2">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="check_nones mb-3">
+                                    <p>Condition</p>
+                                </div>
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" formControlName="dyslipidemia_dur" (change)="oncheked2($event)" class="example-margin d-block mb-2">Dyslipidemia</mat-checkbox>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12" *ngIf="dyslipidemia">
+                                <div class="check_nones">
+                                    <p>Duration</p>
+                                </div>
+                                <div class="entry-inputs-block">
+                                    <mat-form-field>
+                                        <mat-label>Duration</mat-label>
+                                        <mat-select formControlName="dyslipidemia_duration">
+                                            <mat-option value="option1">0</mat-option>
+                                            <mat-option value="option2">Option 2</mat-option>
+                                            <mat-option value="option3">Option 3</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12" *ngIf="dyslipidemia">
+                                <div class="check_nones mb-3">
+                                    <p>Medication :</p>
+                                </div>
+                                <div class="entry-inputs-block">
+                                    <mat-radio-group formControlName="dyslipidemia_medication" color="primary" aria-label="Select an option">
+                                        <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
+                                        <mat-radio-button value="2">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="check_nones mb-3">
+                                    <p>Condition</p>
+                                </div>
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" formControlName="coronary_artery_dur" (change)="oncheked3($event)" class="example-margin d-block mb-2">Coronary Artery Disease</mat-checkbox>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12" *ngIf="coronary">
+                                <div class="check_nones">
+                                    <p>Duration</p>
+                                </div>
+                                <div class="entry-inputs-block">
+                                    <mat-form-field>
+                                        <mat-label>Duration</mat-label>
+                                        <mat-select formControlName="coronary_artery_duration">
+                                            <mat-option value="option1">0</mat-option>
+                                            <mat-option value="option2">Option 2</mat-option>
+                                            <mat-option value="option3">Option 3</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12" *ngIf="coronary">
+                                <div class="check_nones mb-3">
+                                    <p>Medication :</p>
+                                </div>
+                                <div class="entry-inputs-block">
+                                    <mat-radio-group color="primary" formControlName="coronary_artery_medication" aria-label="Select an option">
+                                        <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
+                                        <mat-radio-button value="2">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="check_nones mb-3">
+                                    <p>Condition</p>
+                                </div>
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" formControlName="stroke_dur" (change)="oncheked4($event)" class="example-margin d-block mb-2">Stroke</mat-checkbox>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12" *ngIf="stroke">
+                                <div class="check_nones">
+                                    <p>Duration</p>
+                                </div>
+                                <div class="entry-inputs-block">
+                                    <mat-form-field>
+                                        <mat-label>Duration</mat-label>
+                                        <mat-select formControlName="stroke_duration">
+                                            <mat-option value="option1">0</mat-option>
+                                            <mat-option value="option2">Option 2</mat-option>
+                                            <mat-option value="option3">Option 3</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12" *ngIf="stroke">
+                                <div class="check_nones mb-3">
+                                    <p>Medication :</p>
+                                </div>
+                                <div class="entry-inputs-block">
+                                    <mat-radio-group color="primary" formControlName="stroke_medication" aria-label="Select an option">
+                                        <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
+                                        <mat-radio-button value="2">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="check_nones mb-3">
+                                    <p>Condition</p>
+                                </div>
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" formControlName="neuropathy_dur" (change)="oncheked5($event)" class="example-margin d-block mb-2">Neuropathy</mat-checkbox>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12" *ngIf="neuropathy">
+                                <div class="check_nones">
+                                    <p>Duration</p>
+                                </div>
+                                <div class="entry-inputs-block">
+                                    <mat-form-field>
+                                        <mat-label>Duration</mat-label>
+                                        <mat-select formControlName="neuropathy_duration">
+                                            <mat-option value="option1">0</mat-option>
+                                            <mat-option value="option2">Option 2</mat-option>
+                                            <mat-option value="option3">Option 3</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12" *ngIf="neuropathy">
+                                <div class="check_nones mb-3">
+                                    <p>Medication :</p>
+                                </div>
+                                <div class="entry-inputs-block">
+                                    <mat-radio-group color="primary" formControlName="neuropathy_medication" aria-label="Select an option">
+                                        <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
+                                        <mat-radio-button value="2">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="check_nones mb-3">
+                                    <p>Condition</p>
+                                </div>
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" formControlName="retinopathy_dur" (change)="oncheked6($event)" class="example-margin d-block mb-2">Retinopathy</mat-checkbox>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12" *ngIf="retinopathy">
+                                <div class="check_nones">
+                                    <p>Duration</p>
+                                </div>
+                                <div class="entry-inputs-block">
+                                    <mat-form-field>
+                                        <mat-label>Duration</mat-label>
+                                        <mat-select formControlName="retinopathy_duration">
+                                            <mat-option value="option1">0</mat-option>
+                                            <mat-option value="option2">Option 2</mat-option>
+                                            <mat-option value="option3">Option 3</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12" *ngIf="retinopathy">
+                                <div class="check_nones mb-3">
+                                    <p>Medication :</p>
+                                </div>
+                                <div class="entry-inputs-block">
+                                    <mat-radio-group formControlName="retinopathy_medication" color="primary" aria-label="Select an option">
+                                        <mat-radio-button value="Yes" class="mr-5">Yes</mat-radio-button>
+                                        <mat-radio-button value="No">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="check_nones mb-3">
+                                    <p>Condition</p>
+                                </div>
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" formControlName="nephropathy_dur" (change)="oncheked7($event)" class="example-margin d-block mb-2">Nephropathy</mat-checkbox>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12" *ngIf="nephropathy">
+                                <div class="check_nones">
+                                    <p>Duration</p>
+                                </div>
+                                <div class="entry-inputs-block">
+                                    <mat-form-field>
+                                        <mat-label>Duration</mat-label>
+                                        <mat-select formControlName="nephropathy_duration">
+                                            <mat-option value="option1">0</mat-option>
+                                            <mat-option value="option2">Option 2</mat-option>
+                                            <mat-option value="option3">Option 3</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12" *ngIf="nephropathy">
+                                <div class="check_nones mb-3">
+                                    <p>Medication :</p>
+                                </div>
+                                <div class="entry-inputs-block">
+                                    <mat-radio-group color="primary" formControlName="nephropathy_medication" aria-label="Select an option">
+                                        <mat-radio-button value="yes" class="mr-5">Yes</mat-radio-button>
+                                        <mat-radio-button value="no">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-12 col-md-12 mb-3">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-12">
+                                <div class="check_nones mb-3">
+                                    <p>Anti-Diabetes Medication (except Insulin) :</p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" formControlName="anti_diabetes_medication" class="example-margin d-block mb-2">Biguanides</mat-checkbox>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" formControlName="Sulphonylureas" class="example-margin d-block mb-2">Sulphonylureas</mat-checkbox>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" formControlName="Meglitinides" class="example-margin d-block mb-2">Meglitinides</mat-checkbox>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" formControlName="Thiazolidendiones" class="example-margin d-block mb-2">Thiazolidendiones</mat-checkbox>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" formControlName="GLP_Analogues" class="example-margin d-block mb-2">GLP Analogues</mat-checkbox>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" formControlName="DPP4_Inhibitors" class="example-margin d-block mb-2">DPP4 Inhibitors</mat-checkbox>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" formControlName="DoubleDrugFixed" class="example-margin d-block mb-2">Double Drug Fixed Dose Combination</mat-checkbox>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" formControlName="TripleDrugFixed" class="example-margin d-block mb-2">Triple Drug Fixed Dose Combinations</mat-checkbox>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-12 col-md-12">
+                        <button mat-button matStepperPrevious class="next_btn">Back</button>
+                        <button mat-button class="next_btn">Save as Draft</button>
+                        <button mat-button matStepperNext class="next_btn">Next</button>
+                    </div>
+
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Efficacy Tests</ng-template>
+            <form [formGroup]="thirdFormGroup">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12 col-md-12 mb-2">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-12 mb-3">
+                                <div class="check_nones mb-3">
+                                    <p>Were Efficacy tests performed?</p>
+                                </div>
+                                <div class="entry-inputs-block">
+                                    <mat-radio-group color="primary" formControlName="blood_investigation" (change)="bloodinvestigate($event)" aria-label="Select an option">
+                                        <mat-radio-button value="yes" class="mr-5">Yes</mat-radio-button>
+                                        <mat-radio-button value="no">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-12 col-md-12 mb-3" *ngIf="bloodInvestigation">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-12 mb-3">
+                                <div class="check_nones mb-3">
+                                    <h5>Blood Investigations</h5>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12 mb-3">
+                                <div class="check_nones">
+                                    <p>Fasting Plasma Glucose (FPG)</p>
+                                </div>
+                                <div class="entry-inputs-block">
+                                    <mat-form-field>
+                                        <mat-label>Duration</mat-label>
+                                        <mat-select>
+                                            <mat-option value="option1">0</mat-option>
+                                            <mat-option value="option2">Option 2</mat-option>
+                                            <mat-option value="option3">Option 3</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12 mb-3">
+                                <div class="check_nones">
+                                    <p>Postprandial Plasma Glucose (PPG)</p>
+                                </div>
+                                <div class="entry-inputs-block">
+                                    <mat-form-field>
+                                        <mat-label>Plasma Glucose</mat-label>
+                                        <mat-select>
+                                            <mat-option value="option1">0</mat-option>
+                                            <mat-option value="option2">Option 2</mat-option>
+                                            <mat-option value="option3">Option 3</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12 mb-3">
+                                <div class="check_nones">
+                                    <p>Glycosylated Hemoglobin (HbA1c)</p>
+                                </div>
+                                <div class="entry-inputs-block">
+                                    <mat-form-field>
+                                        <mat-label>Hemoglobin</mat-label>
+                                        <mat-select>
+                                            <mat-option value="option1">0</mat-option>
+                                            <mat-option value="option2">Option 2</mat-option>
+                                            <mat-option value="option3">Option 3</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12 mb-3">
+                                <div class="check_nones mb-3">
+                                    <p>HbA1c test performed in Lab (HPLC)</p>
+                                </div>
+                                <div class="entry-inputs-block">
+                                    <mat-radio-group color="primary" aria-label="Select an option">
+                                        <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
+                                        <mat-radio-button value="2">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12 mb-3">
+                                <div class="check_nones">
+                                    <p>S.Creatinine (mg/dl)</p>
+                                </div>
+                                <div class="entry-inputs-block">
+                                    <mat-form-field>
+                                        <mat-label>S.Creatinine</mat-label>
+                                        <mat-select>
+                                            <mat-option value="option1">0</mat-option>
+                                            <mat-option value="option2">Option 2</mat-option>
+                                            <mat-option value="option3">Option 3</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-lg-12 col-md-12 mb-3">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-12">
+                                <div class="check_nones mb-3">
+                                    <p>Insulin initiated with initiation dose & time</p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" formControlName="fourty_iu_vial" class="example-margin d-block mb-2">40 IU Vial</mat-checkbox>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" formControlName="hundred_iu_vial" class="example-margin d-block mb-2">100 IU Vial</mat-checkbox>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" formControlName="refill" class="example-margin d-block mb-2">Refil</mat-checkbox>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-12 mb-3 mt-3">
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" formControlName="human_premixed_thirty" (change)="oncheked8($event)" class="example-margin d-block mb-2">Human Premixed 30/70</mat-checkbox>
+                                </div>
+
+                                <div class="row" *ngIf="human_premixedthirty">
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Breakfast</mat-label>
+                                                <mat-select>
+                                                    <mat-option value="option1">0</mat-option>
+                                                    <mat-option value="option2">Option 2</mat-option>
+                                                    <mat-option value="option3">Option 3</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Lunch</mat-label>
+                                                <mat-select>
+                                                    <mat-option value="option1">0</mat-option>
+                                                    <mat-option value="option2">Option 2</mat-option>
+                                                    <mat-option value="option3">Option 3</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Dinner</mat-label>
+                                                <mat-select>
+                                                    <mat-option value="option1">0</mat-option>
+                                                    <mat-option value="option2">Option 2</mat-option>
+                                                    <mat-option value="option3">Option 3</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-12 mb-3">
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" formControlName="human_premixed_fifty" (change)="oncheked9($event)" class="example-margin d-block mb-2">Human Premixed 50/50</mat-checkbox>
+                                </div>
+
+                                <div class="row" *ngIf="human_premixedfifty">
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Breakfast</mat-label>
+                                                <mat-select>
+                                                    <mat-option value="option1">0</mat-option>
+                                                    <mat-option value="option2">Option 2</mat-option>
+                                                    <mat-option value="option3">Option 3</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Lunch</mat-label>
+                                                <mat-select>
+                                                    <mat-option value="option1">0</mat-option>
+                                                    <mat-option value="option2">Option 2</mat-option>
+                                                    <mat-option value="option3">Option 3</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Dinner</mat-label>
+                                                <mat-select>
+                                                    <mat-option value="option1">0</mat-option>
+                                                    <mat-option value="option2">Option 2</mat-option>
+                                                    <mat-option value="option3">Option 3</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-12 mb-3">
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" formControlName="regular_insulin" (change)="oncheked10($event)" class="example-margin d-block mb-2">Regular insulin</mat-checkbox>
+                                </div>
+
+                                <div class="row" *ngIf="regular">
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Breakfast</mat-label>
+                                                <mat-select>
+                                                    <mat-option value="option1">0</mat-option>
+                                                    <mat-option value="option2">Option 2</mat-option>
+                                                    <mat-option value="option3">Option 3</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Lunch</mat-label>
+                                                <mat-select>
+                                                    <mat-option value="option1">0</mat-option>
+                                                    <mat-option value="option2">Option 2</mat-option>
+                                                    <mat-option value="option3">Option 3</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Dinner</mat-label>
+                                                <mat-select>
+                                                    <mat-option value="option1">0</mat-option>
+                                                    <mat-option value="option2">Option 2</mat-option>
+                                                    <mat-option value="option3">Option 3</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-12 mb-3">
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" formControlName="nph_insulin" (change)="oncheked11($event)" class="example-margin d-block mb-2">Regular NPH</mat-checkbox>
+                                </div>
+
+                                <div class="row" *ngIf="nph">
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Breakfast</mat-label>
+                                                <mat-select>
+                                                    <mat-option value="option1">0</mat-option>
+                                                    <mat-option value="option2">Option 2</mat-option>
+                                                    <mat-option value="option3">Option 3</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Lunch</mat-label>
+                                                <mat-select>
+                                                    <mat-option value="option1">0</mat-option>
+                                                    <mat-option value="option2">Option 2</mat-option>
+                                                    <mat-option value="option3">Option 3</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Dinner</mat-label>
+                                                <mat-select>
+                                                    <mat-option value="option1">0</mat-option>
+                                                    <mat-option value="option2">Option 2</mat-option>
+                                                    <mat-option value="option3">Option 3</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-12 mb-3">
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" formControlName="glargine_insulin" (change)="oncheked12($event)" class="example-margin d-block mb-2">Regular Glargine</mat-checkbox>
+                                </div>
+
+                                <div class="row" *ngIf="glargine">
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Breakfast</mat-label>
+                                                <mat-select>
+                                                    <mat-option value="option1">0</mat-option>
+                                                    <mat-option value="option2">Option 2</mat-option>
+                                                    <mat-option value="option3">Option 3</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Lunch</mat-label>
+                                                <mat-select>
+                                                    <mat-option value="option1">0</mat-option>
+                                                    <mat-option value="option2">Option 2</mat-option>
+                                                    <mat-option value="option3">Option 3</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Dinner</mat-label>
+                                                <mat-select>
+                                                    <mat-option value="option1">0</mat-option>
+                                                    <mat-option value="option2">Option 2</mat-option>
+                                                    <mat-option value="option3">Option 3</mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-lg-12 col-md-12">
+                            <button mat-button matStepperPrevious class="next_btn">Back</button>
+                            <button mat-button class="next_btn">Save as Draft</button>
+                            <button mat-button type="submit" (click)="submit()" class="next_btn">Submit</button>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+
+
+        </mat-step>
+    </mat-horizontal-stepper>
+</div>

@@ -1,0 +1,32 @@
+header {
+    background: #0f406b;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+header .navbar {
+    padding: 0;
+}
+
+.top-nav a img {
+    width: 25px;
+    filter: invert(1);
+}
+
+.brand-logo img {
+    width: 100px;
+}
+
+.brand-logo a {
+    padding: 0;
+}
+
+.navbar-expand-md .top-nav.navbar-nav a {
+    padding: 0 0 0 20px;
+}
