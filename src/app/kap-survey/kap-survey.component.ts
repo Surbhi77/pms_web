@@ -12,6 +12,7 @@ import { MainService } from '../main.service';
 export class KapSurveyComponent implements OnInit {
   title = 'Kap Survey';
   gridsize: number = 30;
+  impacts: any;
  
   updateSetting(event) {
     this.gridsize = event.value;
@@ -29,7 +30,7 @@ export class KapSurveyComponent implements OnInit {
     this.value = event.value;
   }
 
-  isLinear = false;
+  isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
@@ -51,16 +52,16 @@ export class KapSurveyComponent implements OnInit {
     this.firstFormGroup = this._formBuilder.group({
      // user_id: [''],
     //  user_id: new FormControl(''),
-      delay_insulin: new FormControl(''),
+      delay_insulin: new FormControl('',[Validators.required]),
      
-      delay_insuinsulin_tdm: new FormControl(''),
-      insulin_tdm: new FormControl(''),
-      insulin_regardless: new FormControl(''),
-      benifit_insulin: new FormControl(''),
-      receiving_insulin: new FormControl(''),
-      success_insulin: new FormControl(''),
-      notcomplicated_insulin: new FormControl(''),
-      insulin_therapy: new FormControl(''),
+      delay_insuinsulin_tdm: new FormControl('',[Validators.required]),
+      insulin_tdm: new FormControl('',[Validators.required]),
+      insulin_regardless: new FormControl('',[Validators.required]),
+      benifit_insulin: new FormControl('',[Validators.required]),
+      receiving_insulin: new FormControl('',[Validators.required]),
+      success_insulin: new FormControl('',[Validators.required]),
+      notcomplicated_insulin: new FormControl('',[Validators.required]),
+      insulin_therapy: new FormControl('',[Validators.required]),
 
       
       firstCtrl: ['', Validators.required]
@@ -76,7 +77,7 @@ export class KapSurveyComponent implements OnInit {
     });
     this.forthFormGroup =this._formBuilder.group(
       {
-         six_months: new FormControl(''),
+         six_months: new FormControl('',[Validators.required]),
          one_to_two_year: new FormControl(''),
          three_to_five_year: new FormControl(''),
          five_years: new FormControl(''),
@@ -95,6 +96,7 @@ export class KapSurveyComponent implements OnInit {
          High: new FormControl(''),
          Infections: new FormControl(''),
          HighA1c: new FormControl(''),
+         
 
 
 
@@ -141,11 +143,46 @@ export class KapSurveyComponent implements OnInit {
     // console.log('reluctance',this.reluctance[event.currentIndex]);
     this.reluctant_insulin = this.reluctance;
   }
+
+  impactChange(event,name){
+    console.log(event)
+    if(event.checked){
+      this.impacts.push(name)
+    }else{
+      let i = this.impacts.indexOf(name);
+      this.impacts.splice(i,1)
+    }
+    if(this.impacts.length){
+      this.forthFormGroup.patchValue({
+        'people_with_tdm':this.impacts.toString()
+      });
+      this.forthFormGroup.updateValueAndValidity()
+    }else{
+      this.forthFormGroup.patchValue({
+        'people_with_tdm':''
+      })
+    }
+  }
   dropped(event:CdkDragDrop<string[]>){
     console.log(event)
     moveItemInArray(this.Physician, event.previousIndex, event.currentIndex )
     this.fear_injection = this.Physician;
    }
+  //  public hasError = (controlName: string, errorName: string) =>{
+  //   return this.firstFormGroup.controls[controlName].hasError(errorName);
+  //  }
+   get g(){
+    return this.firstFormGroup.controls;
+  }
+  submitFirst(){
+    if(this.firstFormGroup.valid){
+      //this.isLinear=false
+
+    }else{
+      //this.isLinear=true
+      this.firstFormGroup.markAllAsTouched()
+    }
+  }
    submit(){
      var formData: any = new FormData();
      console.log(this.firstFormGroup.value)

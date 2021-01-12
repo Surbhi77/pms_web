@@ -4,6 +4,7 @@
         <div class="col-lg-12">
             <div class="page-title">
                 <h3>{{title}}</h3>
+               
             </div>
         </div>
     </div>
@@ -26,6 +27,10 @@
                   <mat-radio-button  value="agree" class="mr-5">Agree</mat-radio-button>
                   <mat-radio-button  value="disagree">Disagree</mat-radio-button>
                 </mat-radio-group>
+                <div *ngIf="g.delay_insulin.touched && g.delay_insulin.invalid" class="alert alert-danger">
+                  <div *ngIf="g.delay_insulin.errors.required" class="errors">Please select agree/disagree</div>
+                </div>
+                <!-- <mat-error *ngIf="hasError('delay_insulin','required')">Please choose a delay_insulin</mat-error> -->
               </div>
             </div>
           </div>
@@ -41,6 +46,9 @@
                   <mat-radio-button value="agree" class="mr-5">Agree</mat-radio-button>
                   <mat-radio-button value="disagree">Disagree</mat-radio-button>
                 </mat-radio-group>
+                <div *ngIf="g.insulin_tdm.touched && g.insulin_tdm.invalid" class="alert alert-danger">
+                  <div *ngIf="g.insulin_tdm.errors.required" class="errors">Please select agree/disagree</div>
+                </div>
               </div>
             </div>
 
@@ -58,6 +66,9 @@
                   <mat-radio-button value="agree" class="mr-5">Agree</mat-radio-button>
                   <mat-radio-button value="disagree">Disagree</mat-radio-button>
                 </mat-radio-group>
+                <div *ngIf="g.insulin_regardless.touched && g.insulin_regardless.invalid" class="alert alert-danger">
+                  <div *ngIf="g.insulin_regardless.errors.required" class="errors">Please select agree/disagree</div>
+                </div>
               </div>
             </div>
 
@@ -75,6 +86,9 @@
                   <mat-radio-button value="agree" class="mr-5">Agree</mat-radio-button>
                   <mat-radio-button value="disagree">Disagree</mat-radio-button>
                 </mat-radio-group>
+                <div *ngIf="g.benifit_insulin.touched && g.benifit_insulin.invalid" class="alert alert-danger">
+                  <div *ngIf="g.benifit_insulin.errors.required" class="errors">Please select agree/disagree</div>
+                </div>
               </div>
             </div>
 
@@ -92,6 +106,9 @@
                   <mat-radio-button value="agree" class="mr-5">Agree</mat-radio-button>
                   <mat-radio-button value="disagree">Disagree</mat-radio-button>
                 </mat-radio-group>
+                <div *ngIf="g.receiving_insulin.touched && g.receiving_insulin.invalid" class="alert alert-danger">
+                  <div *ngIf="g.receiving_insulin.errors.required" class="errors">Please select agree/disagree</div>
+                </div>
               </div>
             </div>
 
@@ -109,6 +126,9 @@
                   <mat-radio-button value="agree" class="mr-5">Agree</mat-radio-button>
                   <mat-radio-button value="disagree">Disagree</mat-radio-button>
                 </mat-radio-group>
+                <div *ngIf="g.success_insulin.touched && g.success_insulin.invalid" class="alert alert-danger">
+                  <div *ngIf="g.success_insulin.errors.required" class="errors">Please select agree/disagree</div>
+                </div>
               </div>
             </div>
 
@@ -126,6 +146,9 @@
                   <mat-radio-button value="agree" class="mr-5">Agree</mat-radio-button>
                   <mat-radio-button value="disagree">Disagree</mat-radio-button>
                 </mat-radio-group>
+                <div *ngIf="g.notcomplicated_insulin.touched && g.notcomplicated_insulin.invalid" class="alert alert-danger">
+                  <div *ngIf="g.notcomplicated_insulin.errors.required" class="errors">Please select agree/disagree</div>
+                </div>
               </div>
             </div>
 
@@ -139,10 +162,13 @@
               </div>
 
               <div class="aggree">
-                <mat-radio-group formControlName="notcomplicated_insulin" color="primary" aria-label="Select an option">
+                <mat-radio-group formControlName="insulin_therapy" color="primary" aria-label="Select an option">
                   <mat-radio-button class="mr-5">Agree</mat-radio-button>
                   <mat-radio-button value="2">Disagree</mat-radio-button>
                 </mat-radio-group>
+                <div *ngIf="g.insulin_therapy.touched && g.insulin_therapy.invalid" class="alert alert-danger">
+                  <div *ngIf="g.insulin_therapy.errors.required" class="errors">Please select agree/disagree</div>
+                </div>
               </div>
             </div>
 
@@ -151,7 +177,7 @@
 
         
         <div class="col-sm-12 col-lg-12 col-md-12">
-          <button class="next_btn" mat-button matStepperNext>Next</button>
+          <button (click)="submitFirst()" class="next_btn" mat-button matStepperNext>Next</button>
         </div> 
       </form>
     </mat-step>
@@ -234,6 +260,7 @@
                   <span>0%</span>
                   <mat-slider color="primary" formControlName="six_months"   #gridsize (change)="updateSetting($event)" step="5" min="0" max="100" [value]="gridsize"class="example-margin"></mat-slider>
                   <span>100%</span>
+                  <!-- <mat-error *ngIf="hasError('six_months', 'required')">Set value is required</mat-error> -->
                 </section>
                 <div class="get_vals">
                   <p class="gridSizeValue">{{gridsize.value}}</p>
@@ -303,16 +330,16 @@
 
           <div class="row">
             <div class="col-lg-6">
-              <mat-checkbox color="primary" formControlName="Beta"  class="example-margin d-block mb-2" checked>Beta Cell preservation</mat-checkbox>
-              <mat-checkbox color="primary"  formControlName="role"  class="example-margin d-block mb-2" checked>The role of Insulin in reducing Micro albuminuria</mat-checkbox>
-              <mat-checkbox color="primary" formControlName="Reducing"  class="example-margin d-block mb-2" checked>Reducing the inflammatory markers</mat-checkbox>
-              <mat-checkbox color="primary" formControlName="risk" class="example-margin d-block mb-2" checked>Reducing the CV risk factors</mat-checkbox>
+              <mat-checkbox color="primary"(change)="impactChange($event,'Beta')"class="example-margin d-block mb-2" >Beta Cell preservation</mat-checkbox>
+              <mat-checkbox color="primary"(change)="impactChange($event,'role')"class="example-margin d-block mb-2" >The role of Insulin in reducing Micro albuminuria</mat-checkbox>
+              <mat-checkbox color="primary"(change)="impactChange($event,'Reducing')"class="example-margin d-block mb-2" >Reducing the inflammatory markers</mat-checkbox>
+              <mat-checkbox color="primary"(change)="impactChange($event,'risk')"class="example-margin d-block mb-2" >Reducing the CV risk factors</mat-checkbox>
             </div>
             <div class="col-lg-6">
-              <mat-checkbox color="primary" formControlName="Micro" class="example-margin d-block mb-2" checked>Micro Angiopathy</mat-checkbox>
-              <mat-checkbox color="primary" formControlName="Reduce" class="example-margin d-block mb-2" checked>Reduce Infections</mat-checkbox>
-              <mat-checkbox color="primary" formControlName="Neuropathy" class="example-margin d-block mb-2" checked>Neuropathy</mat-checkbox>
-              <mat-checkbox color="primary" formControlName="CIMT" class="example-margin d-block mb-2" checked>Reduces CIMT</mat-checkbox>
+              <mat-checkbox color="primary"(change)="impactChange($event,'Micro')"class="example-margin d-block mb-2" >Micro Angiopathy</mat-checkbox>
+              <mat-checkbox color="primary"(change)="impactChange($event,'Reduce')"class="example-margin d-block mb-2" >Reduce Infections</mat-checkbox>
+              <mat-checkbox color="primary"(change)="impactChange($event,'Neuropathy')"class="example-margin d-block mb-2" >Neuropathy</mat-checkbox>
+              <mat-checkbox color="primary"(change)="impactChange($event,'CIMT')"class="example-margin d-block mb-2" >Reduces CIMT</mat-checkbox>
             </div>
           </div>
 
@@ -322,10 +349,11 @@
 
           <div class="row">
             <div class="col-lg-4">
-              <mat-checkbox color="primary" formControlName="Comorbid"  class="example-margin d-block mb-2">Co-morbid conditions</mat-checkbox>
-              <mat-checkbox color="primary" formControlName="High" class="example-margin d-block mb-2">High risk factors</mat-checkbox>
-              <mat-checkbox color="primary" formControlName="Infections" class="example-margin d-block mb-2">Infections</mat-checkbox>
-              <mat-checkbox color="primary" formControlName="HighA1c"  class="example-margin d-block mb-2">High A1c (>9)</mat-checkbox>
+              <mat-checkbox color="primary" id="Comorbid" formControlName="Comorbid"  class="example-margin d-block mb-2">Co-morbid conditions</mat-checkbox>
+              <mat-checkbox color="primary" id="High" formControlName="High" class="example-margin d-block mb-2">High risk factors</mat-checkbox>
+              <mat-checkbox color="primary" id="Infections" formControlName="Infections" class="example-margin d-block mb-2">Infections</mat-checkbox>
+              <mat-checkbox color="primary" id="HighA1c" formControlName="HighA1c"  class="example-margin d-block mb-2">High A1c (>9)</mat-checkbox>
+              
             </div>
           </div>
 
