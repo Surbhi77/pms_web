@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AnyTxtRecord } from 'dns';
+import * as moment from 'moment';
 import { MainService } from '../main.service';
 
 @Component({
@@ -8,10 +10,11 @@ import { MainService } from '../main.service';
   styleUrls: ['./invoice.component.css']
 })
 export class InvoiceComponent implements OnInit {
+  format2: string = "";
   title = 'Begin Entry';
   firstFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
-  isLinear = false;
+  isLinear =false;
   secondFormGroup: FormGroup;
   //complications: any;
   medication: any;
@@ -31,6 +34,8 @@ export class InvoiceComponent implements OnInit {
   retinopathyobj:any={};
   nephropathyobj:any={};
   glargineinsulinobj:any={};
+  anti:any=[];
+  now2:any;
 
   glargine_condition: boolean;
   //nph: boolean;
@@ -39,34 +44,36 @@ export class InvoiceComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder, private service: MainService) { }
 
   ngOnInit(): void {
+   
+
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required],
+      firstCtrl: ['g', Validators.required],
       user_id: new FormControl('12345'),
       // mobile: new FormControl('89578898989'),
-      pen_serial: new FormControl(''),
-      date_visit: new FormControl(''),
-      sex: new FormControl(''),
-      date_of_birth: new FormControl(''),
-      weight: new FormControl(''),
-      height: new FormControl(''),
-      bmi: new FormControl(''),
-      age: new FormControl(''),
-      education: new FormControl(''),
-      employment: new FormControl('')
+      pen_serial: new FormControl('',[Validators.required]),
+      date_visit: new FormControl('',[Validators.required]),
+      sex: new FormControl('',[Validators.required]),
+      date_of_birth: new FormControl('',[Validators.required]),
+      weight: new FormControl('',[Validators.required]),
+      height: new FormControl('',[Validators.required]),
+      bmi: new FormControl('',[Validators.required]),
+      age: new FormControl('',[Validators.required]),
+      education: new FormControl('',[Validators.required]),
+      employment: new FormControl('',[Validators.required])
     });
     this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required],
-      duration_diabetes: new FormControl(''),
-      treated_diabetes: new FormControl(''),
-      age_at_diabetes: new FormControl(''),
-      family_diabetes: new FormControl(''),
-      hypertension: new FormControl(''),
-      duration_hypertension: new FormControl(''),
-      blood_pressure: new FormControl(''),
-      systolic: new FormControl(''),
-      diastolic: new FormControl(''),
-      smoking: new FormControl(''),
-      alcohol: new FormControl(''),
+      secondCtrl: ['g', Validators.required],
+      duration_diabetes: new FormControl('',[Validators.required]),
+      treated_diabetes: new FormControl('',[Validators.required]),
+      age_at_diabetes: new FormControl('',[Validators.required]),
+      family_diabetes: new FormControl('',[Validators.required]),
+      hypertension: new FormControl('',[Validators.required]),
+      duration_hypertension: new FormControl('',[Validators.required]),
+      blood_pressure: new FormControl('',[Validators.required]),
+      systolic: new FormControl('',[Validators.required]),
+      diastolic: new FormControl('',[Validators.required]),
+      smoking: new FormControl('',[Validators.required]),
+      alcohol: new FormControl('',[Validators.required]),
      // vascular_dignosis: new FormControl(''),
       hypertension_dur: new FormControl(''),
       dyslipidemia_dur: new FormControl(''),
@@ -114,9 +121,55 @@ export class InvoiceComponent implements OnInit {
       glargine_insulin_breakfast:new FormControl(''),
       glargine_insulin_lunch:new FormControl(''),
       glargine_insulin_dinner:new FormControl(''),
-      thirdCtrl: ['', Validators.required],
+      thirdCtrl: ['gg', Validators.required],
 
     })
+  }
+   
+  get g(){
+    return this.firstFormGroup.controls;
+  }
+get f(){
+  return this.secondFormGroup.controls;
+
+  }
+  public hasError = (controlName: string, errorName: string) =>{
+    return this.secondFormGroup.controls[controlName].hasError(errorName);
+  }
+  submitFirst() {
+    if(!this.firstFormGroup.valid){
+      this.firstFormGroup.markAllAsTouched();
+    }else{
+
+    }
+    
+  }
+  onSecondSubmit() {
+    if(!this.secondFormGroup.valid){
+      this.secondFormGroup.markAllAsTouched();
+    }else{
+
+    }
+    
+  }
+  antiDiabetesChange(event,name){
+    console.log(event)
+    if(event.checked){
+      this.anti.push(name)
+    }else{
+      let i = this.anti.indexOf(name);
+      this.anti.splice(i,1)
+    }
+    if(this.anti.length){
+      this.secondFormGroup.patchValue({
+        'people_with_tdm':this.anti.toString()
+      });
+      this.secondFormGroup.updateValueAndValidity()
+    }else{
+      this.secondFormGroup.patchValue({
+        'people_with_tdm':''
+      })
+    }
   }
 
   onchange(event: any) {
@@ -206,6 +259,10 @@ export class InvoiceComponent implements OnInit {
   }
   submit() {
     var formData: any = new FormData();
+    //moment js
+    this.now2 = moment().format("DD.MM.YYYY");
+    this.format2 = this.now2;
+    console.log(this.now2)
 
     this.anti_diabetes_medication.Biguanides= (this.secondFormGroup.value.Biguanides==true)?this.secondFormGroup.value.Biguanides:false;
     this.anti_diabetes_medication.Sulphonylureas= (this.secondFormGroup.value.Sulphonylureas==true)?this.secondFormGroup.value.Sulphonylureas:false;
@@ -249,7 +306,9 @@ export class InvoiceComponent implements OnInit {
 
     console.log('this.anti_diabetes_medication',this.anti_diabetes_medication)
     formData.append('pen_serial', this.firstFormGroup.value.pen_serial);
-    formData.append('date_visit', this.firstFormGroup.value.date_visit);
+    formData.append('date_visit', this.now2);
+    //console.log(this.firstFormGroup.value.date_visit)
+
     formData.append('sex', this.firstFormGroup.value.sex);
     formData.append('weight', this.firstFormGroup.value.weight);
     formData.append('height', this.firstFormGroup.value.height);

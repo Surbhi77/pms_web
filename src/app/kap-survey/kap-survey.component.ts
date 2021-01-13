@@ -12,7 +12,8 @@ import { MainService } from '../main.service';
 export class KapSurveyComponent implements OnInit {
   title = 'Kap Survey';
   gridsize: number = 30;
-  impacts: any;
+  impacts: any=[];
+  patients: any=[];
  
   updateSetting(event) {
     this.gridsize = event.value;
@@ -54,7 +55,7 @@ export class KapSurveyComponent implements OnInit {
     //  user_id: new FormControl(''),
       delay_insulin: new FormControl('',[Validators.required]),
      
-      delay_insuinsulin_tdm: new FormControl('',[Validators.required]),
+      //delay_insulin: new FormControl('',[Validators.required]),
       insulin_tdm: new FormControl('',[Validators.required]),
       insulin_regardless: new FormControl('',[Validators.required]),
       benifit_insulin: new FormControl('',[Validators.required]),
@@ -64,16 +65,16 @@ export class KapSurveyComponent implements OnInit {
       insulin_therapy: new FormControl('',[Validators.required]),
 
       
-      firstCtrl: ['', Validators.required]
+      firstCtrl: ['hf', Validators.required]
     });
     this.secondFormGroup = this._formBuilder.group({
      
       aggreetype: new FormControl(''),
-      secondCtrl: ['', Validators.required]
+      secondCtrl: ['gh', Validators.required]
     });
     this.thirdFormGroup = this._formBuilder.group({
       agreedropped: new FormControl(''),
-      thirdformCtrl: ['', Validators.required]
+      thirdformCtrl: ['yhujy', Validators.required]
     });
     this.forthFormGroup =this._formBuilder.group(
       {
@@ -163,6 +164,25 @@ export class KapSurveyComponent implements OnInit {
       })
     }
   }
+  tdmpatientsChange(event,name){
+    console.log(event)
+    if(event.checked){
+      this.patients.push(name)
+    }else{
+      let i = this.patients.indexOf(name);
+      this.patients.splice(i,1)
+    }
+    if(this.patients.length){
+      this.forthFormGroup.patchValue({
+        'insulin_to_tdmpatients':this.patients.toString()
+      });
+      this.forthFormGroup.updateValueAndValidity()
+    }else{
+      this.forthFormGroup.patchValue({
+        'insulin_to_tdmpatients':''
+      })
+    }
+  }
   dropped(event:CdkDragDrop<string[]>){
     console.log(event)
     moveItemInArray(this.Physician, event.previousIndex, event.currentIndex )
@@ -174,15 +194,30 @@ export class KapSurveyComponent implements OnInit {
    get g(){
     return this.firstFormGroup.controls;
   }
-  submitFirst(){
-    if(this.firstFormGroup.valid){
-      //this.isLinear=false
+  get f(){
+    return this.forthFormGroup.controls;
+  
+
+  }
+  submitFirst(data:any){
+    if(this.firstFormGroup.valid && data.value==null){
+      this.isLinear=true
 
     }else{
-      //this.isLinear=true
+      this.isLinear=false
       this.firstFormGroup.markAllAsTouched()
     }
   }
+  // set(data:any){
+
+    
+  //   if(data.value > 0 && data.value!=null ){
+  //     alert('fill it')
+  //   }else{
+  //     data.value
+  //   }
+  // }
+   
    submit(){
      var formData: any = new FormData();
      console.log(this.firstFormGroup.value)
@@ -206,10 +241,14 @@ export class KapSurveyComponent implements OnInit {
 
     //firstform
     formData.append('delay_insulin',this.firstFormGroup.value.delay_insulin);
-    // formData.append('delay_insuinsulin_tdm',this.firstFormGroup.value.delay_insuinsulin_tdm);
     formData.append('insulin_tdm',this.firstFormGroup.value.insulin_tdm);
     formData.append('insulin_regardless',this.firstFormGroup.value.insulin_regardless);
-    formData.append('user_id',1);
+    formData.append('benifit_insulin',this.firstFormGroup.value.benifit_insulin);
+    formData.append('receiving_insulin',this.firstFormGroup.value.receiving_insulin);
+    formData.append('success_insulin',this.firstFormGroup.value.success_insulin);
+    formData.append('notcomplicated_insulin',this.firstFormGroup.value.notcomplicated_insulin);
+    formData.append('insulin_therapy',this.firstFormGroup.value.insulin_therapy);
+    formData.append('user_id',15);
 
     //secondform
     if(this.reluctant_insulin.length==0){
@@ -225,10 +264,37 @@ export class KapSurveyComponent implements OnInit {
     formData.append('fear_injection',this.fear_injection);
     console.log(this.fear_injection);
     //fourth form
-    formData.append('six_months',this.forthFormGroup.value.six_months);
-    formData.append('one_to_two_year',this.forthFormGroup.value.one_to_two_year);
-    formData.append('three_to_five_year',this.forthFormGroup.value.three_to_five_year);
-    formData.append('five_years',this.forthFormGroup.value.five_years);
+    
+     // formData.append('six_months',0);
+    
+      formData.append('six_months',this.forthFormGroup.value.six_months);
+    
+    console.log(this.forthFormGroup.value.six_months)
+    
+     // formData.append('one_to_two_year',0);
+
+  
+      formData.append('one_to_two_year',this.forthFormGroup.value.one_to_two_year);
+
+ 
+    if(this.value > 0 && this.value){
+      formData.append('three_to_five_year',0);
+      
+    }else{
+      formData.append('three_to_five_year',this.forthFormGroup.value.three_to_five_year);
+
+
+    }
+    //if(this.value > 0 && this.value){
+     // formData.append('five_years',0);
+
+   // }else{
+      formData.append('five_years',this.forthFormGroup.value.five_years);
+
+    //}
+    
+   
+  
    // formData.append('six_months',this.forthFormGroup.value.six_months);
     formData.append('people_with_tdm',JSON.stringify(this.people_with_tdm));
     formData.append('insulin_to_tdmpatients',JSON.stringify(this.insulin_to_tdmpatients));
