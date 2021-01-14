@@ -3,8 +3,8 @@
         <div class="col-lg-12">
             <div class="page-title">
                 <h3>{{title}}</h3>
-                <h4>dd.mm.yyyy </h4>
-<h4>{{ format2 }} </h4>
+                <!-- <h4>dd.mm.yyyy </h4>
+<h4>{{ format2 }} </h4> -->
             </div>
         </div>
     </div>
@@ -42,7 +42,7 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Date of Visit</mat-label>
-                                        <input matInput formControlName="date_visit" [matDatepicker]="visit_date">
+                                        <input matInput formControlName="date_visit" [matDatepicker]="visit_date" (dateChange)="vistedate($event)">
                                         <mat-datepicker-toggle matSuffix [for]="visit_date"></mat-datepicker-toggle>
                                         <mat-datepicker #visit_date></mat-datepicker>
                                     </mat-form-field>
@@ -75,7 +75,7 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Date of Birth</mat-label>
-                                        <input formControlName="date_of_birth" matInput [matDatepicker]="birth_date">
+                                        <input formControlName="date_of_birth" matInput [matDatepicker]="birth_date" (dateChange)="birthdate($event)">
                                         <mat-datepicker-toggle matSuffix [for]="birth_date"></mat-datepicker-toggle>
                                         <mat-datepicker #birth_date></mat-datepicker>
                                     </mat-form-field>
@@ -270,9 +270,10 @@
                                     <mat-form-field>
                                         <mat-label>Treated for Diabetes since</mat-label>
                                         <mat-select formControlName="treated_diabetes">
-                                            <mat-option value="option1">0</mat-option>
-                                            <mat-option value="option2">Option 2</mat-option>
-                                            <mat-option value="option3">Option 3</mat-option>
+                                            <mat-option value="1">1</mat-option>
+                                            <mat-option value="2">2</mat-option>
+                                            <mat-option value="3">3</mat-option>
+                                            <mat-option value="4">4</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
@@ -330,9 +331,10 @@
                                     <mat-form-field>
                                         <mat-label>Duration of Hypertension:</mat-label>
                                         <mat-select formControlName="duration_hypertension">
-                                            <mat-option value="option1">0</mat-option>
-                                            <mat-option value="option2">Option 2</mat-option>
-                                            <mat-option value="option3">Option 3</mat-option>
+                                            <mat-option value="1">1</mat-option>
+                                            <mat-option value="2">2</mat-option>
+                                            <mat-option value="3">3</mat-option>
+                                            <mat-option value="4">4</mat-option>
                                         </mat-select>
                                         <div *ngIf="f.duration_hypertension.touched && f.duration_hypertension.invalid">
                                             <div *ngIf="f.duration_hypertension.errors.required" class="errors text-danger">Please
@@ -357,9 +359,11 @@
                                     <mat-form-field>
                                         <mat-label>Blood Pressure</mat-label>
                                         <mat-select formControlName="blood_pressure">
-                                            <mat-option value="option1">0</mat-option>
-                                            <mat-option value="option2">Option 2</mat-option>
-                                            <mat-option value="option3">Option 3</mat-option>
+                                            <mat-option value="40-400">40-400</mat-option>
+                                            <mat-option value="30">30</mat-option>
+                                            <mat-option value="20">20</mat-option>
+                                            <mat-option value="50">50</mat-option>
+                                            <mat-option value="60">60</mat-option>
                                         </mat-select>
                                         <div *ngIf="f.blood_pressure.touched && f.blood_pressure.invalid">
                                             <div *ngIf="f.blood_pressure.errors.required" class="errors text-danger">Please
@@ -374,9 +378,11 @@
                                     <mat-form-field>
                                         <mat-label>Blood Pressure</mat-label>
                                         <mat-select formControlName="systolic">
-                                            <mat-option value="option1">0</mat-option>
-                                            <mat-option value="option2">Option 2</mat-option>
-                                            <mat-option value="option3">Option 3</mat-option>
+                                            <mat-option value="40-400">40-400</mat-option>
+                                            <mat-option value="30">30</mat-option>
+                                            <mat-option value="20">20</mat-option>
+                                            <mat-option value="50">50</mat-option>
+                                            <mat-option value="60">60</mat-option>
                                         </mat-select>
                                         <div *ngIf="f.systolic.touched && f.systolic.invalid">
                                             <div *ngIf="f.systolic.errors.required" class="errors text-danger">Please
@@ -391,9 +397,11 @@
                                     <mat-form-field>
                                         <mat-label>Blood Pressure</mat-label>
                                         <mat-select formControlName="diastolic">
-                                            <mat-option value="option1">0</mat-option>
-                                            <mat-option value="option2">Option 2</mat-option>
-                                            <mat-option value="option3">Option 3</mat-option>
+                                            <mat-option value="40-400">40-400</mat-option>
+                                            <mat-option value="30">30</mat-option>
+                                            <mat-option value="20">20</mat-option>
+                                            <mat-option value="50">50</mat-option>
+                                            <mat-option value="60">60</mat-option>
                                         </mat-select>
                                         <div *ngIf="f.diastolic.touched && f.diastolic.invalid">
                                             <div *ngIf="f.diastolic.errors.required" class="errors text-danger">Please
@@ -503,7 +511,7 @@
                                 </div>
                                 <div class="entry-inputs-block">
                                     <mat-checkbox color="primary" formControlName="hypertension_dur"
-                                        (change)="oncheked($event)" class="example-margin d-block mb-2">Hypertension
+                                        (change)="oncheked($event, 'hypertension_dur')" class="example-margin d-block mb-2">Hypertension
                                     </mat-checkbox>
                                 </div>
                             </div>
@@ -516,16 +524,25 @@
                                     <mat-form-field>
                                         <mat-label>Duration</mat-label>
                                         <mat-select formControlName="duration">
-                                            <mat-option value="option1">0</mat-option>
-                                            <mat-option value="option2">Option 2</mat-option>
-                                            <mat-option value="option3">Option 3</mat-option>
+                                            <mat-option value="0">0</mat-option>
+                                            <mat-option value="1">1</mat-option>
+                                            <mat-option value="2">2</mat-option>
+                                            <mat-option value="3">3</mat-option>
+                                            <mat-option value="4">4</mat-option>
                                         </mat-select>
+                                        <!-- <mat-error *ngIf="hasError('duration', 'required')">one field is required</mat-error> -->
+                                        <!-- <ng-container *ngIf="f.pen_serial.touched && f.pen_serial.invalid">
+                                            <mat-error *ngIf="f.pen_serial.errors.required" class="errors">
+                                                Pen Serial No is required.
+                                            </mat-error>
+                                            </ng-container> -->
                                     </mat-form-field>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12" *ngIf="hypertension">
                                 <div class="check_nones mb-3">
+                                    
                                     <p>Medication :</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -534,6 +551,12 @@
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="2">No</mat-radio-button>
                                     </mat-radio-group>
+                                    <!-- <mat-error *ngIf="hasError('medication', 'required')">one field is required</mat-error> -->
+                                    <!-- <ng-container *ngIf="f.medications.touched && f.medications.invalid">
+                                        <mat-error *ngIf="f.medications.errors.required" class="errors">
+                                            Pen Serial No is required.
+                                        </mat-error>
+                                        </ng-container> -->
                                 </div>
                             </div>
                         </div>
@@ -544,7 +567,7 @@
                                 </div>
                                 <div class="entry-inputs-block">
                                     <mat-checkbox color="primary" formControlName="dyslipidemia_dur"
-                                        (change)="oncheked2($event)" class="example-margin d-block mb-2">Dyslipidemia
+                                        (change)="oncheked2($event,'dyslipidemia_dur')" class="example-margin d-block mb-2">Dyslipidemia
                                     </mat-checkbox>
                                 </div>
                             </div>
@@ -557,9 +580,11 @@
                                     <mat-form-field>
                                         <mat-label>Duration</mat-label>
                                         <mat-select formControlName="dyslipidemia_duration">
-                                            <mat-option value="option1">0</mat-option>
-                                            <mat-option value="option2">Option 2</mat-option>
-                                            <mat-option value="option3">Option 3</mat-option>
+                                            <mat-option value="0">0</mat-option>
+                                            <mat-option value="1">1</mat-option>
+                                            <mat-option value="2">2</mat-option>
+                                            <mat-option value="3">3</mat-option>
+                                            <mat-option value="4">4</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
@@ -598,9 +623,11 @@
                                     <mat-form-field>
                                         <mat-label>Duration</mat-label>
                                         <mat-select formControlName="coronary_artery_duration">
-                                            <mat-option value="option1">0</mat-option>
-                                            <mat-option value="option2">Option 2</mat-option>
-                                            <mat-option value="option3">Option 3</mat-option>
+                                            <mat-option value="0">0</mat-option>
+                                            <mat-option value="1">1</mat-option>
+                                            <mat-option value="2">2</mat-option>
+                                            <mat-option value="3">3</mat-option>
+                                            <mat-option value="4">4</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
@@ -639,9 +666,11 @@
                                     <mat-form-field>
                                         <mat-label>Duration</mat-label>
                                         <mat-select formControlName="stroke_duration">
-                                            <mat-option value="option1">0</mat-option>
-                                            <mat-option value="option2">Option 2</mat-option>
-                                            <mat-option value="option3">Option 3</mat-option>
+                                            <mat-option value="0">0</mat-option>
+                                            <mat-option value="1">1</mat-option>
+                                            <mat-option value="2">2</mat-option>
+                                            <mat-option value="3">3</mat-option>
+                                            <mat-option value="4">4</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
@@ -680,9 +709,11 @@
                                     <mat-form-field>
                                         <mat-label>Duration</mat-label>
                                         <mat-select formControlName="neuropathy_duration">
-                                            <mat-option value="option1">0</mat-option>
-                                            <mat-option value="option2">Option 2</mat-option>
-                                            <mat-option value="option3">Option 3</mat-option>
+                                            <mat-option value="0">0</mat-option>
+                                            <mat-option value="1">1</mat-option>
+                                            <mat-option value="2">2</mat-option>
+                                            <mat-option value="3">3</mat-option>
+                                            <mat-option value="4">4</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
@@ -721,9 +752,11 @@
                                     <mat-form-field>
                                         <mat-label>Duration</mat-label>
                                         <mat-select formControlName="retinopathy_duration">
-                                            <mat-option value="option1">0</mat-option>
-                                            <mat-option value="option2">Option 2</mat-option>
-                                            <mat-option value="option3">Option 3</mat-option>
+                                            <mat-option value="0">0</mat-option>
+                                            <mat-option value="1">1</mat-option>
+                                            <mat-option value="2">2</mat-option>
+                                            <mat-option value="3">3</mat-option>
+                                            <mat-option value="4">4</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
@@ -762,9 +795,11 @@
                                     <mat-form-field>
                                         <mat-label>Duration</mat-label>
                                         <mat-select formControlName="nephropathy_duration">
-                                            <mat-option value="option1">0</mat-option>
-                                            <mat-option value="option2">Option 2</mat-option>
-                                            <mat-option value="option3">Option 3</mat-option>
+                                            <mat-option value="0">0</mat-option>
+                                            <mat-option value="1">1</mat-option>
+                                            <mat-option value="2">2</mat-option>
+                                            <mat-option value="3">3</mat-option>
+                                            <mat-option value="4">4</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
@@ -855,6 +890,7 @@
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <button mat-button matStepperPrevious class="next_btn">Back</button>
                         <button mat-button class="next_btn">Save as Draft</button>
+                       <!-- // <button mat-button matStepperNext (click)="submitFirst()" class="next_btn">Next</button> -->
                         <button mat-button matStepperNext (change)="onSecondSubmit()"class="next_btn">Next</button>
                     </div>
 
@@ -875,11 +911,14 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Duration</mat-label>
-                                        <mat-select>
-                                            <mat-option value="option1">0</mat-option>
-                                            <mat-option value="option2">Option 2</mat-option>
-                                            <mat-option value="option3">Option 3</mat-option>
+                                        <mat-select formControlName="fasting_plasma">
+                                            <mat-option value="0">0</mat-option>
+                                            <mat-option value="1">1</mat-option>
+                                            <mat-option value="2">2</mat-option>
+                                            <mat-option value="3">3</mat-option>
+                                            <mat-option value="4">4</mat-option>
                                         </mat-select>
+                                        <mat-error *ngIf="hasError3('fasting_plasma', 'required')">select field is required</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -890,11 +929,14 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Plasma Glucose</mat-label>
-                                        <mat-select>
-                                            <mat-option value="option1">0</mat-option>
-                                            <mat-option value="option2">Option 2</mat-option>
-                                            <mat-option value="option3">Option 3</mat-option>
+                                        <mat-select formControlName="postprandial_plasma">
+                                            <mat-option value="0">0</mat-option>
+                                            <mat-option value="1">1</mat-option>
+                                            <mat-option value="2">2</mat-option>
+                                            <mat-option value="3">3</mat-option>
+                                            <mat-option value="4">4</mat-option>
                                         </mat-select>
+                                        <mat-error *ngIf="hasError3('postprandial_plasma', 'required')">select field is required</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -905,11 +947,14 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Hemoglobin</mat-label>
-                                        <mat-select>
-                                            <mat-option value="option1">0</mat-option>
-                                            <mat-option value="option2">Option 2</mat-option>
-                                            <mat-option value="option3">Option 3</mat-option>
+                                        <mat-select formControlName="glycosylated">
+                                            <mat-option value="0">0</mat-option>
+                                            <mat-option value="1">1</mat-option>
+                                            <mat-option value="2">2</mat-option>
+                                            <mat-option value="3">3</mat-option>
+                                            <mat-option value="4">4</mat-option>
                                         </mat-select>
+                                        <mat-error *ngIf="hasError3('glycosylated', 'required')">select field is required</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -920,11 +965,14 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>S.Creatinine</mat-label>
-                                        <mat-select>
-                                            <mat-option value="option1">0</mat-option>
-                                            <mat-option value="option2">Option 2</mat-option>
-                                            <mat-option value="option3">Option 3</mat-option>
+                                        <mat-select  formControlName="s_creatinine">
+                                            <mat-option value="0">0</mat-option>
+                                            <mat-option value="1">1</mat-option>
+                                            <mat-option value="2">2</mat-option>
+                                            <mat-option value="3">3</mat-option>
+                                            <mat-option value="4">4</mat-option>
                                         </mat-select>
+                                        <mat-error *ngIf="hasError3('s_creatinine', 'required')">select field is required</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -957,11 +1005,14 @@
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Breakfast</mat-label>
-                                                <mat-select fromControlName="glargine_insulin_breakfast">
+                                                <mat-select formControlName="glargine_insulin_breakfast">
                                                     <mat-option value="0">0</mat-option>
-                                                    <mat-option value="2"> 2</mat-option>
-                                                    <mat-option value="3"> 3</mat-option>
+                                            <mat-option value="1">1</mat-option>
+                                            <mat-option value="2">2</mat-option>
+                                            <mat-option value="3">3</mat-option>
+                                            <mat-option value="4">4</mat-option>
                                                 </mat-select>
+                                                <mat-error *ngIf="hasError3('fasting_plasma', 'required')">select field is required</mat-error>
                                             </mat-form-field>
                                         </div>
                                     </div>
@@ -971,11 +1022,14 @@
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Lunch</mat-label>
-                                                <mat-select fromControlName="glargine_insulin_lunch">
-                                                    <mat-option value="option1">0</mat-option>
-                                                    <mat-option value="option2">Option 2</mat-option>
-                                                    <mat-option value="option3">Option 3</mat-option>
+                                                <mat-select formControlName="glargine_insulin_lunch">
+                                                    <mat-option value="0">0</mat-option>
+                                                    <mat-option value="1">1</mat-option>
+                                                    <mat-option value="2">2</mat-option>
+                                                    <mat-option value="3">3</mat-option>
+                                                    <mat-option value="4">4</mat-option>
                                                 </mat-select>
+                                                <mat-error *ngIf="hasError3('fasting_plasma', 'required')">select field is required</mat-error>
                                             </mat-form-field>
                                         </div>
                                     </div>
@@ -985,11 +1039,14 @@
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Dinner</mat-label>
-                                                <mat-select fromControlName="glargine_insulin_dinner">
-                                                    <mat-option value="option1">0</mat-option>
-                                                    <mat-option value="option2">Option 2</mat-option>
-                                                    <mat-option value="option3">Option 3</mat-option>
+                                                <mat-select formControlName="glargine_insulin_dinner">
+                                                    <mat-option value="0">0</mat-option>
+                                                    <mat-option value="1">1</mat-option>
+                                                    <mat-option value="2">2</mat-option>
+                                                    <mat-option value="3">3</mat-option>
+                                                    <mat-option value="4">4</mat-option>
                                                 </mat-select>
+                                                <mat-error *ngIf="hasError3('fasting_plasma', 'required')">select field is required</mat-error>
                                             </mat-form-field>
                                         </div>
                                     </div>
