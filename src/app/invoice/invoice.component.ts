@@ -16,12 +16,7 @@ export class InvoiceComponent implements OnInit {
   firstFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
   isLinear = true;
-
-  // firstformcommon:boolean=false;
-  // secformcommon:boolean=false;
-  // thirdformcommon:boolean=false;
   secondFormGroup: FormGroup;
-  //complications: any;
   medication: any;
   hypertension: any;
   dyslipidemia: any;
@@ -442,7 +437,7 @@ export class InvoiceComponent implements OnInit {
     this.nephropathyobj.nephropathy_dur = this.secondFormGroup.value.nephropathy_dur;
     this.nephropathyobj.duration = this.secondFormGroup.value.duration;
     this.nephropathyobj.medications = this.secondFormGroup.value.medications;
-    this.glargineinsulinobj.glargine_insulin = this.thirdFormGroup.value.glargine_insulin;
+    this.glargineinsulinobj.glargine_insulin = (this.thirdFormGroup.value.glargine_insulin==true) ? this.secondFormGroup.value.glargine_insulin : false;
     console.log(this.glargineinsulinobj)
     this.glargineinsulinobj.glargine_insulin_breakfast = this.thirdFormGroup.value.glargine_insulin_breakfast;
     console.log(this.glargineinsulinobj.breakfast)
@@ -495,11 +490,6 @@ export class InvoiceComponent implements OnInit {
     formData.append('dose_insulin', this.thirdFormGroup.value.dose_insulin);
     console.log(this.thirdFormGroup.value.dose_insulin);
     formData.append('glargine_insulin', JSON.stringify(this.glargineinsulinobj));
-
-    // formData.append('stroke_dur', this.secondFormGroup.value.stroke_dur);
-    // formData.append('neuropathy_dur', this.secondFormGroup.value.neuropathy_dur);
-    // formData.append('retinopathy_dur', this.secondFormGroup.value.retinopathy_dur);
-    // formData.append('nephropathy_dur', this.secondFormGroup.value.nephropathy_dur);
      formData.append('anti_diabetes_medication',JSON.stringify(this.anti_diabetes_medication));
     //if(this.thirdFormGroup.valid){
       this.service.postAddBegin(formData).subscribe(res => {

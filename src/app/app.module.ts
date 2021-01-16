@@ -55,6 +55,9 @@ import { SidebarComponent } from './common/sidebar/sidebar.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BeginListingComponent } from './begin-listing/begin-listing.component';
+import { BeginViewComponent } from './begin-view/begin-view.component';
+//import { BeginDraftListComponent } from './begin-draft-list/begin-draft-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +70,10 @@ import { HttpClientModule } from '@angular/common/http';
     InvoiceComponent,
     HeaderComponent,
     FooterComponent,
-    SidebarComponent
+    SidebarComponent,
+    BeginListingComponent,
+    BeginViewComponent
+    //BeginDraftListComponent
   ],
   imports: [
     BrowserModule,

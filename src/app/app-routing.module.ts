@@ -7,6 +7,8 @@ import {InstrutionsComponent} from './instrutions/instrutions.component';
 import {InvoiceComponent} from './invoice/invoice.component';
 import {KapSurveyComponent} from './kap-survey/kap-survey.component';
 import {PatientLogsComponent} from './patient-logs/patient-logs.component';
+import { BeginListingComponent } from './begin-listing/begin-listing.component';
+import { BeginViewComponent } from './begin-view/begin-view.component';
 
 const routes: Routes = [
   {
@@ -35,12 +37,21 @@ const routes: Routes = [
     component:InvoiceComponent
   },
   {
+    path:'begin-listing',
+    component:BeginListingComponent
+  },
+  
+  {
     path:'kap-survey',
     component:KapSurveyComponent
   },
   {
     path:'patient-logs',
     component:PatientLogsComponent
+  },
+  {
+    path:'begin-view',
+    component:BeginViewComponent
   }
 ];
 
