@@ -473,6 +473,7 @@ export class InvoiceComponent implements OnInit {
     formData.append('diastolic', this.secondFormGroup.value.diastolic);
     formData.append('smoking', this.secondFormGroup.value.smoking);
     formData.append('alcohol', this.secondFormGroup.value.alcohol);
+    formData.append(' medical_condition',this.secondFormGroup.value.medical_condition);
     formData.append('hypertension_dur', JSON.stringify(this.Complications));
     formData.append('dyslipidemia_dur', JSON.stringify(this.dyslipidemiaobj));
     formData.append('coronary_artery_dur', JSON.stringify(this.coronaryartery));
