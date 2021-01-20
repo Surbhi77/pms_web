@@ -240,7 +240,7 @@
     </mat-step>
 
     <mat-step [stepControl]="forthFormGroup">
-      <ng-template matStepLabel>Insulinisation Barriers and Outcomes</ng-template>
+      <ng-template matStepLabel>Insulinisation barriers and outcomes</ng-template>
       <form [formGroup]="forthFormGroup">
       <div class="agger_group">
         <div class="col-sm-12 col-lg-12 col-md-12">
@@ -332,7 +332,7 @@
           </div>
 
           <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-6" >
               <mat-checkbox color="primary"(change)="impactChange($event,'Beta')"formControlName="Beta"class="example-margin d-block mb-2" >Beta Cell preservation</mat-checkbox>
               <mat-checkbox color="primary"(change)="impactChange($event,'role')"formControlName="role"class="example-margin d-block mb-2" >The role of Insulin in reducing Micro albuminuria</mat-checkbox>
               <mat-checkbox color="primary"(change)="impactChange($event,'Reducing')"formControlName="Reducing"class="example-margin d-block mb-2" >Reducing the inflammatory markers</mat-checkbox>
@@ -351,12 +351,12 @@
           </div>
 
           <div class="row">
-            <div class="col-lg-4">
-              <mat-checkbox color="primary"(change)="tdmpatientsChange($event,'Comorbid')" formControlName="Comorbid"  class="example-margin d-block mb-2">Co-morbid conditions</mat-checkbox>
-              <mat-checkbox color="primary"(change)="tdmpatientsChange($event,'High')" formControlName="High" class="example-margin d-block mb-2">High risk factors</mat-checkbox>
-              <mat-checkbox color="primary"(change)="tdmpatientsChange($event,'Infections')" formControlName="Infections" class="example-margin d-block mb-2">Infections</mat-checkbox>
-              <mat-checkbox color="primary"(change)="tdmpatientsChange($event,'HighA1c')" formControlName="HighA1c"  class="example-margin d-block mb-2">High A1c (>9)</mat-checkbox>
-              
+            <div class="col-lg-4"  >
+              <mat-checkbox color="primary" (change)="tdmpatientsChange($event,'Comorbid')" formControlName="Comorbid"  class="example-margin d-block mb-2">Co-morbid conditions</mat-checkbox>
+              <mat-checkbox color="primary" (change)="tdmpatientsChange($event,'High')" formControlName="High" class="example-margin d-block mb-2">High risk factors</mat-checkbox>
+              <mat-checkbox color="primary" (change)="tdmpatientsChange($event,'Infections')" formControlName="Infections" class="example-margin d-block mb-2">Infections</mat-checkbox>
+              <mat-checkbox color="primary" (change)="tdmpatientsChange($event,'HighA1c')" formControlName="HighA1c"  class="example-margin d-block mb-2">High A1c (>9)</mat-checkbox>
+              <p *ngIf="checklimiterro">Error please check at leat 2</p>
             </div>
           </div>
 

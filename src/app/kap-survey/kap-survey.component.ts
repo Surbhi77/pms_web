@@ -4,16 +4,21 @@ import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import { MainService } from '../main.service';
 
 
+
 @Component({
   selector: 'app-kap-survey',
   templateUrl: './kap-survey.component.html',
   styleUrls: ['./kap-survey.component.css']
 })
 export class KapSurveyComponent implements OnInit {
-  title = 'Kap Survey';
+  title = 'KAP Survey';
+  checklimiterro:boolean=false;
   gridsize: number = 30;
   impacts: any=[];
   patients: any=[];
+  
+  count: number =0;
+  isChecked=false;
  
   updateSetting(event) {
     this.gridsize = event.value;
@@ -50,6 +55,7 @@ export class KapSurveyComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder,private service:MainService) {}
 
   ngOnInit() {
+    console.log('this.patients',this.patients.length);
     this.firstFormGroup = this._formBuilder.group({
      // user_id: [''],
     //  user_id: new FormControl(''),
@@ -144,7 +150,7 @@ export class KapSurveyComponent implements OnInit {
     // console.log('reluctance',this.reluctance[event.currentIndex]);
     this.reluctant_insulin = this.reluctance;
   }
-
+  
   impactChange(event,name){
     console.log(event)
     if(event.checked){
@@ -162,16 +168,23 @@ export class KapSurveyComponent implements OnInit {
       this.forthFormGroup.patchValue({
         'people_with_tdm':''
       })
+     
     }
   }
+
+
   tdmpatientsChange(event,name){
     console.log(event)
+   
     if(event.checked){
       this.patients.push(name)
     }else{
       let i = this.patients.indexOf(name);
       this.patients.splice(i,1)
+      
     }
+    
+   
     if(this.patients.length){
       this.forthFormGroup.patchValue({
         'insulin_to_tdmpatients':this.patients.toString()
@@ -182,6 +195,27 @@ export class KapSurveyComponent implements OnInit {
         'insulin_to_tdmpatients':''
       })
     }
+    if(this.patients.length>1)
+    {
+      this.checklimiterro=false
+      console.log("sdgfhfihfj")
+    }else{
+      this.checklimiterro=true;
+
+    }
+    // if (event.checked>=2) {
+    //   this.patients.push(new FormControl(event.value));
+    // } else {
+    //   let i: number = 0;
+    //   this.patients.forEach((item: FormControl) => {
+    //     if (item.value == event.value) {
+    //       this.patients.removeAt(i);
+    //       return;
+    //     }
+    //     i++;
+    //   });
+    // }
+   
   }
   dropped(event:CdkDragDrop<string[]>){
     console.log(event)
@@ -220,6 +254,9 @@ export class KapSurveyComponent implements OnInit {
    
    submit(){
      var formData: any = new FormData();
+     if(this.thirdFormGroup.valid && this.patients.length>1){
+      this.service.postkdp_survey(formData).subscribe(res => {
+     
      console.log(this.firstFormGroup.value)
      this.people_with_tdm.Beta= (this.forthFormGroup.value.Beta==true)?this.forthFormGroup.value.Beta:false;
      this.people_with_tdm.role= (this.forthFormGroup.value.role==true)?this.forthFormGroup.value.role:false;
@@ -277,14 +314,14 @@ export class KapSurveyComponent implements OnInit {
       formData.append('one_to_two_year',this.forthFormGroup.value.one_to_two_year);
 
  
-    if(this.value > 0 && this.value){
-      formData.append('three_to_five_year',0);
+    // if(this.value > 0 && this.value){
+    //   formData.append('three_to_five_year',0);
       
-    }else{
+    // }else{
       formData.append('three_to_five_year',this.forthFormGroup.value.three_to_five_year);
 
 
-    }
+    // }
     //if(this.value > 0 && this.value){
      // formData.append('five_years',0);
 
@@ -303,11 +340,16 @@ export class KapSurveyComponent implements OnInit {
 
     //formData.append('insulin_to_tdmpatients',JSON.stringify(this.tdmpatients));
    console.log(formData)
-    this.service.postkdp_survey(formData).subscribe((res:any)=>{
-      //  this.krvey =res
+  //   this.service.postkdp_survey(formData).subscribe((res:any)=>{
+  //     //  this.krvey =res
        console.log(res)
-   })
-   
+    })
+    this.thirdFormGroup.markAllAsTouched()
+  }
+  else{
+    console.log('not valid')
+    
+   }
    }
 
 }

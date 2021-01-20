@@ -3,6 +3,7 @@
         <div class="col-lg-12">
             <div class="page-title">
                 <h3>{{title}}</h3>
+               
             </div>
         </div>
     </div>
@@ -23,13 +24,13 @@
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
                                     <mat-form-field class="example-full-width">
-                                        <mat-label>Enter Pen Serial No.</mat-label>
-                                        <input formControlName="pen_serial" matInput placeholder="Ex. 123456" value="">
-                                        <ng-container *ngIf="g.pen_serial.touched && g.pen_serial.invalid">
+                                        <mat-label>Enter Pen Serial non mandatory</mat-label>
+                                        <input formControlName="pen_serial" matInput placeholder="Serial pen non mandatory" value="">
+                                        <!-- <ng-container *ngIf="g.pen_serial.touched && g.pen_serial.invalid">
                                             <mat-error *ngIf="g.pen_serial.errors.required" class="errors">
                                                 Pen Serial No is required.
                                             </mat-error>
-                                        </ng-container>
+                                        </ng-container> -->
 
                                     </mat-form-field>
 
@@ -70,7 +71,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-4 col-md-4 col-12">
+                            <!-- <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Date of Birth</mat-label>
@@ -80,7 +81,7 @@
                                         <mat-datepicker #birth_date></mat-datepicker>
                                     </mat-form-field>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 
@@ -872,11 +873,8 @@
                                     <mat-form-field>
                                         <mat-label>Duration</mat-label>
                                         <mat-select formControlName="fasting_plasma">
-                                            <mat-option value="0">0</mat-option>
-                                            <mat-option value="1">1</mat-option>
-                                            <mat-option value="2">2</mat-option>
-                                            <mat-option value="3">3</mat-option>
-                                            <mat-option value="4">4</mat-option>
+                                            <mat-option *ngFor="let index of getvalue(500);index as i" value="0">{{i+1}}</mat-option>
+                                            <!-- <option  *ngFor="let index of getvalue(500);index as i" >{{i+1}}</option> -->
                                         </mat-select>
                                         <mat-error *ngIf="hasError3('fasting_plasma', 'required')">select field is
                                             required</mat-error>
@@ -891,11 +889,7 @@
                                     <mat-form-field>
                                         <mat-label>Plasma Glucose</mat-label>
                                         <mat-select formControlName="postprandial_plasma">
-                                            <mat-option value="0">0</mat-option>
-                                            <mat-option value="1">1</mat-option>
-                                            <mat-option value="2">2</mat-option>
-                                            <mat-option value="3">3</mat-option>
-                                            <mat-option value="4">4</mat-option>
+                                            <mat-option *ngFor="let index of getvalue(500);index as i" value="0">{{i+1}}</mat-option>
                                         </mat-select>
                                         <mat-error *ngIf="hasError3('postprandial_plasma', 'required')">select field is
                                             required</mat-error>
@@ -910,11 +904,8 @@
                                     <mat-form-field>
                                         <mat-label>Hemoglobin</mat-label>
                                         <mat-select formControlName="glycosylated">
-                                            <mat-option value="0">0</mat-option>
-                                            <mat-option value="1">1</mat-option>
-                                            <mat-option value="2">2</mat-option>
-                                            <mat-option value="3">3</mat-option>
-                                            <mat-option value="4">4</mat-option>
+                                            <mat-option  *ngFor="let index of getvalues(20);index as i" value="0">{{i+1}}</mat-option>
+                                            <!-- <option  *ngFor="let index of getvalues(20);index as i" >{{i+1}}</option> -->
                                         </mat-select>
                                         <mat-error *ngIf="hasError3('glycosylated', 'required')">select field is
                                             required</mat-error>
@@ -948,11 +939,8 @@
                                     <mat-form-field>
                                         <mat-label>S.Creatinine</mat-label>
                                         <mat-select formControlName="s_creatinine">
-                                            <mat-option value="0">0</mat-option>
-                                            <mat-option value="1">1</mat-option>
-                                            <mat-option value="2">2</mat-option>
-                                            <mat-option value="3">3</mat-option>
-                                            <mat-option value="4">4</mat-option>
+                                            <mat-option  *ngFor="let index of getCreatinine()" value="{{index}}">{{index}}</mat-option>
+                                            
                                         </mat-select>
                                         <mat-error *ngIf="hasError3('s_creatinine', 'required')">select field is
                                             required</mat-error>
@@ -1001,7 +989,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+                                    <!-- <div class="col-lg-4 col-md-4 col-12 mb-3">
 
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
@@ -1017,7 +1005,7 @@
                                                     is required</mat-error>
                                             </mat-form-field>
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                     <div class="col-lg-4 col-md-4 col-12 mb-3">
 
