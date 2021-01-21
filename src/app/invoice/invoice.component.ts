@@ -37,6 +37,7 @@ export class InvoiceComponent implements OnInit {
   anti: any = [];
   now2: any;
   now3: any;
+  bmi:any;
 
   glargine_condition: boolean;
   //nph: boolean;
@@ -57,7 +58,7 @@ export class InvoiceComponent implements OnInit {
       // date_of_birth: new FormControl('', [Validators.required]),
       weight: new FormControl('', [Validators.required]),
       height: new FormControl('', [Validators.required]),
-      bmi: new FormControl('', [Validators.required]),
+      bmi: new FormControl(''),
       age: new FormControl('', [Validators.required]),
       education: new FormControl('', [Validators.required]),
       employment: new FormControl('', [Validators.required])
@@ -136,8 +137,15 @@ export class InvoiceComponent implements OnInit {
   getvalues(num: number) {
     return Array.from({length: num}, (v, k) => k + 1);
   }
+  bmicalc(){
+    
+    this.bmi =(this.firstFormGroup.value.weight/((this.firstFormGroup.value.height*this.firstFormGroup.value.height)/100))*100
+   this.bmi = this.bmi.toFixed(2)
+    console.log( this.bmi)
+  }
   getCreatinine() {
-    return Array.from({length:50 }, (_value , k) =>  k / 10);
+    //return Array.from({length:50 }, (_value , k) =>  k / 10);
+    return Array.from({length:50 }, (_value , k=1) => ((k / 10)+0.1).toFixed(1) );
 
   }
   
@@ -421,7 +429,7 @@ export class InvoiceComponent implements OnInit {
     
     var formData: any = new FormData();
     if(this.thirdFormGroup.valid){
-      this.service.postAddBegin(formData).subscribe(res => {
+     
         //this.login =res
   
     this.anti_diabetes_medication.Biguanides = (this.secondFormGroup.value.Biguanides == true) ? this.secondFormGroup.value.Biguanides : false;
@@ -475,7 +483,7 @@ export class InvoiceComponent implements OnInit {
     formData.append('sex', this.firstFormGroup.value.sex);
     formData.append('weight', this.firstFormGroup.value.weight);
     formData.append('height', this.firstFormGroup.value.height);
-    formData.append('bmi', this.firstFormGroup.value.bmi);
+    formData.append('bmi', this.bmi);
     formData.append('education', this.firstFormGroup.value.education);
     formData.append('employment', this.firstFormGroup.value.employment);
     //second form
@@ -508,7 +516,7 @@ export class InvoiceComponent implements OnInit {
     console.log(this.thirdFormGroup.value.dose_insulin);
     formData.append('glargine_insulin', JSON.stringify(this.glargineinsulinobj));
      formData.append('anti_diabetes_medication',JSON.stringify(this.anti_diabetes_medication));
-    
+     this.service.postAddBegin(formData).subscribe(res => {
         console.log(res)
       })
      }else{

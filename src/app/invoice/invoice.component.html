@@ -152,12 +152,12 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Enter BMI in kg/m2</mat-label>
-                                        <input formControlName="bmi" matInput placeholder="Ex. 20kg/m2" value="">
-                                        <ng-container *ngIf="g.bmi.touched && g.bmi.invalid">
+                                        <input formControlName="bmi" (click)="bmicalc()" matInput placeholder="Ex. 20kg/m2" value="{{bmi}}">
+                                        <!-- <ng-container *ngIf="g.bmi.touched && g.bmi.invalid">
                                             <mat-error *ngIf="g.bmi.errors.required" class="errors">
                                                 BMI is required.
                                             </mat-error>
-                                        </ng-container>
+                                        </ng-container> -->
                                     </mat-form-field>
 
                                 </div>
@@ -905,7 +905,7 @@
                                         <mat-label>Hemoglobin</mat-label>
                                         <mat-select formControlName="glycosylated">
                                             <mat-option  *ngFor="let index of getvalues(20);index as i" value="0">{{i+1}}</mat-option>
-                                            <!-- <option  *ngFor="let index of getvalues(20);index as i" >{{i+1}}</option> -->
+                                           
                                         </mat-select>
                                         <mat-error *ngIf="hasError3('glycosylated', 'required')">select field is
                                             required</mat-error>

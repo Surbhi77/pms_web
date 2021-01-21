@@ -1,199 +1,207 @@
-
 <div class="page-content">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="page-title">
-                <h3>{{title}}</h3>
-               
-            </div>
-        </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="page-title">
+        <h3>{{title}}</h3>
+
+      </div>
     </div>
-   
+  </div>
+
   <mat-vertical-stepper [linear]="isLinear" #stepper>
     <mat-step [stepControl]="firstFormGroup">
-       <!-- <div class="form-group" formControlName="user_id" >
+      <!-- <div class="form-group" formControlName="user_id" >
         <input type="text" class="form-control mb-3" placeholder="Enter User id">
     </div>  -->
       <ng-template matStepLabel>KAP Survey: Insulin Initiation and Barriers for Insulin Initiation</ng-template>
       <form [formGroup]="firstFormGroup">
-          <div class="agger_group">
-            <div class="col-sm-12 col-lg-12 col-md-12">
-              <div class="check_nones">
-                <p> I prefer to delay the initiation of insulin therapy until it is absolutely essential (after trying a combination of several classes of oral hypoglycemic at maximal doses) </p>
-              </div>
-
-              <div class="aggree">
-                <mat-radio-group formControlName="delay_insulin" color="primary" aria-label="Select an option">
-                  <mat-radio-button  value="agree" class="mr-5">Agree</mat-radio-button>
-                  <mat-radio-button  value="disagree">Disagree</mat-radio-button>
-                </mat-radio-group>
-                <div *ngIf="g.delay_insulin.touched && g.delay_insulin.invalid" class="alert alert-danger">
-                  <div *ngIf="g.delay_insulin.errors.required" class="errors">Please select agree/disagree</div>
-                </div>
-                <!-- <mat-error *ngIf="hasError('delay_insulin','required')">Please choose a delay_insulin</mat-error> -->
-              </div>
-            </div>
-          </div>
-          
-          <div class="agger_group">
-            <div class="col-sm-12 col-lg-12 col-md-12">
-              <div class="check_nones">
-                <p>	I believe that the initiation of insulin therapy is one of the most difficult aspects of managing my patients with T2DM </p>
-              </div>
-
-              <div class="aggree">
-                <mat-radio-group formControlName="insulin_tdm" color="primary" aria-label="Select an option">
-                  <mat-radio-button value="agree" class="mr-5">Agree</mat-radio-button>
-                  <mat-radio-button value="disagree">Disagree</mat-radio-button>
-                </mat-radio-group>
-                <div *ngIf="g.insulin_tdm.touched && g.insulin_tdm.invalid" class="alert alert-danger">
-                  <div *ngIf="g.insulin_tdm.errors.required" class="errors">Please select agree/disagree</div>
-                </div>
-              </div>
-            </div>
-
-            
-
-          </div>
-          <div class="agger_group">
-            <div class="col-sm-12 col-lg-12 col-md-12">
-              <div class="check_nones">
-                <p>		I believe that most of my patients will eventually need to go on insulin regardless of how well they adhere to their treatment regimen</p>
-              </div>
-
-              <div class="aggree">
-                <mat-radio-group color="primary" formControlName="insulin_regardless" aria-label="Select an option">
-                  <mat-radio-button value="agree" class="mr-5">Agree</mat-radio-button>
-                  <mat-radio-button value="disagree">Disagree</mat-radio-button>
-                </mat-radio-group>
-                <div *ngIf="g.insulin_regardless.touched && g.insulin_regardless.invalid" class="alert alert-danger">
-                  <div *ngIf="g.insulin_regardless.errors.required" class="errors">Please select agree/disagree</div>
-                </div>
-              </div>
-            </div>
-
-            
-
-          </div>
-          <div class="agger_group">
-            <div class="col-sm-12 col-lg-12 col-md-12">
-              <div class="check_nones">
-                <p>		I believe that for most of my patients, the benefits of insulin therapy outweigh the risks of hypoglycemia and weight gain.  </p>
-              </div>
-
-              <div class="aggree">
-                <mat-radio-group formControlName="benifit_insulin" color="primary" aria-label="Select an option">
-                  <mat-radio-button value="agree" class="mr-5">Agree</mat-radio-button>
-                  <mat-radio-button value="disagree">Disagree</mat-radio-button>
-                </mat-radio-group>
-                <div *ngIf="g.benifit_insulin.touched && g.benifit_insulin.invalid" class="alert alert-danger">
-                  <div *ngIf="g.benifit_insulin.errors.required" class="errors">Please select agree/disagree</div>
-                </div>
-              </div>
-            </div>
-
-            
-
-          </div>
-          <div class="agger_group">
-            <div class="col-sm-12 col-lg-12 col-md-12">
-              <div class="check_nones">
-                <p>	I believe that most of my patients would benefit from receiving insulin therapy prior to the development of diabetes complications. </p>
-              </div>
-
-              <div class="aggree">
-                <mat-radio-group formControlName="receiving_insulin" color="primary" aria-label="Select an option">
-                  <mat-radio-button value="agree" class="mr-5">Agree</mat-radio-button>
-                  <mat-radio-button value="disagree">Disagree</mat-radio-button>
-                </mat-radio-group>
-                <div *ngIf="g.receiving_insulin.touched && g.receiving_insulin.invalid" class="alert alert-danger">
-                  <div *ngIf="g.receiving_insulin.errors.required" class="errors">Please select agree/disagree</div>
-                </div>
-              </div>
-            </div>
-
-            
-
-          </div>
-          <div class="agger_group">
-            <div class="col-sm-12 col-lg-12 col-md-12">
-              <div class="check_nones">
-                <p>	I believe that proper patient education and training are the keys to successful initiation of insulin therapy.  </p>
-              </div>
-
-              <div class="aggree">
-                <mat-radio-group formControlName="success_insulin" color="primary" aria-label="Select an option">
-                  <mat-radio-button value="agree" class="mr-5">Agree</mat-radio-button>
-                  <mat-radio-button value="disagree">Disagree</mat-radio-button>
-                </mat-radio-group>
-                <div *ngIf="g.success_insulin.touched && g.success_insulin.invalid" class="alert alert-danger">
-                  <div *ngIf="g.success_insulin.errors.required" class="errors">Please select agree/disagree</div>
-                </div>
-              </div>
-            </div>
-
-            
-
-          </div>
-          <div class="agger_group">
-            <div class="col-sm-12 col-lg-12 col-md-12">
-              <div class="check_nones">
-                <p>		I believe that for most of my patients, training on the proper administration and usage of insulin is not complicated. </p>
-              </div>
-
-              <div class="aggree">
-                <mat-radio-group formControlName="notcomplicated_insulin" color="primary" aria-label="Select an option">
-                  <mat-radio-button value="agree" class="mr-5">Agree</mat-radio-button>
-                  <mat-radio-button value="disagree">Disagree</mat-radio-button>
-                </mat-radio-group>
-                <div *ngIf="g.notcomplicated_insulin.touched && g.notcomplicated_insulin.invalid" class="alert alert-danger">
-                  <div *ngIf="g.notcomplicated_insulin.errors.required" class="errors">Please select agree/disagree</div>
-                </div>
-              </div>
-            </div>
-
-            
-
-          </div>
-          <div class="agger_group">
-            <div class="col-sm-12 col-lg-12 col-md-12">
-              <div class="check_nones">
-                <p>	I believe that most of my patients on oral diabetes therapy do not accept insulin therapy.  </p>
-              </div>
-
-              <div class="aggree">
-                <mat-radio-group formControlName="insulin_therapy" color="primary" aria-label="Select an option">
-                  <mat-radio-button value="agree" class="mr-5">Agree</mat-radio-button>
-                  <mat-radio-button value="disagree">Disagree</mat-radio-button>
-                </mat-radio-group>
-                <div *ngIf="g.insulin_therapy.touched && g.insulin_therapy.invalid" class="alert alert-danger">
-                  <div *ngIf="g.insulin_therapy.errors.required" class="errors">Please select agree/disagree</div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-
-        
-        <div class="col-sm-12 col-lg-12 col-md-12">
-          <button (click)="submitFirst(firstFormGroup.value)" class="next_btn" mat-button matStepperNext>Next</button>
-        </div> 
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup">
-      <ng-template matStepLabel>Reasons for reluctance to initiate insulin</ng-template> 
-      <form [formGroup]="secondFormGroup">
-        
         <div class="agger_group">
           <div class="col-sm-12 col-lg-12 col-md-12">
             <div class="check_nones">
-              <p>I may be reluctant to initiate insulin therapy for my patients with T2DM who: (Can you rate with order of importance in your practice where 1 being top most and 10 being least )</p>
+              <p> I prefer to delay the initiation of insulin therapy until it is absolutely essential (after trying a
+                combination of several classes of oral hypoglycemic at maximal doses) </p>
+            </div>
+
+            <div class="aggree">
+              <mat-radio-group formControlName="delay_insulin" color="primary" aria-label="Select an option">
+                <mat-radio-button value="agree" class="mr-5">Agree</mat-radio-button>
+                <mat-radio-button value="disagree">Disagree</mat-radio-button>
+              </mat-radio-group>
+              <div *ngIf="g.delay_insulin.touched && g.delay_insulin.invalid" class="alert alert-danger">
+                <div *ngIf="g.delay_insulin.errors.required" class="errors">Please select agree/disagree</div>
+              </div>
+              <!-- <mat-error *ngIf="hasError('delay_insulin','required')">Please choose a delay_insulin</mat-error> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="agger_group">
+          <div class="col-sm-12 col-lg-12 col-md-12">
+            <div class="check_nones">
+              <p> I believe that the initiation of insulin therapy is one of the most difficult aspects of managing my
+                patients with T2DM </p>
+            </div>
+
+            <div class="aggree">
+              <mat-radio-group formControlName="insulin_tdm" color="primary" aria-label="Select an option">
+                <mat-radio-button value="agree" class="mr-5">Agree</mat-radio-button>
+                <mat-radio-button value="disagree">Disagree</mat-radio-button>
+              </mat-radio-group>
+              <div *ngIf="g.insulin_tdm.touched && g.insulin_tdm.invalid" class="alert alert-danger">
+                <div *ngIf="g.insulin_tdm.errors.required" class="errors">Please select agree/disagree</div>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+        <div class="agger_group">
+          <div class="col-sm-12 col-lg-12 col-md-12">
+            <div class="check_nones">
+              <p> I believe that most of my patients will eventually need to go on insulin regardless of how well they
+                adhere to their treatment regimen</p>
+            </div>
+
+            <div class="aggree">
+              <mat-radio-group color="primary" formControlName="insulin_regardless" aria-label="Select an option">
+                <mat-radio-button value="agree" class="mr-5">Agree</mat-radio-button>
+                <mat-radio-button value="disagree">Disagree</mat-radio-button>
+              </mat-radio-group>
+              <div *ngIf="g.insulin_regardless.touched && g.insulin_regardless.invalid" class="alert alert-danger">
+                <div *ngIf="g.insulin_regardless.errors.required" class="errors">Please select agree/disagree</div>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+        <div class="agger_group">
+          <div class="col-sm-12 col-lg-12 col-md-12">
+            <div class="check_nones">
+              <p> I believe that for most of my patients, the benefits of insulin therapy outweigh the risks of
+                hypoglycemia and weight gain. </p>
+            </div>
+
+            <div class="aggree">
+              <mat-radio-group formControlName="benifit_insulin" color="primary" aria-label="Select an option">
+                <mat-radio-button value="agree" class="mr-5">Agree</mat-radio-button>
+                <mat-radio-button value="disagree">Disagree</mat-radio-button>
+              </mat-radio-group>
+              <div *ngIf="g.benifit_insulin.touched && g.benifit_insulin.invalid" class="alert alert-danger">
+                <div *ngIf="g.benifit_insulin.errors.required" class="errors">Please select agree/disagree</div>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+        <div class="agger_group">
+          <div class="col-sm-12 col-lg-12 col-md-12">
+            <div class="check_nones">
+              <p> I believe that most of my patients would benefit from receiving insulin therapy prior to the
+                development of diabetes complications. </p>
+            </div>
+
+            <div class="aggree">
+              <mat-radio-group formControlName="receiving_insulin" color="primary" aria-label="Select an option">
+                <mat-radio-button value="agree" class="mr-5">Agree</mat-radio-button>
+                <mat-radio-button value="disagree">Disagree</mat-radio-button>
+              </mat-radio-group>
+              <div *ngIf="g.receiving_insulin.touched && g.receiving_insulin.invalid" class="alert alert-danger">
+                <div *ngIf="g.receiving_insulin.errors.required" class="errors">Please select agree/disagree</div>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+        <div class="agger_group">
+          <div class="col-sm-12 col-lg-12 col-md-12">
+            <div class="check_nones">
+              <p> I believe that proper patient education and training are the keys to successful initiation of insulin
+                therapy. </p>
+            </div>
+
+            <div class="aggree">
+              <mat-radio-group formControlName="success_insulin" color="primary" aria-label="Select an option">
+                <mat-radio-button value="agree" class="mr-5">Agree</mat-radio-button>
+                <mat-radio-button value="disagree">Disagree</mat-radio-button>
+              </mat-radio-group>
+              <div *ngIf="g.success_insulin.touched && g.success_insulin.invalid" class="alert alert-danger">
+                <div *ngIf="g.success_insulin.errors.required" class="errors">Please select agree/disagree</div>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+        <div class="agger_group">
+          <div class="col-sm-12 col-lg-12 col-md-12">
+            <div class="check_nones">
+              <p> I believe that for most of my patients, training on the proper administration and usage of insulin is
+                not complicated. </p>
+            </div>
+
+            <div class="aggree">
+              <mat-radio-group formControlName="notcomplicated_insulin" color="primary" aria-label="Select an option">
+                <mat-radio-button value="agree" class="mr-5">Agree</mat-radio-button>
+                <mat-radio-button value="disagree">Disagree</mat-radio-button>
+              </mat-radio-group>
+              <div *ngIf="g.notcomplicated_insulin.touched && g.notcomplicated_insulin.invalid"
+                class="alert alert-danger">
+                <div *ngIf="g.notcomplicated_insulin.errors.required" class="errors">Please select agree/disagree</div>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+        <div class="agger_group">
+          <div class="col-sm-12 col-lg-12 col-md-12">
+            <div class="check_nones">
+              <p> I believe that most of my patients on oral diabetes therapy do not accept insulin therapy. </p>
+            </div>
+
+            <div class="aggree">
+              <mat-radio-group formControlName="insulin_therapy" color="primary" aria-label="Select an option">
+                <mat-radio-button value="agree" class="mr-5">Agree</mat-radio-button>
+                <mat-radio-button value="disagree">Disagree</mat-radio-button>
+              </mat-radio-group>
+              <div *ngIf="g.insulin_therapy.touched && g.insulin_therapy.invalid" class="alert alert-danger">
+                <div *ngIf="g.insulin_therapy.errors.required" class="errors">Please select agree/disagree</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+
+        <div class="col-sm-12 col-lg-12 col-md-12">
+          <button (click)="submitFirst(firstFormGroup.value)" class="next_btn" mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <ng-template matStepLabel>Reasons for reluctance to initiate insulin</ng-template>
+      <form [formGroup]="secondFormGroup">
+
+        <div class="agger_group">
+          <div class="col-sm-12 col-lg-12 col-md-12">
+            <div class="check_nones">
+              <p>I may be reluctant to initiate insulin therapy for my patients with T2DM who: (Can you rate with order
+                of importance in your practice where 1 being top most and 10 being least )</p>
             </div>
 
             <div class="aggree">
               <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-              
+
                 <div class="example-box" *ngFor="let item of reluctance ; index as i ;" cdkDrag>{{i+1 }}. {{item}}
                   <!-- <input type="hide" formControlName="aggreetype" value="{{item.toString()}}"> -->
                   <!-- <div>{{reluctance.toString()}}</div> -->
@@ -203,7 +211,7 @@
           </div>
 
         </div>
-         
+
         <div class="col-sm-12 col-lg-12 col-md-12">
           <button mat-button matStepperPrevious class="next_btn">Back</button>
           <button mat-button matStepperNext class="next_btn">Next</button>
@@ -214,16 +222,17 @@
     <mat-step [stepControl]="thirdFormGroup">
       <ng-template matStepLabel>Physician perspectives of patient barriers to insulin therapy</ng-template>
       <form [formGroup]="thirdFormGroup">
-        
+
         <div class="agger_group">
           <div class="col-sm-12 col-lg-12 col-md-12">
             <div class="check_nones">
-              <p>In the order of the important barrier(s) for patient acceptance of insulin therapy, rate the following</p>
+              <p>In the order of the important barrier(s) for patient acceptance of insulin therapy, rate the following
+              </p>
             </div>
 
             <div class="aggree">
               <div cdkDropList class="example-list" (cdkDropListDropped)="dropped($event)">
-                <div class="example-box"*ngFor="let items of Physician; index as i ;" cdkDrag>{{i+1 }}. {{items}}
+                <div class="example-box" *ngFor="let items of Physician; index as i ;" cdkDrag>{{i+1 }}. {{items}}
                   <!-- <input type="text" formControlName="agreedropped" value="{{items.toString()}}"> -->
                 </div>
               </div>
@@ -231,7 +240,7 @@
           </div>
 
         </div>
-         
+
         <div class="col-sm-12 col-lg-12 col-md-12">
           <button mat-button matStepperPrevious class="next_btn">Back</button>
           <button mat-button matStepperNext class="next_btn">Next</button>
@@ -242,134 +251,153 @@
     <mat-step [stepControl]="forthFormGroup">
       <ng-template matStepLabel>Insulinisation barriers and outcomes</ng-template>
       <form [formGroup]="forthFormGroup">
-      <div class="agger_group">
-        <div class="col-sm-12 col-lg-12 col-md-12">
-          <div class="check_nones">
-            <p>Out of 100 patients who are initiated on insulins, what percentage of patients adhere to the regimen for the below duration</p>
-          </div>
+        <div class="agger_group">
+          <div class="col-sm-12 col-lg-12 col-md-12">
+            <div class="check_nones">
+              <p>Out of 100 patients who are initiated on insulins, what percentage of patients adhere to the regimen
+                for the below duration</p>
+            </div>
 
-          <div class="aggree">
-            <div class="row">
-              <div class="col-lg-4">
-                <div class="titlkes">
-                  <p class="step_titles">6 months</p>
+            <div class="aggree">
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="titlkes">
+                    <p class="step_titles">6 months</p>
+                  </div>
                 </div>
-              </div>
-              <div class="col-lg-2">
-                <section class="example-section">
-                  <span>0%</span>
-                  <mat-slider  color="primary" formControlName="six_months"   #gridsize (change)="updateSetting($event)" step="5" min="0" max="100" [value]="gridsize"class="example-margin"></mat-slider>
-                  <span>100%</span>
-                  <!-- <div *ngIf="f.six_months.touched && f.six_months.invalid" class="alert alert-danger">
+                <div class="col-lg-2">
+                  <section class="example-section">
+                    <span>0%</span>
+                    <mat-slider color="primary" formControlName="six_months" #gridsize (change)="updateSetting($event)"
+                      step="5" min="0" max="100" [value]="gridsize" class="example-margin"></mat-slider>
+                    <span>100%</span>
+                    <!-- <div *ngIf="f.six_months.touched && f.six_months.invalid" class="alert alert-danger">
                     <div *ngIf="f.six_months.errors.required" class="errors">Please select it</div>
                   </div> -->
-                  <!-- <mat-error *ngIf="hasError('six_months', 'required')">Set value is required</mat-error> -->
-                </section>
-                <div class="get_vals">
-                  <p class="gridSizeValue">{{gridsize.value}}</p>
+                    <!-- <mat-error *ngIf="hasError('six_months', 'required')">Set value is required</mat-error> -->
+                  </section>
+                  <div class="get_vals">
+                    <p class="gridSizeValue">{{gridsize.value}}</p>
+                  </div>
                 </div>
               </div>
+
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="titlkes">
+                    <p class="step_titles">One years – two tears</p>
+                  </div>
+                </div>
+                <div class="col-lg-2">
+                  <section class="example-section">
+                    <span>0%</span>
+                    <mat-slider formControlName="one_to_two_year" color="primary" #grid (change)="updateSet($event)"
+                      step="5" min="0" max="100" [value]="gridsize" class="example-margin"></mat-slider>
+                    <span>100%</span>
+                  </section>
+                  <div class="get_vals">
+                    <p class="gridSizeValue">{{grid.value}}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="titlkes">
+                    <p class="step_titles">Three – Five years</p>
+                  </div>
+                </div>
+                <div class="col-lg-2">
+                  <section class="example-section">
+                    <span>0%</span>
+                    <mat-slider color="primary" formControlName="three_to_five_year" #value
+                      (change)="updatevalue($event)" step="5" min="0" max="100" [value]="value" class="example-margin">
+                    </mat-slider>
+                    <span>100%</span>
+                  </section>
+                  <div class="get_vals">
+                    <p class="gridSizeValue">{{value.value}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="titlkes">
+                    <p class="step_titles"> Five years</p>
+                  </div>
+                </div>
+                <div class="col-lg-2">
+                  <section class="example-section">
+                    <span>0%</span>
+                    <mat-slider color="primary" formControlName="five_years" #setvalue (change)="setvalues($event)"
+                      step="5" min="0" max="100" [value]="setvalue" class="example-margin"></mat-slider>
+                    <span>100%</span>
+                  </section>
+                  <div class="get_vals">
+                    <p class="gridSizeValue">{{setvalue.value}}</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+
+            <div class="check_nones pt-4">
+              <p>Impact of Insulin in people with T2DM </p>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6">
+                <mat-checkbox color="primary" (change)="impactChange($event,'Beta')" formControlName="Beta"
+                  class="example-margin d-block mb-2">Beta Cell preservation</mat-checkbox>
+                <mat-checkbox color="primary" (change)="impactChange($event,'role')" formControlName="role"
+                  class="example-margin d-block mb-2">The role of Insulin in reducing Micro albuminuria</mat-checkbox>
+                <mat-checkbox color="primary" (change)="impactChange($event,'Reducing')" formControlName="Reducing"
+                  class="example-margin d-block mb-2">Reducing the inflammatory markers</mat-checkbox>
+                <mat-checkbox color="primary" (change)="impactChange($event,'risk')" formControlName="risk"
+                  class="example-margin d-block mb-2">Reducing the CV risk factors</mat-checkbox>
+              </div>
+              <div class="col-lg-6">
+                <mat-checkbox color="primary" (change)="impactChange($event,'Micro')" formControlName="Micro"
+                  class="example-margin d-block mb-2">Micro Angiopathy</mat-checkbox>
+                <mat-checkbox color="primary" (change)="impactChange($event,'Reduce')" formControlName="Reduce"
+                  class="example-margin d-block mb-2">Reduce Infections</mat-checkbox>
+                <mat-checkbox color="primary" (change)="impactChange($event,'Neuropathy')" formControlName="Neuropathy"
+                  class="example-margin d-block mb-2">Neuropathy</mat-checkbox>
+                <mat-checkbox color="primary" (change)="impactChange($event,'CIMT')" formControlName="CIMT"
+                  class="example-margin d-block mb-2">Reduces CIMT</mat-checkbox>
+                <p *ngIf="checkmulti" class="alert alert-danger">Choose three clinically impactful options</p>
+              </div>
+            </div>
+
+            <div class="check_nones pt-4">
+              <p> What factors influence in prescribing Insulin to T2DM patients</p>
             </div>
 
             <div class="row">
               <div class="col-lg-4">
-                <div class="titlkes">
-                  <p class="step_titles">One years – two tears</p>
-                </div>
-              </div>
-              <div class="col-lg-2">
-                <section class="example-section">
-                  <span>0%</span>
-                  <mat-slider formControlName="one_to_two_year"  color="primary" #grid (change)="updateSet($event)" step="5"min="0" max="100" [value]="gridsize" class="example-margin"></mat-slider>
-                  <span>100%</span>
-                </section>
-                <div class="get_vals">
-                  <p class="gridSizeValue">{{grid.value}}</p>
-                </div>
+                <mat-checkbox color="primary" (change)="tdmpatientsChange($event,'Comorbid')" formControlName="Comorbid"
+                  class="example-margin d-block mb-2">Co-morbid conditions</mat-checkbox>
+                <mat-checkbox color="primary" (change)="tdmpatientsChange($event,'High')" formControlName="High"
+                  class="example-margin d-block mb-2">High risk factors</mat-checkbox>
+                <mat-checkbox color="primary" (change)="tdmpatientsChange($event,'Infections')"
+                  formControlName="Infections" class="example-margin d-block mb-2">Infections</mat-checkbox>
+                <mat-checkbox color="primary" (change)="tdmpatientsChange($event,'HighA1c')" formControlName="HighA1c"
+                  class="example-margin d-block mb-2">High A1c (>9)</mat-checkbox>
+                <p *ngIf="checklimiterro" class="alert alert-danger">Choose two clinically relevant options</p>
               </div>
             </div>
 
-            <div class="row">
-              <div class="col-lg-4">
-                <div class="titlkes">
-                  <p class="step_titles">Three – Five years</p>
-                </div>
-              </div>
-              <div class="col-lg-2">
-                <section class="example-section">
-                  <span>0%</span>
-                  <mat-slider color="primary"  formControlName="three_to_five_year" #value (change)="updatevalue($event)" step="5"min="0" max="100" [value]="value" class="example-margin"></mat-slider>
-                  <span>100%</span>
-                </section>
-                <div class="get_vals">
-                  <p class="gridSizeValue">{{value.value}}</p>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-4">
-                <div class="titlkes">
-                  <p class="step_titles"> Five years</p>
-                </div>
-              </div>
-              <div class="col-lg-2">
-                <section class="example-section">
-                  <span>0%</span>
-                  <mat-slider color="primary" formControlName="five_years" #setvalue (change)="setvalues($event)" step="5"min="0" max="100" [value]="setvalue" class="example-margin"></mat-slider>
-                  <span>100%</span>
-                </section>
-                <div class="get_vals">
-                  <p class="gridSizeValue">{{setvalue.value}}</p>
-                </div>
-              </div>
-            </div>
-            
-          </div>
-          
-
-          <div class="check_nones pt-4">
-            <p>Impact of Insulin in people with T2DM </p>
-          </div>
-
-          <div class="row">
-            <div class="col-lg-6" >
-              <mat-checkbox color="primary"(change)="impactChange($event,'Beta')"formControlName="Beta"class="example-margin d-block mb-2" >Beta Cell preservation</mat-checkbox>
-              <mat-checkbox color="primary"(change)="impactChange($event,'role')"formControlName="role"class="example-margin d-block mb-2" >The role of Insulin in reducing Micro albuminuria</mat-checkbox>
-              <mat-checkbox color="primary"(change)="impactChange($event,'Reducing')"formControlName="Reducing"class="example-margin d-block mb-2" >Reducing the inflammatory markers</mat-checkbox>
-              <mat-checkbox color="primary"(change)="impactChange($event,'risk')"formControlName="risk"class="example-margin d-block mb-2" >Reducing the CV risk factors</mat-checkbox>
-            </div>
-            <div class="col-lg-6">
-              <mat-checkbox color="primary"(change)="impactChange($event,'Micro')"formControlName="Micro"class="example-margin d-block mb-2" >Micro Angiopathy</mat-checkbox>
-              <mat-checkbox color="primary"(change)="impactChange($event,'Reduce')"formControlName="Reduce"class="example-margin d-block mb-2" >Reduce Infections</mat-checkbox>
-              <mat-checkbox color="primary"(change)="impactChange($event,'Neuropathy')"formControlName="Neuropathy"class="example-margin d-block mb-2" >Neuropathy</mat-checkbox>
-              <mat-checkbox color="primary"(change)="impactChange($event,'CIMT')"formControlName="CIMT"class="example-margin d-block mb-2" >Reduces CIMT</mat-checkbox>
-            </div>
-          </div>
-
-          <div class="check_nones pt-4">
-            <p> What  factors influence in prescribing Insulin to T2DM patients</p>
-          </div>
-
-          <div class="row">
-            <div class="col-lg-4"  >
-              <mat-checkbox color="primary" (change)="tdmpatientsChange($event,'Comorbid')" formControlName="Comorbid"  class="example-margin d-block mb-2">Co-morbid conditions</mat-checkbox>
-              <mat-checkbox color="primary" (change)="tdmpatientsChange($event,'High')" formControlName="High" class="example-margin d-block mb-2">High risk factors</mat-checkbox>
-              <mat-checkbox color="primary" (change)="tdmpatientsChange($event,'Infections')" formControlName="Infections" class="example-margin d-block mb-2">Infections</mat-checkbox>
-              <mat-checkbox color="primary" (change)="tdmpatientsChange($event,'HighA1c')" formControlName="HighA1c"  class="example-margin d-block mb-2">High A1c (>9)</mat-checkbox>
-              <p *ngIf="checklimiterro">Error please check at leat 2</p>
-            </div>
           </div>
 
         </div>
-
-      </div>
-    </form>
+      </form>
       <div class="col-sm-12 col-lg-12 col-md-12">
         <button mat-button matStepperPrevious class="next_btn">Back</button>
         <button mat-button (click)="submit()" class="next_btn">Submit</button>
       </div>
 
-    
+
     </mat-step>
   </mat-vertical-stepper>
 

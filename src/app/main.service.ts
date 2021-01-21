@@ -29,5 +29,8 @@ export class MainService {
     return this.http.post("https://360pmt.com/pms-app/Pms_app/begin_view",show);
 
   }
+  //  beginDraftDelete(id){
+  //   return this.http.post("https://360pmt.com/pms-app/Pms_app/begin_list"+id);
+  // }
 
 }
