@@ -31,7 +31,7 @@ export class BeginListingComponent implements OnInit {
       console.log(res.data)
     })
    
-    formData.append('user_id', '4');
+    formData.append('user_id', '0');
     //formData.append('user_id', '6');
     this.service.beginDraftListing(formData).subscribe((res:any) => {
       this.begindraftlist =res.data
@@ -40,9 +40,20 @@ export class BeginListingComponent implements OnInit {
 
 
   }
+  deletedata(ids,i){
+    if(window.confirm('Are sure you want to delete this item ?')){
+   let formdata= new FormData();
+   formdata.append('id',ids)
+   console.log(ids)
+    this.service.beginDraftDelete(formdata).subscribe((result=>{
+      console.log(result)
+      console.log("data delete sucessfullly !")
+      this.begindraftlist.splice(i,1)
+    }))
+  }
   
  
 
 
 
-}
+}}

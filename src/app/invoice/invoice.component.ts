@@ -50,7 +50,7 @@ export class InvoiceComponent implements OnInit {
 
     this.firstFormGroup = this._formBuilder.group({
      
-      user_id: new FormControl('12345'),
+      user_id: new FormControl(''),
       // mobile: new FormControl('89578898989'),
       pen_serial: new FormControl(''),
       date_visit: new FormControl('', [Validators.required]),
@@ -476,7 +476,7 @@ export class InvoiceComponent implements OnInit {
     formData.append('pen_serial', this.firstFormGroup.value.pen_serial);
     formData.append('date_visit', this.now2);
     console.log(this.now2)
-    // formData.append('date_of_birth', this.now3);
+    formData.append('user_id', '0');
     // console.log(this.now3)
     formData.append('age', this.firstFormGroup.value.age);
 

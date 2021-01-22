@@ -9,6 +9,11 @@ import {KapSurveyComponent} from './kap-survey/kap-survey.component';
 import {PatientLogsComponent} from './patient-logs/patient-logs.component';
 import { BeginListingComponent } from './begin-listing/begin-listing.component';
 import { BeginViewComponent } from './begin-view/begin-view.component';
+import { AddEntryProcessComponent } from './add-entry-process/add-entry-process.component';
+import { InitiateCompletedListComponent } from './initiate-completed-list/initiate-completed-list.component';
+import { DraftViewComponent } from './draft-view/draft-view.component';
+import { InvoiceProcessComponent } from './invoice-process/invoice-process.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -29,6 +34,10 @@ const routes: Routes = [
     component:AddEntryComponent
   },
   {
+    path:'add-entry-process',
+    component:AddEntryProcessComponent
+  },
+  {
     path:'instrutions',
     component:InstrutionsComponent
   },
@@ -43,15 +52,30 @@ const routes: Routes = [
   
   {
     path:'kap-survey',
-    component:KapSurveyComponent
+    component:KapSurveyComponent,canActivate : [AuthGuard]
   },
   {
     path:'patient-logs',
     component:PatientLogsComponent
   },
   {
-    path:'begin-view',
+    path:'begin-view/:id',
     component:BeginViewComponent
+  }
+  ,{
+    path:'initiate_completed_list',
+    component:InitiateCompletedListComponent
+  },{
+    path:'draft_view/:id',
+    component:DraftViewComponent
+  },
+  {
+    path:'draft_delete/:id',
+    component:InitiateCompletedListComponent
+  },
+  {
+    path:'invoice-process',
+    component:InvoiceProcessComponent
   }
 ];
 

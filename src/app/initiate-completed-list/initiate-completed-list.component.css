@@ -1,0 +1,110 @@
+.patient-list {
+    padding: 25px 15px;
+    background: #fff;
+    box-shadow: 0 5px 15px -5px #ccc;
+    border-radius: 5px;
+}
+
+.patient-list h5 {
+    font-size: 16px;
+    margin-bottom: 20px;
+    position: relative;
+    width: max-content;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+}
+
+.patient-list h5:after {
+    content: '';
+    position: absolute;
+    width: 75px;
+    height: 2px;
+    background: #0f406b;
+    bottom: 0;
+    left: 0;
+}
+
+.patient-img img {
+    width: 60%;
+}
+
+.patient-img {
+    width: 50px;
+    height: 50px;
+    background: #f2f4f8;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.patient-details h4 {
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    margin: 0;
+}
+
+.patient-details p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.action-block {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.action-block a {
+    width: 20px;
+    height: 20px;
+    background: #0f406b;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.action-block .remove-btn {
+    background: #800080 !important;
+}
+
+.action-block .check-btn {
+    background: #008000 !important;
+}
+
+.action-block .delete-btn {
+    background: #ff0000 !important;
+}
+
+.action-block a i {
+    color: #fff;
+    font-size: 10px;
+}
+
+.patient-list-tbl td {
+    vertical-align: middle;
+    border-top: 0;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.w-200 {
+    min-width: 200px;
+}
+
+.p-half-r {
+    padding-right: 7.5px;
+}
+
+.p-half-l {
+    padding-left: 7.5px;
+}
+
+.scroll-list {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 380px;
+}

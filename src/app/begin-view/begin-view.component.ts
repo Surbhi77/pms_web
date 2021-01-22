@@ -1,4 +1,4 @@
-import { IfStmt } from '@angular/compiler';
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -56,12 +56,12 @@ export class BeginViewComponent implements OnInit {
    
     this.firstFormGroup = this._formBuilder.group({
      
-      user_id: new FormControl('12345'),
+      user_id: new FormControl(''),
       // mobile: new FormControl('89578898989'),
       pen_serial: new FormControl('',),
       date_visit: new FormControl(''),
       sex: new FormControl(''),
-      date_of_birth: new FormControl(''),
+      
       weight: new FormControl(''),
       height: new FormControl(''),
       bmi: new FormControl(''),
@@ -128,13 +128,13 @@ export class BeginViewComponent implements OnInit {
       dose_insulin: new FormControl(''),
       glargine_insulin: new FormControl(''),
       glargine_insulin_breakfast: new FormControl(''),
-      glargine_insulin_lunch: new FormControl(''),
+     
       glargine_insulin_dinner: new FormControl(''),
       
 
     })
     var formData: any = new FormData();
-    formData.append('id', '93');
+    formData.append('id', this.route.snapshot.params.id);
     this.service.beginview(formData).subscribe((res:any) => {
       this.beginview =res.data
       console.log(res)
@@ -164,56 +164,56 @@ export class BeginViewComponent implements OnInit {
      else{
       this.glargine_condition=false
      }
-     if(this.beginview.medical_condition){
+     if(this.beginview.medical_condition=="yes"){
       this.medication=true
 
     }
     else{
      this.medication=false
     }
-    if(this.beginview.hypertension_dur){
+    if(this.hypercheck.hypertension_dur){
       this.hypertension=true
 
     }
     else{
      this.hypertension=false
     }
-    if(this.beginview.dyslipidemia_dur){
+    if(this.dysncheck.dyslipidemia_dur){
       this.dyslipidemia=true
 
     }
     else{
      this.dyslipidemia=false
     }
-    if(this.beginview.coronary_artery_dur){
+    if(this.coroncheck.coronary_artery_dur){
       this.coronary=true
 
     }
     else{
      this.coronary=false
     }
-    if(this.beginview.stroke_dur){
+    if(this.strokecheck.stroke_dur){
       this.stroke=true
 
     }
     else{
      this.stroke=false
     }
-    if(this.beginview.neuropathy_dur){
+    if(this.neuropathycheck.neuropathy_dur){
       this.neuropathy=true
 
     }
     else{
      this.neuropathy=false
     }
-    if(this.beginview.retinopathy_dur){
+    if(this.retinopathycheck.retinopathy_dur){
       this.retinopathy=true
 
     }
     else{
      this.retinopathy=false
     }
-     if(this.beginview.nephropathy_dur){
+     if(this.nephrocheck.nephropathy_dur){
        this.nephropathy=true
 
      }
@@ -243,28 +243,19 @@ export class BeginViewComponent implements OnInit {
     "nephropathy_dur":this.nephrocheck.nephropathy_dur,
     "nephropathy_duration":this.nephrocheck.duration,
     "nephropathy_medication":this.nephrocheck.medications,
-   
-
-
       })
     this.secondFormGroup.updateValueAndValidity();
 
-     
       this.thirdFormGroup.patchValue({
       "glargine_insulin_breakfast":this.garglineArray.glargine_insulin_breakfast,
-      "glargine_insulin_lunch":this.garglineArray.glargine_insulin_lunch,
+      
       "glargine_insulin_dinner":this.garglineArray.glargine_insulin_dinner
 
 
      })
      this.thirdFormGroup.updateValueAndValidity();
-   
-    
 
     })
-
-  
-    
   }
   
 
@@ -272,13 +263,9 @@ export class BeginViewComponent implements OnInit {
     if (event.checked == true) {
       this.hypertension = true
      
-      
     }
-    else {
-      
-      this.medication = 'no';
-
-    
+    else { 
+      this.medication = 'no';   
       this.hypertension = false
     }
   }
@@ -366,28 +353,5 @@ export class BeginViewComponent implements OnInit {
       this.medication = false
     }
   }
-  // antiDiabetesChange(event, name) {
-  //   console.log(name)
-  //   if (event.checked) {
-  //     this.anti.push(name)
-  //   } else {
-  //     let i = this.anti.indexOf(name);
-  //     this.anti.splice(i, 1)
-  //   }
-  //   if (this.anti.length) {
-  //     this.secondFormGroup.patchValue({
-  //       'people_with_tdm': this.anti.toString()
-  //     });
-  //     this.secondFormGroup.updateValueAndValidity()
-  //   } else {
-  //     this.secondFormGroup.patchValue({
-  //       'people_with_tdm': ''
-  //     })
-  //   }
-  // }
-  
-  
-    
-  
-
+ 
 }

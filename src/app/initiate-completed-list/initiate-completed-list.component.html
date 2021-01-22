@@ -1,20 +1,16 @@
 <div class="page-content">
     <div class="row">
         <div class="col-lg-12">
-            <div class="page-title">
-                <!-- <h3>{{beginlist|json}}</h3> -->
-            </div>
-        </div>
-    </div>
 
-    <div class="row mt-3 mb-3">
-        <div class="col-lg-6 col-md-6 col-12 p-half-r">
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-12 p-half-l">
             <div class="patient-list">
-                <h5>Begin Completed Listing</h5>
+                <h5>Initiate Completed List</h5>
                 <div class="patient-list-tbl">
                     <table class="table">
                         <tbody>
-                            <tr *ngFor="let beginlist of beginlist">
+                            <tr *ngFor="let data of datalist">
                                 <td>
                                     <div class="patient-img">
                                         <img src="/assets/image/patient-user.png" />
@@ -22,26 +18,31 @@
                                 </td>
                                 <td class="w-200">
                                     <div class="patient-details">
-                                        <h4>{{beginlist.id}}</h4>
-                                        <p>{{beginlist.pen_serial}}</p>
+                                        <h4>Mobile No: {{data.mobile}}</h4>
+                                        <p>Age: {{data.age}}</p>
+                                    </div>
+                                </td>
+                                <td class="w-200">
+                                    <div class="action-block">
+                                        <a href="#" class="check-btn">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
 
                                     </div>
                                 </td>
-
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-
         <div class="col-lg-6 col-md-6 col-12 p-half-l">
-            <div class="patient-list">
-                <h5>Begin-Draft-List</h5>
-                <div class="patient-list-tbl">
+            <div class="patient-list ">
+                <h5>Initiate Draft List</h5>
+                <div class="patient-list-tbl scroll-list">
                     <table class="table">
                         <tbody>
-                            <tr *ngFor="let begindraftlist of begindraftlist; let i=index">
+                            <tr *ngFor="let data of draftdata;let i=index">
                                 <td>
                                     <div class="patient-img">
                                         <img src="/assets/image/patient-user.png" />
@@ -49,25 +50,22 @@
                                 </td>
                                 <td class="w-200">
                                     <div class="patient-details">
-                                        <p>{{begindraftlist.pen_serial}}</p>
-                                        <h4>{{begindraftlist.age}}</h4>
+                                        <h4>Mobile No: {{data.mobile}}</h4>
+                                        <p>Age: {{data.age}}</p>
                                     </div>
                                 </td>
                                 <td class="w-200">
                                     <div class="action-block">
-                                        <a [routerLink]="['/begin-view',begindraftlist.id]" class="view-btn">
-                                            <!-- //<a href="#" class="view-btn"> -->
-                                            <img src="/assets/image/visibility.svg" width="20" />
+                                        <a [routerLink]="['/draft_view',data.id]" class="check-btn">
+                                            <i class="fas fa-eye"></i>
                                         </a>
-                                        <a (click)="deletedata(begindraftlist.id,i)" class="delete-btn">
-                                            <img src="/assets/image/trash.svg" width="20" />
+                                        <a (click)="delete(data.id,i)" class="delete-btn">
+                                            <i class="fas fa-trash-alt"></i>
                                         </a>
+
                                     </div>
                                 </td>
                             </tr>
-
-
-
                         </tbody>
                     </table>
                 </div>

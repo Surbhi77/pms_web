@@ -5,15 +5,17 @@
                 <div class="login-block">
                     <img src="/assets/image/pms-logo.png" class="pms-logo" />
 
-                    <form class="example-form">
+                    <form [formGroup]="loginForm" class="example-form">
                         <mat-form-field class="example-full-width">
                             <mat-label>Email</mat-label>
-                            <input type="email" matInput placeholder="Ex. user@example.com">
+                            <input type="email" formControlName="email" matInput placeholder="Ex. user@example.com">
+                            <mat-error *ngIf="hasError('email','required')">Please Enter Mobile No.</mat-error>
                         </mat-form-field>
 
                         <mat-form-field class="example-full-width ">
                             <mat-label>Password</mat-label>
-                            <input type="password" matInput placeholder="Ex. ************">
+                            <input type="password" formControlName="password" matInput placeholder="Ex. ************">
+                            <mat-error *ngIf="hasError('password','required')">Please Enter Mobile No.</mat-error>
                         </mat-form-field>
 
                         <div class="forgot-block">
@@ -21,7 +23,7 @@
                         </div>
 
                         <div class="btn-block">
-                            <button type="submit" class="login-btn" [routerLink]="['/kap-survey']">Login</button>
+                            <button type="submit" (click)="userlogin()" class="login-btn">Login</button>
                         </div>
                     </form>
                 </div>

@@ -14,9 +14,11 @@
             </li>
 
             <li>
-                <a href="javascript:void(0);" [routerLink]="['/add-entry']">Add Entry</a>
+                <a href="javascript:void(0);" [routerLink]="['/add-entry-process']">Add Entry</a>
             </li>
-
+            <li>
+                <a href="javascript:void(0);" [routerLink]="['/initiate_completed_list']">Initiate List</a>
+            </li>
             <li>
                 <a href="javascript:void(0);" [routerLink]="['/patient-logs']">Patient Logs</a>
             </li>
@@ -30,10 +32,10 @@
             </li>
 
             <li>
-                <a href="javascript:void(0);" [routerLink]="['/invoice']">Invoice</a>
+                <a href="javascript:void(0);" [routerLink]="['/invoice-process']" *ngIf="userType=='b'">Invoice</a>
             </li>
             <li>
-                <a href="javascript:void(0);" [routerLink]="['/begin-listing']">Begin-Listing</a>
+                <a href="javascript:void(0);" [routerLink]="['/begin-listing']" *ngIf="userType=='b'">Begin-Listing</a>
             </li>
         </ul>
     </div>

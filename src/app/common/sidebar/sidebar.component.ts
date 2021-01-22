@@ -8,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
 
   constructor() { }
-
+   
+  userType:any = [];
   ngOnInit(): void {
+    this.userType = localStorage.getItem('userType')
+    console.log(this.userType)
   }
-
+  
 }

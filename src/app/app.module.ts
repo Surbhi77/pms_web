@@ -57,6 +57,11 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BeginListingComponent } from './begin-listing/begin-listing.component';
 import { BeginViewComponent } from './begin-view/begin-view.component';
+import { AddEntryProcessComponent } from './add-entry-process/add-entry-process.component';
+import { InitiateCompletedListComponent } from './initiate-completed-list/initiate-completed-list.component';
+import { DraftViewComponent } from './draft-view/draft-view.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { InvoiceProcessComponent } from './invoice-process/invoice-process.component';
 //import { BeginDraftListComponent } from './begin-draft-list/begin-draft-list.component';
 @NgModule({
   declarations: [
@@ -72,8 +77,12 @@ import { BeginViewComponent } from './begin-view/begin-view.component';
     FooterComponent,
     SidebarComponent,
     BeginListingComponent,
-    BeginViewComponent
-    //BeginDraftListComponent
+    BeginViewComponent,
+    AddEntryProcessComponent,
+    InitiateCompletedListComponent,
+    DraftViewComponent,
+    InvoiceProcessComponent
+   
   ],
   imports: [
     BrowserModule,
@@ -95,6 +104,7 @@ import { BeginViewComponent } from './begin-view/begin-view.component';
     NgbModule,
     OverlayModule,  
     HttpClientModule,
+    MatDialogModule
   ],
   exports:[
     BrowserModule,
