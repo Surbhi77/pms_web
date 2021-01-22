@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,12 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
    
   userType:any = [];
   ngOnInit(): void {
     this.userType = localStorage.getItem('userType')
     console.log(this.userType)
+  }
+  logout(){
+    localStorage.removeItem('userType')
+    localStorage.removeItem('email')
+    localStorage.removeItem('password')
+    this.router.navigateByUrl('/login')
   }
   
 }

@@ -62,6 +62,7 @@ import { InitiateCompletedListComponent } from './initiate-completed-list/initia
 import { DraftViewComponent } from './draft-view/draft-view.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { InvoiceProcessComponent } from './invoice-process/invoice-process.component';
+
 //import { BeginDraftListComponent } from './begin-draft-list/begin-draft-list.component';
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { InvoiceProcessComponent } from './invoice-process/invoice-process.compo
     AddEntryProcessComponent,
     InitiateCompletedListComponent,
     DraftViewComponent,
-    InvoiceProcessComponent
+    InvoiceProcessComponent,
+    
    
   ],
   imports: [

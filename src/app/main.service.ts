@@ -47,5 +47,11 @@ export class MainService {
   login(logindata:any){
     return this.http.post('https://360pmt.com/pms-app/Pms_app/login',logindata)
   }
+  instructions(){
+    return this.http.get('https://360pmt.com/pms-app/Pms_app/page/instruction')
+  }
+  howitworks(){
+    return this.http.get('https://360pmt.com/pms-app/Pms_app/page/how-its-works')
+  }
 
 }

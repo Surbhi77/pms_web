@@ -14,13 +14,16 @@
             </li>
 
             <li>
-                <a href="javascript:void(0);" [routerLink]="['/add-entry-process']">Add Entry</a>
+                <a href="javascript:void(0);" [routerLink]="['/add-entry-process']" *ngIf="userType=='i'">Add Entry</a>
+            </li>
+            <!-- <li>
+                <a href="javascript:void(0);" [routerLink]="['/initiate_completed_list']" *ngIf="userType=='i'">Initiate List</a>
+            </li> -->
+            <li>
+                <a href="javascript:void(0);" [routerLink]="['/patient-logs']" *ngIf="userType=='i'">Patient Logs</a>
             </li>
             <li>
-                <a href="javascript:void(0);" [routerLink]="['/initiate_completed_list']">Initiate List</a>
-            </li>
-            <li>
-                <a href="javascript:void(0);" [routerLink]="['/patient-logs']">Patient Logs</a>
+                <a href="javascript:void(0);" [routerLink]="['//begin-listing']" *ngIf="userType=='b'">Patient Logs</a>
             </li>
 
             <li>
@@ -34,8 +37,11 @@
             <li>
                 <a href="javascript:void(0);" [routerLink]="['/invoice-process']" *ngIf="userType=='b'">Invoice</a>
             </li>
-            <li>
+            <!-- <li>
                 <a href="javascript:void(0);" [routerLink]="['/begin-listing']" *ngIf="userType=='b'">Begin-Listing</a>
+            </li> -->
+            <li>
+                <a href="javascript:void(0);" (click)="logout()">logout</a>
             </li>
         </ul>
     </div>
