@@ -70,7 +70,7 @@ const routes: Routes = [
     component:DraftViewComponent
   },
   {
-    path:'draft_delete/:id',
+    path:'draft_delete',
     component:InitiateCompletedListComponent
   },
   {

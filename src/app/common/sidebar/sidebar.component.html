@@ -16,6 +16,9 @@
             <li>
                 <a href="javascript:void(0);" [routerLink]="['/add-entry-process']" *ngIf="userType=='i'">Add Entry</a>
             </li>
+            <li>
+                <a href="javascript:void(0);" [routerLink]="['/invoice-process']" *ngIf="userType=='b'">Add Entry</a>
+            </li>
             <!-- <li>
                 <a href="javascript:void(0);" [routerLink]="['/initiate_completed_list']" *ngIf="userType=='i'">Initiate List</a>
             </li> -->
@@ -30,19 +33,17 @@
                 <a href="javascript:void(0);" [routerLink]="['/how-it-works']">How it works</a>
             </li>
 
-            <li>
+            <!-- <li>
                 <a href="javascript:void(0);" [routerLink]="['/instrutions']">Intructions</a>
-            </li>
+            </li> -->
 
             <li>
-                <a href="javascript:void(0);" [routerLink]="['/invoice-process']" *ngIf="userType=='b'">Invoice</a>
+                <a href="javascript:void(0);">Invoice</a>
             </li>
             <!-- <li>
                 <a href="javascript:void(0);" [routerLink]="['/begin-listing']" *ngIf="userType=='b'">Begin-Listing</a>
             </li> -->
-            <li>
-                <a href="javascript:void(0);" (click)="logout()">logout</a>
-            </li>
+
         </ul>
     </div>
 </div>

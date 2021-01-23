@@ -15,11 +15,6 @@ export class SidebarComponent implements OnInit {
     this.userType = localStorage.getItem('userType')
     console.log(this.userType)
   }
-  logout(){
-    localStorage.removeItem('userType')
-    localStorage.removeItem('email')
-    localStorage.removeItem('password')
-    this.router.navigateByUrl('/login')
-  }
+  
   
 }
