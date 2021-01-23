@@ -166,8 +166,9 @@ export class DraftViewComponent implements OnInit {
     else{
       this.medication = false;
     }
-    if(this.viewData.blood_investigation=='yes'){
+    if(this.bloodInvetigateArray.blood_investigation=='yes'){
       this.bloodInvestigation = true;
+      this.bloodInvetigateArray.blood_investigation=='yes'
     }
     else{
       this.bloodInvestigation = false;
@@ -226,11 +227,11 @@ export class DraftViewComponent implements OnInit {
     console.log(this.nph_insulinArray);
     this.glargine_insulinArray = JSON.parse(this.viewData.glargine_insulin);
     console.log( this.glargine_insulinArray)
-    //  this.checkboxArray.refill = JSON.parse(this.viewData.refill)
-    //  this.checkboxArray.fourty_iu_vial =JSON.parse(this.viewData.fourty_iu_vial);
-    // this.checkboxArray.hundred_iu_vial = JSON.parse(this.viewData.hundred_iu_vial);
-    // console.log( this.checkboxArray)
-    //this.checkboxArray=JSON.parse(this.checkboxArray)
+     this.checkboxArray.refill = JSON.parse(this.viewData.refill)
+     this.checkboxArray.fourty_iu_vial =JSON.parse(this.viewData.fourty_iu_vial);
+    this.checkboxArray.hundred_iu_vial = JSON.parse(this.viewData.hundred_iu_vial);
+    console.log( this.checkboxArray)
+    
     
     this.thirdFormGroup.patchValue({
       "blood_investigation":this.bloodInvetigateArray.blood_investigation,

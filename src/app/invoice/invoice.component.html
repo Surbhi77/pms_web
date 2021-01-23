@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="page-title">
-                <h3>{{title}}</h3>
-               
+                <h3>BEGIN CRF</h3>
+
             </div>
         </div>
     </div>
@@ -41,8 +41,7 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Date of Visit</mat-label>
-                                        <input matInput formControlName="date_visit" [matDatepicker]="visit_date"
-                                            (dateChange)="vistedate($event)">
+                                        <input matInput formControlName="date_visit" [matDatepicker]="visit_date" (dateChange)="vistedate($event)">
                                         <mat-datepicker-toggle matSuffix [for]="visit_date"></mat-datepicker-toggle>
                                         <mat-datepicker #visit_date></mat-datepicker>
                                     </mat-form-field>
@@ -59,14 +58,13 @@
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block radio-center">
-                                    <mat-radio-group color="primary" formControlName="sex"
-                                        aria-label="Select an option">
+                                    <mat-radio-group color="primary" formControlName="sex" aria-label="Select an option">
                                         <mat-radio-button value="male" class="mr-5">Male</mat-radio-button>
                                         <mat-radio-button value="female">Female</mat-radio-button>
                                     </mat-radio-group>
                                     <div *ngIf="g.sex.touched && g.sex.invalid">
-                                        <div *ngIf="g.sex.errors.required" class="errors text-danger">Please select
-                                            male/female</div>
+                                        <div *ngIf="g.sex.errors.required" class="errors text-danger">Please select male/female
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -165,7 +163,7 @@
                         </div>
                     </div>
 
-                   
+
                     <div class="col-sm-12 col-lg-12 col-md-12">
 
                         <div class="row">
@@ -175,18 +173,16 @@
                                 </div>
                                 <div class="entry-inputs-block">
 
-                                    <mat-radio-group formControlName="education" color="primary"
-                                        formControlName="education" aria-label="Select an option">
+                                    <mat-radio-group formControlName="education" color="primary" formControlName="education" aria-label="Select an option">
                                         <mat-radio-button value="primary" class="mr-5">Primary</mat-radio-button>
                                         <mat-radio-button value="high school">High School</mat-radio-button>
                                         <mat-radio-button value="Pre_University">Pre_University</mat-radio-button>
                                         <mat-radio-button value="Graduate">Graduate</mat-radio-button>
                                     </mat-radio-group>
                                     <div *ngIf="g.education.touched && g.education.invalid">
-                                        <div *ngIf="g.education.errors.required" class="errors text-danger">Please
-                                            select any one </div>
+                                        <div *ngIf="g.education.errors.required" class="errors text-danger">Please select any one </div>
                                     </div>
-                                    
+
 
                                 </div>
                             </div>
@@ -195,14 +191,12 @@
                                     <p>Employment</p>
                                 </div>
                                 <div class="entry-inputs-block">
-                                    <mat-radio-group formControlName="employment" color="primary"
-                                        formControlName="employment" aria-label="Select an option">
+                                    <mat-radio-group formControlName="employment" color="primary" formControlName="employment" aria-label="Select an option">
                                         <mat-radio-button value="Employed" class="mr-5">Employed</mat-radio-button>
                                         <mat-radio-button value="Unemployed">Unemployed</mat-radio-button>
                                     </mat-radio-group>
                                     <div *ngIf="g.employment.touched && g.employment.invalid">
-                                        <div *ngIf="g.employment.errors.required" class="errors text-danger">Please
-                                            select employed/unemployed </div>
+                                        <div *ngIf="g.employment.errors.required" class="errors text-danger">Please select employed/unemployed </div>
                                     </div>
 
                                 </div>
@@ -235,8 +229,7 @@
                                             <mat-option value="30">30</mat-option>
                                             <mat-option value="65">65</mat-option>
                                         </mat-select>
-                                        <ng-container
-                                            *ngIf="f.duration_diabetes.touched && f.duration_diabetes.invalid">
+                                        <ng-container *ngIf="f.duration_diabetes.touched && f.duration_diabetes.invalid">
                                             <mat-error *ngIf="f.duration_diabetes.errors.required" class="errors">
                                                 select weight is required.
                                             </mat-error>
@@ -270,8 +263,7 @@
                                 </div>
 
                                 <div class="entry-inputs-block">
-                                    <mat-radio-group color="primary" formControlName="family_diabetes"
-                                        aria-label="Select an option">
+                                    <mat-radio-group color="primary" formControlName="family_diabetes" aria-label="Select an option">
                                         <mat-radio-button value="yes" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="no">No</mat-radio-button>
                                     </mat-radio-group>
@@ -296,8 +288,7 @@
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block radio-center">
-                                    <mat-radio-group color="primary" formControlName="hypertension"
-                                        aria-label="Select an option">
+                                    <mat-radio-group color="primary" formControlName="hypertension" aria-label="Select an option">
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="2">No</mat-radio-button>
 
@@ -317,9 +308,7 @@
                                             <mat-option value="4">4</mat-option>
                                         </mat-select>
                                         <div *ngIf="f.duration_hypertension.touched && f.duration_hypertension.invalid">
-                                            <div *ngIf="f.duration_hypertension.errors.required"
-                                                class="errors text-danger">Please
-                                                select any one </div>
+                                            <div *ngIf="f.duration_hypertension.errors.required" class="errors text-danger">Please select any one </div>
                                         </div>
                                     </mat-form-field>
                                 </div>
@@ -348,8 +337,7 @@
                                         </mat-select>
                                         <div *ngIf="f.blood_pressure.touched && f.blood_pressure.invalid">
                                             <div *ngIf="f.blood_pressure.errors.required" class="errors text-danger">
-                                                Please
-                                                select any one </div>
+                                                Please select any one </div>
                                         </div>
                                     </mat-form-field>
                                 </div>
@@ -367,8 +355,7 @@
                                             <mat-option value="60">60</mat-option>
                                         </mat-select>
                                         <div *ngIf="f.systolic.touched && f.systolic.invalid">
-                                            <div *ngIf="f.systolic.errors.required" class="errors text-danger">Please
-                                                select any one </div>
+                                            <div *ngIf="f.systolic.errors.required" class="errors text-danger">Please select any one </div>
                                         </div>
                                     </mat-form-field>
                                 </div>
@@ -386,8 +373,7 @@
                                             <mat-option value="60">60</mat-option>
                                         </mat-select>
                                         <div *ngIf="f.diastolic.touched && f.diastolic.invalid">
-                                            <div *ngIf="f.diastolic.errors.required" class="errors text-danger">Please
-                                                select any one </div>
+                                            <div *ngIf="f.diastolic.errors.required" class="errors text-danger">Please select any one </div>
                                         </div>
                                     </mat-form-field>
                                 </div>
@@ -403,8 +389,7 @@
                                 </div>
 
                                 <div class="entry-inputs-block">
-                                    <mat-radio-group formControlName="smoking" color="primary"
-                                        aria-label="Select an option">
+                                    <mat-radio-group formControlName="smoking" color="primary" aria-label="Select an option">
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="2">No</mat-radio-button>
                                     </mat-radio-group>
@@ -419,8 +404,7 @@
                                 </div>
 
                                 <div class="entry-inputs-block">
-                                    <mat-radio-group color="primary" formControlName="alcohol"
-                                        aria-label="Select an option">
+                                    <mat-radio-group color="primary" formControlName="alcohol" aria-label="Select an option">
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="2">No</mat-radio-button>
                                     </mat-radio-group>
@@ -440,7 +424,7 @@
                     <div class="col-sm-12 col-lg-12 col-md-12 mb-3">
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12 mb-3">
-                               
+
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12 mb-3">
@@ -449,8 +433,7 @@
                                 </div>
 
                                 <div class="entry-inputs-block">
-                                    <mat-radio-group formControlName="medical_condition" (change)="onchange($event)"
-                                        color="primary" aria-label="Select an option">
+                                    <mat-radio-group formControlName="medical_condition" (change)="onchange($event)" color="primary" aria-label="Select an option">
                                         <mat-radio-button value="yes" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="no">No</mat-radio-button>
                                     </mat-radio-group>
@@ -459,7 +442,7 @@
                         </div>
                     </div>
 
-                   
+
                     <div class="col-sm-12 col-lg-12 col-md-12 mb-3" *ngIf="medication">
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12">
@@ -467,9 +450,7 @@
                                     <p>Condition</p>
                                 </div>
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="hypertension_dur"
-                                        (change)="oncheked($event, 'hypertension_dur')"
-                                        class="example-margin d-block mb-2">Hypertension
+                                    <mat-checkbox color="primary" formControlName="hypertension_dur" (change)="oncheked($event, 'hypertension_dur')" class="example-margin d-block mb-2">Hypertension
                                     </mat-checkbox>
                                 </div>
                             </div>
@@ -488,7 +469,7 @@
                                             <mat-option value="3">3</mat-option>
                                             <mat-option value="4">4</mat-option>
                                         </mat-select>
-                                       
+
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -499,12 +480,11 @@
                                     <p>Medication :</p>
                                 </div>
                                 <div class="entry-inputs-block">
-                                    <mat-radio-group color="primary" formControlName="medications"
-                                        aria-label="Select an option">
+                                    <mat-radio-group color="primary" formControlName="medications" aria-label="Select an option">
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="2">No</mat-radio-button>
                                     </mat-radio-group>
-                                   
+
                                 </div>
                             </div>
                         </div>
@@ -514,9 +494,7 @@
                                     <p>Condition</p>
                                 </div>
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="dyslipidemia_dur"
-                                        (change)="oncheked2($event,'dyslipidemia_dur')"
-                                        class="example-margin d-block mb-2">Dyslipidemia
+                                    <mat-checkbox color="primary" formControlName="dyslipidemia_dur" (change)="oncheked2($event,'dyslipidemia_dur')" class="example-margin d-block mb-2">Dyslipidemia
                                     </mat-checkbox>
                                 </div>
                             </div>
@@ -544,8 +522,7 @@
                                     <p>Medication :</p>
                                 </div>
                                 <div class="entry-inputs-block">
-                                    <mat-radio-group formControlName="dyslipidemia_medication" color="primary"
-                                        aria-label="Select an option">
+                                    <mat-radio-group formControlName="dyslipidemia_medication" color="primary" aria-label="Select an option">
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="2">No</mat-radio-button>
                                     </mat-radio-group>
@@ -558,9 +535,8 @@
                                     <p>Condition</p>
                                 </div>
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="coronary_artery_dur"
-                                        (change)="oncheked3($event,'coronary_artery_dur')" class="example-margin d-block mb-2">Coronary Artery
-                                        Disease</mat-checkbox>
+                                    <mat-checkbox color="primary" formControlName="coronary_artery_dur" (change)="oncheked3($event,'coronary_artery_dur')" class="example-margin d-block mb-2">Coronary Artery Disease
+                                    </mat-checkbox>
                                 </div>
                             </div>
 
@@ -587,8 +563,7 @@
                                     <p>Medication :</p>
                                 </div>
                                 <div class="entry-inputs-block">
-                                    <mat-radio-group color="primary" formControlName="coronary_artery_medication"
-                                        aria-label="Select an option">
+                                    <mat-radio-group color="primary" formControlName="coronary_artery_medication" aria-label="Select an option">
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="2">No</mat-radio-button>
                                     </mat-radio-group>
@@ -601,8 +576,7 @@
                                     <p>Condition</p>
                                 </div>
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="stroke_dur"
-                                        (change)="oncheked4($event,'stroke_dur')" class="example-margin d-block mb-2">Stroke
+                                    <mat-checkbox color="primary" formControlName="stroke_dur" (change)="oncheked4($event,'stroke_dur')" class="example-margin d-block mb-2">Stroke
                                     </mat-checkbox>
                                 </div>
                             </div>
@@ -630,8 +604,7 @@
                                     <p>Medication :</p>
                                 </div>
                                 <div class="entry-inputs-block">
-                                    <mat-radio-group color="primary" formControlName="stroke_medication"
-                                        aria-label="Select an option">
+                                    <mat-radio-group color="primary" formControlName="stroke_medication" aria-label="Select an option">
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="2">No</mat-radio-button>
                                     </mat-radio-group>
@@ -644,8 +617,7 @@
                                     <p>Condition</p>
                                 </div>
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="neuropathy_dur"
-                                        (change)="oncheked5($event,'neuropathy_dur')" class="example-margin d-block mb-2">Neuropathy
+                                    <mat-checkbox color="primary" formControlName="neuropathy_dur" (change)="oncheked5($event,'neuropathy_dur')" class="example-margin d-block mb-2">Neuropathy
                                     </mat-checkbox>
                                 </div>
                             </div>
@@ -673,8 +645,7 @@
                                     <p>Medication :</p>
                                 </div>
                                 <div class="entry-inputs-block">
-                                    <mat-radio-group color="primary" formControlName="neuropathy_medication"
-                                        aria-label="Select an option">
+                                    <mat-radio-group color="primary" formControlName="neuropathy_medication" aria-label="Select an option">
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="2">No</mat-radio-button>
                                     </mat-radio-group>
@@ -687,8 +658,7 @@
                                     <p>Condition</p>
                                 </div>
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="retinopathy_dur"
-                                        (change)="oncheked6($event,'retinopathy_dur')" class="example-margin d-block mb-2">Retinopathy
+                                    <mat-checkbox color="primary" formControlName="retinopathy_dur" (change)="oncheked6($event,'retinopathy_dur')" class="example-margin d-block mb-2">Retinopathy
                                     </mat-checkbox>
                                 </div>
                             </div>
@@ -716,8 +686,7 @@
                                     <p>Medication :</p>
                                 </div>
                                 <div class="entry-inputs-block">
-                                    <mat-radio-group formControlName="retinopathy_medication" color="primary"
-                                        aria-label="Select an option">
+                                    <mat-radio-group formControlName="retinopathy_medication" color="primary" aria-label="Select an option">
                                         <mat-radio-button value="Yes" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="No">No</mat-radio-button>
                                     </mat-radio-group>
@@ -730,8 +699,7 @@
                                     <p>Condition</p>
                                 </div>
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="nephropathy_dur"
-                                        (change)="oncheked7($event,'nephropathy_dur')" class="example-margin d-block mb-2">Nephropathy
+                                    <mat-checkbox color="primary" formControlName="nephropathy_dur" (change)="oncheked7($event,'nephropathy_dur')" class="example-margin d-block mb-2">Nephropathy
                                     </mat-checkbox>
                                 </div>
                             </div>
@@ -759,8 +727,7 @@
                                     <p>Medication :</p>
                                 </div>
                                 <div class="entry-inputs-block">
-                                    <mat-radio-group color="primary" formControlName="nephropathy_medication"
-                                        aria-label="Select an option">
+                                    <mat-radio-group color="primary" formControlName="nephropathy_medication" aria-label="Select an option">
                                         <mat-radio-button value="yes" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="no">No</mat-radio-button>
                                     </mat-radio-group>
@@ -779,69 +746,55 @@
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" (change)="antiDiabetesChange($event,'Biguanides')"
-                                        formControlName="Biguanides" class="example-margin d-block mb-2">Biguanides
+                                    <mat-checkbox color="primary" (change)="antiDiabetesChange($event,'Biguanides')" formControlName="Biguanides" class="example-margin d-block mb-2">Biguanides
                                     </mat-checkbox>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" (change)="antiDiabetesChange($event,'Sulphonylureas')"
-                                        formControlName="Sulphonylureas" class="example-margin d-block mb-2">
+                                    <mat-checkbox color="primary" (change)="antiDiabetesChange($event,'Sulphonylureas')" formControlName="Sulphonylureas" class="example-margin d-block mb-2">
                                         Sulphonylureas</mat-checkbox>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" (change)="antiDiabetesChange($event,'Meglitinides')"
-                                        formControlName="Meglitinides" class="example-margin d-block mb-2">Meglitinides
+                                    <mat-checkbox color="primary" (change)="antiDiabetesChange($event,'Meglitinides')" formControlName="Meglitinides" class="example-margin d-block mb-2">Meglitinides
                                     </mat-checkbox>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary"
-                                        (change)="antiDiabetesChange($event,'Thiazolidendiones')"
-                                        formControlName="Thiazolidendiones" class="example-margin d-block mb-2">
+                                    <mat-checkbox color="primary" (change)="antiDiabetesChange($event,'Thiazolidendiones')" formControlName="Thiazolidendiones" class="example-margin d-block mb-2">
                                         Thiazolidendiones</mat-checkbox>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" (change)="antiDiabetesChange($event,'GLP_Analogues')"
-                                        formControlName="GLP_Analogues" class="example-margin d-block mb-2">GLP
-                                        Analogues</mat-checkbox>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-4 col-12">
-                                <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary"
-                                        (change)="antiDiabetesChange($event,'DPP4_Inhibitors')"
-                                        formControlName="DPP4_Inhibitors" class="example-margin d-block mb-2">DPP4
-                                        Inhibitors</mat-checkbox>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-4 col-12">
-                                <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary"
-                                        (change)="antiDiabetesChange($event,'DoubleDrugFixed')"
-                                        formControlName="DoubleDrugFixed" class="example-margin d-block mb-2">Double
-                                        Drug Fixed Dose Combination
+                                    <mat-checkbox color="primary" (change)="antiDiabetesChange($event,'GLP_Analogues')" formControlName="GLP_Analogues" class="example-margin d-block mb-2">GLP Analogues
                                     </mat-checkbox>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary"
-                                        (change)="antiDiabetesChange($event,'TripleDrugFixed')"
-                                        formControlName="TripleDrugFixed" class="example-margin d-block mb-2">Triple
-                                        Drug Fixed Dose Combinations
+                                    <mat-checkbox color="primary" (change)="antiDiabetesChange($event,'DPP4_Inhibitors')" formControlName="DPP4_Inhibitors" class="example-margin d-block mb-2">DPP4 Inhibitors
+                                    </mat-checkbox>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" (change)="antiDiabetesChange($event,'DoubleDrugFixed')" formControlName="DoubleDrugFixed" class="example-margin d-block mb-2">Double Drug Fixed Dose Combination
+                                    </mat-checkbox>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" (change)="antiDiabetesChange($event,'TripleDrugFixed')" formControlName="TripleDrugFixed" class="example-margin d-block mb-2">Triple Drug Fixed Dose Combinations
                                     </mat-checkbox>
                                 </div>
                             </div>
@@ -876,8 +829,8 @@
                                             <mat-option *ngFor="let index of getvalue(500);index as i" value="0">{{i+1}}</mat-option>
                                             <!-- <option  *ngFor="let index of getvalue(500);index as i" >{{i+1}}</option> -->
                                         </mat-select>
-                                        <mat-error *ngIf="hasError3('fasting_plasma', 'required')">select field is
-                                            required</mat-error>
+                                        <mat-error *ngIf="hasError3('fasting_plasma', 'required')">select field is required
+                                        </mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -891,8 +844,8 @@
                                         <mat-select formControlName="postprandial_plasma">
                                             <mat-option *ngFor="let index of getvalue(500);index as i" value="0">{{i+1}}</mat-option>
                                         </mat-select>
-                                        <mat-error *ngIf="hasError3('postprandial_plasma', 'required')">select field is
-                                            required</mat-error>
+                                        <mat-error *ngIf="hasError3('postprandial_plasma', 'required')">select field is required
+                                        </mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -904,11 +857,11 @@
                                     <mat-form-field>
                                         <mat-label>Hemoglobin</mat-label>
                                         <mat-select formControlName="glycosylated">
-                                            <mat-option  *ngFor="let index of getvalues(20);index as i" value="0">{{i+1}}</mat-option>
-                                           
+                                            <mat-option *ngFor="let index of getvalues(20);index as i" value="0">{{i+1}}</mat-option>
+
                                         </mat-select>
-                                        <mat-error *ngIf="hasError3('glycosylated', 'required')">select field is
-                                            required</mat-error>
+                                        <mat-error *ngIf="hasError3('glycosylated', 'required')">select field is required
+                                        </mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -939,11 +892,11 @@
                                     <mat-form-field>
                                         <mat-label>S.Creatinine</mat-label>
                                         <mat-select formControlName="s_creatinine">
-                                            <mat-option  *ngFor="let index of getCreatinine()" value="{{index}}">{{index}}</mat-option>
-                                            
+                                            <mat-option *ngFor="let index of getCreatinine()" value="{{index}}">{{index}}</mat-option>
+
                                         </mat-select>
-                                        <mat-error *ngIf="hasError3('s_creatinine', 'required')">select field is
-                                            required</mat-error>
+                                        <mat-error *ngIf="hasError3('s_creatinine', 'required')">select field is required
+                                        </mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -965,9 +918,8 @@
                             </div>
                             <div class="col-lg-12 col-md-12 col-12 mb-3">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="glargine_insulin"
-                                        (change)="oncheked10($event)" class="example-margin d-block mb-2">Regular
-                                        insulin</mat-checkbox>
+                                    <mat-checkbox color="primary" formControlName="glargine_insulin" (change)="oncheked10($event)" class="example-margin d-block mb-2">Regular insulin
+                                    </mat-checkbox>
                                 </div>
 
                                 <div class="row" *ngIf="glargine_condition">
@@ -983,8 +935,7 @@
                                                     <mat-option value="3">3</mat-option>
                                                     <mat-option value="4">4</mat-option>
                                                 </mat-select>
-                                                <mat-error *ngIf="hasError3('fasting_plasma', 'required')">select field
-                                                    is required</mat-error>
+                                                <mat-error *ngIf="hasError3('fasting_plasma', 'required')">select field is required</mat-error>
                                             </mat-form-field>
                                         </div>
                                     </div>
@@ -1019,8 +970,7 @@
                                                     <mat-option value="3">3</mat-option>
                                                     <mat-option value="4">4</mat-option>
                                                 </mat-select>
-                                                <mat-error *ngIf="hasError3('fasting_plasma', 'required')">select field
-                                                    is required</mat-error>
+                                                <mat-error *ngIf="hasError3('fasting_plasma', 'required')">select field is required</mat-error>
                                             </mat-form-field>
                                         </div>
                                     </div>

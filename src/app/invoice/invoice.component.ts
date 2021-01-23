@@ -51,7 +51,7 @@ export class InvoiceComponent implements OnInit {
     this.firstFormGroup = this._formBuilder.group({
      
       user_id: new FormControl(''),
-      // mobile: new FormControl('89578898989'),
+       mobile: new FormControl(''),
       pen_serial: new FormControl(''),
       date_visit: new FormControl('', [Validators.required]),
       sex: new FormControl('', [Validators.required]),
@@ -479,7 +479,7 @@ export class InvoiceComponent implements OnInit {
     formData.append('user_id', '0');
     // console.log(this.now3)
     formData.append('age', this.firstFormGroup.value.age);
-
+   formData.append('mobile', JSON.parse(localStorage.getItem('mobile')))
     formData.append('sex', this.firstFormGroup.value.sex);
     formData.append('weight', this.firstFormGroup.value.weight);
     formData.append('height', this.firstFormGroup.value.height);
