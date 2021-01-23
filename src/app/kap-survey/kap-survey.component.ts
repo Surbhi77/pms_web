@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MainService } from '../main.service';
+import { Router } from '@angular/router';
 
 
 
@@ -53,7 +54,7 @@ export class KapSurveyComponent implements OnInit {
 
 
 
-  constructor(private _formBuilder: FormBuilder, private service: MainService) { }
+  constructor(private _formBuilder: FormBuilder, private service: MainService,private router:Router) { }
 
   ngOnInit() {
 
@@ -329,6 +330,8 @@ export class KapSurveyComponent implements OnInit {
           this.service.postkdp_survey(formData).subscribe((res:any)=>{
           // this.krvey =res
         console.log(res)
+        //this.router.navigateByUrl('/add-entry')
+
       })
      
     }

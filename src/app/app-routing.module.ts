@@ -14,6 +14,7 @@ import { InitiateCompletedListComponent } from './initiate-completed-list/initia
 import { DraftViewComponent } from './draft-view/draft-view.component';
 import { InvoiceProcessComponent } from './invoice-process/invoice-process.component';
 import { AuthGuard } from './auth/auth.guard';
+import { QuriesComponent } from './quries/quries.component';
 
 const routes: Routes = [
   {
@@ -76,7 +77,12 @@ const routes: Routes = [
   {
     path:'invoice-process',
     component:InvoiceProcessComponent
-  }
+  },
+  {
+    path:'quries',
+    component:QuriesComponent
+  },
+ 
 ];
 
 @NgModule({

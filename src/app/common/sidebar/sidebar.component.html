@@ -30,9 +30,9 @@
                 <a href="javascript:void(0);" [routerLink]="['/how-it-works']">How it works</a>
             </li>
 
-            <li>
+            <!-- <li>
                 <a href="javascript:void(0);" [routerLink]="['/instrutions']">Intructions</a>
-            </li>
+            </li> -->
 
             <li>
                 <a href="javascript:void(0);" [routerLink]="['/invoice-process']" *ngIf="userType=='b'">Invoice</a>
@@ -40,6 +40,9 @@
             <!-- <li>
                 <a href="javascript:void(0);" [routerLink]="['/begin-listing']" *ngIf="userType=='b'">Begin-Listing</a>
             </li> -->
+            <li>
+                <a href="javascript:void(0);" [routerLink]="['/quries']" >Quries</a>
+            </li>
             <li>
                 <a href="javascript:void(0);" (click)="logout()">logout</a>
             </li>
