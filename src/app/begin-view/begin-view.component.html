@@ -918,7 +918,7 @@
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <button mat-button matStepperPrevious class="next_btn">Back</button>
                         <button mat-button class="next_btn">Save as Draft</button>
-                        <button mat-button matStepperNext class="next_btn">Submit</button>
+                        <button mat-button matStepperNext (click)="submit()" class="next_btn">Submit</button>
                     </div>
                 </div>
             </form>

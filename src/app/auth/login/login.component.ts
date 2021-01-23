@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { MainService } from 'src/app/main.service';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog} from '@angular/material/dialog';
 
 
 
@@ -19,9 +19,11 @@ export class LoginComponent implements OnInit {
   ]);
   loginForm:FormGroup;
   userType:any = [];
+  model:string;
+  //dialog: any;
  // invalidLogin: boolean = false;
 
-  constructor(private service:MainService, private fb:FormBuilder, private router:Router) { }
+  constructor(private service:MainService, private fb:FormBuilder, private router:Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -49,7 +51,12 @@ export class LoginComponent implements OnInit {
       this.userType = res.data
       console.log(res)
       console.log(this.userType)
+     
       localStorage.setItem('userType', this.userType.type)
+      localStorage.setItem('userId', this.userType.userId)
+      localStorage.setItem('doctor_id',this.userType.doctor_id)
+      console.log(this.userType.doctor_id)
+      this.dialog.open(loginpopup);   
       this.router.navigateByUrl('/kap-survey')
       console.log(this.loginForm.value)
     })}
@@ -60,3 +67,10 @@ export class LoginComponent implements OnInit {
   }
 
 }
+
+
+@Component({
+  selector: 'loginpopup',
+  templateUrl: 'loginpopup.component.html',
+})
+export class loginpopup {}
