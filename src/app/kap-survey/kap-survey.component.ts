@@ -20,17 +20,23 @@ export class KapSurveyComponent implements OnInit {
 
   count: number = 0;
   isChecked = false;
+  oneTotwo: boolean = false;
+  threeTofive: boolean = false;
+  fiveyears: boolean = false;
 
   updateSetting(event) {
     this.gridsize = event.value;
+    this.oneTotwo = true;
   }
   grid: number = 30;
   updateSet(event) {
     this.grid = event.value;
+    this.threeTofive = true;
   }
   value: number = 30;
   updatevalue(event) {
     this.value = event.value;
+    this.fiveyears = true
   }
   setvalue: number = 30;
   setvalues(event) {
@@ -228,12 +234,12 @@ export class KapSurveyComponent implements OnInit {
 
 
   }
-  submitFirst(data: any) {
-    if (this.firstFormGroup.valid && data.value == null) {
-      this.isLinear = true
+  submitFirst() {
+    if (this.firstFormGroup.valid ) {
+      this.isLinear = false
 
     } else {
-      this.isLinear = false
+      this.isLinear = true
       this.firstFormGroup.markAllAsTouched()
     }
   }

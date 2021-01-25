@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit {
       console.log(res)
       console.log(this.userType)
       localStorage.setItem('userType', this.userType.type)
+      localStorage.setItem('user_id', this.userType.doctor_id)
       this.router.navigateByUrl('/kap-survey')
       console.log(this.loginForm.value)
     })}

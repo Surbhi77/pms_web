@@ -26,7 +26,7 @@ export class InitiateCompletedListComponent implements OnInit {
       id:new FormControl('')
     })
     const formdata = new FormData();
-    formdata.append('user_id','10');
+    formdata.append('user_id',JSON.parse(localStorage.getItem('user_id')));
     formdata.append('status','1')
      console.log(formdata)
     this.service.initiateList(formdata).subscribe((res:any)=>{
@@ -37,7 +37,7 @@ export class InitiateCompletedListComponent implements OnInit {
         console.log(err)
       })
      
-      formdata.append('user_id','1');
+      formdata.append('user_id',JSON.parse(localStorage.getItem('user_id')));
       formdata.append('status','1')
      
       this.service.draftList(formdata).subscribe((res:any)=>{

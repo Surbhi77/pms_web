@@ -176,7 +176,7 @@
 
 
                 <div class="col-sm-12 col-lg-12 col-md-12">
-                    <button (click)="submitFirst(firstFormGroup.value)" class="next_btn" mat-button matStepperNext>Next</button>
+                    <button (click)="submitFirst()" class="next_btn" mat-button matStepperNext>Next</button>
                 </div>
             </form>
         </mat-step>
@@ -271,7 +271,7 @@
                                 </div>
                             </div>
 
-                            <div class="row">
+                            <div class="row" *ngIf="oneTotwo">
                                 <div class="col-lg-4">
                                     <div class="titlkes">
                                         <p class="step_titles">One years – two tears</p>
@@ -289,7 +289,7 @@
                                 </div>
                             </div>
 
-                            <div class="row">
+                            <div class="row" *ngIf="threeTofive">
                                 <div class="col-lg-4">
                                     <div class="titlkes">
                                         <p class="step_titles">Three – Five years</p>
@@ -307,7 +307,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row" *ngIf="fiveyears">
                                 <div class="col-lg-4">
                                     <div class="titlkes">
                                         <p class="step_titles"> Five years</p>

@@ -14,6 +14,7 @@ import { InitiateCompletedListComponent } from './initiate-completed-list/initia
 import { DraftViewComponent } from './draft-view/draft-view.component';
 import { InvoiceProcessComponent } from './invoice-process/invoice-process.component';
 import { AuthGuard } from './auth/auth.guard';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 const routes: Routes = [
   {
@@ -76,6 +77,10 @@ const routes: Routes = [
   {
     path:'invoice-process',
     component:InvoiceProcessComponent
+  },
+  {
+    path:'change_password',
+    component:ChangePasswordComponent
   }
 ];
 

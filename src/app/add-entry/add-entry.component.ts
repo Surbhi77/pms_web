@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MainService } from '../main.service';
 
 @Component({
@@ -49,11 +50,12 @@ export class AddEntryComponent implements OnInit {
   dobDate: string;
   isFormSubmitted: boolean;
   bmi: any;
+  resetform: any=[];
 
 
   //isEditable = false;
 
-  constructor(private _formBuilder: FormBuilder, private service: MainService) { }
+  constructor(private _formBuilder: FormBuilder, private service: MainService, private router:Router) { }
 
   ngOnInit() {
     // this.dateformatecommon();
@@ -75,7 +77,7 @@ export class AddEntryComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       duration_diabetes: new FormControl('', [Validators.required]),
       treated_diabetes: new FormControl('', [Validators.required]),
-      age_at_diabetes: new FormControl('', [Validators.required]),
+      //age_at_diabetes: new FormControl('', [Validators.required]),
       family_diabetes: new FormControl('', [Validators.required]),
       hypertension: new FormControl('', [Validators.required]),
       duration_hypertension: new FormControl('', [Validators.required]),
@@ -136,9 +138,9 @@ export class AddEntryComponent implements OnInit {
       
     })
     this.fourthFormGroup = this._formBuilder.group({
-      fourty_iu_vial: new FormControl(''),
-      hundred_iu_vial: new FormControl(''),
-      refill: new FormControl(''),
+      //fourty_iu_vial: new FormControl(''),
+     // hundred_iu_vial: new FormControl(''),
+     // refill: new FormControl(''),
       human_premixed_thirty: new FormControl(''),
       human_premixed_fifty: new FormControl(''),
       regular_insulin: new FormControl(''),
@@ -551,7 +553,22 @@ export class AddEntryComponent implements OnInit {
     return Array.from({length:50 }, (_value , k=1) => ((k / 10)+0.1).toFixed(1) );
 
   }
+  getWeight() {
+    return Array.from({length:150 }, (_value , k) => (k +1) );
+
+  }
+  getHeight() {
+    return Array.from({length:150 }, (_value , k) => (k +1) );
+
+  }
+  weight(event:any){
+  console.log(event)
   
+  }
+  height(event:any){
+    console.log(event)
+  
+  }
   submit() {
      
     if(this.fourthFormGroup.valid){
@@ -624,11 +641,10 @@ export class AddEntryComponent implements OnInit {
       this.glargine_insulin_Obj.glargine_insulin_lunch = this.fourthFormGroup.value.glargine_insulin_lunch;
       this.glargine_insulin_Obj.glargine_insulin_dinner = this.fourthFormGroup.value.glargine_insulin_dinner;
       const formData = new FormData()
-      formData.append("user_id", '1');
+      formData.append("user_id", JSON.parse(localStorage.getItem('user_id')));
       formData.append("mobile",JSON.parse(localStorage.getItem('mobile')));
       formData.append("pen_serial", this.firstFormGroup.value.pen_serial);
       formData.append("sex", this.firstFormGroup.value.sex);
-     // formData.append("date_of_birth", this.dobDate);
       formData.append("date_visit", this.nowDate);
       formData.append("age", this.firstFormGroup.value.age);
       formData.append("weight", this.firstFormGroup.value.weight);
@@ -638,7 +654,6 @@ export class AddEntryComponent implements OnInit {
       formData.append("employment", this.firstFormGroup.value.employment);
       formData.append("duration_diabetes", this.secondFormGroup.value.duration_diabetes);
       formData.append("treated_diabetes", this.secondFormGroup.value.treated_diabetes);
-      formData.append("age_at_diabetes", this.secondFormGroup.value.age_at_diabetes);
       formData.append("family_diabetes", this.secondFormGroup.value.family_diabetes);
       formData.append("hypertension", this.secondFormGroup.value.hypertension);
       formData.append("duration_hypertension", this.secondFormGroup.value.duration_hypertension);
@@ -657,9 +672,6 @@ export class AddEntryComponent implements OnInit {
       formData.append("nephropathy_dur", JSON.stringify(this.nephropathyArray));
       formData.append("anti_diabetes_medication", JSON.stringify(this.anti_diabetes));
       formData.append("blood_investigation", JSON.stringify(this.blood_investigation_obj));
-      formData.append("fourty_iu_vial", (this.fourthFormGroup.value.fourty_iu_vial==true)?this.fourthFormGroup.value.fourty_iu_vial:false);
-      formData.append("hundred_iu_vial", (this.fourthFormGroup.value.hundred_iu_vial==true)?this.fourthFormGroup.value.hundred_iu_vial : false);
-      formData.append("refill", (this.fourthFormGroup.value.refill==true) ? this.fourthFormGroup.value.refill : false);
       formData.append("human_premixed_thirty", JSON.stringify(this.human_premixed_thirty_Obj));
       formData.append("human_premixed_fifty", JSON.stringify(this.human_premixed_fifty_Obj));
       formData.append("regular_insulin", JSON.stringify(this.regular_insulin_Obj));
@@ -668,10 +680,15 @@ export class AddEntryComponent implements OnInit {
       formData.append("medical_condition",this.secondFormGroup.value.medical_condition)
       console.log(formData)
 
-
+      // this.firstFormGroup.reset();
+      // this.secondFormGroup.reset();
+      // this.thirdFormGroup.reset();
+      //  this.fourthFormGroup.reset();
+    
       this.service.addInitiate(formData).subscribe(res => {
 
         console.log(res)
+       // this.router.navigateByUrl('/add-entry-process')
 
 
       })

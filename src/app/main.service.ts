@@ -1,4 +1,4 @@
-//import { HttpClient } from '@angular/common/http';
+
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -7,7 +7,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class MainService {
-
   constructor(private http:HttpClient) { }
   addInitiate(addinitiate:any){
     return this.http.post("https://360pmt.com/pms-app/Pms_app/add_initiate", addinitiate)
