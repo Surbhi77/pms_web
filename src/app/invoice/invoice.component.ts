@@ -163,6 +163,9 @@ export class InvoiceComponent implements OnInit {
   public hasError3 = (controlName: string, errorName: string) => {
     return this.thirdFormGroup.controls[controlName].hasError(errorName);
   }
+  public hasError2 = (controlName: string, errorName: string) => {
+    return this.secondFormGroup.controls[controlName].hasError(errorName);
+  }
 
   submitFirst() {
     if (!this.firstFormGroup.valid) {

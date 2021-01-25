@@ -324,12 +324,13 @@ export class KapSurveyComponent implements OnInit {
         formData.append('insulin_to_tdmpatients', JSON.stringify(this.insulin_to_tdmpatients));
 
 
-
+        localStorage.setItem("kdp_survey",'yes')
 
         console.log(formData)
           this.service.postkdp_survey(formData).subscribe((res:any)=>{
           // this.krvey =res
         console.log(res)
+
         //this.router.navigateByUrl('/add-entry')
 
       })

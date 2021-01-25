@@ -1,1 +1,32 @@
-<p>terms-checking works!</p>
+<div > 
+<h1 mat-dialog-title>
+    tnc
+  </h1>
+  
+  <div class="row" >
+      <form [formGroup]='form'>
+    <div class="col-12">
+        <div>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores minima quisquam non doloremque ipsum ut fugit ullam aperiam quis corrupti iure animi voluptate officia nobis, illum possimus sit maxime. Maiores.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus dolore rem placeat, laudantium doloribus sint odit illum dolorem modi. Ut repudiandae minima officia, dignissimos delectus iste sequi possimus animi consectetur?
+            </p>
+        </div>
+        <div>
+            <p>Agreement Date & Time:</p>
+            <p> {{date | date:'fullDate'}}</p>
+        </div>
+        <div class="entry-inputs-block inline_check">
+            <mat-checkbox formControlName="gst" value="yes" (change)="check($event)" color="primary" class="example-margin d-block mb-2"></mat-checkbox>GST
+           
+        </div>
+    </div>
+    </form>
+   
+</div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close (click)="submit()" >Agree</button>
+    <button mat-button mat-dialog-close >Cancel</button>
+  </div>
+</div>
+  

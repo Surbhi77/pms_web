@@ -223,8 +223,8 @@
 
                                 <div class="entry-inputs-block">
                                     <mat-radio-group color="primary" formControlName="family_diabetes" aria-label="Select an option" value="{{beginview.family_diabetes}}">
-                                        <mat-radio-button value="yes" class="mr-5">Yes</mat-radio-button>
-                                        <mat-radio-button value="no">No</mat-radio-button>
+                                        <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
+                                        <mat-radio-button value="0">No</mat-radio-button>
                                     </mat-radio-group>
 
                                 </div>
@@ -244,7 +244,7 @@
                                 <div class="entry-inputs-block radio-center">
                                     <mat-radio-group color="primary" formControlName="hypertension" aria-label="Select an option" value="{{beginview.hypertension}}">
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
-                                        <mat-radio-button value="2">No</mat-radio-button>
+                                        <mat-radio-button value="0">No</mat-radio-button>
 
                                     </mat-radio-group>
 
@@ -336,7 +336,7 @@
                                 <div class="entry-inputs-block">
                                     <mat-radio-group formControlName="smoking" color="primary" aria-label="Select an option" value="{{beginview.smoking}}">
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
-                                        <mat-radio-button value="2">No</mat-radio-button>
+                                        <mat-radio-button value="0">No</mat-radio-button>
                                     </mat-radio-group>
 
                                 </div>
@@ -350,7 +350,7 @@
                                 <div class="entry-inputs-block">
                                     <mat-radio-group color="primary" formControlName="alcohol" aria-label="Select an option" value="{{beginview.alcohol}}">
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
-                                        <mat-radio-button value="2">No</mat-radio-button>
+                                        <mat-radio-button value="0">No</mat-radio-button>
                                     </mat-radio-group>
 
 
@@ -767,11 +767,7 @@
                                     <mat-form-field>
                                         <mat-label>Duration</mat-label>
                                         <mat-select formControlName="fasting_plasma" value="{{beginview.fasting_plasma}}">
-                                            <mat-option value="0">0</mat-option>
-                                            <mat-option value="1">1</mat-option>
-                                            <mat-option value="2">2</mat-option>
-                                            <mat-option value="3">3</mat-option>
-                                            <mat-option value="4">4</mat-option>
+                                            <mat-option *ngFor="let index of getvalue(500);index as i" value="{{index}}">{{i+1}}</mat-option>
                                         </mat-select>
 
                                     </mat-form-field>
@@ -785,11 +781,7 @@
                                     <mat-form-field>
                                         <mat-label>Plasma Glucose</mat-label>
                                         <mat-select formControlName="postprandial_plasma" value="{{beginview.postprandial_plasma}}">
-                                            <mat-option value="0">0</mat-option>
-                                            <mat-option value="1">1</mat-option>
-                                            <mat-option value="2">2</mat-option>
-                                            <mat-option value="3">3</mat-option>
-                                            <mat-option value="4">4</mat-option>
+                                            <mat-option *ngFor="let index of getvalue(500);index as i" value="{{index}}">{{i+1}}</mat-option>
                                         </mat-select>
 
                                     </mat-form-field>
@@ -803,11 +795,7 @@
                                     <mat-form-field>
                                         <mat-label>Hemoglobin</mat-label>
                                         <mat-select formControlName="glycosylated" value="{{beginview.glycosylated}}">
-                                            <mat-option value="0">0</mat-option>
-                                            <mat-option value="1">1</mat-option>
-                                            <mat-option value="2">2</mat-option>
-                                            <mat-option value="3">3</mat-option>
-                                            <mat-option value="4">4</mat-option>
+                                            <mat-option *ngFor="let index of getvalues(20);index as i" value="{{index}}">{{i+1}}</mat-option>
                                         </mat-select>
 
                                     </mat-form-field>

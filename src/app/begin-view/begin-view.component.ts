@@ -78,7 +78,7 @@ export class BeginViewComponent implements OnInit {
     this.firstFormGroup = this._formBuilder.group({
      
       user_id: new FormControl(''),
-      form_id:new FormControl(''),
+    //  form_id:new FormControl(''),
       // mobile: new FormControl('89578898989'),
       pen_serial: new FormControl('',),
       date_visit: new FormControl(''),
@@ -161,23 +161,23 @@ export class BeginViewComponent implements OnInit {
     this.service.beginview(formData).subscribe((res:any) => {
       this.beginview =res.data
       console.log(res)
-     this.antichecked=JSON.parse(this.beginview.anti_diabetes_medication)
+     this.antichecked=(this.beginview.anti_diabetes_medication)
      console.log(this.antichecked)
-     this.garglineArray=JSON.parse(this.beginview.glargine_insulin)
+     this.garglineArray=(this.beginview.glargine_insulin)
      console.log( this.garglineArray)
-      this.hypercheck=JSON.parse(this.beginview.hypertension_dur)
+      this.hypercheck=(this.beginview.hypertension_dur)
       console.log( this.hypercheck)
-      this.dysncheck=JSON.parse(this.beginview.dyslipidemia_dur)
+      this.dysncheck=(this.beginview.dyslipidemia_dur)
       console.log( this.dysncheck)
-      this.coroncheck=JSON.parse(this.beginview.coronary_artery_dur)
+      this.coroncheck=(this.beginview.coronary_artery_dur)
       console.log(this.coroncheck)
-      this.strokecheck=JSON.parse(this.beginview.stroke_dur)
+      this.strokecheck=(this.beginview.stroke_dur)
       console.log(this.strokecheck)
-      this.neuropathycheck=JSON.parse(this.beginview.neuropathy_dur)
+      this.neuropathycheck=(this.beginview.neuropathy_dur)
       console.log(this.neuropathycheck)
-      this.retinopathycheck=JSON.parse(this.beginview.retinopathy_dur)
+      this.retinopathycheck=(this.beginview.retinopathy_dur)
       console.log(this.retinopathycheck)
-       this.nephrocheck=JSON.parse(this.beginview.nephropathy_dur)
+       this.nephrocheck=(this.beginview.nephropathy_dur)
        console.log(this.nephrocheck)
 
      if(this.beginview.glargine_insulin){
@@ -280,7 +280,12 @@ export class BeginViewComponent implements OnInit {
 
     })
   }
-  
+  getvalue(num: number) {
+    return Array.from({length: num}, (v, k) => k + 1);
+  }
+  getvalues(num: number) {
+    return Array.from({length: num}, (v, k) => k + 1);
+  }
 
   oncheked(event: any,name:any) {
     if (event.checked == true) {
@@ -455,7 +460,7 @@ export class BeginViewComponent implements OnInit {
   formData.append('retinopathy_dur', JSON.stringify(this.retinopathyobj));
   formData.append('nephropathy_dur', JSON.stringify(this.nephropathyobj));
   //third form
-  formData.append('form_id',this.firstFormGroup.value.form_id)
+ //formData.append('form_id',this.firstFormGroup.value.form_id)
  formData.append('status','yes');
   formData.append('fasting_plasma', this.thirdFormGroup.value.fasting_plasma);
   formData.append('postprandial_plasma', this.thirdFormGroup.value.postprandial_plasma);
