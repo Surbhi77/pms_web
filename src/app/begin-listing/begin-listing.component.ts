@@ -25,14 +25,18 @@ export class BeginListingComponent implements OnInit {
     })
     var formData: any = new FormData();
     //formData.append('user_id', '4');
-    formData.append('user_id', '6');
+    formData.append("user_id",JSON.parse(localStorage.getItem('doctor_id')));
+    console.log(localStorage.getItem('doctor_id'))
+  
     this.service.beginListing(formData).subscribe((res:any) => {
       this.beginlist =res.data
       console.log(res.data)
     })
    
-    formData.append('user_id', '0');
-    //formData.append('user_id', '6');
+    //formData.append('user_id', '0');
+    formData.append("user_id",JSON.parse(localStorage.getItem('doctor_id')));
+    console.log(localStorage.getItem('doctor_id'))
+  
     this.service.beginDraftListing(formData).subscribe((res:any) => {
       this.begindraftlist =res.data
       console.log(res.data)

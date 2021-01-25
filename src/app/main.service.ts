@@ -52,5 +52,15 @@ export class MainService {
   howitworks(){
     return this.http.get('https://360pmt.com/pms-app/Pms_app/page/how-its-works')
   }
+  quries(qur:any){
+    return this.http.post('https://360pmt.com/pms-app/pms_app/enquiry',qur)
+  }
+  check_terms(check:any){
+    return this.http.post('https://360pmt.com/pms-app/Pms_app/terms_checking',check)
+
+  }
+  agreement(data:any){
+   return this.http.post("https://360pmt.com/pms-app/Pms_app/agreement",data)
+  }
 
 }

@@ -64,6 +64,12 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { InvoiceProcessComponent } from './invoice-process/invoice-process.component';
 import { AuthGuard } from './auth/auth.guard';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { QuriesComponent} from './quries/quries.component';
+import { TermsCheckingComponent } from './auth/terms-checking/terms-checking.component';
+
+
+
+
 
 //import { BeginDraftListComponent } from './begin-draft-list/begin-draft-list.component';
 @NgModule({
@@ -86,6 +92,9 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     DraftViewComponent,
     InvoiceProcessComponent,
     ChangePasswordComponent,
+    QuriesComponent,
+   
+    TermsCheckingComponent
     
    
   ],

@@ -52,6 +52,7 @@ export class InvoiceComponent implements OnInit {
      
       user_id: new FormControl(''),
        mobile: new FormControl(''),
+      
       pen_serial: new FormControl(''),
       date_visit: new FormControl('', [Validators.required]),
       sex: new FormControl('', [Validators.required]),
@@ -162,6 +163,9 @@ export class InvoiceComponent implements OnInit {
   public hasError3 = (controlName: string, errorName: string) => {
     return this.thirdFormGroup.controls[controlName].hasError(errorName);
   }
+  public hasError2 = (controlName: string, errorName: string) => {
+    return this.secondFormGroup.controls[controlName].hasError(errorName);
+  }
 
   submitFirst() {
     if (!this.firstFormGroup.valid) {
@@ -177,7 +181,7 @@ export class InvoiceComponent implements OnInit {
     if(!this.secondFormGroup.valid){
       this.isLinear=true
      // return false;
-      console.log(this.secondFormGroup)
+      console.log(this.secondFormGroup.value)
       this.secondFormGroup.markAllAsTouched();
     }
     else{
@@ -476,7 +480,9 @@ export class InvoiceComponent implements OnInit {
     formData.append('pen_serial', this.firstFormGroup.value.pen_serial);
     formData.append('date_visit', this.now2);
     console.log(this.now2)
-    formData.append('user_id', '0');
+    formData.append("user_id",JSON.parse(localStorage.getItem('doctor_id')));
+    console.log(localStorage.getItem('doctor_id'))
+    //formData.append('user_id', '0');
     // console.log(this.now3)
     formData.append('age', this.firstFormGroup.value.age);
    formData.append('mobile', JSON.parse(localStorage.getItem('mobile')))

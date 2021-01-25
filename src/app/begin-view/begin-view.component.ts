@@ -38,6 +38,27 @@ export class BeginViewComponent implements OnInit {
   strokecheck:any=[];
   neuropathycheck:any=[];
   retinopathycheck:any=[];
+  status:any;
+  format3: string = "";
+  format2: string = "";
+  title = 'Begin Entry';
+  anti_diabetes_medication: any = {};
+  Complications: any = {};
+  dyslipidemiaobj: any = {};
+  coronaryartery: any = {};
+  strokeobj: any = {};
+  neuropathyobj: any = {};
+  retinopathyobj: any = {};
+  nephropathyobj: any = {};
+  glargineinsulinobj: any = {};
+ 
+  now2: any;
+  now3: any;
+  bmi:any;
+
+ 
+  //nph: boolean;
+  glargine: boolean;
 
 
 
@@ -57,11 +78,12 @@ export class BeginViewComponent implements OnInit {
     this.firstFormGroup = this._formBuilder.group({
      
       user_id: new FormControl(''),
+    //  form_id:new FormControl(''),
       // mobile: new FormControl('89578898989'),
       pen_serial: new FormControl('',),
       date_visit: new FormControl(''),
       sex: new FormControl(''),
-      
+      status:new FormControl(''),
       weight: new FormControl(''),
       height: new FormControl(''),
       bmi: new FormControl(''),
@@ -130,6 +152,7 @@ export class BeginViewComponent implements OnInit {
       glargine_insulin_breakfast: new FormControl(''),
      
       glargine_insulin_dinner: new FormControl(''),
+      status: new FormControl(''),
       
 
     })
@@ -138,23 +161,23 @@ export class BeginViewComponent implements OnInit {
     this.service.beginview(formData).subscribe((res:any) => {
       this.beginview =res.data
       console.log(res)
-     this.antichecked=JSON.parse(this.beginview.anti_diabetes_medication)
+     this.antichecked=(this.beginview.anti_diabetes_medication)
      console.log(this.antichecked)
-     this.garglineArray=JSON.parse(this.beginview.glargine_insulin)
+     this.garglineArray=(this.beginview.glargine_insulin)
      console.log( this.garglineArray)
-      this.hypercheck=JSON.parse(this.beginview.hypertension_dur)
+      this.hypercheck=(this.beginview.hypertension_dur)
       console.log( this.hypercheck)
-      this.dysncheck=JSON.parse(this.beginview.dyslipidemia_dur)
+      this.dysncheck=(this.beginview.dyslipidemia_dur)
       console.log( this.dysncheck)
-      this.coroncheck=JSON.parse(this.beginview.coronary_artery_dur)
+      this.coroncheck=(this.beginview.coronary_artery_dur)
       console.log(this.coroncheck)
-      this.strokecheck=JSON.parse(this.beginview.stroke_dur)
+      this.strokecheck=(this.beginview.stroke_dur)
       console.log(this.strokecheck)
-      this.neuropathycheck=JSON.parse(this.beginview.neuropathy_dur)
+      this.neuropathycheck=(this.beginview.neuropathy_dur)
       console.log(this.neuropathycheck)
-      this.retinopathycheck=JSON.parse(this.beginview.retinopathy_dur)
+      this.retinopathycheck=(this.beginview.retinopathy_dur)
       console.log(this.retinopathycheck)
-       this.nephrocheck=JSON.parse(this.beginview.nephropathy_dur)
+       this.nephrocheck=(this.beginview.nephropathy_dur)
        console.log(this.nephrocheck)
 
      if(this.beginview.glargine_insulin){
@@ -257,7 +280,12 @@ export class BeginViewComponent implements OnInit {
 
     })
   }
-  
+  getvalue(num: number) {
+    return Array.from({length: num}, (v, k) => k + 1);
+  }
+  getvalues(num: number) {
+    return Array.from({length: num}, (v, k) => k + 1);
+  }
 
   oncheked(event: any,name:any) {
     if (event.checked == true) {
@@ -353,5 +381,100 @@ export class BeginViewComponent implements OnInit {
       this.medication = false
     }
   }
- 
+ submit(){
+  var formData: any = new FormData();
+  this.anti_diabetes_medication.Biguanides = (this.secondFormGroup.value.Biguanides == true) ? this.secondFormGroup.value.Biguanides : false;
+  this.anti_diabetes_medication.Sulphonylureas = (this.secondFormGroup.value.Sulphonylureas == true) ? this.secondFormGroup.value.Sulphonylureas : false;
+  this.anti_diabetes_medication.Meglitinides = (this.secondFormGroup.value.Meglitinides == true) ? this.secondFormGroup.value.Meglitinides : false;
+  this.anti_diabetes_medication.Thiazolidendiones = (this.secondFormGroup.value.Thiazolidendiones == true) ? this.secondFormGroup.value.Thiazolidendiones : false;
+  this.anti_diabetes_medication.GLP_Analogues = (this.secondFormGroup.value.GLP_Analogues == true) ? this.secondFormGroup.value.GLP_Analogues : false;
+  this.anti_diabetes_medication.DPP4_Inhibitors = (this.secondFormGroup.value.DPP4_Inhibitors == true) ? this.secondFormGroup.value.DPP4_Inhibitors : false;
+  this.anti_diabetes_medication.DoubleDrugFixed = (this.secondFormGroup.value.DoubleDrugFixed == true) ? this.secondFormGroup.value.DoubleDrugFixed : false;
+  this.anti_diabetes_medication.TripleDrugFixed = (this.secondFormGroup.value.TripleDrugFixed == true) ? this.secondFormGroup.value.TripleDrugFixed : false;
+  this.Complications.hypertension_dur = this.secondFormGroup.value.hypertension_dur;
+  this.Complications.duration = this.secondFormGroup.value.duration;
+  this.Complications.medications = this.secondFormGroup.value.medications;
+  this.dyslipidemiaobj.dyslipidemia_dur = this.secondFormGroup.value.dyslipidemia_dur;
+  this.dyslipidemiaobj.duration = this.secondFormGroup.value.duration;
+  this.dyslipidemiaobj.medications = this.secondFormGroup.value.medications;
+  this.coronaryartery.coronary_artery_dur = this.secondFormGroup.value.coronary_artery_dur;
+  this.coronaryartery.duration = this.secondFormGroup.value.duration;
+  this.coronaryartery.medications = this.secondFormGroup.value.medications;
+  this.strokeobj.stroke_dur = this.secondFormGroup.value.stroke_dur;
+  this.strokeobj.duration = this.secondFormGroup.value.duration;
+  this.strokeobj.medications = this.secondFormGroup.value.medications;
+  this.neuropathyobj.neuropathy_dur = this.secondFormGroup.value.neuropathy_dur;
+  this.neuropathyobj.duration = this.secondFormGroup.value.duration;
+  this.neuropathyobj.medications = this.secondFormGroup.value.medications;
+  this.retinopathyobj.retinopathy_dur = this.secondFormGroup.value.retinopathy_dur;
+  this.retinopathyobj.duration = this.secondFormGroup.value.duration;
+  this.retinopathyobj.medications = this.secondFormGroup.value.medications;
+  this.nephropathyobj.nephropathy_dur = this.secondFormGroup.value.nephropathy_dur;
+  this.nephropathyobj.duration = this.secondFormGroup.value.duration;
+  this.nephropathyobj.medications = this.secondFormGroup.value.medications;
+  this.glargineinsulinobj.glargine_insulin = (this.thirdFormGroup.value.glargine_insulin==true) ? this.secondFormGroup.value.glargine_insulin : false;
+  console.log(this.glargineinsulinobj)
+  this.glargineinsulinobj.glargine_insulin_breakfast = this.thirdFormGroup.value.glargine_insulin_breakfast;
+  console.log(this.glargineinsulinobj.breakfast)
+  // this.glargineinsulinobj.glargine_insulin_lunch = this.thirdFormGroup.value.glargine_insulin_lunch;
+  this.glargineinsulinobj.glargine_insulin_dinner = this.thirdFormGroup.value.glargine_insulin_dinner;
+  console.log(this.glargineinsulinobj)
+
+  console.log(this.Complications)
+
+
+  console.log('this.anti_diabetes_medication', this.anti_diabetes_medication)
+  formData.append('id', this.route.snapshot.params.id);
+  formData.append('pen_serial', this.firstFormGroup.value.pen_serial);
+  formData.append('date_visit', this.now2);
+  console.log(this.now2)
+  formData.append("user_id",JSON.parse(localStorage.getItem('doctor_id')));
+  console.log(localStorage.getItem('doctor_id'))
+  //formData.append('user_id', '0');
+  // console.log(this.now3)
+  formData.append('age', this.firstFormGroup.value.age);
+ formData.append('mobile', JSON.parse(localStorage.getItem('mobile')))
+  formData.append('sex', this.firstFormGroup.value.sex);
+  formData.append('weight', this.firstFormGroup.value.weight);
+  formData.append('height', this.firstFormGroup.value.height);
+  formData.append('bmi', this.bmi);
+  formData.append('education', this.firstFormGroup.value.education);
+  formData.append('employment', this.firstFormGroup.value.employment);
+  //second form
+  formData.append('duration_hypertension',this.secondFormGroup.value.duration_hypertension);
+  formData.append('duration_diabetes', this.secondFormGroup.value.duration_diabetes);
+  formData.append('treated_diabetes', this.secondFormGroup.value.treated_diabetes);
+  formData.append('family_diabetes', this.secondFormGroup.value.family_diabetes);
+  formData.append('hypertension', this.secondFormGroup.value.hypertension);
+  formData.append('blood_pressure', this.secondFormGroup.value.blood_pressure);
+  formData.append('systolic', this.secondFormGroup.value.systolic);
+  formData.append('diastolic', this.secondFormGroup.value.diastolic);
+  formData.append('smoking', this.secondFormGroup.value.smoking);
+  formData.append('alcohol', this.secondFormGroup.value.alcohol);
+  formData.append(' medical_condition',this.secondFormGroup.value.medical_condition);
+  formData.append('hypertension_dur', JSON.stringify(this.Complications));
+  formData.append('dyslipidemia_dur', JSON.stringify(this.dyslipidemiaobj));
+  formData.append('coronary_artery_dur', JSON.stringify(this.coronaryartery));
+  formData.append('stroke_dur', JSON.stringify(this.strokeobj));
+  formData.append('neuropathy_dur', JSON.stringify(this.neuropathyobj));
+  formData.append('retinopathy_dur', JSON.stringify(this.retinopathyobj));
+  formData.append('nephropathy_dur', JSON.stringify(this.nephropathyobj));
+  //third form
+ //formData.append('form_id',this.firstFormGroup.value.form_id)
+ formData.append('status','yes');
+  formData.append('fasting_plasma', this.thirdFormGroup.value.fasting_plasma);
+  formData.append('postprandial_plasma', this.thirdFormGroup.value.postprandial_plasma);
+  formData.append('glycosylated', this.thirdFormGroup.value.glycosylated);
+  formData.append('hbac_lab', this.thirdFormGroup.value.hbac_lab);
+  formData.append('s_creatinine', this.thirdFormGroup.value.s_creatinine);
+  formData.append('dose_insulin', this.thirdFormGroup.value.dose_insulin);
+  console.log(this.thirdFormGroup.value.dose_insulin);
+  formData.append('glargine_insulin', JSON.stringify(this.glargineinsulinobj));
+   formData.append('anti_diabetes_medication',JSON.stringify(this.anti_diabetes_medication));
+   this.service.postAddBegin(formData).subscribe(res => {
+      console.log(res)
+    })
+
+
+ }
 }
