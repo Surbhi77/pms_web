@@ -50,8 +50,6 @@ export class KapSurveyComponent implements OnInit {
   thirdFormGroup: FormGroup;
   forthFormGroup: FormGroup;
   kdpsurvey: any;
-  //insulin_to_tdmpatients:{};
-  // people_with_tdm:{};
   people_with_tdm: any = {};
   insulin_to_tdmpatients: any = {};
   reluctant_insulin: any = [];
@@ -79,16 +77,16 @@ export class KapSurveyComponent implements OnInit {
       insulin_therapy: new FormControl('', [Validators.required]),
 
 
-      firstCtrl: ['hf', Validators.required]
+     
     });
     this.secondFormGroup = this._formBuilder.group({
 
       aggreetype: new FormControl(''),
-      secondCtrl: ['gh', Validators.required]
+      
     });
     this.thirdFormGroup = this._formBuilder.group({
       agreedropped: new FormControl(''),
-      thirdformCtrl: ['yhujy', Validators.required]
+     
     });
     this.forthFormGroup = this._formBuilder.group(
       {
@@ -97,7 +95,6 @@ export class KapSurveyComponent implements OnInit {
         three_to_five_year: new FormControl(''),
         five_years: new FormControl(''),
         people_with_tdm: new FormControl(''),
-        //
         Beta: new FormControl(''),
         role: new FormControl(''),
         Reducing: new FormControl(''),
@@ -106,15 +103,10 @@ export class KapSurveyComponent implements OnInit {
         Reduce: new FormControl(''),
         Neuropathy: new FormControl(''),
         CIMT: new FormControl(''),
-        //
         Comorbid: new FormControl(''),
         High: new FormControl(''),
         Infections: new FormControl(''),
         HighA1c: new FormControl(''),
-
-
-
-
         //insulin_to_tdmpatients: new FormControl(''),
         forthform: ['', Validators.required]
 
@@ -259,12 +251,10 @@ export class KapSurveyComponent implements OnInit {
         this.people_with_tdm.Reduce = (this.forthFormGroup.value.Reduce == true) ? this.forthFormGroup.value.Reduce : false;
         this.people_with_tdm.Neuropathy = (this.forthFormGroup.value.Neuropathy == true) ? this.forthFormGroup.value.Neuropathy : false;
         this.people_with_tdm.CIMT = (this.forthFormGroup.value.CIMT == true) ? this.forthFormGroup.value.CIMT : false;
-        //
         this.insulin_to_tdmpatients.Comorbid = (this.forthFormGroup.value.Comorbid == true) ? this.forthFormGroup.value.Comorbid : false;
         this.insulin_to_tdmpatients.High = (this.forthFormGroup.value.High == true) ? this.forthFormGroup.value.High : false;
         this.insulin_to_tdmpatients.Infections = (this.forthFormGroup.value.Infections == true) ? this.forthFormGroup.value.Infections : false;
         this.insulin_to_tdmpatients.HighA1c = (this.forthFormGroup.value.HighA1c == true) ? this.forthFormGroup.value.HighA1c : false;
-
         console.log('this.insulin_to_tdmpatients', this.insulin_to_tdmpatients)
         console.log('this.people_with_tdm', this.people_with_tdm)
 
@@ -293,48 +283,16 @@ export class KapSurveyComponent implements OnInit {
         }
         formData.append('fear_injection', this.fear_injection);
         console.log(this.fear_injection);
-
-
-
-
         formData.append('six_months', this.forthFormGroup.value.six_months);
-
         console.log(this.forthFormGroup.value.six_months)
-
-
-
-
         formData.append('one_to_two_year', this.forthFormGroup.value.one_to_two_year);
-
-
-        // if(this.value > 0 && this.value){
-        //   formData.append('three_to_five_year',0);
-
-        // }else{
         formData.append('three_to_five_year', this.forthFormGroup.value.three_to_five_year);
-
-
-        // }
-        //if(this.value > 0 && this.value){
-        // formData.append('five_years',0);
-
-        // }else{
         formData.append('five_years', this.forthFormGroup.value.five_years);
-
-        //}
-
-
-
-
         formData.append('people_with_tdm', JSON.stringify(this.people_with_tdm));
         formData.append('insulin_to_tdmpatients', JSON.stringify(this.insulin_to_tdmpatients));
-
-
         localStorage.setItem("kdp_survey",'yes')
-
         console.log(formData)
           this.service.postkdp_survey(formData).subscribe((res:any)=>{
-          // this.krvey =res
         console.log(res)
 
         //this.router.navigateByUrl('/add-entry')

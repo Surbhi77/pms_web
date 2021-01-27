@@ -80,7 +80,7 @@ export class BeginViewComponent implements OnInit {
      
       user_id: new FormControl(''),
     //  form_id:new FormControl(''),
-      // mobile: new FormControl('89578898989'),
+     mobile: new FormControl(''),
       pen_serial: new FormControl('',),
       date_visit: new FormControl(''),
       sex: new FormControl(''),
@@ -170,6 +170,7 @@ export class BeginViewComponent implements OnInit {
     })
     var formData: any = new FormData();
     formData.append('id', this.route.snapshot.params.id);
+    
     this.service.beginview(formData).subscribe((res:any) => {
       this.beginview =res.data
       console.log(res)
