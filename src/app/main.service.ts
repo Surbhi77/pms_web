@@ -62,5 +62,8 @@ export class MainService {
   agreement(data:any){
    return this.http.post("https://360pmt.com/pms-app/Pms_app/agreement",data)
   }
+  changePass(data:any){
+    return this.http.post("https://360pmt.com/pms-app/Pms_app/change_password", data)
+  }
 
 }

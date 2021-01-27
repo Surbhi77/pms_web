@@ -10,11 +10,12 @@ import { Router } from '@angular/router';
 export class AddEntryProcessComponent implements OnInit {
  
   form:FormGroup;
+  mobNumberPattern = "^((\\+91-?)|0)?[0-9]{10}$";  
   constructor(private fb:FormBuilder, private router:Router) { }
 
   ngOnInit(): void {
  this.form = this.fb.group({
-   mobile: new FormControl('',[Validators.required]),
+   mobile: new FormControl('',[Validators.required, Validators.pattern(this.mobNumberPattern)]),
    declare:new FormControl('',[Validators.required])
  })
   }

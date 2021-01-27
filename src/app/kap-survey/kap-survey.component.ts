@@ -66,7 +66,7 @@ export class KapSurveyComponent implements OnInit {
 
     this.firstFormGroup = this._formBuilder.group({
       // user_id: [''],
-      //  user_id: new FormControl(''),
+       user_id: new FormControl(''),
       delay_insulin: new FormControl('', [Validators.required]),
 
       //delay_insulin: new FormControl('',[Validators.required]),
@@ -278,7 +278,7 @@ export class KapSurveyComponent implements OnInit {
         formData.append('success_insulin', this.firstFormGroup.value.success_insulin);
         formData.append('notcomplicated_insulin', this.firstFormGroup.value.notcomplicated_insulin);
         formData.append('insulin_therapy', this.firstFormGroup.value.insulin_therapy);
-        formData.append('user_id', 15);
+        formData.append('user_id', JSON.parse(localStorage.getItem('userId')));
 
         //secondform
         if (this.reluctant_insulin.length == 0) {
@@ -345,6 +345,7 @@ export class KapSurveyComponent implements OnInit {
     else {
       console.log('not valid')
       this.thirdFormGroup.markAllAsTouched()
+      localStorage.setItem("kdp_survey",'no')
 
     }
   }

@@ -91,7 +91,7 @@ export class DraftViewComponent implements OnInit {
       family_diabetes: new FormControl(''),
       hypertension: new FormControl(''),
       duration_hypertension: new FormControl(''),
-      blood_pressure: new FormControl(''),
+     // blood_pressure: new FormControl(''),
       systolic: new FormControl(''),
       diastolic: new FormControl(''),
       smoking: new FormControl(''),
@@ -174,7 +174,7 @@ export class DraftViewComponent implements OnInit {
     console.log(res)
     this.viewData = res.data
     console.log(this.viewData.vascular_dignosis)
-    this.vascularArray = JSON.parse(this.viewData.vascular_dignosis)
+    this.vascularArray = this.viewData.vascular_dignosis
      console.log(this.vascularArray)
     if(this.vascularArray.vascular_dignosis=='yes'){
       this.complications = true 
@@ -364,6 +364,38 @@ export class DraftViewComponent implements OnInit {
   getCreatinine() {
     return Array.from({length:50 }, (_value , k=1) => ((k / 10)+0.1).toFixed(1) );
 
+  }
+  getWeight() {
+    return Array.from({length:111 }, (_value=40 , k) => (k + 40) );
+
+  }
+  getHeight() {
+    return Array.from({length:81 }, (_value , k) => (k +120) );
+
+  }
+  getDurationdiabeties(){
+    return Array.from({length:51 }, (_value , k) => k  );
+  }
+  getTreateddiabeties(){
+    return Array.from({length:51 }, (_value , k) => k  );
+  }
+  getHyperdur(){
+    return Array.from({length:51 }, (_value , k) => k  );
+  }
+  getSystolic(){
+    return Array.from({length:361 }, (_value , k) => k + 40  );
+  }
+  getDiastolic(){
+    return Array.from({length:361 }, (_value , k) => k + 40  );
+  }
+  getPpg(){
+    return Array.from({length:451 }, (_value , k) => k + 50  );
+  }
+  gethbalc(){
+    return Array.from({length:20 }, (_value , k) => k + 1  );
+  }
+  getinsulin(){
+    return Array.from({length:198 }, (_value , k) => k + 3  );
   }
   
   onclick(event: any) {
@@ -625,7 +657,7 @@ export class DraftViewComponent implements OnInit {
       // this.glargine_insulin_Obj.glargine_insulin_lunch = this.fourthFormGroup.value.glargine_insulin_lunch;
       // this.glargine_insulin_Obj.glargine_insulin_dinner = this.fourthFormGroup.value.glargine_insulin_dinner;
       const formData = new FormData()
-      formData.append("user_id", JSON.parse(localStorage.getItem('user_id')));
+      formData.append("user_id", JSON.parse(localStorage.getItem('userId')));
       formData.append("mobile",JSON.parse(localStorage.getItem('mobile')));
       formData.append("pen_serial", this.firstFormGroup.value.pen_serial);
       formData.append("id", this.router.snapshot.params.id);
@@ -643,7 +675,7 @@ export class DraftViewComponent implements OnInit {
       formData.append("family_diabetes", this.secondFormGroup.value.family_diabetes);
       formData.append("hypertension", this.secondFormGroup.value.hypertension);
       formData.append("duration_hypertension", this.secondFormGroup.value.duration_hypertension);
-      formData.append("blood_pressure", this.secondFormGroup.value.blood_pressure);
+     // formData.append("blood_pressure", this.secondFormGroup.value.blood_pressure);
       formData.append("systolic", this.secondFormGroup.value.systolic);
       formData.append(" diastolic", this.secondFormGroup.value.diastolic);
       formData.append("smoking", this.secondFormGroup.value.smoking);
