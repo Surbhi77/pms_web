@@ -16,6 +16,7 @@ export class BeginViewComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
+  fourthFormGroup: FormGroup;
   isLinear = true;
   hypertension: boolean;
   medication: any;
@@ -147,13 +148,24 @@ export class BeginViewComponent implements OnInit {
       glycosylated: new FormControl(''),
       hbac_lab: new FormControl(''),
       s_creatinine: new FormControl(''),
+      // dose_insulin: new FormControl(''),
+      // glargine_insulin: new FormControl(''),
+      // glargine_insulin_breakfast: new FormControl(''),
+     
+      // glargine_insulin_dinner: new FormControl(''),
+      // status: new FormControl(''),
+      
+
+    })
+    this.fourthFormGroup =this._formBuilder.group({
       dose_insulin: new FormControl(''),
       glargine_insulin: new FormControl(''),
       glargine_insulin_breakfast: new FormControl(''),
-     
+      // glargine_insulin_lunch: new FormControl('', [Validators.required]),
       glargine_insulin_dinner: new FormControl(''),
       status: new FormControl(''),
       
+      // thirdCtrl: ['gg', Validators.required],
 
     })
     var formData: any = new FormData();
@@ -248,7 +260,7 @@ export class BeginViewComponent implements OnInit {
     "hypertension_dur":this.hypercheck.hypertension_dur,
     "duration":this.hypercheck.duration,
     "medications":this.hypercheck.medications,
-    "dyslipidemia_dur":this.beginview.dyslipidemia_dur,
+    "dyslipidemia_dur":this.dysncheck.dyslipidemia_dur,
     "dyslipidemia_duration":this.dysncheck.duration,
     "dyslipidemia_medication":this.dysncheck.medications,
     "coronary_artery_dur":this.coroncheck.coronary_artery_dur,
@@ -285,6 +297,23 @@ export class BeginViewComponent implements OnInit {
   }
   getvalues(num: number) {
     return Array.from({length: num}, (v, k) => k + 1);
+  }
+  getvaluefast(num: number) {
+    return Array.from({length: num}, (v, k) => k + 1);
+  }
+  getweight(num: number) {
+    return Array.from({length: num}, (v, k) => k + 1);
+  }
+  getvaluediabetes(num: number) {
+    return Array.from({length: num}, (v, k) => k + 1);
+  }
+  getmulvalues(num: number) {
+    return Array.from({length: num}, (v, k) => k + 1);
+  }
+  getCreatinine() {
+    //return Array.from({length:50 }, (_value , k) =>  k / 10);
+    return Array.from({length:50 }, (_value , k=1) => ((k / 10)+0.1).toFixed(1) );
+
   }
 
   oncheked(event: any,name:any) {

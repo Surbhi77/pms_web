@@ -13,14 +13,11 @@ export class InvoiceProcessComponent implements OnInit {
   constructor(private fb:FormBuilder, private router:Router) { }
   ngOnInit(): void {
     this.form = this.fb.group({
-      mobile: new FormControl('',[Validators.required]),
+      mobile: new FormControl('',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
       declare:new FormControl('',[Validators.required])
     })
   }
-  public hasError = (controlName: string, errorName: string) => {
-    
-    return this.form.controls[controlName].hasError(errorName);
-  }
+  
   get g() {
     return this.form.controls;
   }
