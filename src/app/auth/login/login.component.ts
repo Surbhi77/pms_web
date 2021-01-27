@@ -61,6 +61,7 @@ export class LoginComponent implements OnInit {
       // localStorage.setItem('userType', this.userType.type)
       // localStorage.setItem('user_id', this.userType.doctor_id)
       // this.router.navigateByUrl('/kap-survey')
+      localStorage.setItem('userType', this.userType.type)
       localStorage.setItem('userId', this.userType.userId)
       localStorage.setItem('doctor_id',this.userType.doctor_id)
       console.log(this.userType.doctor_id)

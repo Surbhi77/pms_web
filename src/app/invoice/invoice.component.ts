@@ -15,6 +15,7 @@ export class InvoiceComponent implements OnInit {
   title = 'Begin Entry';
   firstFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
+  fourthFormGroup: FormGroup;
   isLinear = true;
   secondFormGroup: FormGroup;
   medication: any;
@@ -72,7 +73,7 @@ export class InvoiceComponent implements OnInit {
       family_diabetes: new FormControl('', [Validators.required]),
       hypertension: new FormControl('', [Validators.required]),
       duration_hypertension: new FormControl('', [Validators.required]),
-      blood_pressure: new FormControl('', [Validators.required]),
+      //blood_pressure: new FormControl('', [Validators.required]),
       systolic: new FormControl('', [Validators.required]),
       diastolic: new FormControl('', [Validators.required]),
       smoking: new FormControl('', [Validators.required]),
@@ -121,23 +122,46 @@ export class InvoiceComponent implements OnInit {
       postprandial_plasma: new FormControl('', [Validators.required]),
       glycosylated: new FormControl('', [Validators.required]),
       hbac_lab: new FormControl('', [Validators.required]),
-      s_creatinine: new FormControl('', [Validators.required]),
+      s_creatinine: new FormControl(''),
+     
+
+    })
+    this.fourthFormGroup =this._formBuilder.group({
       dose_insulin: new FormControl('', [Validators.required]),
       glargine_insulin: new FormControl('', [Validators.required]),
       glargine_insulin_breakfast: new FormControl('', [Validators.required]),
       // glargine_insulin_lunch: new FormControl('', [Validators.required]),
       glargine_insulin_dinner: new FormControl('', [Validators.required]),
-      thirdCtrl: ['gg', Validators.required],
+      // thirdCtrl: ['gg', Validators.required],
 
     })
+  }
+  getvaluefast(num: number) {
+    return Array.from({length: num}, (v, k) => k + 1);
+  }
+  getweight(num: number) {
+    return Array.from({length: num}, (v, k) => k + 1);
   }
  
   getvalue(num: number) {
     return Array.from({length: num}, (v, k) => k + 1);
   }
+  getvaluediabetes(num: number) {
+    return Array.from({length: num}, (v, k) => k + 1);
+  }
+  getvalueset(num: number) {
+    return Array.from({length: num}, (v, k) => k + 1);
+  }
   getvalues(num: number) {
     return Array.from({length: num}, (v, k) => k + 1);
   }
+  getmulvalues(num: number) {
+    return Array.from({length: num}, (v, k) => k + 1);
+  }
+  public hasError4 = (controlName: string, errorName: string) => {
+    return this.fourthFormGroup.controls[controlName].hasError(errorName);
+  }
+  
   bmicalc(){
     
     this.bmi =(this.firstFormGroup.value.weight/((this.firstFormGroup.value.height*this.firstFormGroup.value.height)/100))*100
@@ -187,6 +211,17 @@ export class InvoiceComponent implements OnInit {
     else{
       this.isLinear=false
       console.log(this.secondFormGroup.value)
+    }
+  }
+  thirdForm(event: any) {
+
+    console.log(event)
+    if (event.value == null ) {
+      this.isLinear = true;
+
+    }
+    else {
+      this.isLinear = false;
     }
   }
   
@@ -383,24 +418,24 @@ export class InvoiceComponent implements OnInit {
     console.log(event)
     if (event.checked == true) {
       
-      this.thirdFormGroup.controls['glargine_insulin_breakfast'].setValidators([Validators.required])
-      this.thirdFormGroup.controls['glargine_insulin_breakfast'].updateValueAndValidity()
+      this.fourthFormGroup.controls['glargine_insulin_breakfast'].setValidators([Validators.required])
+      this.fourthFormGroup.controls['glargine_insulin_breakfast'].updateValueAndValidity()
       // this.thirdFormGroup.controls['glargine_insulin_lunch'].setValidators([Validators.required]);
       // this.thirdFormGroup.controls['glargine_insulin_lunch'].updateValueAndValidity()
-      this.thirdFormGroup.controls['glargine_insulin_dinner'].setValidators([Validators.required]);
-      this.thirdFormGroup.controls['glargine_insulin_dinner'].updateValueAndValidity()
-      this.thirdFormGroup.updateValueAndValidity()
+      this.fourthFormGroup.controls['glargine_insulin_dinner'].setValidators([Validators.required]);
+      this.fourthFormGroup.controls['glargine_insulin_dinner'].updateValueAndValidity()
+      this.fourthFormGroup.updateValueAndValidity()
       this.glargine_condition = true
     }
     else {
       
-      this.thirdFormGroup.controls['glargine_insulin_breakfast'].clearValidators()
-      this.thirdFormGroup.controls['glargine_insulin_breakfast'].updateValueAndValidity();
+      this.fourthFormGroup.controls['glargine_insulin_breakfast'].clearValidators()
+      this.fourthFormGroup.controls['glargine_insulin_breakfast'].updateValueAndValidity();
       // this.thirdFormGroup.controls['glargine_insulin_lunch'].clearValidators();
       // this.thirdFormGroup.controls['glargine_insulin_lunch'].updateValueAndValidity();
-      this.thirdFormGroup.controls['glargine_insulin_dinner'].clearValidators();
-      this.thirdFormGroup.controls['glargine_insulin_dinner'].updateValueAndValidity();
-      this.thirdFormGroup.updateValueAndValidity()
+      this.fourthFormGroup.controls['glargine_insulin_dinner'].clearValidators();
+      this.fourthFormGroup.controls['glargine_insulin_dinner'].updateValueAndValidity();
+      this.fourthFormGroup.updateValueAndValidity()
 
       this.glargine_condition = false
     }
@@ -465,12 +500,12 @@ export class InvoiceComponent implements OnInit {
     this.nephropathyobj.nephropathy_dur = this.secondFormGroup.value.nephropathy_dur;
     this.nephropathyobj.duration = this.secondFormGroup.value.duration;
     this.nephropathyobj.medications = this.secondFormGroup.value.medications;
-    this.glargineinsulinobj.glargine_insulin = (this.thirdFormGroup.value.glargine_insulin==true) ? this.secondFormGroup.value.glargine_insulin : false;
+    this.glargineinsulinobj.glargine_insulin = (this.fourthFormGroup.value.glargine_insulin==true) ? this.secondFormGroup.value.glargine_insulin : false;
     console.log(this.glargineinsulinobj)
-    this.glargineinsulinobj.glargine_insulin_breakfast = this.thirdFormGroup.value.glargine_insulin_breakfast;
+    this.glargineinsulinobj.glargine_insulin_breakfast = this.fourthFormGroup.value.glargine_insulin_breakfast;
     console.log(this.glargineinsulinobj.breakfast)
     // this.glargineinsulinobj.glargine_insulin_lunch = this.thirdFormGroup.value.glargine_insulin_lunch;
-    this.glargineinsulinobj.glargine_insulin_dinner = this.thirdFormGroup.value.glargine_insulin_dinner;
+    this.glargineinsulinobj.glargine_insulin_dinner = this.fourthFormGroup.value.glargine_insulin_dinner;
     console.log(this.glargineinsulinobj)
 
     console.log(this.Complications)
@@ -498,7 +533,7 @@ export class InvoiceComponent implements OnInit {
     formData.append('treated_diabetes', this.secondFormGroup.value.treated_diabetes);
     formData.append('family_diabetes', this.secondFormGroup.value.family_diabetes);
     formData.append('hypertension', this.secondFormGroup.value.hypertension);
-    formData.append('blood_pressure', this.secondFormGroup.value.blood_pressure);
+   // formData.append('blood_pressure', this.secondFormGroup.value.blood_pressure);
     formData.append('systolic', this.secondFormGroup.value.systolic);
     formData.append('diastolic', this.secondFormGroup.value.diastolic);
     formData.append('smoking', this.secondFormGroup.value.smoking);
@@ -518,8 +553,8 @@ export class InvoiceComponent implements OnInit {
     formData.append('glycosylated', this.thirdFormGroup.value.glycosylated);
     formData.append('hbac_lab', this.thirdFormGroup.value.hbac_lab);
     formData.append('s_creatinine', this.thirdFormGroup.value.s_creatinine);
-    formData.append('dose_insulin', this.thirdFormGroup.value.dose_insulin);
-    console.log(this.thirdFormGroup.value.dose_insulin);
+    formData.append('dose_insulin', this.fourthFormGroup.value.dose_insulin);
+    console.log(this.fourthFormGroup.value.dose_insulin);
     formData.append('glargine_insulin', JSON.stringify(this.glargineinsulinobj));
      formData.append('anti_diabetes_medication',JSON.stringify(this.anti_diabetes_medication));
      this.service.postAddBegin(formData).subscribe(res => {
