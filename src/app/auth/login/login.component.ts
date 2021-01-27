@@ -57,6 +57,7 @@ export class LoginComponent implements OnInit {
       this.service.login(formdata).subscribe((res:any)=>{
       this.userType = res.data
       console.log(res)
+      
       console.log(this.userType)
       // localStorage.setItem('userType', this.userType.type)
       // localStorage.setItem('user_id', this.userType.doctor_id)
@@ -73,8 +74,9 @@ export class LoginComponent implements OnInit {
         console.log(res)
         this.agrredata = res.data
         console.log(this.agrredata)
-        localStorage.setItem("aggrement",this.agrredata.aggrement)
+        localStorage.setItem("aggrement",this.agrredata.aggrement);
         localStorage.setItem("kdp_survey",this.agrredata.kdp_survey);
+       
         
         if(this.agrredata.aggrement == 'no'){
           this.dialog.open(TermsCheckingComponent);   
@@ -83,18 +85,21 @@ export class LoginComponent implements OnInit {
        
         }
         if(this.agrredata.kdp_survey == 'no'){
-
+          this.router.navigate(['/kap-survey'])
         }else{
-          this.router.navigateByUrl('/kap-survey');
+          this.router.navigateByUrl('/quries');
 
         }
        
+      }, err=>{
+        console.log(err)
       })
      
     })}
     else{
       this.loginForm.markAllAsTouched()
       console.log('not valid')
+      alert("Invalid user or password")
     }
   
      

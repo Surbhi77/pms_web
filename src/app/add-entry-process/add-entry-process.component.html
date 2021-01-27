@@ -17,8 +17,21 @@
                 <div class="entry-inputs-block in_fulls">
                     <mat-form-field class="example-full-width">
                         <mat-label>Patient Mobile No.</mat-label>
-                        <input formControlName="mobile" matInput value="">
-                        <mat-error *ngIf="hasError('mobile','required')">Please Enter Mobile No.</mat-error>
+                        <input formControlName="mobile" matInput maxlength="10" value="">
+                        <!-- <mat-error *ngIf="hasError('mobile','required')">Please Enter Mobile No.</mat-error> -->
+
+                        <!-- <mat-error *ngIf="form.controls.mobile.errors.pattern">
+                            Mobile no. is not statndard pattern
+                        </mat-error>
+                        <mat-error *ngIf="form.controls.mobile.errors.required">
+                            Mobile no is required
+                        </mat-error> -->
+                        <mat-error *ngIf="form.get('mobile').hasError('required')">
+                            Phone number is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="!form.get('mobile').hasError('required') && form.get('mobile').hasError('pattern')">
+                            Please enter valid mumber
+                        </mat-error>
                     </mat-form-field>
 
                 </div>

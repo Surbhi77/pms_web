@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddEntryComponent } from './add-entry/add-entry.component';
 import { KapSurveyComponent } from './kap-survey/kap-survey.component';
-import { PatientLogsComponent } from './patient-logs/patient-logs.component';
+
 import { HowItWorksComponent } from './how-it-works/how-it-works.component';
 import { InstrutionsComponent } from './instrutions/instrutions.component';
 import { InvoiceComponent } from './invoice/invoice.component';
@@ -66,6 +66,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { QuriesComponent} from './quries/quries.component';
 import { TermsCheckingComponent } from './auth/terms-checking/terms-checking.component';
+import { PatientLogsComponent } from './patient-logs/patient-logs.component';
 
 
 
@@ -78,7 +79,7 @@ import { TermsCheckingComponent } from './auth/terms-checking/terms-checking.com
     LoginComponent,
     AddEntryComponent,
     KapSurveyComponent,
-    PatientLogsComponent,
+
     HowItWorksComponent,
     InstrutionsComponent,
     InvoiceComponent,
@@ -93,7 +94,7 @@ import { TermsCheckingComponent } from './auth/terms-checking/terms-checking.com
     InvoiceProcessComponent,
     ChangePasswordComponent,
     QuriesComponent,
-   
+    PatientLogsComponent,
     TermsCheckingComponent
     
    

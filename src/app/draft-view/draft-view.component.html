@@ -95,13 +95,7 @@
                                     <mat-form-field>
                                         <mat-label>Present Body Weight (Kg):</mat-label>
                                         <mat-select formControlName="weight" value="{{viewData.weight}}">
-
-                                            <mat-option value="60">60</mat-option>
-                                            <mat-option value="23">23</mat-option>
-                                            <mat-option value="50">50</mat-option>
-                                            <mat-option value="92">92</mat-option>
-                                            <mat-option value="30">30</mat-option>
-                                            <mat-option value="65">65</mat-option>
+                                            <mat-option *ngFor="let index of getWeight();" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
 
                                     </mat-form-field>
@@ -117,12 +111,7 @@
                                     <mat-form-field>
                                         <mat-label>Height (cm):</mat-label>
                                         <mat-select formControlName="height" value="{{viewData.height}}">
-                                            <mat-option value="60">60</mat-option>
-                                            <mat-option value="23">23</mat-option>
-                                            <mat-option value="50">50</mat-option>
-                                            <mat-option value="92">92</mat-option>
-                                            <mat-option value="30">30</mat-option>
-                                            <mat-option value="65">65</mat-option>
+                                            <mat-option *ngFor="let index of getHeight();" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
 
                                     </mat-form-field>
@@ -195,11 +184,7 @@
                                     <mat-form-field>
                                         <mat-label>Duration of Diabetes</mat-label>
                                         <mat-select formControlName="duration_diabetes" value="{{viewData.duration_diabetes}}">
-                                            <mat-option value="0">0</mat-option>
-                                            <mat-option value="1">1</mat-option>
-                                            <mat-option value="2">2</mat-option>
-                                            <mat-option value="3">3</mat-option>
-                                            <mat-option value="4">4</mat-option>
+                                            <mat-option *ngFor="let index of getDurationdiabeties();" value='{{index}}'>{{index}}</mat-option>
 
                                         </mat-select>
 
@@ -212,11 +197,7 @@
                                     <mat-form-field>
                                         <mat-label>Treated for Diabetes since</mat-label>
                                         <mat-select formControlName="treated_diabetes" value="{{viewData.treated_diabetes}}">
-                                            <mat-option value="0">0</mat-option>
-                                            <mat-option value="1">1</mat-option>
-                                            <mat-option value="2">2</mat-option>
-                                            <mat-option value="3">3</mat-option>
-                                            <mat-option value="4">4</mat-option>
+                                            <mat-option *ngFor="let index of getTreateddiabeties();" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
 
                                     </mat-form-field>
@@ -267,11 +248,7 @@
                                     <mat-form-field>
                                         <mat-label>Duration of Hypertension:</mat-label>
                                         <mat-select formControlName="duration_hypertension" value="{{viewData.duration_hypertension}}">
-                                            <mat-option value="0">0</mat-option>
-                                            <mat-option value="1">1</mat-option>
-                                            <mat-option value="2">2</mat-option>
-                                            <mat-option value="3">3</mat-option>
-                                            <mat-option value="4">4</mat-option>
+                                            <mat-option *ngFor="let index of getHyperdur();" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
@@ -283,22 +260,7 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-12">
                                 <div class="check_nones">
-                                    <p>Blood Pressure:</p>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-4 col-12">
-                                <div class="entry-inputs-block">
-                                    <mat-form-field>
-                                        <mat-label>40-400</mat-label>
-                                        <mat-select formControlName="blood_pressure" value="{{viewData.blood_pressure}}">
-                                            <mat-option value="1">1</mat-option>
-                                            <mat-option value="3">3</mat-option>
-                                            <mat-option value="4">4</mat-option>
-                                            <mat-option value="5">5</mat-option>
-                                        </mat-select>
-
-                                    </mat-form-field>
+                                    <p>Blood Pressure (mmHg) Systolic :</p>
                                 </div>
                             </div>
 
@@ -307,25 +269,29 @@
                                     <mat-form-field>
                                         <mat-label>40-400</mat-label>
                                         <mat-select formControlName="systolic" value="{{viewData.systolic}}">
-                                            <mat-option value="1">1</mat-option>
-                                            <mat-option value="3">3</mat-option>
-                                            <mat-option value="4">4</mat-option>
-                                            <mat-option value="5">5</mat-option>
+                                            <mat-option *ngFor="let index of getSystolic()" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
 
                                     </mat-form-field>
                                 </div>
                             </div>
 
+
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-12 col-md-12 mb-3">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-12">
+                                <div class="check_nones">
+                                    <p>Blood Pressure (mmHg) Diastolic:</p>
+                                </div>
+                            </div>
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>40-400</mat-label>
                                         <mat-select formControlName="diastolic" value="{{viewData.diastolic}}">
-                                            <mat-option value="1">1</mat-option>
-                                            <mat-option value="3">3</mat-option>
-                                            <mat-option value="4">4</mat-option>
-                                            <mat-option value="5">5</mat-option>
+                                            <mat-option *ngFor="let index of getDiastolic()" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
 
                                     </mat-form-field>
@@ -333,7 +299,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-sm-12 col-lg-12 col-md-12  mb-3">
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12 mb-3">
@@ -440,11 +405,7 @@
                                     <mat-form-field>
                                         <mat-label>Duration</mat-label>
                                         <mat-select formControlName="duration" [value]="hyperArray.duration_hypertension">
-                                            <mat-option value="0">0</mat-option>
-                                            <mat-option value="1">1</mat-option>
-                                            <mat-option value="2">2</mat-option>
-                                            <mat-option value="3">3</mat-option>
-                                            <mat-option value="4">4</mat-option>
+                                            <mat-option *ngFor="let index of getHyperdur();" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
 
                                     </mat-form-field>
@@ -483,11 +444,7 @@
                                     <mat-form-field>
                                         <mat-label>Duration</mat-label>
                                         <mat-select formControlName="dyslipidemia_duration" value="{{dyslipidemiaObj.dyslipidemia_duration}}">
-                                            <mat-option value="0">0</mat-option>
-                                            <mat-option value="1">1</mat-option>
-                                            <mat-option value="2">2</mat-option>
-                                            <mat-option value="3">3</mat-option>
-                                            <mat-option value="4">4</mat-option>
+                                            <mat-option *ngFor="let index of getHyperdur();" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
 
                                     </mat-form-field>
@@ -525,11 +482,7 @@
                                     <mat-form-field>
                                         <mat-label>Duration</mat-label>
                                         <mat-select formControlName="coronary_artery_duration" value="{{coronaryObj.coronary_artery_duration}}">
-                                            <mat-option value="0">0</mat-option>
-                                            <mat-option value="1">1</mat-option>
-                                            <mat-option value="2">2</mat-option>
-                                            <mat-option value="3">3</mat-option>
-                                            <mat-option value="4">4</mat-option>
+                                            <mat-option *ngFor="let index of getHyperdur();" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
 
                                     </mat-form-field>
@@ -567,11 +520,7 @@
                                     <mat-form-field>
                                         <mat-label>Duration</mat-label>
                                         <mat-select formControlName="stroke_duration" value="{{strokeObj.stroke_duration}}">
-                                            <mat-option value="0">0</mat-option>
-                                            <mat-option value="1">1</mat-option>
-                                            <mat-option value="2">2</mat-option>
-                                            <mat-option value="3">3</mat-option>
-                                            <mat-option value="4">4</mat-option>
+                                            <mat-option *ngFor="let index of getHyperdur();" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
 
                                     </mat-form-field>
@@ -609,11 +558,7 @@
                                     <mat-form-field>
                                         <mat-label>Duration</mat-label>
                                         <mat-select formControlName="neuropathy_duration" value="{{neuropathyObj.neuropathy_duration}}">
-                                            <mat-option value="0">0</mat-option>
-                                            <mat-option value="1">1</mat-option>
-                                            <mat-option value="2">2</mat-option>
-                                            <mat-option value="3">3</mat-option>
-                                            <mat-option value="4">4</mat-option>
+                                            <mat-option *ngFor="let index of getHyperdur();" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
 
                                     </mat-form-field>
@@ -651,11 +596,7 @@
                                     <mat-form-field>
                                         <mat-label>Duration</mat-label>
                                         <mat-select formControlName="retinopathy_duration" value="{{retinopathyObj.retinopathy_duration}}">
-                                            <mat-option value="0">0</mat-option>
-                                            <mat-option value="1">1</mat-option>
-                                            <mat-option value="2">2</mat-option>
-                                            <mat-option value="3">3</mat-option>
-                                            <mat-option value="4">4</mat-option>
+                                            <mat-option *ngFor="let index of getHyperdur();" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
 
                                     </mat-form-field>
@@ -693,11 +634,7 @@
                                     <mat-form-field>
                                         <mat-label>Duration</mat-label>
                                         <mat-select formControlName="nephropathy_duration" value="{{nephropathyObj.nephropathy_duration}}">
-                                            <mat-option value="0">0</mat-option>
-                                            <mat-option value="1">1</mat-option>
-                                            <mat-option value="2">2</mat-option>
-                                            <mat-option value="3">3</mat-option>
-                                            <mat-option value="4">4</mat-option>
+                                            <mat-option *ngFor="let index of getHyperdur();" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
 
                                     </mat-form-field>
@@ -820,11 +757,7 @@
                                 <mat-form-field>
                                     <mat-label>Duration</mat-label>
                                     <mat-select formControlName="blood_investigation_duration" [value]="bloodInvetigateObj.blood_investigation_duration">
-                                        <mat-option value="0">0</mat-option>
-                                        <mat-option value="1">1</mat-option>
-                                        <mat-option value="2">2</mat-option>
-                                        <mat-option value="3">3</mat-option>
-                                        <mat-option value="4">4</mat-option>
+                                        <mat-option *ngFor="let index of getSystolic()" value='{{index}}'>{{index}}</mat-option>
 
                                     </mat-select>
                                 </mat-form-field>
@@ -839,11 +772,7 @@
                                 <mat-form-field>
                                     <mat-label>Plasma Glucose</mat-label>
                                     <mat-select formControlName="blood_investigation_ppg" [value]="bloodInvetigateObj.blood_investigation_ppg">
-                                        <mat-option value="0">0</mat-option>
-                                        <mat-option value="1">1</mat-option>
-                                        <mat-option value="2">2</mat-option>
-                                        <mat-option value="3">3</mat-option>
-                                        <mat-option value="4">4</mat-option>
+                                        <mat-option *ngFor="let index of getPpg()" value='{{index}}'>{{index}}</mat-option>
                                     </mat-select>
 
                                 </mat-form-field>
@@ -858,11 +787,7 @@
                                 <mat-form-field>
                                     <mat-label>Hemoglobin</mat-label>
                                     <mat-select formControlName="blood_investigation_hba1c" [value]="bloodInvetigateObj.blood_investigation_hba1c">
-                                        <mat-option value="0">0</mat-option>
-                                        <mat-option value="1">1</mat-option>
-                                        <mat-option value="2">2</mat-option>
-                                        <mat-option value="3">3</mat-option>
-                                        <mat-option value="4">4</mat-option>
+                                        <mat-option *ngFor="let index of gethbalc()" value='{{index}}'>{{index}}</mat-option>
                                     </mat-select>
 
                                 </mat-form-field>
@@ -931,11 +856,7 @@
                                             <mat-form-field>
                                                 <mat-label>Breakfast</mat-label>
                                                 <mat-select formControlName="human_premixed_thirty_breakfast" [value]="human_premixedthirtyArray.human_premixed_thirty_breakfast">
-                                                    <mat-option value="0">0</mat-option>
-                                                    <mat-option value="1">1</mat-option>
-                                                    <mat-option value="2">2</mat-option>
-                                                    <mat-option value="3">3</mat-option>
-                                                    <mat-option value="4">4</mat-option>
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
 
                                             </mat-form-field>
@@ -948,11 +869,7 @@
                                             <mat-form-field>
                                                 <mat-label>Lunch</mat-label>
                                                 <mat-select formControlName="human_premixed_thirty_lunch" [value]="human_premixedthirtyArray.human_premixed_thirty_lunch">
-                                                    <mat-option value="0">0</mat-option>
-                                                    <mat-option value="1">1</mat-option>
-                                                    <mat-option value="2">2</mat-option>
-                                                    <mat-option value="3">3</mat-option>
-                                                    <mat-option value="4">4</mat-option>
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
 
                                             </mat-form-field>
@@ -965,11 +882,7 @@
                                             <mat-form-field>
                                                 <mat-label>Dinner</mat-label>
                                                 <mat-select formControlName="human_premixed_thirty_dinner" [value]="human_premixedthirtyArray.human_premixed_thirty_dinner">
-                                                    <mat-option value="0">0</mat-option>
-                                                    <mat-option value="1">1</mat-option>
-                                                    <mat-option value="2">2</mat-option>
-                                                    <mat-option value="3">3</mat-option>
-                                                    <mat-option value="4">4</mat-option>
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
 
                                             </mat-form-field>
@@ -989,11 +902,7 @@
                                             <mat-form-field>
                                                 <mat-label>Breakfast</mat-label>
                                                 <mat-select formControlName="human_premixed_fifty_breakfast" [value]="human_premixedfiftyArray.human_premixed_fifty_breakfast">
-                                                    <mat-option value="0">0</mat-option>
-                                                    <mat-option value="1">1</mat-option>
-                                                    <mat-option value="2">2</mat-option>
-                                                    <mat-option value="3">3</mat-option>
-                                                    <mat-option value="4">4</mat-option>
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
 
                                             </mat-form-field>
@@ -1006,11 +915,7 @@
                                             <mat-form-field>
                                                 <mat-label>Lunch</mat-label>
                                                 <mat-select formControlName="human_premixed_fifty_lunch" [value]="human_premixedfiftyArray.human_premixed_fifty_lunch">
-                                                    <mat-option value="0">0</mat-option>
-                                                    <mat-option value="1">1</mat-option>
-                                                    <mat-option value="2">2</mat-option>
-                                                    <mat-option value="3">3</mat-option>
-                                                    <mat-option value="4">4</mat-option>
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
 
                                             </mat-form-field>
@@ -1023,11 +928,7 @@
                                             <mat-form-field>
                                                 <mat-label>Dinner</mat-label>
                                                 <mat-select formControlName="human_premixed_fifty_dinner" [value]="human_premixedfiftyArray.human_premixed_fifty_dinner">
-                                                    <mat-option value="0">0</mat-option>
-                                                    <mat-option value="1">1</mat-option>
-                                                    <mat-option value="2">2</mat-option>
-                                                    <mat-option value="3">3</mat-option>
-                                                    <mat-option value="4">4</mat-option>
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
 
                                             </mat-form-field>
@@ -1047,11 +948,7 @@
                                             <mat-form-field>
                                                 <mat-label>Breakfast</mat-label>
                                                 <mat-select formControlName="regular_insulin_breakfast" [value]="regular_insulinArray.regular_insulin_breakfast">
-                                                    <mat-option value="0">0</mat-option>
-                                                    <mat-option value="1">1</mat-option>
-                                                    <mat-option value="2">2</mat-option>
-                                                    <mat-option value="3">3</mat-option>
-                                                    <mat-option value="4">4</mat-option>
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
 
                                             </mat-form-field>
@@ -1064,11 +961,7 @@
                                             <mat-form-field>
                                                 <mat-label>Lunch</mat-label>
                                                 <mat-select formControlName="regular_insulin_lunch" [value]="regular_insulinArray.regular_insulin_lunch">
-                                                    <mat-option value="0">0</mat-option>
-                                                    <mat-option value="1">1</mat-option>
-                                                    <mat-option value="2">2</mat-option>
-                                                    <mat-option value="3">3</mat-option>
-                                                    <mat-option value="4">4</mat-option>
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
 
                                             </mat-form-field>
@@ -1081,11 +974,7 @@
                                             <mat-form-field>
                                                 <mat-label>Dinner</mat-label>
                                                 <mat-select formControlName="regular_insulin_dinner" [value]="regular_insulinArray.regular_insulin_dinner">
-                                                    <mat-option value="0">0</mat-option>
-                                                    <mat-option value="1">1</mat-option>
-                                                    <mat-option value="2">2</mat-option>
-                                                    <mat-option value="3">3</mat-option>
-                                                    <mat-option value="4">4</mat-option>
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
 
                                             </mat-form-field>
@@ -1106,11 +995,7 @@
                                             <mat-form-field>
                                                 <mat-label>Breakfast</mat-label>
                                                 <mat-select formControlName="nph_insulin_breakfast" value="{{nph_insulinArray.nph_insulin_breakfast}}">
-                                                    <mat-option value="0">0</mat-option>
-                                                    <mat-option value="1">1</mat-option>
-                                                    <mat-option value="2">2</mat-option>
-                                                    <mat-option value="3">3</mat-option>
-                                                    <mat-option value="4">4</mat-option>
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
 
                                             </mat-form-field>
@@ -1123,11 +1008,7 @@
                                             <mat-form-field>
                                                 <mat-label>Lunch</mat-label>
                                                 <mat-select formControlName="nph_insulin_lunch" value="{{nph_insulinArray.nph_insulin_lunch}}">
-                                                    <mat-option value="0">0</mat-option>
-                                                    <mat-option value="1">1</mat-option>
-                                                    <mat-option value="2">2</mat-option>
-                                                    <mat-option value="3">3</mat-option>
-                                                    <mat-option value="4">4</mat-option>
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
 
                                             </mat-form-field>
@@ -1140,11 +1021,7 @@
                                             <mat-form-field>
                                                 <mat-label>Dinner</mat-label>
                                                 <mat-select formControlName="nph_insulin_dinner" value="{{nph_insulinArray.nph_insulin_dinner}}">
-                                                    <mat-option value="0">0</mat-option>
-                                                    <mat-option value="1">1</mat-option>
-                                                    <mat-option value="2">2</mat-option>
-                                                    <mat-option value="3">3</mat-option>
-                                                    <mat-option value="4">4</mat-option>
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
 
                                             </mat-form-field>
@@ -1164,11 +1041,7 @@
                                             <mat-form-field>
                                                 <mat-label>Breakfast</mat-label>
                                                 <mat-select formControlName="glargine_insulin_breakfast" value="{{glargine_insulinArray.glargine_insulin_breakfast}}">
-                                                    <mat-option value="0">0</mat-option>
-                                                    <mat-option value="1">1</mat-option>
-                                                    <mat-option value="2">2</mat-option>
-                                                    <mat-option value="3">3</mat-option>
-                                                    <mat-option value="4">4</mat-option>
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
 
                                             </mat-form-field>
@@ -1181,11 +1054,7 @@
                                             <mat-form-field>
                                                 <mat-label>Lunch</mat-label>
                                                 <mat-select formControlName="glargine_insulin_lunch" value="{{glargine_insulinArray.glargine_insulin_lunch}}">
-                                                    <mat-option value="0">0</mat-option>
-                                                    <mat-option value="1">1</mat-option>
-                                                    <mat-option value="2">2</mat-option>
-                                                    <mat-option value="3">3</mat-option>
-                                                    <mat-option value="4">4</mat-option>
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
 
                                             </mat-form-field>
@@ -1198,11 +1067,7 @@
                                             <mat-form-field>
                                                 <mat-label>Dinner</mat-label>
                                                 <mat-select formControlName="glargine_insulin_dinner" value="{{glargine_insulinArray.glargine_insulin_dinner}}">
-                                                    <mat-option value="0">0</mat-option>
-                                                    <mat-option value="1">1</mat-option>
-                                                    <mat-option value="2">2</mat-option>
-                                                    <mat-option value="3">3</mat-option>
-                                                    <mat-option value="4">4</mat-option>
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
 
                                             </mat-form-field>
