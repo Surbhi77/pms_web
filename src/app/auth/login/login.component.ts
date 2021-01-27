@@ -58,17 +58,14 @@ export class LoginComponent implements OnInit {
       this.userType = res.data
       console.log(res)
       console.log(this.userType)
-      localStorage.setItem('userType', this.userType.type)
-<<<<<<< HEAD
-      localStorage.setItem('user_id', this.userType.doctor_id)
-      this.router.navigateByUrl('/kap-survey')
-=======
+      // localStorage.setItem('userType', this.userType.type)
+      // localStorage.setItem('user_id', this.userType.doctor_id)
+      // this.router.navigateByUrl('/kap-survey')
       localStorage.setItem('userId', this.userType.userId)
       localStorage.setItem('doctor_id',this.userType.doctor_id)
       console.log(this.userType.doctor_id)
       
      
->>>>>>> 922914918d89d7416b529fb659e83be9aafadf29
       console.log(this.loginForm.value)
       formdata.append("user_id", this.userType.doctor_id)
       this.service.check_terms(formdata).subscribe((res:any) => {
