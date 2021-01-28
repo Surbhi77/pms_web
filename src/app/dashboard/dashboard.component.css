@@ -1,0 +1,57 @@
+.dashboard-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px -5px #ccc;
+    margin-bottom: 25px;
+}
+
+.dashboard-card a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    text-decoration: none;
+    box-shadow: 0 -4px 0 inset #0f406b;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.dashboard-card a:hover {
+    box-shadow: 0 -4px 0 inset #f39d2d;
+}
+
+.dashboard-card a:hover h5 {
+    color: #f39d2d;
+}
+
+.dashboard-card img {
+    width: 60px;
+    transition: all 0.3s ease-in-out;
+}
+
+.dashboard-card svg {
+    width: 60px;
+    height: 60px;
+}
+
+.dashboard-card svg path,
+.dashboard-card svg rect {
+    transition: all 0.3s ease-in-out;
+}
+
+.dashboard-card a:hover svg path {
+    fill: #f39d2d;
+}
+
+.dashboard-card a:hover svg rect {
+    fill: #f39d2d;
+}
+
+.dashboard-card h5 {
+    margin: 20px 0 0;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #0f406b;
+    transition: all 0.3s ease-in-out;
+}

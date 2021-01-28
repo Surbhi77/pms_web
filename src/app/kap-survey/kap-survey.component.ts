@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MainService } from '../main.service';
 import { Router } from '@angular/router';
-
+import { MatDialog} from '@angular/material/dialog';
 
 
 @Component({
@@ -60,13 +60,13 @@ export class KapSurveyComponent implements OnInit {
 
 
 
-  constructor(private _formBuilder: FormBuilder, private service: MainService,private router:Router) { }
+  constructor(private _formBuilder: FormBuilder, private service: MainService,private router:Router, public dialog: MatDialog) { }
 
   ngOnInit() {
 
     this.firstFormGroup = this._formBuilder.group({
       // user_id: [''],
-       user_id: new FormControl(''),
+     user_id: new FormControl(''),
       delay_insulin: new FormControl('', [Validators.required]),
 
       //delay_insulin: new FormControl('',[Validators.required]),
@@ -97,7 +97,6 @@ export class KapSurveyComponent implements OnInit {
         three_to_five_year: new FormControl(''),
         five_years: new FormControl(''),
         people_with_tdm: new FormControl(''),
-        //
         Beta: new FormControl(''),
         role: new FormControl(''),
         Reducing: new FormControl(''),
@@ -106,15 +105,10 @@ export class KapSurveyComponent implements OnInit {
         Reduce: new FormControl(''),
         Neuropathy: new FormControl(''),
         CIMT: new FormControl(''),
-        //
         Comorbid: new FormControl(''),
         High: new FormControl(''),
         Infections: new FormControl(''),
         HighA1c: new FormControl(''),
-
-
-
-
         //insulin_to_tdmpatients: new FormControl(''),
         forthform: ['', Validators.required]
 
@@ -244,6 +238,12 @@ export class KapSurveyComponent implements OnInit {
       this.firstFormGroup.markAllAsTouched()
     }
   }
+  popup1(){
+    this.dialog.open(ratePopup);
+  }
+  popup2(){
+    this.dialog.open(ratePopup);
+  }
 
   submit() {
     var formData: any = new FormData();
@@ -278,7 +278,7 @@ export class KapSurveyComponent implements OnInit {
         formData.append('success_insulin', this.firstFormGroup.value.success_insulin);
         formData.append('notcomplicated_insulin', this.firstFormGroup.value.notcomplicated_insulin);
         formData.append('insulin_therapy', this.firstFormGroup.value.insulin_therapy);
-        formData.append('user_id', JSON.parse(localStorage.getItem('userId')));
+        formData.append('user_id', JSON.parse(localStorage.getItem('doctor_id')));
 
         //secondform
         if (this.reluctant_insulin.length == 0) {
@@ -330,12 +330,13 @@ export class KapSurveyComponent implements OnInit {
         formData.append('insulin_to_tdmpatients', JSON.stringify(this.insulin_to_tdmpatients));
 
 
-        localStorage.setItem("kdp_survey",'yes')
-
+        // localStorage.setItem("kdp_survey",'yes')
+        // formData.append("kdp_survey", "yes")
         console.log(formData)
           this.service.postkdp_survey(formData).subscribe((res:any)=>{
           // this.krvey =res
         console.log(res)
+        localStorage.setItem("kdp_survey",'yes')
 
         //this.router.navigateByUrl('/add-entry')
 
@@ -345,9 +346,13 @@ export class KapSurveyComponent implements OnInit {
     else {
       console.log('not valid')
       this.thirdFormGroup.markAllAsTouched()
-      localStorage.setItem("kdp_survey",'no')
-
+     
     }
   }
 
 }
+@Component({
+  selector: 'ratePopup',
+  templateUrl: 'ratePopup.component.html',
+})
+export class ratePopup {}

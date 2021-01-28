@@ -657,7 +657,7 @@ export class DraftViewComponent implements OnInit {
       // this.glargine_insulin_Obj.glargine_insulin_lunch = this.fourthFormGroup.value.glargine_insulin_lunch;
       // this.glargine_insulin_Obj.glargine_insulin_dinner = this.fourthFormGroup.value.glargine_insulin_dinner;
       const formData = new FormData()
-      formData.append("user_id", JSON.parse(localStorage.getItem('userId')));
+      formData.append("user_id", JSON.parse(localStorage.getItem('doctor_id')));
       formData.append("mobile",JSON.parse(localStorage.getItem('mobile')));
       formData.append("pen_serial", this.firstFormGroup.value.pen_serial);
       formData.append("id", this.router.snapshot.params.id);

@@ -67,6 +67,8 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { QuriesComponent} from './quries/quries.component';
 import { TermsCheckingComponent } from './auth/terms-checking/terms-checking.component';
 import { PatientLogsComponent } from './patient-logs/patient-logs.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 
 
 
@@ -79,7 +81,7 @@ import { PatientLogsComponent } from './patient-logs/patient-logs.component';
     LoginComponent,
     AddEntryComponent,
     KapSurveyComponent,
-
+    DashboardComponent,
     HowItWorksComponent,
     InstrutionsComponent,
     InvoiceComponent,
@@ -119,7 +121,8 @@ import { PatientLogsComponent } from './patient-logs/patient-logs.component';
     NgbModule,
     OverlayModule,  
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+  
   ],
   exports:[
     BrowserModule,
