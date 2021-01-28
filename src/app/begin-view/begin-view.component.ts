@@ -293,23 +293,27 @@ export class BeginViewComponent implements OnInit {
 
     })
   }
-  getvalue(num: number) {
-    return Array.from({length: num}, (v, k) => k + 1);
+  getvalue() {
+    return Array.from({ length: 451 }, (v, k) => k + 50);
   }
-  getvalues(num: number) {
-    return Array.from({length: num}, (v, k) => k + 1);
+  getvalues() {
+    return Array.from({ length: 20 }, (v, k) => k + 1);
   }
-  getvaluefast(num: number) {
-    return Array.from({length: num}, (v, k) => k + 1);
+  getvaluefast() {
+    return Array.from({ length: 361 }, (v, k) => k + 40);
   }
-  getweight(num: number) {
-    return Array.from({length: num}, (v, k) => k + 1);
+  getweight() {
+    return Array.from({ length: 111 }, (v, k) => k + 40);
   }
-  getvaluediabetes(num: number) {
-    return Array.from({length: num}, (v, k) => k + 1);
+  getheight() {
+    return Array.from({ length: 81}, (v, k) => k + 120);
   }
-  getmulvalues(num: number) {
-    return Array.from({length: num}, (v, k) => k + 1);
+ 
+  getvaluediabetes() {
+    return Array.from({ length: 51 }, (v, k) => k );
+  }
+  getmulvalues() {
+    return Array.from({ length: 198 }, (v, k) => k + 3);
   }
   getCreatinine() {
     //return Array.from({length:50 }, (_value , k) =>  k / 10);

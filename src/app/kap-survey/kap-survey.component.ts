@@ -58,13 +58,13 @@ export class KapSurveyComponent implements OnInit {
 
 
 
-  constructor(private _formBuilder: FormBuilder, private service: MainService,private router:Router) { }
+  constructor(private _formBuilder: FormBuilder, private service: MainService, private router: Router) { }
 
   ngOnInit() {
 
     this.firstFormGroup = this._formBuilder.group({
       // user_id: [''],
-       user_id: new FormControl(''),
+      //  user_id: new FormControl(''),
       delay_insulin: new FormControl('', [Validators.required]),
 
       //delay_insulin: new FormControl('',[Validators.required]),
@@ -77,16 +77,16 @@ export class KapSurveyComponent implements OnInit {
       insulin_therapy: new FormControl('', [Validators.required]),
 
 
-     
+
     });
     this.secondFormGroup = this._formBuilder.group({
 
       aggreetype: new FormControl(''),
-      
+
     });
     this.thirdFormGroup = this._formBuilder.group({
       agreedropped: new FormControl(''),
-     
+
     });
     this.forthFormGroup = this._formBuilder.group(
       {
@@ -203,11 +203,11 @@ export class KapSurveyComponent implements OnInit {
     }
     if (this.patients.length > 1) {
       this.checklimiterro = false
-      
+
       console.log("check box ")
     } else {
       this.checklimiterro = true;
-     
+
 
     }
 
@@ -228,7 +228,7 @@ export class KapSurveyComponent implements OnInit {
 
   }
   submitFirst() {
-    if (this.firstFormGroup.valid ) {
+    if (this.firstFormGroup.valid) {
       this.isLinear = false
 
     } else {
@@ -240,70 +240,69 @@ export class KapSurveyComponent implements OnInit {
   submit() {
     var formData: any = new FormData();
     if (this.thirdFormGroup.valid && this.patients.length > 1 && this.impacts.length > 2) {
-     
-
-        console.log(this.firstFormGroup.value)
-        this.people_with_tdm.Beta = (this.forthFormGroup.value.Beta == true) ? this.forthFormGroup.value.Beta : false;
-        this.people_with_tdm.role = (this.forthFormGroup.value.role == true) ? this.forthFormGroup.value.role : false;
-        this.people_with_tdm.Reducing = (this.forthFormGroup.value.Reducing == true) ? this.forthFormGroup.value.Reducing : false;
-        this.people_with_tdm.risk = (this.forthFormGroup.value.risk == true) ? this.forthFormGroup.value.risk : false;
-        this.people_with_tdm.Micro = (this.forthFormGroup.value.Micro == true) ? this.forthFormGroup.value.Micro : false;
-        this.people_with_tdm.Reduce = (this.forthFormGroup.value.Reduce == true) ? this.forthFormGroup.value.Reduce : false;
-        this.people_with_tdm.Neuropathy = (this.forthFormGroup.value.Neuropathy == true) ? this.forthFormGroup.value.Neuropathy : false;
-        this.people_with_tdm.CIMT = (this.forthFormGroup.value.CIMT == true) ? this.forthFormGroup.value.CIMT : false;
-        this.insulin_to_tdmpatients.Comorbid = (this.forthFormGroup.value.Comorbid == true) ? this.forthFormGroup.value.Comorbid : false;
-        this.insulin_to_tdmpatients.High = (this.forthFormGroup.value.High == true) ? this.forthFormGroup.value.High : false;
-        this.insulin_to_tdmpatients.Infections = (this.forthFormGroup.value.Infections == true) ? this.forthFormGroup.value.Infections : false;
-        this.insulin_to_tdmpatients.HighA1c = (this.forthFormGroup.value.HighA1c == true) ? this.forthFormGroup.value.HighA1c : false;
-        console.log('this.insulin_to_tdmpatients', this.insulin_to_tdmpatients)
-        console.log('this.people_with_tdm', this.people_with_tdm)
 
 
-        //firstform
-        formData.append('delay_insulin', this.firstFormGroup.value.delay_insulin);
-        formData.append('insulin_tdm', this.firstFormGroup.value.insulin_tdm);
-        formData.append('insulin_regardless', this.firstFormGroup.value.insulin_regardless);
-        formData.append('benifit_insulin', this.firstFormGroup.value.benifit_insulin);
-        formData.append('receiving_insulin', this.firstFormGroup.value.receiving_insulin);
-        formData.append('success_insulin', this.firstFormGroup.value.success_insulin);
-        formData.append('notcomplicated_insulin', this.firstFormGroup.value.notcomplicated_insulin);
-        formData.append('insulin_therapy', this.firstFormGroup.value.insulin_therapy);
-        formData.append('user_id', JSON.parse(localStorage.getItem('userId')));
+      console.log(this.firstFormGroup.value)
+      this.people_with_tdm.Beta = (this.forthFormGroup.value.Beta == true) ? this.forthFormGroup.value.Beta : false;
+      this.people_with_tdm.role = (this.forthFormGroup.value.role == true) ? this.forthFormGroup.value.role : false;
+      this.people_with_tdm.Reducing = (this.forthFormGroup.value.Reducing == true) ? this.forthFormGroup.value.Reducing : false;
+      this.people_with_tdm.risk = (this.forthFormGroup.value.risk == true) ? this.forthFormGroup.value.risk : false;
+      this.people_with_tdm.Micro = (this.forthFormGroup.value.Micro == true) ? this.forthFormGroup.value.Micro : false;
+      this.people_with_tdm.Reduce = (this.forthFormGroup.value.Reduce == true) ? this.forthFormGroup.value.Reduce : false;
+      this.people_with_tdm.Neuropathy = (this.forthFormGroup.value.Neuropathy == true) ? this.forthFormGroup.value.Neuropathy : false;
+      this.people_with_tdm.CIMT = (this.forthFormGroup.value.CIMT == true) ? this.forthFormGroup.value.CIMT : false;
+      this.insulin_to_tdmpatients.Comorbid = (this.forthFormGroup.value.Comorbid == true) ? this.forthFormGroup.value.Comorbid : false;
+      this.insulin_to_tdmpatients.High = (this.forthFormGroup.value.High == true) ? this.forthFormGroup.value.High : false;
+      this.insulin_to_tdmpatients.Infections = (this.forthFormGroup.value.Infections == true) ? this.forthFormGroup.value.Infections : false;
+      this.insulin_to_tdmpatients.HighA1c = (this.forthFormGroup.value.HighA1c == true) ? this.forthFormGroup.value.HighA1c : false;
+      console.log('this.insulin_to_tdmpatients', this.insulin_to_tdmpatients)
+      console.log('this.people_with_tdm', this.people_with_tdm)
 
-        //secondform
-        if (this.reluctant_insulin.length == 0) {
-          this.reluctant_insulin = this.reluctance;
-        }
-        formData.append('reluctant_insulin', this.reluctant_insulin);
-        console.log(this.reluctant_insulin);
 
-        //thirdform
-        if (this.fear_injection.length == 0) {
-          this.fear_injection = this.Physician;
-        }
-        formData.append('fear_injection', this.fear_injection);
-        console.log(this.fear_injection);
-        formData.append('six_months', this.forthFormGroup.value.six_months);
-        console.log(this.forthFormGroup.value.six_months)
-        formData.append('one_to_two_year', this.forthFormGroup.value.one_to_two_year);
-        formData.append('three_to_five_year', this.forthFormGroup.value.three_to_five_year);
-        formData.append('five_years', this.forthFormGroup.value.five_years);
-        formData.append('people_with_tdm', JSON.stringify(this.people_with_tdm));
-        formData.append('insulin_to_tdmpatients', JSON.stringify(this.insulin_to_tdmpatients));
-        localStorage.setItem("kdp_survey",'yes')
-        console.log(formData)
-          this.service.postkdp_survey(formData).subscribe((res:any)=>{
+      //firstform
+      formData.append('delay_insulin', this.firstFormGroup.value.delay_insulin);
+      formData.append('insulin_tdm', this.firstFormGroup.value.insulin_tdm);
+      formData.append('insulin_regardless', this.firstFormGroup.value.insulin_regardless);
+      formData.append('benifit_insulin', this.firstFormGroup.value.benifit_insulin);
+      formData.append('receiving_insulin', this.firstFormGroup.value.receiving_insulin);
+      formData.append('success_insulin', this.firstFormGroup.value.success_insulin);
+      formData.append('notcomplicated_insulin', this.firstFormGroup.value.notcomplicated_insulin);
+      formData.append('insulin_therapy', this.firstFormGroup.value.insulin_therapy);
+      formData.append('user_id', 15);
+
+      //secondform
+      if (this.reluctant_insulin.length == 0) {
+        this.reluctant_insulin = this.reluctance;
+      }
+      formData.append('reluctant_insulin', this.reluctant_insulin);
+      console.log(this.reluctant_insulin);
+
+      //thirdform
+      if (this.fear_injection.length == 0) {
+        this.fear_injection = this.Physician;
+      }
+      formData.append('fear_injection', this.fear_injection);
+      console.log(this.fear_injection);
+      formData.append('six_months', this.forthFormGroup.value.six_months);
+      console.log(this.forthFormGroup.value.six_months)
+      formData.append('one_to_two_year', this.forthFormGroup.value.one_to_two_year);
+      formData.append('three_to_five_year', this.forthFormGroup.value.three_to_five_year);
+      formData.append('five_years', this.forthFormGroup.value.five_years);
+      formData.append('people_with_tdm', JSON.stringify(this.people_with_tdm));
+      formData.append('insulin_to_tdmpatients', JSON.stringify(this.insulin_to_tdmpatients));
+      localStorage.setItem("kdp_survey", 'yes')
+      console.log(formData)
+      this.service.postkdp_survey(formData).subscribe((res: any) => {
         console.log(res)
 
         //this.router.navigateByUrl('/add-entry')
 
       })
-     
+
     }
     else {
       console.log('not valid')
       this.thirdFormGroup.markAllAsTouched()
-      localStorage.setItem("kdp_survey",'no')
 
     }
   }

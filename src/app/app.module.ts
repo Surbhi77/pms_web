@@ -67,6 +67,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { QuriesComponent} from './quries/quries.component';
 import { TermsCheckingComponent } from './auth/terms-checking/terms-checking.component';
 import { PatientLogsComponent } from './patient-logs/patient-logs.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -119,6 +120,7 @@ import { PatientLogsComponent } from './patient-logs/patient-logs.component';
     NgbModule,
     OverlayModule,  
     HttpClientModule,
+    ToastrModule.forRoot(),
     MatDialogModule
   ],
   exports:[

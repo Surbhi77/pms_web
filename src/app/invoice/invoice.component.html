@@ -89,7 +89,7 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Enter Age in years</mat-label>
-                                        <input matInput formControlName="age" placeholder="Ex. 24 Year" value="">
+                                        <input matInput formControlName="age" type="number" placeholder="Ex. 24 Year" value="">
                                         <ng-container *ngIf="g.age.touched && g.age.invalid">
                                             <mat-error *ngIf="g.age.errors.required" class="errors">
                                                 Age is required.
@@ -103,9 +103,9 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Present Body Weight (Kg):</mat-label>
-                                        <mat-select formControlName="weight">
+                                        <mat-select formControlName="weight" (selectionChange)="weight($event)">
 
-                                            <mat-option *ngFor="let index of getweight(111);index as i" value="{{index}}">{{i+40}}</mat-option>
+                                            <mat-option *ngFor="let index of getweight()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
                                         <ng-container *ngIf="g.weight.touched && g.weight.invalid">
                                             <mat-error *ngIf="g.weight.errors.required" class="errors">
@@ -124,13 +124,8 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Height (cm):</mat-label>
-                                        <mat-select formControlName="height">
-                                            <mat-option value="60">60</mat-option>
-                                            <mat-option value="23">23</mat-option>
-                                            <mat-option value="50">50</mat-option>
-                                            <mat-option value="92">92</mat-option>
-                                            <mat-option value="30">30</mat-option>
-                                            <mat-option value="65">65</mat-option>
+                                        <mat-select formControlName="height" (selectionChange)="height($event)">
+                                            <mat-option *ngFor="let index of getheight()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
                                         <ng-container *ngIf="g.height.touched && g.height.invalid">
                                             <mat-error *ngIf="g.height.errors.required" class="errors">
@@ -145,7 +140,7 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Enter BMI in kg/m2</mat-label>
-                                        <input formControlName="bmi" (click)="bmicalc()" matInput placeholder="Ex. 20kg/m2" value="{{bmi}}">
+                                        <input formControlName="bmi" matInput placeholder="Ex. 20kg/m2" value="{{bmi}}">
                                         <!-- <ng-container *ngIf="g.bmi.touched && g.bmi.invalid">
                                             <mat-error *ngIf="g.bmi.errors.required" class="errors">
                                                 BMI is required.
@@ -200,8 +195,8 @@
                     </div>
 
                     <div class="col-sm-12 col-lg-12 col-md-12">
-                        <button mat-button class="next_btn">Save as Draft</button>
-                        <button mat-button matStepperNext (click)="submitFirst()" class="next_btn">Next</button>
+                        <button mat-button (click)="submitFirst(true)"  class="next_btn">Save as Draft</button>
+                        <button mat-button matStepperNext (click)="submitFirst(false)" class="next_btn">Next</button>
                     </div>
                 </div>
             </form>
@@ -217,7 +212,7 @@
                                     <mat-form-field>
                                         <mat-label>Duration of Diabetes</mat-label>
                                         <mat-select formControlName="duration_diabetes">
-                                            <mat-option *ngFor="let index of getvaluediabetes(51);index as i" value="{{index}}">{{i+0}}</mat-option>
+                                            <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
                                         <ng-container *ngIf="f.duration_diabetes.touched && f.duration_diabetes.invalid">
                                             <mat-error *ngIf="f.duration_diabetes.errors.required" class="errors">
@@ -233,7 +228,7 @@
                                     <mat-form-field>
                                         <mat-label>Treated for Diabetes since</mat-label>
                                         <mat-select formControlName="treated_diabetes">
-                                            <mat-option *ngFor="let index of getvaluediabetes(51);index as i" value="{{index}}">{{i+0}}</mat-option>
+                                            <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
@@ -289,7 +284,7 @@
                                     <mat-form-field>
                                         <mat-label>Duration of Hypertension:</mat-label>
                                         <mat-select formControlName="duration_hypertension">
-                                            <mat-option *ngFor="let index of getvaluediabetes(51);index as i" value="{{index}}">{{i+0}}</mat-option>
+                                            <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
                                         <div *ngIf="f.duration_hypertension.touched && f.duration_hypertension.invalid">
                                             <div *ngIf="f.duration_hypertension.errors.required" class="errors text-danger">Please select any one </div>
@@ -328,7 +323,7 @@
                                     <mat-form-field>
                                         <mat-label>Blood Pressure (mmHg) systolic</mat-label>
                                         <mat-select formControlName="systolic">
-                                            <mat-option *ngFor="let index of getvaluefast(361);index as i" value="{{index}}">{{i+40}}</mat-option>
+                                            <mat-option *ngFor="let index of getvaluefast()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
                                         <div *ngIf="f.systolic.touched && f.systolic.invalid">
                                             <div *ngIf="f.systolic.errors.required" class="errors text-danger">Please select any one </div>
@@ -342,7 +337,7 @@
                                     <mat-form-field>
                                         <mat-label>Blood Pressure (mmHg)diastolic</mat-label>
                                         <mat-select formControlName="diastolic">
-                                            <mat-option *ngFor="let index of getvaluefast(361);index as i" value="{{index}}">{{i+40}}</mat-option>
+                                            <mat-option *ngFor="let index of getvaluefast()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
                                         <div *ngIf="f.diastolic.touched && f.diastolic.invalid">
                                             <div *ngIf="f.diastolic.errors.required" class="errors text-danger">Please select any one </div>
@@ -435,7 +430,7 @@
                                     <mat-form-field>
                                         <mat-label>Duration</mat-label>
                                         <mat-select formControlName="duration">
-                                            <mat-option *ngFor="let index of getvaluediabetes(51);index as i" value="{{index}}">{{i+0}}</mat-option>
+                                            <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
                                         <mat-error *ngIf="hasError2('duration', 'required')">duration field is required</mat-error>
 
@@ -477,7 +472,7 @@
                                     <mat-form-field>
                                         <mat-label>Duration</mat-label>
                                         <mat-select formControlName="dyslipidemia_duration">
-                                            <mat-option *ngFor="let index of getvaluediabetes(51);index as i" value="{{index}}">{{i+0}}</mat-option>
+                                            <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
                                         <mat-error *ngIf="hasError2('dyslipidemia_duration', 'required')">duration field is required</mat-error>
                                     </mat-form-field>
@@ -516,7 +511,7 @@
                                     <mat-form-field>
                                         <mat-label>Duration</mat-label>
                                         <mat-select formControlName="coronary_artery_duration">
-                                            <mat-option *ngFor="let index of getvaluediabetes(51);index as i" value="{{index}}">{{i+0}}</mat-option>
+                                            <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
                                         <mat-error *ngIf="hasError2('coronary_artery_duration', 'required')">duration field is required</mat-error>
                                     </mat-form-field>
@@ -555,7 +550,7 @@
                                     <mat-form-field>
                                         <mat-label>Duration</mat-label>
                                         <mat-select formControlName="stroke_duration">
-                                            <mat-option *ngFor="let index of getvaluediabetes(51);index as i" value="{{index}}">{{i+0}}</mat-option>
+                                            <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
                                         <mat-error *ngIf="hasError2('stroke_duration', 'required')">duration field is required</mat-error>
                                     </mat-form-field>
@@ -594,7 +589,7 @@
                                     <mat-form-field>
                                         <mat-label>Duration</mat-label>
                                         <mat-select formControlName="neuropathy_duration">
-                                            <mat-option *ngFor="let index of getvaluediabetes(51);index as i" value="{{index}}">{{i+0}}</mat-option>
+                                            <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
                                         <mat-error *ngIf="hasError2('neuropathy_duration', 'required')">duration field is required</mat-error>
                                     </mat-form-field>
@@ -633,7 +628,7 @@
                                     <mat-form-field>
                                         <mat-label>Duration</mat-label>
                                         <mat-select formControlName="retinopathy_duration">
-                                            <mat-option *ngFor="let index of getvaluediabetes(51);index as i" value="{{index}}">{{i+0}}</mat-option>
+                                            <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
                                         <mat-error *ngIf="hasError2('retinopathy_duration', 'required')">duration field is required</mat-error>
                                     </mat-form-field>
@@ -672,7 +667,7 @@
                                     <mat-form-field>
                                         <mat-label>Duration</mat-label>
                                         <mat-select formControlName="nephropathy_duration">
-                                            <mat-option *ngFor="let index of getvaluediabetes(51);index as i" value="{{index}}">{{i+0}}</mat-option>
+                                            <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
                                         <mat-error *ngIf="hasError2('nephropathy_duration', 'required')">duration field is required</mat-error>
                                     </mat-form-field>
@@ -761,9 +756,9 @@
 
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <button mat-button matStepperPrevious class="next_btn">Back</button>
-                        <button mat-button class="next_btn">Save as Draft</button>
+                        <button mat-button class="next_btn" (click)="onSecondSubmit(true)">Save as Draft</button>
                         <!-- <button mat-button matStepperNext (click)="onSecondSubmit($event)" class="next_btn">Next</button> -->
-                        <button mat-button matStepperNext (click)="onSecondSubmit()" class="next_btn">Next</button>
+                        <button mat-button matStepperNext (click)="onSecondSubmit(false)" class="next_btn">Next</button>
                     </div>
 
                 </div>
@@ -784,7 +779,7 @@
                                     <mat-form-field>
                                         <mat-label>Duration</mat-label>
                                         <mat-select formControlName="fasting_plasma">
-                                            <mat-option *ngFor="let index of getvaluefast(361);index as i" value="{{index}}">{{i+40}}</mat-option>
+                                            <mat-option *ngFor="let index of getvaluefast()" value="{{index}}">{{index}}</mat-option>
                                             <!-- <option  *ngFor="let index of getvalue(500);index as i" >{{i+1}}</option> -->
                                         </mat-select>
                                         <mat-error *ngIf="hasError3('fasting_plasma', 'required')">select field is required
@@ -800,7 +795,7 @@
                                     <mat-form-field>
                                         <mat-label>Plasma Glucose</mat-label>
                                         <mat-select formControlName="postprandial_plasma">
-                                            <mat-option *ngFor="let index of getvalue(451);index as i" value="{{index}}">{{i+50}}</mat-option>
+                                            <mat-option *ngFor="let index of getvalue()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
                                         <mat-error *ngIf="hasError3('postprandial_plasma', 'required')">select field is required
                                         </mat-error>
@@ -815,7 +810,7 @@
                                     <mat-form-field>
                                         <mat-label>Hemoglobin</mat-label>
                                         <mat-select formControlName="glycosylated">
-                                            <mat-option *ngFor="let index of getvalues(20);index as i" value="{{index}}">{{i+1}}</mat-option>
+                                            <mat-option *ngFor="let index of getvalues()" value="{{index}}">{{index}}</mat-option>
 
                                         </mat-select>
                                         <mat-error *ngIf="hasError3('glycosylated', 'required')">select field is required
@@ -920,8 +915,8 @@
 
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <button mat-button matStepperPrevious class="next_btn">Back</button>
-                        <button mat-button class="next_btn">Save as Draft</button>
-                        <button mat-button matStepperNext (click)="thirdForm(thirdFormGroup.value)" class="next_btn">Next</button>
+                        <button mat-button class="next_btn"  (click)="thirdForm(true)">Save as Draft</button>
+                        <button mat-button matStepperNext (click)="thirdForm(false)" class="next_btn">Next</button>
                         <!-- <button mat-button matStepperNext class="next_btn" (click)="submit()">Submit</button> -->
                     </div>
                 </div>
@@ -947,7 +942,7 @@
                     </div>
                     <div class="col-lg-12 col-md-12 col-12 mb-3">
                         <div class="entry-inputs-block">
-                            <mat-checkbox color="primary" formControlName="glargine_insulin" (change)="oncheked10($event)" class="example-margin d-block mb-2">Regular insulin
+                            <mat-checkbox color="primary" formControlName="glargine_insulin" (change)="oncheked10($event)" class="example-margin d-block mb-2">Insulin Glargine (IU)
                             </mat-checkbox>
                         </div>
 
@@ -958,7 +953,7 @@
                                     <mat-form-field>
                                         <mat-label>Breakfast</mat-label>
                                         <mat-select formControlName="glargine_insulin_breakfast">
-                                            <mat-option *ngFor="let index of getmulvalues(200);index as i" value="{{index}}">{{i+3}}</mat-option>
+                                            <mat-option *ngFor="let index of getmulvalues()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
                                         <mat-error *ngIf="hasError4('glargine_insulin_breakfast', 'required')">select field is required</mat-error>
                                     </mat-form-field>
@@ -973,7 +968,7 @@
                                     <mat-form-field>
                                         <mat-label>Dinner</mat-label>
                                         <mat-select formControlName="glargine_insulin_dinner">
-                                            <mat-option *ngFor="let index of getmulvalues(200);index as i" value="{{index}}">{{i+3}}</mat-option>
+                                            <mat-option *ngFor="let index of getmulvalues()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
                                         <mat-error *ngIf="hasError4('glargine_insulin_dinner', 'required')">select field is required</mat-error>
                                     </mat-form-field>
@@ -985,7 +980,7 @@
                 </div>
                 <div class="col-sm-12 col-lg-12 col-md-12">
                     <button mat-button matStepperPrevious class="next_btn">Back</button>
-                    <button mat-button class="next_btn">Save as Draft</button>
+                    <!-- <button mat-button class="next_btn">Save as Draft</button> -->
                     <button mat-button matStepperNext class="next_btn" (click)="submit()">Submit</button>
                 </div>
             </div>
