@@ -765,7 +765,7 @@
             </form>
         </mat-step>
 
-        <mat-step>
+        <mat-step [stepControl]="thirdFormGroup">
             <ng-template matStepLabel>Blood Investigations</ng-template>
             <form [formGroup]="thirdFormGroup">
                 <div class="row">
@@ -922,7 +922,7 @@
                 </div>
             </form>
         </mat-step>
-        <mat-step>
+        <mat-step [stepControl]="fourthFormGroup">
             <ng-template matStepLabel>Insulinisation</ng-template>
             <form [formGroup]="fourthFormGroup">
                 <div class="row">
@@ -951,7 +951,7 @@
 
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
-                                        <mat-label>Breakfast</mat-label>
+                                        <mat-label>Breakfast (IU)</mat-label>
                                         <mat-select formControlName="glargine_insulin_breakfast">
                                             <mat-option *ngFor="let index of getmulvalues()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
@@ -966,7 +966,7 @@
 
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
-                                        <mat-label>Dinner</mat-label>
+                                        <mat-label>Dinner (IU)</mat-label>
                                         <mat-select formControlName="glargine_insulin_dinner">
                                             <mat-option *ngFor="let index of getmulvalues()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>

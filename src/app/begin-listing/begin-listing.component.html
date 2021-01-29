@@ -22,9 +22,23 @@
                                 </td>
                                 <td class="w-200">
                                     <div class="patient-details">
-                                        <h4>{{beginlist.id}}</h4>
+                                        <h4>{{beginlist.age}}</h4>
                                         <p>{{beginlist.mobile}}</p>
 
+                                    </div>
+                                </td>
+                                <td class="w-200">
+                                    <div class="action-block">
+                                        <a [routerLink]="['/begin-view',beginlist.id]" class="view-btn">
+                                            <!-- //<a href="#" class="view-btn"> -->
+                                            <img src="/assets/image/visibility.svg" width="20" />
+                                        </a>
+                                         <!-- <a class="btn-success">
+                                            <img src="/assets/image/trash.svg" width="20" />
+                                        </a> -->
+                                        <a class=" check-btn">
+                                            <i class="fas fa-check"></i>
+                                        </a>
                                     </div>
                                 </td>
 

@@ -132,11 +132,11 @@ export class InvoiceComponent implements OnInit {
     })
     this.fourthFormGroup = this._formBuilder.group({
       dose_insulin: new FormControl('', [Validators.required]),
-      glargine_insulin: new FormControl('', [Validators.required]),
-      glargine_insulin_breakfast: new FormControl('', [Validators.required]),
+      glargine_insulin: new FormControl(''),
+      glargine_insulin_breakfast: new FormControl(''),
       // glargine_insulin_lunch: new FormControl('', [Validators.required]),
-      glargine_insulin_dinner: new FormControl('', [Validators.required]),
-      // thirdCtrl: ['gg', Validators.required],
+      glargine_insulin_dinner: new FormControl(''),
+     
 
     })
   }
@@ -269,13 +269,14 @@ export class InvoiceComponent implements OnInit {
   onSecondSubmit(redirect) {
 
     if (!this.secondFormGroup.valid) {
-      this.isLinear = true
+     // this.isLinear = true
     
       console.log(this.secondFormGroup.value)
       this.secondFormGroup.markAllAsTouched();
+      this.toastr.error("Please fill all the fields")
     }
     else {
-      this.isLinear = false
+      //this.isLinear = false
       var formData: any = new FormData();
       formData.append('duration_hypertension', this.secondFormGroup.value.duration_hypertension);
       formData.append('duration_diabetes', this.secondFormGroup.value.duration_diabetes);
@@ -332,9 +333,12 @@ export class InvoiceComponent implements OnInit {
      
        if(redirect){
         this.toastr.info("The draft has been saved successfully");
-        }else{
-          this.toastr.error('Please fill all the fields')
-        }
+        this.router.navigateByUrl("/dashboard");
+         }//else{
+         
+        
+        //   this.toastr.error('Please fill all the fields')
+        // }
 
        
       })
@@ -347,13 +351,14 @@ export class InvoiceComponent implements OnInit {
 
     console.log(event)
     if (!this.thirdFormGroup.valid) {
-      this.isLinear = true
-    
-      console.log(this.secondFormGroup.value)
-      this.secondFormGroup.markAllAsTouched();
+      this.thirdFormGroup.markAllAsTouched();
+      ///this.isLinear = true
+      this.toastr.error('Please fill all the fields')
+      console.log(this.thirdFormGroup.value)
+     
     }
     else {
-      this.isLinear = false;
+     // this.isLinear = false;
       var formData: any = new FormData();
       formData.append('fasting_plasma', this.thirdFormGroup.value.fasting_plasma);
       formData.append('postprandial_plasma', this.thirdFormGroup.value.postprandial_plasma);
@@ -369,9 +374,9 @@ export class InvoiceComponent implements OnInit {
        if(event){
          this.toastr.info('The draft has been saved successfully')
          this.router.navigateByUrl("/dashboard");
-        }else{
-          alert('Please fill all the fields')
-        }
+         }//else{
+        //   // alert('Please fill all the fields')
+        // }
 
        
       })
@@ -600,12 +605,12 @@ export class InvoiceComponent implements OnInit {
     console.log(this.now2)
 
   }
-  birthdate(ev) {
-    this.now3 = moment(ev.value).format("YYYY-MM-DD");
-    this.format3 = this.now3;
-    console.log(this.now3)
+  // birthdate(ev) {
+  //   this.now3 = moment(ev.value).format("YYYY-MM-DD");
+  //   this.format3 = this.now3;
+  //   console.log(this.now3)
 
-  }
+  // }
   onchange($event: any) {
     console.log($event)
     if ($event.value == 'yes') {
@@ -620,11 +625,11 @@ export class InvoiceComponent implements OnInit {
   submit() {
 
     var formData: any = new FormData();
-    if (this.thirdFormGroup.valid) {
-      this.glargineinsulinobj.glargine_insulin = (this.fourthFormGroup.value.glargine_insulin == true) ? this.secondFormGroup.value.glargine_insulin : false;
+    if (this.fourthFormGroup.valid) {
+      this.glargineinsulinobj.glargine_insulin = (this.fourthFormGroup.value.glargine_insulin == true) ? this.fourthFormGroup.value.glargine_insulin : false;
       console.log(this.glargineinsulinobj)
       this.glargineinsulinobj.glargine_insulin_breakfast = this.fourthFormGroup.value.glargine_insulin_breakfast;
-      console.log(this.glargineinsulinobj.breakfast)
+     // console.log(this.glargineinsulinobj.breakfast)
       // this.glargineinsulinobj.glargine_insulin_lunch = this.thirdFormGroup.value.glargine_insulin_lunch;
       this.glargineinsulinobj.glargine_insulin_dinner = this.fourthFormGroup.value.glargine_insulin_dinner;
       console.log(this.glargineinsulinobj)
@@ -635,13 +640,13 @@ export class InvoiceComponent implements OnInit {
       formData.append('status','yes');
       this.service.postAddBegin(formData).subscribe(res => {
       console.log(res)
-      this.toastr.info("The draft has been saved successfully");
+      this.toastr.success("The draft has been saved successfully");
       this.router.navigateByUrl("/dashboard");
       })
     } else {
       console.log('not valid')
       this.toastr.error("Please fill all the fields")
-      this.thirdFormGroup.markAllAsTouched()
+      this.fourthFormGroup.markAllAsTouched()
     }
 
 
