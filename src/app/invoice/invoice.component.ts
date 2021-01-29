@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 
 import * as moment from 'moment';
 import { MainService } from '../main.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-invoice',
@@ -47,7 +48,7 @@ export class InvoiceComponent implements OnInit {
   glargine: boolean;
   response: any;
 
-  constructor(private _formBuilder: FormBuilder, private service: MainService,private toastr: ToastrService) { }
+  constructor(private _formBuilder: FormBuilder, private service: MainService,private toastr: ToastrService,private router:Router) { }
 
   ngOnInit(): void {
 
@@ -249,6 +250,7 @@ export class InvoiceComponent implements OnInit {
         console.log(this.formId)
        if( saveAsDraft){
         this.toastr.info("The draft has been saved successfully");
+        this.router.navigateByUrl("/dashboard");
        
      
       
@@ -329,9 +331,9 @@ export class InvoiceComponent implements OnInit {
         console.log(this.formId)
      
        if(redirect){
-         alert('The draft has been saved successfully')
+        this.toastr.info("The draft has been saved successfully");
         }else{
-          alert('Please fill all the fields')
+          this.toastr.error('Please fill all the fields')
         }
 
        
@@ -365,7 +367,8 @@ export class InvoiceComponent implements OnInit {
         console.log(this.formId)
     
        if(event){
-         alert('The draft has been saved successfully')
+         this.toastr.info('The draft has been saved successfully')
+         this.router.navigateByUrl("/dashboard");
         }else{
           alert('Please fill all the fields')
         }
@@ -630,12 +633,14 @@ export class InvoiceComponent implements OnInit {
       formData.append('glargine_insulin', JSON.stringify(this.glargineinsulinobj));
       formData.append('id',this.formId);
       formData.append('status','yes');
-     
       this.service.postAddBegin(formData).subscribe(res => {
-        console.log(res)
+      console.log(res)
+      this.toastr.info("The draft has been saved successfully");
+      this.router.navigateByUrl("/dashboard");
       })
     } else {
       console.log('not valid')
+      this.toastr.error("Please fill all the fields")
       this.thirdFormGroup.markAllAsTouched()
     }
 

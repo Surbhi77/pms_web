@@ -62,11 +62,9 @@ export class LoginComponent implements OnInit {
       // localStorage.setItem('userType', this.userType.type)
       // localStorage.setItem('user_id', this.userType.doctor_id)
       // this.router.navigateByUrl('/kap-survey')
-      localStorage.setItem('userType', this.userType.type)
+      localStorage.setItem('userType', this.userType.type)   
       localStorage.setItem('doctor_id',this.userType.doctor_id)
       console.log(this.userType.doctor_id)
-      
-     
       console.log(this.loginForm.value)
       formdata.append("user_id", this.userType.doctor_id)
       this.service.check_terms(formdata).subscribe((res:any) => {
@@ -80,13 +78,13 @@ export class LoginComponent implements OnInit {
         if(this.agrredata.aggrement == 'no'){
           this.dialog.open(TermsCheckingComponent);   
         }else{
-        this.router.navigateByUrl('/quries');
+        this.router.navigateByUrl('/dashboard');
        
         }
         if(this.agrredata.kdp_survey == 'no'){
           this.router.navigate(['/kap-survey'])
         }else{
-          this.router.navigateByUrl('/quries');
+          this.router.navigateByUrl('/dashboard');
 
         }
        
@@ -107,8 +105,3 @@ export class LoginComponent implements OnInit {
 }
 
 
-@Component({
-  selector: 'loginpopup',
-  templateUrl: 'loginpopup.component.html',
-})
-export class loginpopup {}

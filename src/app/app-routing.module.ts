@@ -16,6 +16,7 @@ import { InvoiceProcessComponent } from './invoice-process/invoice-process.compo
 import { AuthGuard } from './auth/auth.guard';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { QuriesComponent } from './quries/quries.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 const routes: Routes = [
@@ -87,6 +88,10 @@ const routes: Routes = [
     path:'quries',
     component:QuriesComponent
   },
+  {
+    path:'dashboard',
+    component:DashboardComponent
+  }
  
 ];
 

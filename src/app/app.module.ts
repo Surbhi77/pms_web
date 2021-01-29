@@ -68,6 +68,8 @@ import { QuriesComponent} from './quries/quries.component';
 import { TermsCheckingComponent } from './auth/terms-checking/terms-checking.component';
 import { PatientLogsComponent } from './patient-logs/patient-logs.component';
 import { ToastrModule } from 'ngx-toastr';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 
 
 
@@ -80,7 +82,7 @@ import { ToastrModule } from 'ngx-toastr';
     LoginComponent,
     AddEntryComponent,
     KapSurveyComponent,
-
+    DashboardComponent,
     HowItWorksComponent,
     InstrutionsComponent,
     InvoiceComponent,
@@ -120,8 +122,8 @@ import { ToastrModule } from 'ngx-toastr';
     NgbModule,
     OverlayModule,  
     HttpClientModule,
+    MatDialogModule,
     ToastrModule.forRoot(),
-    MatDialogModule
   ],
   exports:[
     BrowserModule,

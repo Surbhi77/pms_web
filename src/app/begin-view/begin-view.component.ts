@@ -310,7 +310,7 @@ export class BeginViewComponent implements OnInit {
   }
  
   getvaluediabetes() {
-    return Array.from({ length: 51 }, (v, k) => k );
+    return Array.from({ length: 51 }, (v, k) => k);
   }
   getmulvalues() {
     return Array.from({ length: 198 }, (v, k) => k + 3);
@@ -476,6 +476,7 @@ export class BeginViewComponent implements OnInit {
   formData.append('employment', this.firstFormGroup.value.employment);
   //second form
   formData.append('duration_hypertension',this.secondFormGroup.value.duration_hypertension);
+  //console.log("duration_hypertension");
   formData.append('duration_diabetes', this.secondFormGroup.value.duration_diabetes);
   formData.append('treated_diabetes', this.secondFormGroup.value.treated_diabetes);
   formData.append('family_diabetes', this.secondFormGroup.value.family_diabetes);

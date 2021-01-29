@@ -24,7 +24,7 @@ export class ChangePasswordComponent implements OnInit {
   }
   submit(){
      let formdata = new FormData();
-     formdata.append("user_id", JSON.parse(localStorage.getItem('userId')))
+     formdata.append("user_id", JSON.parse(localStorage.getItem('doctor_id')))
      formdata.append('old_pass', this.form.value.old_pass);
      formdata.append('new_pass', this.form.value.new_pass);
      if(this.form.value.cnew_pass != this.form.value.new_pass){

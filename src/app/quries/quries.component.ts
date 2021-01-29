@@ -34,7 +34,7 @@ export class QuriesComponent implements OnInit {
    
     const formData = new FormData()
    // formData.append("user_id", '9');
-   formData.append("user_id",JSON.parse(localStorage.getItem('userId')));
+   formData.append("user_id",JSON.parse(localStorage.getItem('doctor_id')));
     formData.append("message", this.form.value.message);
     console.log(formData)
     this.service.quries(formData).subscribe(res => {
