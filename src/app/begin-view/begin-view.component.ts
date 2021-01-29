@@ -66,13 +66,6 @@ export class BeginViewComponent implements OnInit {
   response: any;
   beginDetails: boolean;
   date_visit: Date;
-
-
-
-  
-  
-
-
   constructor( private _formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,private service:MainService,private toastr: ToastrService) { }
