@@ -26,6 +26,7 @@ export class BeginListingComponent implements OnInit {
     var formData: any = new FormData();
     //formData.append('user_id', '4');
     formData.append("user_id",JSON.parse(localStorage.getItem('doctor_id')));
+
     console.log(localStorage.getItem('doctor_id'))
   
     this.service.beginListing(formData).subscribe((res:any) => {
@@ -35,6 +36,7 @@ export class BeginListingComponent implements OnInit {
    
     //formData.append('user_id', '0');
     formData.append("user_id",JSON.parse(localStorage.getItem('doctor_id')));
+    formData.append("status",'1')
     console.log(localStorage.getItem('doctor_id'))
   
     this.service.beginDraftListing(formData).subscribe((res:any) => {

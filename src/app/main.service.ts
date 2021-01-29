@@ -20,9 +20,13 @@ export class MainService {
    }
     beginListing(id:any){
     return this.http.post("https://360pmt.com/pms-app/Pms_app/begin_completed_list",id);
+    
   }
+  // beginDraftListing(list:any){
+  //   return this.http.post("https://360pmt.com/pms-app/Pms_app/begin_list",list);
+  // }
   beginDraftListing(list:any){
-    return this.http.post("https://360pmt.com/pms-app/Pms_app/begin_list",list);
+    return this.http.post("http://360pmt.com/pms-app/Pms_app/draft_begin_list",list);
   }
   beginview(show:any){
     return this.http.post("https://360pmt.com/pms-app/Pms_app/begin_view",show);

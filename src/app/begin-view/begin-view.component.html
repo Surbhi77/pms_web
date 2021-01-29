@@ -158,8 +158,8 @@
                     </div>
 
                     <div class="col-sm-12 col-lg-12 col-md-12">
-                        <button mat-button class="next_btn">Save as Draft</button>
-                        <button mat-button matStepperNext class="next_btn">Next</button>
+                        <button mat-button class="next_btn" (click)="submitFirst(true)" >Save as Draft</button>
+                        <button mat-button matStepperNext class="next_btn" (click)="submitFirst(true)" >Next</button>
                     </div>
                 </div>
             </form>
@@ -688,8 +688,8 @@
 
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <button mat-button matStepperPrevious class="next_btn">Back</button>
-                        <button mat-button class="next_btn">Save as Draft</button>
-                        <button mat-button matStepperNext class="next_btn">Next</button>
+                        <button mat-button class="next_btn" (click)="onSecondSubmit(true)">Save as Draft</button>
+                        <button mat-button matStepperNext class="next_btn" (click)="onSecondSubmit(false)">Next</button>
                     </div>
 
                 </div>
@@ -793,8 +793,8 @@
 
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <button mat-button matStepperPrevious class="next_btn">Back</button>
-                        <button mat-button class="next_btn">Save as Draft</button>
-                        <button mat-button matStepperNext  class="next_btn">Next</button>
+                        <button mat-button class="next_btn"  (click)="thirdForm(true)">Save as Draft</button>
+                        <button mat-button matStepperNext  (click)="thirdForm(false)" class="next_btn">Next</button>
                         <!-- <button mat-button matStepperNext (click)="submit()" class="next_btn">Submit</button> -->
                     </div>
                 </div>
@@ -820,7 +820,7 @@
                     </div>
                     <div class="col-lg-12 col-md-12 col-12 mb-3">
                         <div class="entry-inputs-block">
-                            <mat-checkbox color="primary" formControlName="glargine_insulin" (change)="oncheked10($event)" class="example-margin d-block mb-2">Insulin Glargine (IU)
+                            <mat-checkbox color="primary" formControlName="glargine_insulin" (change)="oncheked10($event)"  [checked]="garglineArray.glargine_insulin" class="example-margin d-block mb-2">Insulin Glargine (IU)
                             </mat-checkbox>
                         </div>
 
