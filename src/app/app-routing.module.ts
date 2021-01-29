@@ -31,27 +31,33 @@ const routes: Routes = [
    },
   {
    path:'how-it-works',
-   component:HowItWorksComponent
+   component:HowItWorksComponent,
+   canActivate : [AuthGuard]
   },
   {
     path:'add-entry',
-    component:AddEntryComponent
+    component:AddEntryComponent,
+    canActivate : [AuthGuard]
   },
   {
     path:'add-entry-process',
     component:AddEntryProcessComponent
+    ,canActivate : [AuthGuard]
   },
   {
     path:'instrutions',
     component:InstrutionsComponent
+    ,canActivate : [AuthGuard]
   },
   {
     path:'invoice',
     component:InvoiceComponent
+    ,canActivate : [AuthGuard]
   },
   {
     path:'begin-listing',
     component:BeginListingComponent
+    ,canActivate : [AuthGuard]
   },
   
   {
@@ -61,36 +67,45 @@ const routes: Routes = [
   {
     path:'patient-logs',
     component:PatientLogsComponent
+    ,canActivate : [AuthGuard]
   },
   {
     path:'begin-view/:id',
     component:BeginViewComponent
+    ,canActivate : [AuthGuard]
   }
   ,{
     path:'initiate_completed_list',
     component:InitiateCompletedListComponent
+    ,canActivate : [AuthGuard]
   },{
     path:'draft_view/:id',
     component:DraftViewComponent
+    ,canActivate : [AuthGuard]
   },
   {
     path:'draft_delete',
     component:InitiateCompletedListComponent
+    ,canActivate : [AuthGuard]
   },
   {
     path:'invoice-process',
     component:InvoiceProcessComponent
+    ,canActivate : [AuthGuard]
   },
   {
     path:'change_password',
     component:ChangePasswordComponent
+    ,canActivate : [AuthGuard]
   },{
     path:'quries',
     component:QuriesComponent
+    ,canActivate : [AuthGuard]
   },
   {
     path:'dashboard',
     component:DashboardComponent
+    ,canActivate : [AuthGuard]
   }
  
 ];
