@@ -261,9 +261,7 @@ export class InvoiceComponent implements OnInit {
     } else {
       this.firstFormGroup.markAllAsTouched();
       this.toastr.error("Please fill all the fields")
-    //  else{
-    //   
-    //      }
+    
         }
   }
   onSecondSubmit(redirect) {
@@ -334,12 +332,7 @@ export class InvoiceComponent implements OnInit {
        if(redirect){
         this.toastr.info("The draft has been saved successfully");
         this.router.navigateByUrl("/dashboard");
-         }//else{
-         
-        
-        //   this.toastr.error('Please fill all the fields')
-        // }
-
+         }
        
       })
       

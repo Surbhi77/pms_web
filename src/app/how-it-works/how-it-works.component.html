@@ -10,66 +10,36 @@
     <div class="row mt-3">
         <div class="col-lg-12">
             <div class="card-details">
-                <div class="row">
-                    <!-- <div class="col-lg-5 col-md-5 col-12">
-                        <div class="Img-Block">
-                            <img src="/assets/image/pms-logo.png" />
-                        </div>
-                    </div> -->
-              <h1 class="text-center"> For Begin</h1>
-                    <div class="col-lg-7 col-md-7 col-12">
-                        <div class="card-content">
-                            <video width="400" height="320" autoplay >
-                                <source src="/assets/vedio/begin.mp4" type="video/mp4">
-                               
-                              </video>
-                           
-                        </div>
-                    </div>
+                <h1 class="text-center" (click)="beginclick()"> For Begin</h1>
+
+                <div class="card-content col-md-12 col-12 col-lg-12 howitworks" *ngIf="beginvideo">
+                    <video autoplay>
+                        <source src="/assets/vedio/begin.mp4" type="video/mp4">
+                    </video>
+
                 </div>
             </div>
 
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-lg-12">
             <div class="card-details">
-                <div class="row">
-                    <div class="col-lg-7 col-md-7 col-12">
-                        <h1 class="text-center"> For Initiate</h1>
-                        <div class="col-lg-7 col-md-7 col-12">
-                            <div class="card-content">
-                                <video width="400" height="320" autoplay >
-                                    <source src="/assets/vedio/initiate.mp4" type="video/mp4">
-                                   
-                                  </video>
-                               
-                            </div>
-                        </div>
-                    </div>
 
-                     <!-- <div class="col-lg-5 col-md-5 col-12">
-                        <div class="Img-Block">
-                            <img src="/assets/image/pms-logo.png" />
-                        </div> 
-                    </div> -->
-                </div>
+                <h1 class="text-center" (click)="initiateclick()"> For Initiate</h1>
+                
+                    <div class="card-content col-md-12 col-12 col-lg-12" *ngIf="initiatevideo">
+                        <video  autoplay>
+                            <source src="/assets/vedio/initiate.mp4" type="video/mp4">
+
+                        </video>
+
+                    </div>
+                
+
+
+
             </div>
-
-            <!-- <div class="card-details">
-                <div class="row">
-                    <div class="col-lg-5 col-md-5 col-12">
-                        <div class="Img-Block">
-                            <img src="/assets/image/pms-logo.png" />
-                        </div>
-                    </div>
-
-                    <div class="col-lg-7 col-md-7 col-12">
-                        <div class="card-content">
-                            <h4>Lorem Ipsum is simply dummy</h4>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
-                                a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
-                                Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>
 </div>

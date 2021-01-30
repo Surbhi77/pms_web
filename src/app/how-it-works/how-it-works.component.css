@@ -4,7 +4,8 @@
     border-radius: 5px;
     box-shadow: 0 20px 30px -15px #ccc;
     border: 1px solid #eee;
-    margin-bottom: 20px;    
+    margin-bottom: 20px; 
+    position: relative;   
 }
 
 .Img-Block {
@@ -18,6 +19,13 @@
     margin-bottom: 10px;
 }
 
-.card-content p {
-    margin: 0;
+.card-content video {
+    margin: auto;
+    align-items: center;
+}
+video {
+    align-items: center;
+}
+.howitworks video{
+    align-items: center;
 }

@@ -10,6 +10,8 @@ export class HowItWorksComponent implements OnInit {
 
   title = "How it works";
   data:any=[]
+  beginvideo:boolean=false;
+  initiatevideo:boolean=false
   constructor(private service:MainService) { }
 
   ngOnInit(): void {
@@ -17,6 +19,12 @@ export class HowItWorksComponent implements OnInit {
       this.data = res.data;
       console.log(res)
     })
+  }
+  beginclick(){
+    this.beginvideo = true;
+  }
+  initiateclick(){
+    this.initiatevideo =true
   }
 
 }
