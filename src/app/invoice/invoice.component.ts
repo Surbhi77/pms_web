@@ -244,7 +244,7 @@ export class InvoiceComponent implements OnInit {
       formData.append('education', this.firstFormGroup.value.education);
       formData.append('employment', this.firstFormGroup.value.employment);
       this.service.postAddBegin(formData).subscribe((res:any) => {
-        this.formId = res['data'].from_id;
+        this.formId = res.data.from_id;
         this.response = res.data
         console.log(res)
         console.log(this.formId)

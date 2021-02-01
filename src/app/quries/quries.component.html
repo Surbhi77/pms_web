@@ -26,7 +26,7 @@
                 <div class="entry-inputs-block in_fulls">
                     <mat-form-field class="example-full-width">
                         <mat-label>Enter qurey</mat-label>
-                        <input formControlName="message" matInput value="">
+                        <input formControlName="message" type="text" matInput value="" id="message">
 
 
                         <mat-error *ngIf="hasError('message','required')">Enter qurey</mat-error>

@@ -40,6 +40,7 @@ export class QuriesComponent implements OnInit {
     this.service.quries(formData).subscribe(res => {
 
       console.log(res)
+      this.router.navigateByUrl("/dashboard");
 
 
     })

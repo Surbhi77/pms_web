@@ -37,7 +37,7 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Date of Visit</mat-label>
-                                        <input matInput formControlName="date_visit" [matDatepicker]="visit_date" value={{beginview.date_visit}}>
+                                        <input matInput formControlName="date_visit" (dateChange)="vistedate($event)" [matDatepicker]="visit_date" value={{beginview.date_visit}}>
                                         <mat-datepicker-toggle matSuffix [for]="visit_date"></mat-datepicker-toggle>
                                         <mat-datepicker #visit_date></mat-datepicker>
                                     </mat-form-field>
@@ -111,7 +111,7 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Enter BMI in kg/m2</mat-label>
-                                        <input formControlName="bmi" matInput placeholder="Ex. 20kg/m2" value="{{beginview.bmi}}">
+                                        <input formControlName="bmi" matInput placeholder="Ex. 20kg/m2" value="{{bmi}}">
 
                                     </mat-form-field>
 
@@ -159,7 +159,7 @@
 
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <button mat-button class="next_btn" (click)="submitFirst(true)" >Save as Draft</button>
-                        <button mat-button matStepperNext class="next_btn" (click)="submitFirst(true)" >Next</button>
+                        <button mat-button matStepperNext class="next_btn"  >Next</button> 
                     </div>
                 </div>
             </form>
@@ -689,7 +689,7 @@
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <button mat-button matStepperPrevious class="next_btn">Back</button>
                         <button mat-button class="next_btn" (click)="onSecondSubmit(true)">Save as Draft</button>
-                        <button mat-button matStepperNext class="next_btn" (click)="onSecondSubmit(false)">Next</button>
+                        <button mat-button matStepperNext class="next_btn">Next</button>
                     </div>
 
                 </div>
@@ -794,7 +794,7 @@
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <button mat-button matStepperPrevious class="next_btn">Back</button>
                         <button mat-button class="next_btn"  (click)="thirdForm(true)">Save as Draft</button>
-                        <button mat-button matStepperNext  (click)="thirdForm(false)" class="next_btn">Next</button>
+                        <button mat-button matStepperNext   class="next_btn">Next</button>
                         <!-- <button mat-button matStepperNext (click)="submit()" class="next_btn">Submit</button> -->
                     </div>
                 </div>

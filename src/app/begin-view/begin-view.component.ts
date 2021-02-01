@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MainService } from '../main.service';
 import { ToastrService } from 'ngx-toastr';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-begin-view',
@@ -78,7 +79,7 @@ export class BeginViewComponent implements OnInit {
     this.firstFormGroup = this._formBuilder.group({
      
       user_id: new FormControl(''),
-    //  form_id:new FormControl(''),
+    // form_id:new FormControl(''),
      mobile: new FormControl(''),
       pen_serial: new FormControl('',),
       date_visit: new FormControl(''),
@@ -195,13 +196,21 @@ export class BeginViewComponent implements OnInit {
     //  else{
     //   this.glargine_condition=false
     //  }
-     if(this.beginview.medical_condition=="yes"){
+    if(this.beginview.medical_condition=="yes"){
       this.medication=true
 
     }
     else{
      this.medication=false
     }
+
+    if(this.beginview && this.beginview.medical_condition){
+      this.secondFormGroup.patchValue({
+        'medical_condition':this.beginview.medical_condition
+      })
+      this.secondFormGroup.updateValueAndValidity()
+    }
+     
     // if(this.hypercheck.hypertension_dur){
     //   this.hypertension=true
 
@@ -363,6 +372,13 @@ export class BeginViewComponent implements OnInit {
       })
       this.secondFormGroup.updateValueAndValidity()
     }
+    
+    if(this.beginview && this.beginview.duration_hypertension){
+      this.secondFormGroup.patchValue({
+        'duration_hypertension':this.beginview.duration_hypertension
+      })
+      this.secondFormGroup.updateValueAndValidity()
+    }
     if(this.beginview && this.beginview.hypertension){
       this.secondFormGroup.patchValue({
         'hypertension':this.beginview.hypertension
@@ -454,16 +470,16 @@ export class BeginViewComponent implements OnInit {
     }
    
 
-    if(this.beginview && this.beginview.stroke_duration != ''){
-      this.strokecheck = JSON.parse(this.beginview.stroke_duration)
-      if(this.strokecheck.stroke_duration){
+    if(this.beginview && this.beginview.stroke_dur != ''){
+      this.strokecheck = JSON.parse(this.beginview.stroke_dur)
+      if(this.strokecheck.stroke_dur){
         this.stroke = true;
       }
       else{
         this.stroke = false;
       }
       this.secondFormGroup.patchValue({
-        'stroke_duration':this.strokecheck.stroke_duration
+        'stroke_dur':this.strokecheck.stroke_dur
       });
       this.secondFormGroup.patchValue({
         "stroke_duration":this.strokecheck.stroke_duration,
@@ -473,6 +489,69 @@ export class BeginViewComponent implements OnInit {
       })
       this.secondFormGroup.updateValueAndValidity();
     }
+    if(this.beginview && this.beginview.neuropathy_dur != ''){
+      this.neuropathycheck = JSON.parse(this.beginview.neuropathy_dur)
+      if(this.neuropathycheck.neuropathy_dur){
+        this.neuropathy = true;
+      }
+      else{
+        this.neuropathy = false;
+      }
+      this.secondFormGroup.patchValue({
+        'neuropathy_dur':this.neuropathycheck.neuropathy_dur
+      });
+      this.secondFormGroup.patchValue({
+        "neuropathy_duration":this.neuropathycheck.neuropathy_duration,
+      })
+      this.secondFormGroup.patchValue({
+        "neuropathy_medication":this.neuropathycheck.neuropathy_medication,
+      })
+      this.secondFormGroup.updateValueAndValidity();
+    }
+    if(this.beginview && this.beginview.retinopathy_dur != ''){
+      this.retinopathycheck = JSON.parse(this.beginview.retinopathy_dur)
+      if(this.retinopathycheck.retinopathy_dur){
+        this.retinopathy = true;
+      }
+      else{
+        this.retinopathy = false;
+      }
+      this.secondFormGroup.patchValue({
+        'retinopathy_dur':this.retinopathycheck.retinopathy_dur
+      });
+      this.secondFormGroup.patchValue({
+        "retinopathy_duration":this.retinopathycheck.retinopathy_duration,
+      })
+      this.secondFormGroup.patchValue({
+        "retinopathy_medication":this.retinopathycheck.retinopathy_medication,
+      })
+      this.secondFormGroup.updateValueAndValidity();
+    }
+
+    if(this.beginview && this.beginview.nephropathy_dur != ''){
+      this.nephrocheck = JSON.parse(this.beginview.nephropathy_dur)
+      if(this.nephrocheck.nephropathy_dur){
+        this.nephropathy = true;
+      }
+      else{
+        this.nephropathy = false;
+      }
+      this.secondFormGroup.patchValue({
+        'nephropathy_dur':this.nephrocheck.nephropathy_dur
+      });
+      this.secondFormGroup.patchValue({
+        "nephropathy_duration":this.nephrocheck.nephropathy_duration,
+      })
+      this.secondFormGroup.patchValue({
+        "nephropathy_medication":this.nephrocheck.nephropathy_medication,
+      })
+      this.secondFormGroup.updateValueAndValidity();
+    }
+
+
+
+
+
 
 
 
@@ -546,6 +625,42 @@ export class BeginViewComponent implements OnInit {
       this.fourthFormGroup.updateValueAndValidity()
     }
   }
+  weight(event:any){
+    console.log(event.value)
+    if(this.firstFormGroup.value.height && this.firstFormGroup.value.height!=''){
+      var height = this.firstFormGroup.value.height
+      if(height!=''){
+        this.bmi =(this.firstFormGroup.value.weight/((this.firstFormGroup.value.height*this.firstFormGroup.value.height)/100))*100
+        this.bmi = this.bmi.toFixed(1)
+      }
+    }else{
+     console.log("please eneter height" )
+     this.bmi=0
+    }
+    
+    }
+    height(event:any){
+    
+      console.log(event)
+      if(this.firstFormGroup.value.weight && this.firstFormGroup.value.weight!=''){
+        var weight = this.firstFormGroup.value.weight
+        if(weight!=''){
+      this.bmi =(this.firstFormGroup.value.weight/((this.firstFormGroup.value.height*this.firstFormGroup.value.height)/100))*100
+      this.bmi = this.bmi.toFixed(1)
+        }
+      }else{
+        console.log("please eneter height" )
+        this.bmi=0
+      }
+       console.log( this.bmi)
+    }
+    vistedate(e) {
+      console.log(e.value)
+      this.now2 = moment(e.value).format("YYYY-MM-DD");
+      this.format2 = this.now2;
+      console.log(this.now2)
+  
+    }
   
   getvalue() {
     return Array.from({ length: 451 }, (v, k) => k + 50);
@@ -672,6 +787,8 @@ export class BeginViewComponent implements OnInit {
   submitFirst(saveAsDraft:any) {
     if (this.firstFormGroup.valid) {
       var formData: any = new FormData();
+      formData.append('id',this.route.snapshot.params.id)
+      formData.append('form_id',this.formId)
       formData.append('pen_serial', this.firstFormGroup.value.pen_serial);
       formData.append('date_visit', this.now2);
       console.log(this.now2)
@@ -686,7 +803,7 @@ export class BeginViewComponent implements OnInit {
       formData.append('education', this.firstFormGroup.value.education);
       formData.append('employment', this.firstFormGroup.value.employment);
       this.service.postAddBegin(formData).subscribe((res:any) => {
-        this.formId = res['data'].from_id;
+        this.formId = res.data.from_id;
         this.response = res.data
         console.log(res)
         console.log(this.formId)
@@ -765,13 +882,10 @@ export class BeginViewComponent implements OnInit {
       formData.append('retinopathy_dur', JSON.stringify(this.retinopathyobj));
       formData.append('nephropathy_dur', JSON.stringify(this.nephropathyobj));
       formData.append('anti_diabetes_medication', JSON.stringify(this.anti_diabetes_medication));
-      formData.append('id',this.formId)
-      this.service.postAddBegin(formData).subscribe(res => {
-        this.formId = res['data'].from_id;
-        
-        console.log(res)
-        console.log(this.formId)
-     
+      formData.append('id',this.route.snapshot.params.id)
+      formData.append('form_id',this.formId)
+      this.service.postAddBegin(formData).subscribe((res:any) => {
+       console.log(res)
        if(redirect){
        // this.toastr.info("The draft has been saved successfully");
       //  this.router.navigateByUrl("/dashboard");
@@ -801,9 +915,10 @@ export class BeginViewComponent implements OnInit {
       formData.append('glycosylated', this.thirdFormGroup.value.glycosylated);
       formData.append('hbac_lab', this.thirdFormGroup.value.hbac_lab);
       formData.append('s_creatinine', this.thirdFormGroup.value.s_creatinine);
-      formData.append('id',this.formId)
+      formData.append('id',this.route.snapshot.params.id)
+      formData.append('form_id',this.formId)
       this.service.postAddBegin(formData).subscribe(res => {
-        this.formId = res['data'].from_id;
+       
        
         console.log(res)
         console.log(this.formId)
@@ -833,7 +948,10 @@ export class BeginViewComponent implements OnInit {
       formData.append('dose_insulin', this.fourthFormGroup.value.dose_insulin);
       console.log(this.fourthFormGroup.value.dose_insulin);
       formData.append('glargine_insulin', JSON.stringify(this.glargineinsulinobj));
-      formData.append('id',this.formId);
+     // formData.append('id',this.formId);
+     formData.append('id',this.route.snapshot.params.id)
+      console.log(this.formId)
+      formData.append('form_id',this.formId);
       formData.append('status','yes');
       this.service.postAddBegin(formData).subscribe(res => {
       console.log(res)
