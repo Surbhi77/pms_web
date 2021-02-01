@@ -11,9 +11,9 @@
             <div class="col-lg-12">
                 <div class="card-details">
                     <div class="card-content col-md-12 col-12 col-lg-12 text-center" *ngIf="invoiceAvailable">
-                        <button class="next-btn"><a [href]="link" download="link.pdf">Download Invoice</a></button>
+                        <button class="next-btn" ><a [href]="link" target="_blank" [download]="link.pdf">Download Invoice</a></button>
                     </div>
-                    <div class="row" *ngIf="invoiceAvailable">
+                    <div class="row" *ngIf="invoiceAvailable && invoiceAcceptShow">
                         <div class="col-12">
                             <div class="entry-inputs-block inline_check">
                                 <mat-checkbox formControlName="declare" color="primary" class="example-margin d-block mb-2"></mat-checkbox>
@@ -27,7 +27,7 @@
                         <h1>Invoice Not Fund</h1>
                     </div>
 
-                    <button *ngIf="invoiceAvailable" mat-button type="submit" (click)="submit()" class="next_btn">Submit</button>
+                    <button *ngIf="invoiceAvailable && invoiceAcceptShow" mat-button type="submit" (click)="submit()" class="next_btn">Submit</button>
                 </div>
 
             </div>

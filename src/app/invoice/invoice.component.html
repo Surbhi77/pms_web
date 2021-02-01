@@ -61,11 +61,12 @@
                                     <mat-radio-group color="primary" formControlName="sex" aria-label="Select an option">
                                         <mat-radio-button value="male" class="mr-5">Male</mat-radio-button>
                                         <mat-radio-button value="female">Female</mat-radio-button>
-                                    </mat-radio-group>
-                                    <div *ngIf="g.sex.touched && g.sex.invalid">
-                                        <div *ngIf="g.sex.errors.required" class="errors text-danger">Please select male/female
+                                        <div *ngIf="g.sex.touched && g.sex.invalid" class="text-danger">
+                                            <div *ngIf="g.sex.errors.required" class="errors ">Please select male/female
+                                            </div>
                                         </div>
-                                    </div>
+                                    </mat-radio-group>
+                                   
                                 </div>
                             </div>
 

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MainService } from '../main.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-invoice-media',
@@ -9,18 +11,34 @@ import { MainService } from '../main.service';
 })
 export class InvoiceMediaComponent implements OnInit {
   invoiceAvailable: boolean;
-  link:any=[];
+  link: any='';
   form:FormGroup;
+  invoiceAcceptShow: boolean;
 
-  constructor(private service:MainService, private fb:FormBuilder) { }
+  constructor(private service:MainService, private fb:FormBuilder,private toastr: ToastrService,private router:Router) { }
 
   ngOnInit(): void {
 
  this.form = this.fb.group({
-   declare: new FormControl('')
+   declare: new FormControl(''),
+   user_id: new FormControl('')
+   
  })
    this.getInvoice()
+  
   }
+  submit(){
+    let formdata = new FormData();
+    formdata.append('user_id',JSON.parse(localStorage.getItem('doctor_id')));
+    formdata.append('status','1');
+    this.service.checkinvoice(formdata).subscribe(res=>{
+      console.log(res);
+      this.toastr.info("Invoice updated successfully");
+      this.router.navigateByUrl('/dashboard')
+    })
+  }
+ 
+  
   getInvoice(){
     let formData = new FormData();
     formData.append('user_id',JSON.parse(localStorage.getItem('doctor_id')))
@@ -28,7 +46,12 @@ export class InvoiceMediaComponent implements OnInit {
       console.log(res);
       if(res.status == "1"){
         this.invoiceAvailable = true;
-        this.link = res.data
+        this.link = res.data.file
+        if(res.data.invoicestatus == '0'){
+          this.invoiceAcceptShow = true
+        }else{
+          this.invoiceAcceptShow=false
+        }
       }
     })
   }
