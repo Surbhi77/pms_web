@@ -100,7 +100,7 @@ export class AddEntryComponent implements OnInit {
       nephropathy_dur: new FormControl(''),
       anti_diabetes_medication: new FormControl(''),
       Biguanides: new FormControl(''),
-      medical_condition: new FormControl(''),
+      medical_condition: new FormControl('', [Validators.required] ),
       Sulphonylureas: new FormControl(''),
       Meglitinides: new FormControl(''),
       Thiazolidendiones: new FormControl(''),
@@ -175,9 +175,19 @@ export class AddEntryComponent implements OnInit {
   //   this.secondFormGroup.get("complication").updateValueAndValidity();
 
   // }
+  get g() {
+    return this.firstFormGroup.controls;
+  }
+  get f() {
+    return this.secondFormGroup.controls;
+  }
+  get h(){
+    return this.thirdFormGroup.controls;
+  }
+  
   firstForm(event: any) {
     console.log(event);
-    if (!this.firstFormGroup.valid) {
+    if (!this.secondFormGroup.valid) {
       
       this.firstFormGroup.markAllAsTouched()
       this.toastr.error("Please fill all the fields")
@@ -225,6 +235,7 @@ export class AddEntryComponent implements OnInit {
       this.secondFormGroup.markAllAsTouched()
       console.log("not valid")
       this.toastr.error("Please fill all the fields")
+      console.log(this.secondFormGroup.value)
     }
     else {
      
@@ -326,7 +337,7 @@ export class AddEntryComponent implements OnInit {
       })
     }
   }
-
+  
   date(e){
     var date = new Date(e.value),
       yr = date.getFullYear(),
@@ -360,9 +371,9 @@ export class AddEntryComponent implements OnInit {
   public hasError4 = (controlName: string, errorName: string) => {
     return this.fourthFormGroup.controls[controlName].hasError(errorName);
   }
-  public g =  (controlName: string, errorName: string)=> {
-    return this.firstFormGroup.controls[controlName].hasError(errorName);;
-  }
+  // public g =  (controlName: string, errorName: string)=> {
+  //   return this.firstFormGroup.controls[controlName].hasError(errorName);;
+  // }
   onclick(event: any) {
     console.log(event)
     if (event.value == 'yes') {
@@ -753,7 +764,7 @@ export class AddEntryComponent implements OnInit {
         console.log(res)
        // this.router.navigateByUrl('/add-entry-process')
        if(event){
-        alert("The draft has been saved successfully")
+        this.toastr.success("Please fill all the fields")
         this.router.navigateByUrl("/dashboard");
        }
 
@@ -761,6 +772,7 @@ export class AddEntryComponent implements OnInit {
     }
     else{
       console.log('not valid')
+      this.toastr.error("Please fill all the fields")
        this.fourthFormGroup.markAllAsTouched()
      }
     }

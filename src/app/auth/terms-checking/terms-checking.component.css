@@ -1,0 +1,22 @@
+.inline_check mat-checkbox {
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+.inline_check {
+    display: flex;
+}
+
+.next_btn {
+    background: #0f406b;
+    color: #fff;
+    border-radius: 50px;
+    margin-right: 10px;
+    padding: 6px 33px;
+    border: none;
+    letter-spacing: 1px;
+}
+
+.content {
+    font: message-box;
+}

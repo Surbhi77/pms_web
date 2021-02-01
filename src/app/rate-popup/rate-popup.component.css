@@ -1,12 +1,8 @@
 .next_btn {
-    background: #0f406b;
-    color: #fff;
-    border-radius: 50px;
-    margin-right: 10px;
-    padding: 6px 33px;
-    margin-top: 30px;
-    border: none;
     letter-spacing: 1px;
+    position: absolute;
+    left: 470px;
+    top: -17px;
 }
 
 dialog {
@@ -14,5 +10,21 @@ dialog {
 }
 
 .title {
-    display: contents;
+    display: revert;
+    position: relative;
+}
+
+.mat-dailog-container {
+    display: block;
+    padding: 24px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    overflow: auto;
+    outline: 0;
+    width: 50% !important;
+    height: 100%;
+    min-height: inherit;
+    max-height: inherit;
+    align-items: center;
+    margin: auto !important;
 }

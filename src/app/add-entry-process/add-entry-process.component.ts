@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-entry-process',
@@ -11,7 +12,7 @@ export class AddEntryProcessComponent implements OnInit {
  
   form:FormGroup;
   mobNumberPattern = "^((\\+91-?)|0)?[0-9]{10}$";  
-  constructor(private fb:FormBuilder, private router:Router) { }
+  constructor(private fb:FormBuilder, private router:Router,private toastr: ToastrService) { }
 
   ngOnInit(): void {
  this.form = this.fb.group({
@@ -31,10 +32,11 @@ export class AddEntryProcessComponent implements OnInit {
       
     localStorage.setItem('mobile',this.form.value.mobile)
     this.router.navigateByUrl('/add-entry')
-   
+    this.toastr.success("Form submitted successfully")
     }
     else{
       console.log("not valid")
+      this.toastr.error("Please fill all the fields")
       this.form.markAllAsTouched()
     }
   }

@@ -240,7 +240,8 @@ export class KapSurveyComponent implements OnInit {
     }
   }
   popup1(){
-    this.dialog.open(RatePopupComponent);
+    this.dialog.open(RatePopupComponent, {
+      width: '40%'}); 
 
   }
   closeDialog() {

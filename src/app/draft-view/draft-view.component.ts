@@ -45,6 +45,9 @@ export class DraftViewComponent implements OnInit {
   resetform: any=[];
   nowDate: string;
   formId: any;
+  completed: boolean;
+  listingId: any;
+  isEditScreen: boolean;
  
   constructor(private service:MainService,private _formBuilder:FormBuilder,private route:ActivatedRoute, private toastr: ToastrService, private router:Router) { }
   viewData:any = []
@@ -163,6 +166,26 @@ export class DraftViewComponent implements OnInit {
       glargine_insulin_dinner: new FormControl('')
 
     })
+  //   const routeParams = this.route.snapshot.params;
+  //   if(routeParams != undefined && Object.keys(routeParams).length>0){
+  //     console.log(routeParams)
+  //     this.isEditScreen =  true;
+  //     this.listingId = routeParams.id;
+  //     if(routeParams && routeParams.completed){
+  //       this.completed = true;
+  //       this.firstFormGroup.disable();
+  //       this.secondFormGroup.disable();
+  //       this.thirdFormGroup.disable();
+  //       this.fourthFormGroup.disable();
+  //     }else{
+  //       this.completed = false
+  //     }
+      
+  //   }else{
+  //     this.isEditScreen = false;
+  //     this.completed = false;
+  //   }
+  // }
     const formdata = new FormData();
     formdata.append('id',this.route.snapshot.params.id)
     this.service.draftView(formdata).subscribe((res:any)=>{

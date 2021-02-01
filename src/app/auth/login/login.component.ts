@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
        
         
         if(this.agrredata.aggrement == 'no'){
-          this.dialog.open(TermsCheckingComponent);   
+          this.dialog.open(TermsCheckingComponent,{width: '40%'});   
         }else{
         this.router.navigateByUrl('/dashboard');
        
