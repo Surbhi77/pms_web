@@ -134,11 +134,11 @@ export class AddEntryComponent implements OnInit {
 
     this.thirdFormGroup = this._formBuilder.group({
     //  blood_investigation: new FormControl(''),
-      blood_investigation_Creatinine: new FormControl('',[Validators.required]),
-      blood_investigation_HPLC: new FormControl('',[Validators.required]),
-      blood_investigation_hba1c: new FormControl('',[Validators.required]),
-      blood_investigation_ppg: new FormControl('',[Validators.required]),
-      blood_investigation_duration: new FormControl('',[Validators.required]),
+    fasting_plasma:new FormControl('' ,[Validators.required]),
+    postprandial_plasma:new FormControl('',[Validators.required]),
+    glyscolated:new FormControl('',[Validators.required]),
+    hba1_c:new FormControl('',[Validators.required]),
+    s_creatinine:new FormControl('')
 
       
     })
@@ -310,11 +310,11 @@ export class AddEntryComponent implements OnInit {
     else {
      
       const formData = new FormData()
-      this.blood_investigation_obj.blood_investigation_Creatinine = this.thirdFormGroup.value.blood_investigation_Creatinine
-      this.blood_investigation_obj.blood_investigation_HPLC = this.thirdFormGroup.value.blood_investigation_HPLC
-      this.blood_investigation_obj.blood_investigation_hba1c = this.thirdFormGroup.value.blood_investigation_hba1c
-      this.blood_investigation_obj.blood_investigation_ppg = this.thirdFormGroup.value.blood_investigation_ppg
-      this.blood_investigation_obj.blood_investigation_duration = this.thirdFormGroup.value.blood_investigation_duration;
+      this.blood_investigation_obj.s_creatinine = this.thirdFormGroup.value.s_creatinine
+      this.blood_investigation_obj.hba1_c = this.thirdFormGroup.value.hba1_c
+      this.blood_investigation_obj.glyscolated = this.thirdFormGroup.value.glyscolated
+      this.blood_investigation_obj.postprandial_plasma = this.thirdFormGroup.value.postprandial_plasma
+      this.blood_investigation_obj.fasting_plasma = this.thirdFormGroup.value.fasting_plasma;
       formData.append("blood_investigation", JSON.stringify(this.blood_investigation_obj));
       formData.append('id',this.formId)
       this.service.addInitiate(formData).subscribe((res:any) => {

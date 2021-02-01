@@ -69,5 +69,8 @@ export class MainService {
   changePass(data:any){
     return this.http.post("https://360pmt.com/pms-app/Pms_app/change_password", data)
   }
+  invoicemedia(data:any){
+ return this.http.post("http://360pmt.com/pms-app/Pms_app/userinvoice", data)
+  }
 
 }

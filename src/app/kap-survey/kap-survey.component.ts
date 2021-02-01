@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MainService } from '../main.service';
 import { Router } from '@angular/router';
-import { MatDialog} from '@angular/material/dialog';
+import { MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { RatePopupComponent } from '../rate-popup/rate-popup.component';
 
 
 @Component({
@@ -239,11 +240,15 @@ export class KapSurveyComponent implements OnInit {
     }
   }
   popup1(){
-    this.dialog.open(ratePopup);
+    this.dialog.open(RatePopupComponent);
+
   }
-  popup2(){
-    this.dialog.open(ratePopup);
+  closeDialog() {
+   
   }
+  // popup2(){
+  //   this.dialog.open(ratePopup);
+  // }
 
   submit() {
     var formData: any = new FormData();
@@ -337,6 +342,7 @@ export class KapSurveyComponent implements OnInit {
           // this.krvey =res
         console.log(res)
         localStorage.setItem("kdp_survey",'yes')
+        this.router.navigateByUrl('/dashboard')
 
         //this.router.navigateByUrl('/add-entry')
 
@@ -351,8 +357,3 @@ export class KapSurveyComponent implements OnInit {
   }
 
 }
-@Component({
-  selector: 'ratePopup',
-  templateUrl: 'ratePopup.component.html',
-})
-export class ratePopup {}

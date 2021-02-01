@@ -135,14 +135,11 @@ export class DraftViewComponent implements OnInit {
     });
     
     this.thirdFormGroup = this._formBuilder.group({
-     // blood_investigation: new FormControl(''),
-      blood_investigation_Creatinine: new FormControl(''),
-      blood_investigation_HPLC: new FormControl(''),
-      blood_investigation_hba1c: new FormControl(''),
-      blood_investigation_ppg: new FormControl(''),
-      blood_investigation_duration: new FormControl(''),
-
-      
+      fasting_plasma:new FormControl(''),
+      postprandial_plasma:new FormControl(''),
+      glyscolated:new FormControl(''),
+      hba1_c:new FormControl(''),
+      s_creatinine:new FormControl('')
     })
     this.fourthFormGroup = this._formBuilder.group({
       // fourty_iu_vial: new FormControl(''),
@@ -173,170 +170,19 @@ export class DraftViewComponent implements OnInit {
 
     this.viewData = res.data
     this.populateDetails()
-    if(this.viewData.medical_condition='yes'){
+    if(this.viewData.medical_condition=='yes'){
       this.medication = true;
     }
     else{
       this.medication = false;
     }
-    
-    // this.bloodInvetigateObj =JSON.parse(this.viewData.blood_investigation);
-    // console.log(this.bloodInvetigateObj)
-    // this.hyperArray = JSON.parse(this.viewData.hypertension_dur)
-    // console.log(this.hyperArray);
-    // this.dyslipidemiaObj =JSON.parse(this.viewData.dyslipidemia_dur)
-    // console.log(this.dyslipidemiaObj);
-    // this.coronaryObj = JSON.parse(this.viewData.coronary_artery_dur)
-    // console.log( this.coronaryObj)
-    // this.strokeObj = JSON.parse(this.viewData.stroke_dur);
-    // console.log(this.strokeObj);
-    // this.neuropathyObj = JSON.parse(this.viewData.neuropathy_dur);
-    // console.log( this.neuropathyObj)
-    // this.retinopathyObj =JSON.parse (this.viewData.retinopathy_dur)
-    // console.log( this.retinopathyObj );
-    // this.nephropathyObj = JSON.parse(this.viewData.nephropathy_dur)
-    // console.log( this.nephropathyObj )
-    // this.secondFormGroup.patchValue({
-    //  // "complication":this.vascularArray.complication,
-    //   "hypertension_dur":this.hyperArray.hypertension_dur,
-    //   "duration":this.hyperArray.duration_hypertension,
-    //   "medications":this.hyperArray.hypertension_medications,
-    //   "dyslipidemia_dur":this.dyslipidemiaObj.dyslipidemia_dur,
-    //   "dyslipidemia_duration":this.dyslipidemiaObj.dyslipidemia_duration,
-    //   "dyslipidemia_medication":this.dyslipidemiaObj.dyslipidemia_medication,
-    //   "coronary_artery_dur":this.coronaryObj.coronary_artery_dur,
-    //   "coronary_artery_duration":this.coronaryObj.coronary_artery_duration,
-    //   "coronary_artery_medication":this.coronaryObj.coronary_artery_medication,
-    //   "stroke_dur":this.strokeObj.stroke_dur,
-    //   "stroke_duration":this.strokeObj.stroke_duration,
-    //   "stroke_medication":this.strokeObj.stroke_medication,
-    //   "neuropathy_dur":this.neuropathyObj.neuropathy_dur,
-    //   "neuropathy_duration":this.neuropathyObj.neuropathy_duration,
-    //   "neuropathy_medication":this.neuropathyObj.neuropathy_medication,
-    //   "retinopathy_dur":this.retinopathyObj.retinopathy_dur,
-    //   "retinopathy_duration":this.retinopathyObj.retinopathy_duration,
-    //   "retinopathy_medication":this.retinopathyObj.retinopathy_medication,
-    //   "nephropathy_dur":this.nephropathyObj.nephropathy_dur,
-    //   "nephropathy_duration":this.nephropathyObj.nephropathy_duration,
-    //   "nephropathy_medication":this.nephropathyObj.nephropathy_medication,
-      
-    // })
-    // this.secondFormGroup.updateValueAndValidity();
-   
-    // this.thirdFormGroup.patchValue({
-    //  // "blood_investigation":this.bloodInvetigateObj.blood_investigation,
-    //   "blood_investigation_duration":this.bloodInvetigateObj.blood_investigation_duration,
-    //   "blood_investigation_ppg":this.bloodInvetigateObj.blood_investigation_ppg,
-    //   "blood_investigation_hba1c":this.bloodInvetigateObj.blood_investigation_hba1c,
-    //   "blood_investigation_HPLC":this.bloodInvetigateObj.blood_investigation_HPLC,
-    //   "blood_investigation_Creatinine":this.bloodInvetigateObj.blood_investigation_Creatinine,
-    // })
-    // this.thirdFormGroup.updateValueAndValidity();
-    // this.human_premixedfiftyArray = JSON.parse(this.viewData.human_premixed_fifty)
-    // console.log(this.human_premixedfiftyArray )
-    // this.human_premixedthirtyArray = JSON.parse(this.viewData.human_premixed_thirty);
-    // console.log(this.human_premixedthirtyArray);
-    // this.regular_insulinArray = JSON.parse(this.viewData.regular_insulin);
-    // console.log(this.regular_insulinArray);
-    // this.nph_insulinArray = JSON.parse(this.viewData.nph_insulin);
-    // console.log(this.nph_insulinArray);
-    // this.glargine_insulinArray = JSON.parse(this.viewData.glargine_insulin);
-    // console.log( this.glargine_insulinArray)
-    // this.fourthFormGroup.patchValue({
-    //   "human_premixed_thirty":this.human_premixedthirtyArray.human_premixed_thirty,
-    //   "human_premixed_thirty_breakfast":this.human_premixedthirtyArray.human_premixed_thirty_breakfast,
-    //   "human_premixed_thirty_dinner":this.human_premixedthirtyArray.human_premixed_thirty_dinner,
-    //   "human_premixed_fifty":this.human_premixedfiftyArray.human_premixed_fifty,
-    //   "human_premixed_fifty_breakfast":this.human_premixedfiftyArray.human_premixed_fifty_breakfast,
-    //   "human_premixed_fifty_dinner":this.human_premixedfiftyArray.human_premixed_fifty_dinner,
-    //   "regular_insulin":this.regular_insulinArray.regular_insulin,
-    //   "regular_insulin_breakfast":this.regular_insulinArray.regular_insulin_breakfast,
-    //   "regular_insulin_dinner":this.regular_insulinArray.regular_insulin_dinner,
-    //   "nph_insulin":this.nph_insulinArray.nph_insulin,
-    //   "nph_insulin_breakfast":this.nph_insulinArray.nph_insulin_breakfast,
-    //   "nph_insulin_dinner":this.nph_insulinArray.nph_insulin_dinner,
-    //   "glargine_insulin":this.glargine_insulinArray.glargine_insulin,
-    //   "glargine_insulin_breakfast":this.glargine_insulinArray.glargine_insulin_breakfast,
-    //   "glargine_insulin_dinner":this.glargine_insulinArray.glargine_insulin_dinner
-
-    // })
-    // this.fourthFormGroup.updateValueAndValidity();
-    
-    
-    // if(this.human_premixedthirtyArray.human_premixed_thirty){
-    //   this.human_premixedthirty = true
-    // }
-    // else{
-    //   this.human_premixedthirty = false
-    // }
-    // if(this.human_premixedfiftyArray.human_premixed_fifty){
-    //   this.human_premixedfifty = true
-    // }
-    // else{
-    //   this.human_premixedfifty = false
-    // }
-    // if(this.regular_insulinArray.regular_insulin){
-    //   this.regular = true
-    // }
-    // else{
-    //   this.regular = false
-    // }
-    // if(this.nph_insulinArray.nph_insulin){
-    //   this.nph = true
-    // }
-    // else{
-    //   this.nph = false
-    // }
-    // if(this.glargine_insulinArray.glargine_insulin){
-    //   this.glargine = true
-    // }
-    // else{
-    //   this.glargine = false
-    // }
-    // if(this.hyperArray.hypertension_dur){
-    //   this.hypertension = true;
-    // }
-    // else{
-    //   this.hypertension = false;
-    // }
-    // if(this.dyslipidemiaObj.dyslipidemia_dur){
-    //   this.dyslipidemia = true
-    // }
-    // else{
-    //   this.dyslipidemia = false
-    // }
-    // if(this.coronaryObj.coronary_artery_dur){
-    //   this.coronary = true
-    // }
-    // else{
-    //   this.coronary = false
-    // }
-    // if(this.strokeObj.stroke_dur){
-    //   this.stroke = true
-    // }
-    // else{
-    //   this.stroke = false
-    // }
-    // if(this.neuropathyObj.neuropathy_dur){
-    //   this.neuropathy = true
-    // }
-    // else{
-    //   this.neuropathy = false
-    // }
-    // if(this.retinopathyObj.retinopathy_dur){
-    //   this.retinopathy = true
-    // }
-    // else{
-    //   this.retinopathy = false
-    // }
-    // if(this.nephropathyObj.nephropathy_dur){
-    //   this.nephropathy = true
-    // }
-    // else{
-    //   this.nephropathy = false
-    // }
-   
-    
+  if(this.viewData && this.viewData.medical_condition)
+  {
+     
+      this.secondFormGroup.patchValue({
+        'medical_condition':this.viewData.medical_condition
+      })
+  }  
     })
   }
   weight(event:any){
@@ -457,13 +303,13 @@ populateDetails(){
   }
   if(this.viewData && this.viewData.systolic){
     this.secondFormGroup.patchValue({
-      'systolicpicker':this.viewData.systolic
+      'systolic':this.viewData.systolic
     });
     this.secondFormGroup.updateValueAndValidity();
   }
   if(this.viewData && this.viewData.diastolic){
     this.secondFormGroup.patchValue({
-      'diastolicpicker':this.viewData.diastolic
+      'diastolic':this.viewData.diastolic
     });
     this.secondFormGroup.updateValueAndValidity()
   }
@@ -479,13 +325,8 @@ populateDetails(){
     })
     this.secondFormGroup.updateValueAndValidity();
   }
-  if(this.viewData && this.viewData.medical_condition)
-  {
-    this.secondFormGroup.patchValue({
-      'medical_condition':this.viewData.medical_condition
-    })
-    this.secondFormGroup.updateValueAndValidity();
-  }
+  
+  this.secondFormGroup.updateValueAndValidity();
   if(this.viewData && this.viewData.hypertension_dur != ''){
     this.hyperArray = JSON.parse(this.viewData.hypertension_dur)
     if(this.hyperArray.hypertension_dur){
@@ -627,7 +468,7 @@ populateDetails(){
   }
   if(this.viewData && this.viewData.anti_diabetes_medication!='')
   {
-    this.antidiabetes =this.viewData.anti_diabetes_medication
+    this.antidiabetes = JSON.parse(this.viewData.anti_diabetes_medication)
     console.log(this.antidiabetes)
     this.secondFormGroup.patchValue({
       'anti_diabetes_medication':this.antidiabetes.anti_diabetes_medication
@@ -637,11 +478,11 @@ populateDetails(){
   if(this.viewData && this.viewData.blood_investigation!=''){
     this.bloodInvetigateObj = JSON.parse(this.viewData.blood_investigation)
     this.thirdFormGroup.patchValue({
-      "blood_investigation_duration":this.bloodInvetigateObj.blood_investigation_duration,
-      "blood_investigation_ppg":this.bloodInvetigateObj.blood_investigation_ppg,
-      "blood_investigation_hba1c":this.bloodInvetigateObj.blood_investigation_hba1c,
-      "blood_investigation_HPLC":this.bloodInvetigateObj.blood_investigation_HPLC,
-      "blood_investigation_Creatinine":this.bloodInvetigateObj.blood_investigation_Creatinine,
+      'fasting_plasma':this.bloodInvetigateObj.fasting_plasma,
+      'postprandial_plasma':this.bloodInvetigateObj.postprandial_plasma,
+      'glyscolated':this.bloodInvetigateObj.glyscolated,
+      'hba1_c':this.bloodInvetigateObj.hba1_c,
+      's_creatinine':this.bloodInvetigateObj.s_creatinine
     });
     this.thirdFormGroup.updateValueAndValidity()
   }
@@ -769,7 +610,14 @@ populateDetails(){
   getinsulin(){
     return Array.from({length:198 }, (_value , k) => k + 3  );
   }
-  
+  antiDiabetes(event,name){
+    if(event.checked){
+      this.anti_diabetes.push(name)
+    }else{
+      var i = this.anti_diabetes.indexOf(name);
+      this.anti_diabetes.splice(i,1);
+    }
+  }
   onclick(event: any) {
     console.log(event)
     if (event.value == 'yes' ) {
@@ -1041,7 +889,8 @@ populateDetails(){
       formData.append(" diastolic", this.secondFormGroup.value.diastolic);
       formData.append("smoking", this.secondFormGroup.value.smoking);
       formData.append("alcohol", this.secondFormGroup.value.alcohol);
-      formData.append("id", this.formId )
+      formData.append("id",this.route.snapshot.params.id  )
+      formData.append("form_id",this.formId )
       formData.append("hypertension_dur", JSON.stringify(this.medical));
       formData.append("dyslipidemia_dur", JSON.stringify(this.dyslipidemiaArrray));
       formData.append("coronary_artery_dur", JSON.stringify(this.coronaryArray));
@@ -1074,13 +923,14 @@ populateDetails(){
     else {
      
       const formData = new FormData()
-      this.blood_investigation_obj.blood_investigation_Creatinine = this.thirdFormGroup.value.blood_investigation_Creatinine
-      this.blood_investigation_obj.blood_investigation_HPLC = this.thirdFormGroup.value.blood_investigation_HPLC
-      this.blood_investigation_obj.blood_investigation_hba1c = this.thirdFormGroup.value.blood_investigation_hba1c
-      this.blood_investigation_obj.blood_investigation_ppg = this.thirdFormGroup.value.blood_investigation_ppg
-      this.blood_investigation_obj.blood_investigation_duration = this.thirdFormGroup.value.blood_investigation_duration;
+      this.blood_investigation_obj.s_creatinine = this.thirdFormGroup.value.s_creatinine
+      this.blood_investigation_obj.hba1_c = this.thirdFormGroup.value.hba1_c
+      this.blood_investigation_obj.glyscolated = this.thirdFormGroup.value.glyscolated
+      this.blood_investigation_obj.postprandial_plasma = this.thirdFormGroup.value.postprandial_plasma
+      this.blood_investigation_obj.fasting_plasma = this.thirdFormGroup.value.fasting_plasma;
       formData.append("blood_investigation", JSON.stringify(this.blood_investigation_obj));
-      formData.append('id',this.formId)
+      formData.append("id",this.route.snapshot.params.id  )
+      formData.append("form_id",this.formId )
       this.service.addInitiate(formData).subscribe((res:any) => {
         console.log(res)
         if(event){
@@ -1114,6 +964,7 @@ populateDetails(){
       this.glargine_insulin_Obj.glargine_insulin_dinner = this.fourthFormGroup.value.glargine_insulin_dinner;
       const formData = new FormData()
       formData.append("id", this.formId)
+      formData.append("form_id", this.formId)
       formData.append("status", 'yes')
       formData.append("human_premixed_thirty", JSON.stringify(this.human_premixed_thirty_Obj));
       formData.append("human_premixed_fifty", JSON.stringify(this.human_premixed_fifty_Obj));

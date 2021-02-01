@@ -17,6 +17,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { QuriesComponent } from './quries/quries.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { InvoiceMediaComponent } from './invoice-media/invoice-media.component';
 
 
 const routes: Routes = [
@@ -106,6 +107,10 @@ const routes: Routes = [
     path:'dashboard',
     component:DashboardComponent
     ,canActivate : [AuthGuard]
+  },
+  {
+    path:'invoice-media',
+    component:InvoiceMediaComponent
   }
  
 ];

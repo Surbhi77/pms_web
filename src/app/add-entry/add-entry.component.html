@@ -762,10 +762,10 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Duration</mat-label>
-                                        <mat-select formControlName="blood_investigation_duration">
+                                        <mat-select formControlName="fasting_plasma">
                                             <mat-option *ngFor="let index of getSystolic()" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
-                                        <mat-error *ngIf="hasError3('blood_investigation_duration', 'required')">Fasting Plasma Glucose field is required</mat-error>
+                                        <mat-error *ngIf="hasError3('fasting_plasma', 'required')">Fasting Plasma Glucose field is required</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -777,10 +777,10 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Plasma Glucose</mat-label>
-                                        <mat-select formControlName="blood_investigation_ppg">
+                                        <mat-select formControlName="postprandial_plasma">
                                             <mat-option *ngFor="let index of getPpg()" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
-                                        <mat-error *ngIf="hasError3('blood_investigation_ppg', 'required')">blood_investigation_ppg field is required</mat-error>
+                                        <mat-error *ngIf="hasError3('postprandial_plasma', 'required')">blood_investigation_ppg field is required</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -792,23 +792,22 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Hemoglobin</mat-label>
-                                        <mat-select formControlName="blood_investigation_hba1c">
+                                        <mat-select formControlName="glyscolated">
                                             <mat-option *ngFor="let index of gethbalc()" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
-                                        <mat-error *ngIf="hasError3('blood_investigation_hba1c', 'required')">blood_investigation_hba1c field is required</mat-error>
+                                        <mat-error *ngIf="hasError3('glyscolated', 'required')">blood_investigation_hba1c field is required</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
-
                             <div class="col-lg-4 col-md-4 col-12 mb-3">
                                 <div class="check_nones mb-3">
                                     <p>HbA1c test performed in Lab (HPLC)</p>
                                 </div>
                                 <div class="entry-inputs-block">
-                                    <mat-radio-group formControlName="blood_investigation_HPLC" color="primary" aria-label="Select an option">
+                                    <mat-radio-group formControlName="hba1_c" color="primary" aria-label="Select an option">
                                         <mat-radio-button value="yes" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="no">No</mat-radio-button>
-                                        <mat-error *ngIf="hasError3('blood_investigation_HPLC', 'required')">blood_investigation_HPLC field is required</mat-error>
+                                        <mat-error *ngIf="hasError3('hba1_c', 'required')">blood_investigation_HPLC field is required</mat-error>
                                     </mat-radio-group>
                                 </div>
                             </div>
@@ -820,7 +819,7 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>S.Creatinine</mat-label>
-                                        <mat-select formControlName="blood_investigation_Creatinine">
+                                        <mat-select formControlName="s_creatinine">
                                             <mat-option *ngFor="let index of getCreatinine();" value='{{index}}'>{{index}}</mat-option>
 
                                         </mat-select>

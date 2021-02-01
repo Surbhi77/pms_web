@@ -13,8 +13,8 @@
                 <h1 class="text-center" (click)="beginclick()"> For Begin</h1>
 
                 <div class="card-content col-md-12 col-12 col-lg-12 howitworks" *ngIf="beginvideo">
-                    <video autoplay>
-                        <source src="/assets/vedio/begin.mp4" type="video/mp4">
+                    <video autoplay loop="loop" width="100%" height="400">
+                        <source src="/assets/vedio/begin2.mp4" type="video/mp4">
                     </video>
 
                 </div>
@@ -27,15 +27,15 @@
             <div class="card-details">
 
                 <h1 class="text-center" (click)="initiateclick()"> For Initiate</h1>
-                
-                    <div class="card-content col-md-12 col-12 col-lg-12" *ngIf="initiatevideo">
-                        <video  autoplay>
+
+                <div class="card-content col-md-12 col-12 col-lg-12" *ngIf="initiatevideo">
+                    <video autoplay loop="loop" width="100%" height="400">
                             <source src="/assets/vedio/initiate.mp4" type="video/mp4">
 
                         </video>
 
-                    </div>
-                
+                </div>
+
 
 
 

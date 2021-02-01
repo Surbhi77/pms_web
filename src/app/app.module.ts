@@ -69,6 +69,8 @@ import { TermsCheckingComponent } from './auth/terms-checking/terms-checking.com
 import { PatientLogsComponent } from './patient-logs/patient-logs.component';
 import { ToastrModule } from 'ngx-toastr';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { InvoiceMediaComponent } from './invoice-media/invoice-media.component';
+import { RatePopupComponent } from './rate-popup/rate-popup.component';
 
 
 
@@ -98,7 +100,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ChangePasswordComponent,
     QuriesComponent,
     PatientLogsComponent,
-    TermsCheckingComponent
+    TermsCheckingComponent,
+    InvoiceMediaComponent,
+    RatePopupComponent
     
    
   ],
