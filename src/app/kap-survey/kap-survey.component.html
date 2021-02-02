@@ -213,7 +213,7 @@
         <mat-step [stepControl]="thirdFormGroup">
             <ng-template matStepLabel>Physician perspectives of patient barriers to insulin therapy</ng-template>
             <form [formGroup]="thirdFormGroup">
-                <button (click)="popup1()" class="next_btn"><svg src="assets/image/info-circle"></svg>How to rate</button>
+                <button (click)="popup1()" class="next_btn">How to rate</button>
                 <div class="agger_group">
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <div class="check_nones">
@@ -344,8 +344,9 @@
                                 <mat-checkbox color="primary" [disabled]="impacts.length>=3" (change)="impactChange($event,'Reduce')" formControlName="Reduce" class="example-margin d-block mb-2">Reduce Infections</mat-checkbox>
                                 <mat-checkbox color="primary" [disabled]="impacts.length>=3" (change)="impactChange($event,'Neuropathy')" formControlName="Neuropathy" class="example-margin d-block mb-2">Neuropathy</mat-checkbox>
                                 <mat-checkbox color="primary" [disabled]="impacts.length>=3" (change)="impactChange($event,'CIMT')" formControlName="CIMT" class="example-margin d-block mb-2">Reduces CIMT</mat-checkbox>
-                                <p *ngIf="checkmulti" class="alert alert-danger">Choose three clinically impactful options</p>
+
                             </div>
+                            <p *ngIf="checkmulti" class="alert alert-danger">Choose three clinically impactful options</p>
                         </div>
 
                         <div class="check_nones pt-4">
