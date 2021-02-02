@@ -55,13 +55,10 @@ export class BeginViewComponent implements OnInit {
   retinopathyobj: any = {};
   nephropathyobj: any = {};
   glargineinsulinobj: any = {};
- 
+  completed: boolean;
   now2: any;
   now3: any;
   bmi:any;
-
- 
-  //nph: boolean;
   glargine: boolean;
   formId: any;
   response: any;
@@ -297,6 +294,7 @@ export class BeginViewComponent implements OnInit {
 
     })
   }
+  
   updatevalue(){
     if(this.beginview && this.beginview.pen_serial!=''){
       this.firstFormGroup.patchValue({
@@ -661,6 +659,7 @@ export class BeginViewComponent implements OnInit {
       console.log(this.now2)
   
     }
+    
   
   getvalue() {
     return Array.from({ length: 451 }, (v, k) => k + 50);

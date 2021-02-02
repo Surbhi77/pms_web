@@ -44,6 +44,7 @@
                                         <input matInput formControlName="date_visit" [matDatepicker]="visit_date" (dateChange)="vistedate($event)">
                                         <mat-datepicker-toggle matSuffix [for]="visit_date"></mat-datepicker-toggle>
                                         <mat-datepicker #visit_date></mat-datepicker>
+                                        <mat-error *ngIf="hasError('date_visit', 'required')">date_visit is required</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -91,11 +92,8 @@
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Enter Age in years</mat-label>
                                         <input matInput formControlName="age" type="number" placeholder="Ex. 24 Year" value="">
-                                        <ng-container *ngIf="g.age.touched && g.age.invalid">
-                                            <mat-error *ngIf="g.age.errors.required" class="errors">
-                                                Age is required.
-                                            </mat-error>
-                                        </ng-container>
+                                       
+                                        <mat-error *ngIf="hasError('age', 'required')"> Age is required.</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -108,11 +106,8 @@
 
                                             <mat-option *ngFor="let index of getweight()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
-                                        <ng-container *ngIf="g.weight.touched && g.weight.invalid">
-                                            <mat-error *ngIf="g.weight.errors.required" class="errors">
-                                                select weight is required.
-                                            </mat-error>
-                                        </ng-container>
+                                       
+                                        <mat-error *ngIf="hasError('weight', 'required')"> weight is required.</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -128,11 +123,8 @@
                                         <mat-select formControlName="height" (selectionChange)="height($event)">
                                             <mat-option *ngFor="let index of getheight()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
-                                        <ng-container *ngIf="g.height.touched && g.height.invalid">
-                                            <mat-error *ngIf="g.height.errors.required" class="errors">
-                                                select Height is required.
-                                            </mat-error>
-                                        </ng-container>
+                                      
+                                        <mat-error *ngIf="hasError('height', 'required')"> height is required.</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -165,6 +157,7 @@
                                 <div class="entry-inputs-block">
 
                                     <mat-radio-group formControlName="education" color="primary" formControlName="education" aria-label="Select an option">
+                                        <mat-radio-button value="none" class="mr-5">None</mat-radio-button>
                                         <mat-radio-button value="primary" class="mr-5">Primary</mat-radio-button>
                                         <mat-radio-button value="high school">High School</mat-radio-button>
                                         <mat-radio-button value="Pre_University">Pre_University</mat-radio-button>
@@ -183,6 +176,7 @@
                                 </div>
                                 <div class="entry-inputs-block">
                                     <mat-radio-group formControlName="employment" color="primary" formControlName="employment" aria-label="Select an option">
+                                        <mat-radio-button value="none" class="mr-5">None</mat-radio-button>
                                         <mat-radio-button value="Employed" class="mr-5">Employed</mat-radio-button>
                                         <mat-radio-button value="Unemployed">Unemployed</mat-radio-button>
                                     </mat-radio-group>
@@ -215,11 +209,12 @@
                                         <mat-select formControlName="duration_diabetes">
                                             <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
-                                        <ng-container *ngIf="f.duration_diabetes.touched && f.duration_diabetes.invalid">
+                                        <!-- <ng-container *ngIf="f.duration_diabetes.touched && f.duration_diabetes.invalid">
                                             <mat-error *ngIf="f.duration_diabetes.errors.required" class="errors">
-                                                select weight is required.
+                                                select Duration of Diabetes is required.
                                             </mat-error>
-                                        </ng-container>
+                                        </ng-container> -->
+                                        <mat-error *ngIf="hasError2('duration_diabetes', 'required')"> duration_diabetes is required.</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -231,6 +226,8 @@
                                         <mat-select formControlName="treated_diabetes">
                                             <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
+                                        <mat-error *ngIf="hasError2('treated_diabetes', 'required')"> treated_diabetes is required.</mat-error>
+                                       
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -252,7 +249,7 @@
                                     </mat-radio-group>
                                     <ng-container *ngIf="f.family_diabetes.touched && f.family_diabetes.invalid">
                                         <mat-error *ngIf="f.family_diabetes.errors.required" class="errors">
-                                            Family history of Diabetes is required.
+                                            select any one option 
                                         </mat-error>
                                     </ng-container>
 
@@ -274,7 +271,11 @@
                                     <mat-radio-group color="primary" formControlName="hypertension" aria-label="Select an option">
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="0">No</mat-radio-button>
-
+                                        <ng-container *ngIf="f.hypertension.touched && f.hypertension.invalid">
+                                            <mat-error *ngIf="f.hypertension.errors.required" class="errors">
+                                                select any one option 
+                                            </mat-error>
+                                        </ng-container>
                                     </mat-radio-group>
 
                                 </div>
@@ -287,9 +288,11 @@
                                         <mat-select formControlName="duration_hypertension">
                                             <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
-                                        <div *ngIf="f.duration_hypertension.touched && f.duration_hypertension.invalid">
+                                        <!-- <div *ngIf="f.duration_hypertension.touched && f.duration_hypertension.invalid">
                                             <div *ngIf="f.duration_hypertension.errors.required" class="errors text-danger">Please select any one </div>
-                                        </div>
+                                        </div> -->
+                                        <mat-error *ngIf="hasError2('duration_hypertension', 'required')"> duration_hypertension is required.</mat-error>
+                                        
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -326,9 +329,10 @@
                                         <mat-select formControlName="systolic">
                                             <mat-option *ngFor="let index of getvaluefast()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
-                                        <div *ngIf="f.systolic.touched && f.systolic.invalid">
+                                        <!-- <div *ngIf="f.systolic.touched && f.systolic.invalid">
                                             <div *ngIf="f.systolic.errors.required" class="errors text-danger">Please select any one </div>
-                                        </div>
+                                        </div> -->
+                                        <mat-error *ngIf="hasError2('systolic', 'required')"> systolic is required.</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -340,9 +344,10 @@
                                         <mat-select formControlName="diastolic">
                                             <mat-option *ngFor="let index of getvaluefast()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
-                                        <div *ngIf="f.diastolic.touched && f.diastolic.invalid">
+                                        <!-- <div *ngIf="f.diastolic.touched && f.diastolic.invalid">
                                             <div *ngIf="f.diastolic.errors.required" class="errors text-danger">Please select any one </div>
-                                        </div>
+                                        </div> -->
+                                        <mat-error *ngIf="hasError2('diastolic', 'required')"> systolic is required.</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -361,7 +366,11 @@
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="0">No</mat-radio-button>
                                     </mat-radio-group>
-                                    <mat-error *ngIf="hasError('smoking', 'required')">one field is required</mat-error>
+                                    <ng-container *ngIf="f.smoking.touched && f.smoking.invalid">
+                                        <mat-error *ngIf="f.smoking.errors.required" class="errors">
+                                            select any one option 
+                                        </mat-error>
+                                    </ng-container>
 
                                 </div>
                             </div>
@@ -376,12 +385,11 @@
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="0">No</mat-radio-button>
                                     </mat-radio-group>
-                                    <!-- <div *ngIf="f.alcohol.touched && g.alcohol.invalid">
-                                        <div *ngIf="f.alcohol.errors.required" class="errors text-danger">Please select
-                                            any one</div>
-                                    </div> -->
-
-                                    <mat-error *ngIf="hasError('alcohol', 'required')">one field is required</mat-error>
+                                    <ng-container *ngIf="f.alcohol.touched && f.alcohol.invalid">
+                                        <mat-error *ngIf="f.alcohol.errors.required" class="errors">
+                                            select any one option 
+                                        </mat-error>
+                                    </ng-container>
 
 
                                 </div>
@@ -404,6 +412,12 @@
                                     <mat-radio-group formControlName="medical_condition" (change)="onchange($event)" color="primary" aria-label="Select an option">
                                         <mat-radio-button value="yes" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="no">No</mat-radio-button>
+                                        <ng-container *ngIf="f.medical_condition.touched && f.medical_condition.invalid">
+                                            <mat-error *ngIf="f.medical_condition.errors.required" class="errors">
+                                                Complications and Co morbid medical conditions field is required
+                                            </mat-error>
+                                        </ng-container>
+                                        <!-- <mat-error *ngIf="hasError2('medical_condition', 'required')">Complications and Co morbid medical conditions field is required</mat-error> -->
                                     </mat-radio-group>
                                 </div>
                             </div>
@@ -448,7 +462,12 @@
                                     <mat-radio-group color="primary" formControlName="medications" aria-label="Select an option">
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="2">No</mat-radio-button>
-                                        <mat-error *ngIf="hasError2('medications', 'required')">medications field is required</mat-error>
+                                        <ng-container *ngIf="f.medications.touched && f.medications.invalid">
+                                            <mat-error *ngIf="f.medications.errors.required" class="errors">
+                                                medications field is required
+                                            </mat-error>
+                                        </ng-container>
+                                        <!-- <mat-error *ngIf="hasError2('medications', 'required')">medications field is required</mat-error> -->
                                     </mat-radio-group>
 
                                 </div>
@@ -488,7 +507,12 @@
                                     <mat-radio-group formControlName="dyslipidemia_medication" color="primary" aria-label="Select an option">
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="2">No</mat-radio-button>
-                                        <mat-error *ngIf="hasError2('dyslipidemia_medication', 'required')">medications field is required</mat-error>
+                                        <ng-container *ngIf="f.dyslipidemia_medication.touched && f.dyslipidemia_medication.invalid">
+                                            <mat-error *ngIf="f.dyslipidemia_medication.errors.required" class="errors">
+                                                medications field is required
+                                            </mat-error>
+                                        </ng-container>
+                                        <!-- <mat-error *ngIf="hasError2('dyslipidemia_medication', 'required')">medications field is required</mat-error> -->
                                     </mat-radio-group>
                                 </div>
                             </div>
@@ -527,7 +551,12 @@
                                     <mat-radio-group color="primary" formControlName="coronary_artery_medication" aria-label="Select an option">
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="2">No</mat-radio-button>
-                                        <mat-error *ngIf="hasError2('coronary_artery_medication', 'required')">medications field is required</mat-error>
+                                        <ng-container *ngIf="f.coronary_artery_medication.touched && f.coronary_artery_medication.invalid">
+                                            <mat-error *ngIf="f.coronary_artery_medication.errors.required" class="errors">
+                                                medications field is required
+                                            </mat-error>
+                                        </ng-container>
+                                        <!-- <mat-error *ngIf="hasError2('coronary_artery_medication', 'required')">medications field is required</mat-error> -->
                                     </mat-radio-group>
                                 </div>
                             </div>
@@ -566,7 +595,12 @@
                                     <mat-radio-group color="primary" formControlName="stroke_medication" aria-label="Select an option">
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="2">No</mat-radio-button>
-                                        <mat-error *ngIf="hasError2('stroke_medication', 'required')">duration field is required</mat-error>
+                                        <ng-container *ngIf="f.stroke_medication.touched && f.stroke_medication.invalid">
+                                            <mat-error *ngIf="f.stroke_medication.errors.required" class="errors">
+                                                medications field is required
+                                            </mat-error>
+                                        </ng-container>
+                                        <!-- <mat-error *ngIf="hasError2('stroke_medication', 'required')">duration field is required</mat-error> -->
                                     </mat-radio-group>
                                 </div>
                             </div>
@@ -605,7 +639,12 @@
                                     <mat-radio-group color="primary" formControlName="neuropathy_medication" aria-label="Select an option">
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="2">No</mat-radio-button>
-                                        <mat-error *ngIf="hasError2('neuropathy_medication', 'required')">duration field is required</mat-error>
+                                        <ng-container *ngIf="f.neuropathy_medication.touched && f.neuropathy_medication.invalid">
+                                            <mat-error *ngIf="f.neuropathy_medication.errors.required" class="errors">
+                                                medications field is required
+                                            </mat-error>
+                                        </ng-container>
+                                        <!-- <mat-error *ngIf="hasError2('neuropathy_medication', 'required')">duration field is required</mat-error> -->
                                     </mat-radio-group>
                                 </div>
                             </div>
@@ -644,7 +683,12 @@
                                     <mat-radio-group formControlName="retinopathy_medication" color="primary" aria-label="Select an option">
                                         <mat-radio-button value="Yes" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="No">No</mat-radio-button>
-                                        <mat-error *ngIf="hasError2('retinopathy_medication', 'required')">duration field is required</mat-error>
+                                        <ng-container *ngIf="f.retinopathy_medication.touched && f.retinopathy_medication.invalid">
+                                            <mat-error *ngIf="f.retinopathy_medication.errors.required" class="errors">
+                                                medications field is required
+                                            </mat-error>
+                                        </ng-container>
+                                        <!-- <mat-error *ngIf="hasError2('retinopathy_medication', 'required')">duration field is required</mat-error> -->
                                     </mat-radio-group>
                                 </div>
                             </div>
@@ -683,7 +727,12 @@
                                     <mat-radio-group color="primary" formControlName="nephropathy_medication" aria-label="Select an option">
                                         <mat-radio-button value="yes" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="no">No</mat-radio-button>
-                                        <mat-error *ngIf="hasError2('nephropathy_medication', 'required')">duration field is required</mat-error>
+                                        <ng-container *ngIf="f.nephropathy_medication.touched && f.nephropathy_medication.invalid">
+                                            <mat-error *ngIf="f.nephropathy_medication.errors.required" class="errors">
+                                                medications field is required
+                                            </mat-error>
+                                        </ng-container>
+                                        <!-- <mat-error *ngIf="hasError2('nephropathy_medication', 'required')">duration field is required</mat-error> -->
                                     </mat-radio-group>
                                 </div>
                             </div>
@@ -753,6 +802,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
 
                     <div class="col-sm-12 col-lg-12 col-md-12">
@@ -828,7 +878,12 @@
                                     <mat-radio-group formControlName="hbac_lab" color="primary" aria-label="Select an option">
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="0">No</mat-radio-button>
-                                        <mat-error *ngIf="hasError3('hbac_lab', 'required')">blood_investigation_HPLC field is required</mat-error>
+                                        <ng-container *ngIf="h.hbac_lab.touched && h.hbac_lab.invalid">
+                                            <mat-error *ngIf="h.hbac_lab.errors.required" class="errors">
+                                                medications field is required
+                                            </mat-error>
+                                        </ng-container>
+                                        <!-- <mat-error *ngIf="hasError3('hbac_lab', 'required')">blood_investigation_HPLC field is required</mat-error> -->
                                     </mat-radio-group>
                                 </div>
                             </div>

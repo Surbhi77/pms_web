@@ -91,7 +91,7 @@ export class InvoiceComponent implements OnInit {
       retinopathy_dur: new FormControl(''),
       nephropathy_dur: new FormControl(''),
       Biguanides: new FormControl(''),
-      medical_condition: new FormControl(''),
+      medical_condition: new FormControl('',[Validators.required]),
       Sulphonylureas: new FormControl(''),
       Meglitinides: new FormControl(''),
       Thiazolidendiones: new FormControl(''),
@@ -217,8 +217,12 @@ export class InvoiceComponent implements OnInit {
     return this.secondFormGroup.controls;
 
   }
+  get h() {
+    return this.thirdFormGroup.controls;
+
+  }
   public hasError = (controlName: string, errorName: string) => {
-    return this.secondFormGroup.controls[controlName].hasError(errorName);
+    return this.firstFormGroup.controls[controlName].hasError(errorName);
   }
   public hasError3 = (controlName: string, errorName: string) => {
     return this.thirdFormGroup.controls[controlName].hasError(errorName);
