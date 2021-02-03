@@ -18,7 +18,7 @@ export class InvoiceComponent implements OnInit {
   firstFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
   fourthFormGroup: FormGroup;
-  isLinear = true;
+  isLinear = false;
   secondFormGroup: FormGroup;
   medication: any;
   hypertension: any;

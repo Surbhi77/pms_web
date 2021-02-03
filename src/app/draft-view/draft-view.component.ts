@@ -75,7 +75,7 @@ export class DraftViewComponent implements OnInit {
     this.firstFormGroup = this._formBuilder.group({
       user_id: new FormControl(''),
       id:new FormControl(''),
-     // mobile: new FormControl(''),
+     mobile: new FormControl(''),
       pen_serial: new FormControl(''),
       date_visit: new FormControl(''),
       sex: new FormControl(''),
@@ -166,48 +166,52 @@ export class DraftViewComponent implements OnInit {
       glargine_insulin_dinner: new FormControl('')
 
     })
-  //   const routeParams = this.route.snapshot.params;
-  //   if(routeParams != undefined && Object.keys(routeParams).length>0){
-  //     console.log(routeParams)
-  //     this.isEditScreen =  true;
-  //     this.listingId = routeParams.id;
-  //     if(routeParams && routeParams.completed){
-  //       this.completed = true;
-  //       this.firstFormGroup.disable();
-  //       this.secondFormGroup.disable();
-  //       this.thirdFormGroup.disable();
-  //       this.fourthFormGroup.disable();
-  //     }else{
-  //       this.completed = false
-  //     }
-      
-  //   }else{
-  //     this.isEditScreen = false;
-  //     this.completed = false;
-  //   }
-  // }
-    const formdata = new FormData();
-    formdata.append('id',this.route.snapshot.params.id)
-    this.service.draftView(formdata).subscribe((res:any)=>{
-    console.log(res)
-
-    this.viewData = res.data
-    this.populateDetails()
-    if(this.viewData.medical_condition=='yes'){
-      this.medication = true;
+   // this.routeParams = this.route.snapshot.params;
+   if( this.route.snapshot.params != undefined && Object.keys( this.route.snapshot.params).length>0){
+    console.log( this.route.snapshot.params)
+    this.isEditScreen =  true;
+    this.listingId =  this.route.snapshot.params.id;
+    if( this.route.snapshot.params &&  this.route.snapshot.params.completed){
+      this.completed = true;
+      this.firstFormGroup.disable();
+      this.secondFormGroup.disable();
+      this.thirdFormGroup.disable();
+      this.fourthFormGroup.disable();
+    }else{
+      this.completed = false
     }
-    else{
-      this.medication = false;
-    }
-  if(this.viewData && this.viewData.medical_condition)
-  {
-     
-      this.secondFormGroup.patchValue({
-        'medical_condition':this.viewData.medical_condition
-      })
-  }  
-    })
+    this.getDetails()
+    
+  }else{
+    this.isEditScreen = false;
+    this.completed = false;
   }
+ }
+getDetails(){
+  const formdata = new FormData();
+  formdata.append('id', this.listingId)
+  
+  this.service.draftView(formdata).subscribe((res:any)=>{
+  console.log(res)
+
+  this.viewData = res.data
+  this.populateDetails()
+  if(this.viewData.medical_condition=='yes'){
+    this.medication = true;
+  }
+  else{
+    this.medication = false;
+  }
+if(this.viewData && this.viewData.medical_condition)
+{
+   
+    this.secondFormGroup.patchValue({
+      'medical_condition':this.viewData.medical_condition
+    })
+}  
+  })
+  }
+  
   weight(event:any){
     console.log(event.value)
     if(this.firstFormGroup.value.height && this.firstFormGroup.value.height!=''){
@@ -823,6 +827,7 @@ populateDetails(){
     console.log(newDate);
 
   }
+  
   // bmicalc(){
     
   //   this.bmi =(this.firstFormGroup.value.weight/((this.firstFormGroup.value.height*this.firstFormGroup.value.height)/100))*100
@@ -840,7 +845,7 @@ populateDetails(){
      
       const formData = new FormData()
       formData.append("user_id", JSON.parse(localStorage.getItem('doctor_id')));
-     // formData.append("mobile",JSON.parse(localStorage.getItem('mobile')));
+      formData.append("mobile",JSON.parse(localStorage.getItem('mobile')));
       formData.append("pen_serial", this.firstFormGroup.value.pen_serial);
       formData.append("sex", this.firstFormGroup.value.sex);
       formData.append("date_visit", this.nowDate);
@@ -850,14 +855,27 @@ populateDetails(){
       formData.append("bmi", this.bmi);
       formData.append("education", this.firstFormGroup.value.education);
       formData.append("employment", this.firstFormGroup.value.employment);
+      if(this.isEditScreen){
+        formData.append('id',this.listingId);
+      }
       console.log(this.firstFormGroup.value)
       this.service.addInitiate(formData).subscribe((res:any) => {
-        this.formId = res.data.form_id;
+        // this.formId = res['data'].form_id;
         console.log(res)
-        console.log(this.formId)
-        if(event){
-          this.toastr.success("The draft has been saved successfully")
-         this.router.navigateByUrl('/dashboard')  
+       
+        // if(event){
+        //   this.toastr.success("The draft has been saved successfully")
+        //  this.router.navigateByUrl('/dashboard')  
+        // }
+        if(res.status == "0"){
+          this.toastr.warning(res.message);
+          return false
+        }else{
+          this.formId = res['data'].id;
+          if(event){
+            this.toastr.success("The draft has been saved successfully")
+            this.router.navigateByUrl('/dashboard')
+          }
         }
 
       })
@@ -912,8 +930,7 @@ populateDetails(){
       formData.append(" diastolic", this.secondFormGroup.value.diastolic);
       formData.append("smoking", this.secondFormGroup.value.smoking);
       formData.append("alcohol", this.secondFormGroup.value.alcohol);
-      formData.append("id",this.route.snapshot.params.id  )
-      formData.append("form_id",this.formId )
+     
       formData.append("hypertension_dur", JSON.stringify(this.medical));
       formData.append("dyslipidemia_dur", JSON.stringify(this.dyslipidemiaArrray));
       formData.append("coronary_artery_dur", JSON.stringify(this.coronaryArray));
@@ -923,6 +940,11 @@ populateDetails(){
       formData.append("nephropathy_dur", JSON.stringify(this.nephropathyArray));
       formData.append("medical_condition",this.secondFormGroup.value.medical_condition)
       formData.append("anti_diabetes_medication", JSON.stringify(this.anti_diabetes));
+      if(this.isEditScreen){
+        formData.append('id',this.listingId);
+      }else{
+        formData.append("id",this.formId);
+      }
       this.service.addInitiate(formData).subscribe((res:any) => {
         console.log(res)
         if(event){
@@ -952,8 +974,13 @@ populateDetails(){
       this.blood_investigation_obj.postprandial_plasma = this.thirdFormGroup.value.postprandial_plasma
       this.blood_investigation_obj.fasting_plasma = this.thirdFormGroup.value.fasting_plasma;
       formData.append("blood_investigation", JSON.stringify(this.blood_investigation_obj));
-      formData.append("id",this.route.snapshot.params.id  )
-      formData.append("form_id",this.formId )
+      // formData.append("id",this.route.snapshot.params.id  )
+      // formData.append("form_id",this.formId )
+      if(this.isEditScreen){
+        formData.append('id',this.listingId);
+      }else{
+        formData.append("id",this.formId);
+      }
       this.service.addInitiate(formData).subscribe((res:any) => {
         console.log(res)
         if(event){
@@ -986,14 +1013,19 @@ populateDetails(){
       this.glargine_insulin_Obj.glargine_insulin_breakfast = this.fourthFormGroup.value.glargine_insulin_breakfast;
       this.glargine_insulin_Obj.glargine_insulin_dinner = this.fourthFormGroup.value.glargine_insulin_dinner;
       const formData = new FormData()
-      formData.append("id", this.formId)
-      formData.append("form_id", this.formId)
+      // formData.append("id",this.route.snapshot.params.id)
+      // formData.append("form_id", this.formId)
       formData.append("status", 'yes')
       formData.append("human_premixed_thirty", JSON.stringify(this.human_premixed_thirty_Obj));
       formData.append("human_premixed_fifty", JSON.stringify(this.human_premixed_fifty_Obj));
       formData.append("regular_insulin", JSON.stringify(this.regular_insulin_Obj));
       formData.append("nph_insulin", JSON.stringify(this.nph_insulin_Obj));
       formData.append("glargine_insulin", JSON.stringify(this.glargine_insulin_Obj));
+      if(this.isEditScreen){
+        formData.append('id',this.listingId);
+      }else{
+        formData.append("id",this.formId);
+      }
      
       console.log(formData)
 

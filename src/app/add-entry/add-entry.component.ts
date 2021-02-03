@@ -19,7 +19,7 @@ export class AddEntryComponent implements OnInit {
   thirdFormGroup: FormGroup;
   fourthFormGroup: FormGroup;
 
-  isLinear = true;
+  isLinear = false;
   complications: any;
   medication: any;
   hypertension: any;
@@ -184,10 +184,9 @@ export class AddEntryComponent implements OnInit {
   get h(){
     return this.thirdFormGroup.controls;
   }
-  
   firstForm(event: any) {
     console.log(event);
-    if (!this.secondFormGroup.valid) {
+    if (!this.firstFormGroup.valid) {
       
       this.firstFormGroup.markAllAsTouched()
       this.toastr.error("Please fill all the fields")
@@ -208,17 +207,31 @@ export class AddEntryComponent implements OnInit {
       formData.append("employment", this.firstFormGroup.value.employment);
       console.log(this.firstFormGroup.value)
       this.service.addInitiate(formData).subscribe((res:any) => {
-        this.formId = res.data.form_id;
+        // this.formId = res.data.form_id;
         console.log(res)
-        console.log(this.formId)
-        if(event){
-          this.toastr.success("The draft has been saved successfully")
-         this.router.navigateByUrl('/dashboard')  
+        // console.log(this.firstFormGroup.value)
+        // console.log(this.formId)
+        // if(event){
+        //   this.toastr.success("The draft has been saved successfully")
+        //  this.router.navigateByUrl('/dashboard')  
+        // }
+        if(res.status == "0"){
+          this.toastr.warning(res.message);
+          return false
+        }else{
+          this.formId = res['data'].id;
+          console.log(this.formId)
+          if(event){
+            this.toastr.success("The draft has been saved successfully")
+            this.router.navigateByUrl('/dashboard')
+          }
         }
+
 
       })
     }
   }
+  
   antiDiabetes(event,name){
     if(event.checked){
       this.anti_diabetes.push(name)

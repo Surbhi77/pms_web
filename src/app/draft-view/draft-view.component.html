@@ -39,7 +39,7 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Enter Pen Serial No.</mat-label>
-                                        <input formControlName="pen_serial" matInput placeholder="Ex. 123456" value="{{viewData.pen_serial}}">
+                                        <input [disabled]="completed" formControlName="pen_serial" matInput placeholder="Ex. 123456" value="{{viewData.pen_serial}}">
 
                                     </mat-form-field>
                                 </div>
@@ -49,7 +49,7 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Date of Visit</mat-label>
-                                        <input matInput formControlName="date_visit" [matDatepicker]="visit_date" (dateChange)="date($event)" value="{{viewData.date_visit}}">
+                                        <input [disabled]="completed" matInput formControlName="date_visit" [matDatepicker]="visit_date" (dateChange)="date($event)" value="{{viewData.date_visit}}">
                                         <mat-datepicker-toggle matSuffix [for]="visit_date"></mat-datepicker-toggle>
                                         <mat-datepicker #visit_date></mat-datepicker>
 
@@ -166,7 +166,7 @@
                     </div>
 
                     <div class="col-sm-12 col-lg-12 col-md-12">
-                        <button mat-button (click)="firstForm(true)" class="next_btn">Save as Draft</button>
+                        <button mat-button *ngIf="!completed" (click)="firstForm(true)" class="next_btn">Save as Draft</button>
                         <button mat-button matStepperNext class="next_btn">Next</button>
                     </div>
                 </div>
