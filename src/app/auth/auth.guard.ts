@@ -14,6 +14,7 @@ export class AuthGuard implements CanActivate {
      
       if(localStorage.getItem('email')!= null && localStorage.getItem('password')!= null){
        console.log("valid")
+       
         return true;
           }
           else

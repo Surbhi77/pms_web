@@ -49,7 +49,7 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Date of Visit</mat-label>
-                                        <input [disabled]="completed" matInput formControlName="date_visit" [matDatepicker]="visit_date" (dateChange)="date($event)" value="{{viewData.date_visit}}">
+                                        <input [disabled]="completed" matInput formControlName="date_visit" [matDatepicker]="visit_date" [value]="date_visit">
                                         <mat-datepicker-toggle matSuffix [for]="visit_date"></mat-datepicker-toggle>
                                         <mat-datepicker #visit_date></mat-datepicker>
 
@@ -155,6 +155,7 @@
                                 </div>
                                 <div class="entry-inputs-block">
                                     <mat-radio-group formControlName="employment" color="primary" formControlName="employment" value="{{viewData.employment}}" aria-label="Select an option">
+                                        <mat-radio-button value="None" class="mr-5">None</mat-radio-button>
                                         <mat-radio-button value="Employed" class="mr-5">Employed</mat-radio-button>
                                         <mat-radio-button value="Unemployed">Unemployed</mat-radio-button>
 
@@ -167,7 +168,7 @@
 
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <button mat-button *ngIf="!completed" (click)="firstForm(true)" class="next_btn">Save as Draft</button>
-                        <button mat-button matStepperNext class="next_btn">Next</button>
+                        <button mat-button matStepperNext (click)="(!completed)?firstForm(false):'javascript:void(0)'" class="next_btn">Next</button>
                     </div>
                 </div>
             </form>
@@ -696,8 +697,8 @@
 
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <button mat-button matStepperPrevious class="next_btn">Back</button>
-                        <button mat-button (click)="secondForm(true)" class="next_btn">Save as Draft</button>
-                        <button mat-button matStepperNext class="next_btn">Next</button>
+                        <button mat-button *ngIf="!completed" (click)="secondForm(true)" class="next_btn">Save as Draft</button>
+                        <button mat-button matStepperNext class="next_btn" (click)="(!completed)?secondForm(false):'javascript:void(0)'">Next</button>
                     </div>
 
                 </div>
@@ -792,8 +793,8 @@
                 </div>
                 <div class="col-sm-12 col-lg-12 col-md-12">
                     <button mat-button matStepperPrevious class="next_btn">Back</button>
-                    <button mat-button class="next_btn" (click)=" thirdForm(true) ">Save as Draft</button>
-                    <button mat-button matStepperNext class="next_btn">Next</button>
+                    <button mat-button class="next_btn" *ngIf="!completed" (click)=" thirdForm(true)">Save as Draft</button>
+                    <button mat-button matStepperNext (click)="(!completed)?thirdForm(false):'javascript:void(0)'" class="next_btn">Next</button>
                 </div>
             </form>
         </mat-step>
@@ -979,9 +980,9 @@
                             </div>
                         </div>
                         <div class="col-sm-12 col-lg-12 col-md-12">
-                            <button mat-button matStepperPrevious class="next_btn">Back</button>
-
-                            <button mat-button type="submit" (click)="submit(true)" class="next_btn">Submit</button>
+                            <button mat-button matStepperPrevious *ngIf="!completed" class="next_btn">Back</button>
+                            <button mat-button matStepperPrevious *ngIf="completed" (click)="back()" class="next_btn">Back</button>
+                            <button mat-button type="submit" *ngIf="!completed" (click)="submit(true)" class="next_btn">Submit</button>
                         </div>
 
                     </div>

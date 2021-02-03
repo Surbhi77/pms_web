@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
 
 import { MainService } from '../main.service';
@@ -19,7 +20,7 @@ export class AddEntryComponent implements OnInit {
   thirdFormGroup: FormGroup;
   fourthFormGroup: FormGroup;
 
-  isLinear = false;
+  isLinear = true;
   complications: any;
   medication: any;
   hypertension: any;
@@ -194,11 +195,12 @@ export class AddEntryComponent implements OnInit {
     else {
      
       const formData = new FormData()
+      let date = new Date(this.firstFormGroup.value.date_visit)
       formData.append("user_id", JSON.parse(localStorage.getItem('doctor_id')));
       formData.append("mobile",JSON.parse(localStorage.getItem('mobile')));
       formData.append("pen_serial", this.firstFormGroup.value.pen_serial);
       formData.append("sex", this.firstFormGroup.value.sex);
-      formData.append("date_visit", this.nowDate);
+      formData.append("date_visit", moment(date).format('YYYY-MM-DD'));
       formData.append("age", this.firstFormGroup.value.age);
       formData.append("weight", this.firstFormGroup.value.weight);
       formData.append("height", this.firstFormGroup.value.height);
@@ -235,6 +237,7 @@ export class AddEntryComponent implements OnInit {
   antiDiabetes(event,name){
     if(event.checked){
       this.anti_diabetes.push(name)
+      console.log(this.anti_diabetes)
     }else{
       var i = this.anti_diabetes.indexOf(name);
       this.anti_diabetes.splice(i,1);
@@ -289,7 +292,7 @@ export class AddEntryComponent implements OnInit {
       // this.anti_diabetes.DPP4_Inhibitors = (this.secondFormGroup.value.DPP4_Inhibitors == true) ? this.secondFormGroup.value.DPP4_Inhibitors : false ;
       // this.anti_diabetes.DoubleDrugFixed = (this.secondFormGroup.value.DoubleDrugFixed == true) ? this.secondFormGroup.value.DoubleDrugFixed : false;
       // this.anti_diabetes.TripleDrugFixed = (this.secondFormGroup.value.TripleDrugFixed == true ) ? this.secondFormGroup.value.TripleDrugFixed : false;
-      //console.log(this.anti_diabetes)
+      console.log(this.anti_diabetes)
       formData.append("duration_diabetes", this.secondFormGroup.value.duration_diabetes);
       formData.append("treated_diabetes", this.secondFormGroup.value.treated_diabetes);
       formData.append("family_diabetes", this.secondFormGroup.value.family_diabetes);
@@ -351,16 +354,16 @@ export class AddEntryComponent implements OnInit {
     }
   }
   
-  date(e){
-    var date = new Date(e.value),
-      yr = date.getFullYear(),
-      month = date.getMonth() + 1,
-      day = date.getDate(),
-      newDate = yr + '-' + month + '-' + day;
-    this.nowDate = newDate;
-    console.log(newDate);
+  // date(e){
+  //   var date = new Date(e.value),
+  //     yr = date.getFullYear(),
+  //     month = date.getMonth() + 1,
+  //     day = date.getDate(),
+  //     newDate = yr + '-' + month + '-' + day;
+  //   this.nowDate = newDate;
+  //   console.log(newDate);
 
-  }
+  // }
   ofbirth(e){
     var date = new Date(e.value),
       yr = date.getFullYear(),
@@ -777,7 +780,7 @@ export class AddEntryComponent implements OnInit {
         console.log(res)
        // this.router.navigateByUrl('/add-entry-process')
        if(event){
-        this.toastr.success("Please fill all the fields")
+        this.toastr.success("Data has been saved successfully")
         this.router.navigateByUrl("/dashboard");
        }
 
