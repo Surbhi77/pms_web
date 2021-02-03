@@ -139,6 +139,7 @@ export class InvoiceComponent implements OnInit {
      
 
     })
+    //this.firstFormGroup.disable();
   }
   getvaluefast() {
     return Array.from({ length: 361 }, (v, k) => k + 40);
