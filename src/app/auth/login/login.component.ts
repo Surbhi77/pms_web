@@ -65,6 +65,8 @@ export class LoginComponent implements OnInit {
       if(res && res.data){
       localStorage.setItem('userType', this.userType.type)   
       localStorage.setItem('doctor_id',this.userType.doctor_id)
+      localStorage.setItem('name',this.userType.name)
+      console.log(this.userType.name)
       console.log(this.userType.doctor_id)
       console.log(this.loginForm.value)
       formdata.append("user_id", this.userType.doctor_id)

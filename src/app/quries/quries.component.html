@@ -7,9 +7,9 @@
         </div>
     </div>
     <form [formGroup]="form" class="mt-3">
-        
+
         <div>
-            
+
             <div class="col-lg-12 col-md-12 col-12">
                 <!-- <div class="entry-inputs-block in_fulls">
                     <mat-form-field class="example-full-width">
@@ -25,18 +25,18 @@
                 </div> -->
                 <div class="entry-inputs-block in_fulls">
                     <mat-form-field class="example-full-width">
-                        <mat-label>Enter qurey</mat-label>
+                        <mat-label>Enter query</mat-label>
                         <input formControlName="message" type="text" matInput value="" id="message">
 
 
-                        <mat-error *ngIf="hasError('message','required')">Enter qurey</mat-error>
+                        <mat-error *ngIf="hasError('message','required')">Enter query</mat-error>
 
 
                     </mat-form-field>
 
                 </div>
-                
-                <button mat-button type="submit" (click)="submit();"class="next_btn">SUBMIT QUERY</button>
+
+                <button mat-button type="submit" (click)="submit();" class="next_btn">SUBMIT QUERY</button>
             </div>
         </div>
     </form>

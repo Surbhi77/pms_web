@@ -80,7 +80,7 @@ export class DraftViewComponent implements OnInit {
     this.firstFormGroup = this._formBuilder.group({
       user_id: new FormControl(''),
       id:new FormControl(''),
-     mobile: new FormControl(''),
+    // mobile: new FormControl(''),
       pen_serial: new FormControl(),
       date_visit: new FormControl(''),
       sex: new FormControl(''),
@@ -884,7 +884,7 @@ checkAntiDiabetes(name){
       let date = new Date(this.firstFormGroup.value.date_visit)
       console.log(this.nowDate)
       formData.append("user_id", JSON.parse(localStorage.getItem('doctor_id')));
-      formData.append("mobile",JSON.parse(localStorage.getItem('mobile')));
+      //formData.append("mobile",JSON.parse(localStorage.getItem('mobile')));
       formData.append("pen_serial", this.firstFormGroup.value.pen_serial);
       formData.append("sex", this.firstFormGroup.value.sex);
       formData.append("date_visit", moment(date).format('YYYY-MM-DD'));
@@ -897,6 +897,7 @@ checkAntiDiabetes(name){
       if(this.isEditScreen){
         formData.append('id',this.listingId);
       }
+     
       console.log(this.firstFormGroup.value)
       this.service.addInitiate(formData).subscribe((res:any) => {
         // this.formId = res['data'].form_id;

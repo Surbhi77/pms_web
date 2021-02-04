@@ -3,7 +3,7 @@
 }
 
 .next_btn {
-    background: #0f406b;
+    background: #0f406b !important;
     color: #fff;
     border-radius: 50px;
     margin-right: 10px;

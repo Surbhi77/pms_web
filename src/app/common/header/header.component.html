@@ -3,14 +3,16 @@
         <div class="row">
             <div class="col-lg-12">
                 <nav class="navbar navbar-expand-md">
-                    <div class="brand-logo" *ngIf="userType=='i'">
-                        <a class="navbar-brand" href="#">
+                    <div class="brand-logo " *ngIf="userType=='i'">
+                        <a class="navbar-brand">
                             <img src="/assets/image/Initiate-white.png" />
+                            <span class="mt-2 ml-3">Welcome {{name}} !!</span>
                         </a>
                     </div>
                     <div class="brand-logo" *ngIf="userType=='b'">
-                        <a class="navbar-brand" href="#">
+                        <a class="navbar-brand">
                             <img src="/assets/image/Begin.jpg" />
+                            <span class="mt-2 ml-3">Welcome {{name}} !!</span>
                         </a>
                     </div>
 

@@ -17,12 +17,13 @@
     color: #fff;
 }
 
-.sidebarMenuInner{
-    margin:0;
-    padding:0;
+.sidebarMenuInner {
+    margin: 0;
+    padding: 0;
     border-top: 1px solid rgba(255, 255, 255, 0.10);
 }
-.sidebarMenuInner li{
+
+.sidebarMenuInner li {
     list-style: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.10);
 }
@@ -63,7 +64,7 @@
     background: #f39d2d;
 }
 
-input[type="checkbox"]:checked ~ #sidebarMenu {
+input[type="checkbox"]:checked~#sidebarMenu {
     transform: translateX(0);
 }
 
@@ -72,6 +73,7 @@ input[type=checkbox] {
     box-sizing: border-box;
     display: none;
 }
+
 .sidebarIconToggle {
     transition: all 0.3s;
     box-sizing: border-box;
@@ -86,6 +88,7 @@ input[type=checkbox] {
     width: 22px;
     display: none;
 }
+
 .spinner {
     transition: all 0.3s;
     box-sizing: border-box;
@@ -94,6 +97,7 @@ input[type=checkbox] {
     width: 100%;
     background-color: #fff;
 }
+
 .horizontal {
     transition: all 0.3s;
     box-sizing: border-box;
@@ -101,12 +105,14 @@ input[type=checkbox] {
     float: left;
     margin-top: 3px;
 }
+
 .diagonal.part-1 {
     position: relative;
     transition: all 0.3s;
     box-sizing: border-box;
     float: left;
 }
+
 .diagonal.part-2 {
     transition: all 0.3s;
     box-sizing: border-box;
@@ -114,22 +120,26 @@ input[type=checkbox] {
     float: left;
     margin-top: 3px;
 }
-input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
+
+input[type=checkbox]:checked~.sidebarIconToggle>.horizontal {
     transition: all 0.3s;
     box-sizing: border-box;
     opacity: 0;
 }
-input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
+
+input[type=checkbox]:checked~.sidebarIconToggle>.diagonal.part-1 {
     transition: all 0.3s;
     box-sizing: border-box;
     transform: rotate(135deg);
     margin-top: 8px;
 }
-input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
+
+input[type=checkbox]:checked~.sidebarIconToggle>.diagonal.part-2 {
     transition: all 0.3s;
     box-sizing: border-box;
     transform: rotate(-135deg);
     margin-top: -9px;
 }
+
 
 /* sitebar css */

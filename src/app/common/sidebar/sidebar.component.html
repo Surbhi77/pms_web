@@ -8,8 +8,11 @@
 
     <div id="sidebarMenu">
         <h5>Main Menu</h5>
-        <ul class="sidebarMenuInner">
-            <li>
+        <ul class="sidebarMenuInner ">
+            <li *ngIf="kdp_surveyfilled">
+                <a>KAP Survey</a>
+            </li>
+            <li *ngIf="!kdp_surveyfilled">
                 <a href="javascript:void(0);" [routerLink]="['/kap-survey']">KAP Survey</a>
             </li>
 
@@ -36,7 +39,7 @@
 
 
             <li>
-                <a [routerLink]="['/quries']">Quries</a>
+                <a [routerLink]="['/quries']">Queries</a>
             </li>
             <!-- <li>
                 <a href="javascript:void(0);" [routerLink]="['/begin-listing']" *ngIf="userType=='b'">Begin-Listing</a>

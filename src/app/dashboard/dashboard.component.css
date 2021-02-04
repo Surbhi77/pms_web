@@ -55,3 +55,15 @@
     color: #0f406b;
     transition: all 0.3s ease-in-out;
 }
+
+.fill_color {
+    background: #cc7186 !important;
+}
+
+.fill_color h5 {
+    color: #000 !important;
+}
+
+.fill_color img {
+    filter: grayscale(5) !important;
+}
