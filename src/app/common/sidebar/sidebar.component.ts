@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
+  kdp_survey: any;
+  kdp_surveyfilled: boolean;
 
   constructor(private router:Router) { }
    
@@ -14,6 +16,13 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     this.userType = localStorage.getItem('userType')
     console.log(this.userType)
+    this.kdp_survey = localStorage.getItem('kdp_survey')
+    if(this.kdp_survey=='yes'){
+      this.kdp_surveyfilled = true
+    }
+    else{
+      this.kdp_surveyfilled = false
+    }
   }
   
   

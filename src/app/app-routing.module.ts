@@ -81,6 +81,11 @@ const routes: Routes = [
     ,canActivate : [AuthGuard]
   }
   ,{
+    path:'draft_view/:id/:completed',
+    component:DraftViewComponent,
+    canActivate : [AuthGuard]
+  }
+  ,{
     path:'initiate_completed_list',
     component:InitiateCompletedListComponent
     ,canActivate : [AuthGuard]

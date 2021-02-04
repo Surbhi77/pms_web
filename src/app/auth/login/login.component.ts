@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MainService } from 'src/app/main.service';
 import { MatDialog} from '@angular/material/dialog';
 import { TermsCheckingComponent } from '../terms-checking/terms-checking.component';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -25,7 +26,7 @@ export class LoginComponent implements OnInit {
   //dialog: any;
  // invalidLogin: boolean = false;
 
-  constructor(private service:MainService, private fb:FormBuilder, private router:Router, public dialog: MatDialog) { }
+  constructor(private service:MainService, private fb:FormBuilder, private router:Router, public dialog: MatDialog,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     
@@ -57,11 +58,11 @@ export class LoginComponent implements OnInit {
       this.service.login(formdata).subscribe((res:any)=>{
       this.userType = res.data
       console.log(res)
-      
       console.log(this.userType)
       // localStorage.setItem('userType', this.userType.type)
       // localStorage.setItem('user_id', this.userType.doctor_id)
       // this.router.navigateByUrl('/kap-survey')
+      if(res && res.data){
       localStorage.setItem('userType', this.userType.type)   
       localStorage.setItem('doctor_id',this.userType.doctor_id)
       console.log(this.userType.doctor_id)
@@ -70,6 +71,7 @@ export class LoginComponent implements OnInit {
       this.service.check_terms(formdata).subscribe((res:any) => {
         console.log(res)
         this.agrredata = res.data
+        this.toastr.success("Login Successfully")
         console.log(this.agrredata)
         localStorage.setItem("aggrement",this.agrredata.aggrement);
         localStorage.setItem("kdp_survey",this.agrredata.kdp_survey);
@@ -87,16 +89,20 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl('/dashboard');
 
         }
-       
+      
       }, err=>{
         console.log(err)
-      })
+        this.toastr.error("Email and password does not match")
+      })}
+    else{
+      this.toastr.error(res.message)
+    }
      
     })}
     else{
       this.loginForm.markAllAsTouched()
       console.log('not valid')
-      alert("Invalid user or password")
+      this.toastr.error("Please Enter email or password")
     }
   
      

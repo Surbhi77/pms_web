@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
 import { MainService } from '../main.service';
+
 
 @Component({
   selector: 'app-draft-view',
@@ -43,11 +45,14 @@ export class DraftViewComponent implements OnInit {
   isFormSubmitted: boolean;
   bmi: any;
   resetform: any=[];
-  nowDate: string;
+  nowDate: any;
   formId: any;
   completed: boolean;
   listingId: any;
   isEditScreen: boolean;
+  date_visit : Date;
+  initiateres: any;
+  //routeParams: any;
  
   constructor(private service:MainService,private _formBuilder:FormBuilder,private route:ActivatedRoute, private toastr: ToastrService, private router:Router) { }
   viewData:any = []
@@ -76,7 +81,7 @@ export class DraftViewComponent implements OnInit {
       user_id: new FormControl(''),
       id:new FormControl(''),
      mobile: new FormControl(''),
-      pen_serial: new FormControl(''),
+      pen_serial: new FormControl(),
       date_visit: new FormControl(''),
       sex: new FormControl(''),
       weight: new FormControl(''),
@@ -166,12 +171,14 @@ export class DraftViewComponent implements OnInit {
       glargine_insulin_dinner: new FormControl('')
 
     })
-   // this.routeParams = this.route.snapshot.params;
-   if( this.route.snapshot.params != undefined && Object.keys( this.route.snapshot.params).length>0){
-    console.log( this.route.snapshot.params)
+   let routeParams = this.route.snapshot.params;
+   if( routeParams != undefined && Object.keys( routeParams).length>0){
+    console.log(routeParams)
     this.isEditScreen =  true;
-    this.listingId =  this.route.snapshot.params.id;
-    if( this.route.snapshot.params &&  this.route.snapshot.params.completed){
+  this.listingId =  routeParams.id;
+  console.log("routeparams compledte",routeParams , this.route.snapshot)
+    if(routeParams && routeParams.completed){
+      
       this.completed = true;
       this.firstFormGroup.disable();
       this.secondFormGroup.disable();
@@ -187,6 +194,9 @@ export class DraftViewComponent implements OnInit {
     this.completed = false;
   }
  }
+back(){
+  this.router.navigateByUrl('/dashboard')
+}
 getDetails(){
   const formdata = new FormData();
   formdata.append('id', this.listingId)
@@ -201,7 +211,7 @@ getDetails(){
   }
   else{
     this.medication = false;
-  }
+ }
 if(this.viewData && this.viewData.medical_condition)
 {
    
@@ -249,10 +259,12 @@ populateDetails(){
     this.firstFormGroup.updateValueAndValidity()
   }
   if(this.viewData && this.viewData.date_visit!=''){
+    //JSON.parse(this.viewData.date_visit)
+    
     this.firstFormGroup.patchValue({
       'date_visit':this.viewData.date_visit
     });
-    
+     this.date_visit = new Date(this.viewData.date_visit)
     this.firstFormGroup.get('date_visit').updateValueAndValidity();
     this.firstFormGroup.updateValueAndValidity()
   }
@@ -281,6 +293,7 @@ populateDetails(){
     this.firstFormGroup.updateValueAndValidity()
   }
   if(this.viewData && this.viewData.bmi){
+    this.bmi = this.viewData.bmi
     this.firstFormGroup.patchValue({
       'bmi':this.viewData.bmi
     });
@@ -495,15 +508,18 @@ populateDetails(){
   }
   if(this.viewData && this.viewData.anti_diabetes_medication!='')
   {
-    this.antidiabetes = JSON.parse(this.viewData.anti_diabetes_medication)
+    console.log("here",this.viewData.anti)
+    this.antidiabetes = JSON.parse(this.viewData.anti_diabetes_medication);
+    this.anti_diabetes = JSON.parse(this.viewData.anti_diabetes_medication);
     console.log(this.antidiabetes)
     this.secondFormGroup.patchValue({
       'anti_diabetes_medication':this.antidiabetes.anti_diabetes_medication
     })
- 
+    this.secondFormGroup.updateValueAndValidity();
    }  
   if(this.viewData && this.viewData.blood_investigation!=''){
     this.bloodInvetigateObj = JSON.parse(this.viewData.blood_investigation)
+    this.blood_investigation_obj = JSON.parse(this.viewData.blood_investigation)
     this.thirdFormGroup.patchValue({
       'fasting_plasma':this.bloodInvetigateObj.fasting_plasma,
       'postprandial_plasma':this.bloodInvetigateObj.postprandial_plasma,
@@ -594,13 +610,32 @@ populateDetails(){
 
 
 
-  checkAntiDiabetes(name){
+checkAntiDiabetes(name){
+    // console.log('checkAntiDiabetes name',name)
+    
+   
     if(this.antidiabetes.indexOf(name)>-1){
+      // if(this.anti_diabetes.indexOf(name)==-1){
+      //   // return true
+      //   this.anti_diabetes.push(name)
+      //   console.log('anti_diabetes', this.anti_diabetes)
+      // }
+      // else{
+      //   var i = this.anti_diabetes.indexOf(name);
+      // this.anti_diabetes.splice(i,1);
+      // }
+     
       return true
     }else{
+      // var i = this.anti_diabetes.indexOf(name);
+
+      // this.anti_diabetes.splice(i,1);
+      // console.log(this.anti_diabetes)
       return false
     }
+   
   }
+ 
   getCreatinine() {
     return Array.from({length:50 }, (_value , k=1) => ((k / 10)+0.1).toFixed(1) );
 
@@ -640,9 +675,11 @@ populateDetails(){
   antiDiabetes(event,name){
     if(event.checked){
       this.anti_diabetes.push(name)
+     
     }else{
       var i = this.anti_diabetes.indexOf(name);
       this.anti_diabetes.splice(i,1);
+     
     }
   }
   onclick(event: any) {
@@ -839,16 +876,18 @@ populateDetails(){
     if (!this.firstFormGroup.valid) {
       
       this.firstFormGroup.markAllAsTouched()
-      this.toastr.error("Please fill all the fields")
+    this.toastr.error("Please fill all the fields")
     }
     else {
      
       const formData = new FormData()
+      let date = new Date(this.firstFormGroup.value.date_visit)
+      console.log(this.nowDate)
       formData.append("user_id", JSON.parse(localStorage.getItem('doctor_id')));
       formData.append("mobile",JSON.parse(localStorage.getItem('mobile')));
       formData.append("pen_serial", this.firstFormGroup.value.pen_serial);
       formData.append("sex", this.firstFormGroup.value.sex);
-      formData.append("date_visit", this.nowDate);
+      formData.append("date_visit", moment(date).format('YYYY-MM-DD'));
       formData.append("age", this.firstFormGroup.value.age);
       formData.append("weight", this.firstFormGroup.value.weight);
       formData.append("height", this.firstFormGroup.value.height);
@@ -862,7 +901,7 @@ populateDetails(){
       this.service.addInitiate(formData).subscribe((res:any) => {
         // this.formId = res['data'].form_id;
         console.log(res)
-       
+        this.initiateres = res
         // if(event){
         //   this.toastr.success("The draft has been saved successfully")
         //  this.router.navigateByUrl('/dashboard')  
@@ -940,6 +979,7 @@ populateDetails(){
       formData.append("nephropathy_dur", JSON.stringify(this.nephropathyArray));
       formData.append("medical_condition",this.secondFormGroup.value.medical_condition)
       formData.append("anti_diabetes_medication", JSON.stringify(this.anti_diabetes));
+      console.log('anti_diabetes',this.anti_diabetes);
       if(this.isEditScreen){
         formData.append('id',this.listingId);
       }else{
@@ -947,6 +987,7 @@ populateDetails(){
       }
       this.service.addInitiate(formData).subscribe((res:any) => {
         console.log(res)
+        this.initiateres = res
         if(event){
          this.toastr.success("The draft has been saved successfully")
          this.router.navigateByUrl("/dashboard"); 
@@ -963,7 +1004,7 @@ populateDetails(){
     if (!this.thirdFormGroup.valid ) {
      
       this.thirdFormGroup.markAllAsTouched()
-      this.toastr.error("Please fill all the fields")
+     this.toastr.error("Please fill all the fields")
     }
     else {
      
@@ -974,6 +1015,7 @@ populateDetails(){
       this.blood_investigation_obj.postprandial_plasma = this.thirdFormGroup.value.postprandial_plasma
       this.blood_investigation_obj.fasting_plasma = this.thirdFormGroup.value.fasting_plasma;
       formData.append("blood_investigation", JSON.stringify(this.blood_investigation_obj));
+      console.log(this.blood_investigation_obj)
       // formData.append("id",this.route.snapshot.params.id  )
       // formData.append("form_id",this.formId )
       if(this.isEditScreen){
@@ -983,6 +1025,7 @@ populateDetails(){
       }
       this.service.addInitiate(formData).subscribe((res:any) => {
         console.log(res)
+        this.initiateres = res
         if(event){
           this.toastr.success("The draft has been saved successfully")
          this.router.navigateByUrl("/dashboard");
@@ -1037,6 +1080,7 @@ populateDetails(){
       this.service.addInitiate(formData).subscribe(res => {
        
         console.log(res)
+        this.initiateres = res
        // this.router.navigateByUrl('/add-entry-process')
        if(event){
         alert("The draft has been saved successfully")
@@ -1051,7 +1095,5 @@ populateDetails(){
      }
     }
 
-
   
-
 }
