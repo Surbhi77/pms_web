@@ -18,7 +18,7 @@ export class InvoiceComponent implements OnInit {
   firstFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
   fourthFormGroup: FormGroup;
-  isLinear = false;
+  isLinear = true;
   secondFormGroup: FormGroup;
   medication: any;
   hypertension: any;
@@ -38,6 +38,7 @@ export class InvoiceComponent implements OnInit {
   nephropathyobj: any = {};
   glargineinsulinobj: any = {};
   anti: any = [];
+  // date_of_visit: Date;
   now2: any;
   now3: any;
   bmi: any;
@@ -234,9 +235,11 @@ export class InvoiceComponent implements OnInit {
 
   submitFirst(saveAsDraft:any) {
     if (this.firstFormGroup.valid) {
+      let date = new Date(this.firstFormGroup.value.date_visit);
       var formData: any = new FormData();
       formData.append('pen_serial', this.firstFormGroup.value.pen_serial);
-      formData.append('date_visit', this.now2);
+      formData.append('date_visit',moment(date).format('YYYY-MM-DD'));
+     // formData.append('date_visit', this.now2);
       console.log(this.now2)
       formData.append("user_id", JSON.parse(localStorage.getItem('doctor_id')));
       console.log(localStorage.getItem('doctor_id'))
@@ -268,6 +271,27 @@ export class InvoiceComponent implements OnInit {
       this.toastr.error("Please fill all the fields")
     
         }
+  }
+  antiDiabetesChange(event, name) {
+    console.log(event)
+    if (event.checked) {
+      this.anti.push(name)
+      console.log(this.anti)
+    } else {
+      let i = this.anti.indexOf(name);
+      this.anti.splice(i, 1)
+      console.log(this.anti)
+    }
+    if (this.anti.length) {
+      this.secondFormGroup.patchValue({
+        'people_with_tdm': this.anti.toString()
+      });
+      this.secondFormGroup.updateValueAndValidity()
+    } else {
+      this.secondFormGroup.patchValue({
+        'people_with_tdm': ''
+      })
+    }
   }
   onSecondSubmit(redirect) {
 
@@ -311,14 +335,14 @@ export class InvoiceComponent implements OnInit {
       this.nephropathyobj.nephropathy_dur = this.secondFormGroup.value.nephropathy_dur;
       this.nephropathyobj.nephropathy_duration = this.secondFormGroup.value.nephropathy_duration;
       this.nephropathyobj.nephropathy_medication = this.secondFormGroup.value.nephropathy_medication;
-      this.anti_diabetes_medication.Biguanides = (this.secondFormGroup.value.Biguanides == true) ? this.secondFormGroup.value.Biguanides : false;
-      this.anti_diabetes_medication.Sulphonylureas = (this.secondFormGroup.value.Sulphonylureas == true) ? this.secondFormGroup.value.Sulphonylureas : false;
-      this.anti_diabetes_medication.Meglitinides = (this.secondFormGroup.value.Meglitinides == true) ? this.secondFormGroup.value.Meglitinides : false;
-      this.anti_diabetes_medication.Thiazolidendiones = (this.secondFormGroup.value.Thiazolidendiones == true) ? this.secondFormGroup.value.Thiazolidendiones : false;
-      this.anti_diabetes_medication.GLP_Analogues = (this.secondFormGroup.value.GLP_Analogues == true) ? this.secondFormGroup.value.GLP_Analogues : false;
-      this.anti_diabetes_medication.DPP4_Inhibitors = (this.secondFormGroup.value.DPP4_Inhibitors == true) ? this.secondFormGroup.value.DPP4_Inhibitors : false;
-      this.anti_diabetes_medication.DoubleDrugFixed = (this.secondFormGroup.value.DoubleDrugFixed == true) ? this.secondFormGroup.value.DoubleDrugFixed : false;
-      this.anti_diabetes_medication.TripleDrugFixed = (this.secondFormGroup.value.TripleDrugFixed == true) ? this.secondFormGroup.value.TripleDrugFixed : false;
+      // this.anti_diabetes_medication.Biguanides = (this.secondFormGroup.value.Biguanides == true) ? this.secondFormGroup.value.Biguanides : false;
+      // this.anti_diabetes_medication.Sulphonylureas = (this.secondFormGroup.value.Sulphonylureas == true) ? this.secondFormGroup.value.Sulphonylureas : false;
+      // this.anti_diabetes_medication.Meglitinides = (this.secondFormGroup.value.Meglitinides == true) ? this.secondFormGroup.value.Meglitinides : false;
+      // this.anti_diabetes_medication.Thiazolidendiones = (this.secondFormGroup.value.Thiazolidendiones == true) ? this.secondFormGroup.value.Thiazolidendiones : false;
+      // this.anti_diabetes_medication.GLP_Analogues = (this.secondFormGroup.value.GLP_Analogues == true) ? this.secondFormGroup.value.GLP_Analogues : false;
+      // this.anti_diabetes_medication.DPP4_Inhibitors = (this.secondFormGroup.value.DPP4_Inhibitors == true) ? this.secondFormGroup.value.DPP4_Inhibitors : false;
+      // this.anti_diabetes_medication.DoubleDrugFixed = (this.secondFormGroup.value.DoubleDrugFixed == true) ? this.secondFormGroup.value.DoubleDrugFixed : false;
+      // this.anti_diabetes_medication.TripleDrugFixed = (this.secondFormGroup.value.TripleDrugFixed == true) ? this.secondFormGroup.value.TripleDrugFixed : false;
       formData.append(' medical_condition', this.secondFormGroup.value.medical_condition);
       formData.append('hypertension_dur', JSON.stringify(this.Complications));
       formData.append('dyslipidemia_dur', JSON.stringify(this.dyslipidemiaobj));
@@ -327,7 +351,7 @@ export class InvoiceComponent implements OnInit {
       formData.append('neuropathy_dur', JSON.stringify(this.neuropathyobj));
       formData.append('retinopathy_dur', JSON.stringify(this.retinopathyobj));
       formData.append('nephropathy_dur', JSON.stringify(this.nephropathyobj));
-      formData.append('anti_diabetes_medication', JSON.stringify(this.anti_diabetes_medication));
+      formData.append('anti_diabetes_medication', JSON.stringify(this.anti));
       formData.append('id',this.formId)
       this.service.postAddBegin(formData).subscribe(res => {
         
@@ -381,25 +405,7 @@ export class InvoiceComponent implements OnInit {
     }
   }
 
-  antiDiabetesChange(event, name) {
-    console.log(event)
-    if (event.checked) {
-      this.anti.push(name)
-    } else {
-      let i = this.anti.indexOf(name);
-      this.anti.splice(i, 1)
-    }
-    if (this.anti.length) {
-      this.secondFormGroup.patchValue({
-        'people_with_tdm': this.anti.toString()
-      });
-      this.secondFormGroup.updateValueAndValidity()
-    } else {
-      this.secondFormGroup.patchValue({
-        'people_with_tdm': ''
-      })
-    }
-  }
+  
 
 
 
@@ -596,13 +602,13 @@ export class InvoiceComponent implements OnInit {
       this.glargine_condition = false
     }
   }
-  vistedate(e) {
-    console.log(e.value)
-    this.now2 = moment(e.value).format("YYYY-MM-DD");
-    this.format2 = this.now2;
-    console.log(this.now2)
+  // vistedate(e) {
+  //   console.log(e.value)
+  //   this.now2 = moment(e.value);
+  //   this.format2 = this.now2;
+  //   console.log(this.now2)
 
-  }
+  // }
   // birthdate(ev) {
   //   this.now3 = moment(ev.value).format("YYYY-MM-DD");
   //   this.format3 = this.now3;

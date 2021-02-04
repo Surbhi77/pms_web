@@ -56,6 +56,11 @@ const routes: Routes = [
     ,canActivate : [AuthGuard]
   },
   {
+    path:'begin-view/:id/:completed',
+    component:BeginViewComponent
+    ,canActivate : [AuthGuard]
+  },
+  {
     path:'begin-listing',
     component:BeginListingComponent
     ,canActivate : [AuthGuard]

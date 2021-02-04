@@ -25,7 +25,7 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Enter Pen Serial No.</mat-label>
-                                        <input formControlName="pen_serial" matInput placeholder="Ex. 123456" value="{{beginview.pen_serial}}">
+                                        <input formControlName="pen_serial" [disabled]="true" matInput placeholder="Ex. 123456" value="{{beginview.pen_serial}}">
 
 
                                     </mat-form-field>
@@ -37,7 +37,7 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Date of Visit</mat-label>
-                                        <input matInput formControlName="date_visit" (dateChange)="vistedate($event)" [matDatepicker]="visit_date" value={{beginview.date_visit}}>
+                                        <input matInput formControlName="date_visit" [matDatepicker]="visit_date" [value]="date_visit">
                                         <mat-datepicker-toggle matSuffix [for]="visit_date"></mat-datepicker-toggle>
                                         <mat-datepicker #visit_date></mat-datepicker>
                                     </mat-form-field>
@@ -111,7 +111,7 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Enter BMI in kg/m2</mat-label>
-                                        <input formControlName="bmi" matInput placeholder="Ex. 20kg/m2" value="{{bmi}}">
+                                        <input formControlName="bmi" matInput placeholder="Ex. 20kg/m2" [value]="bmi">
 
                                     </mat-form-field>
 
@@ -160,12 +160,13 @@
                     </div>
 
                     <div class="col-sm-12 col-lg-12 col-md-12">
-                        <button mat-button class="next_btn" (click)="submitFirst(true)">Save as Draft</button>
-                        <button mat-button matStepperNext class="next_btn">Next</button>
+                        <button mat-button class="next_btn"  *ngIf="!completed" (click)="submitFirst(true)">Save as Draft</button>
+                        <button mat-button matStepperNext (click)="submitFirst(false)" class="next_btn">Next</button>
                     </div>
                 </div>
             </form>
         </mat-step>
+        <!---------------------------------Step 02----------------------------------------->
         <mat-step [stepControl]="secondFormGroup">
             <ng-template matStepLabel>Medical History</ng-template>
             <form [formGroup]="secondFormGroup">
@@ -631,7 +632,7 @@
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="Biguanides" class="example-margin d-block mb-2" [checked]="antichecked.Biguanides">Biguanides
+                                    <mat-checkbox color="primary" formControlName="Biguanides" class="example-margin d-block mb-2"  (change)="antiDiabetesChange($event,'Biguanides')" [checked]="checkAntiDiabetes('Biguanides')">Biguanides
                                     </mat-checkbox>
 
                                 </div>
@@ -639,7 +640,7 @@
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="Sulphonylureas" [checked]="antichecked.Sulphonylureas" class="example-margin d-block mb-2">
+                                    <mat-checkbox color="primary" formControlName="Sulphonylureas"  (change)="antiDiabetesChange($event,'Sulphonylureas')" [checked]="checkAntiDiabetes('Sulphonylureas')" class="example-margin d-block mb-2">
                                         Sulphonylureas</mat-checkbox>
 
                                 </div>
@@ -647,7 +648,7 @@
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="Meglitinides" [checked]="antichecked.Meglitinides" class="example-margin d-block mb-2">Meglitinides
+                                    <mat-checkbox color="primary" formControlName="Meglitinides" (change)="antiDiabetesChange($event,'Meglitinides')" [checked]="checkAntiDiabetes('Meglitinides')" class="example-margin d-block mb-2">Meglitinides
                                     </mat-checkbox>
 
                                 </div>
@@ -655,34 +656,34 @@
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="Thiazolidendiones" [checked]="antichecked.Thiazolidendiones" class="example-margin d-block mb-2">
+                                    <mat-checkbox color="primary" formControlName="Thiazolidendiones" (change)="antiDiabetesChange($event,'Thiazolidendiones')" [checked]="checkAntiDiabetes('Thiazolidendiones')" class="example-margin d-block mb-2">
                                         Thiazolidendiones</mat-checkbox>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="GLP_Analogues" [checked]="antichecked.GLP_Analogues" class="example-margin d-block mb-2">GLP Analogues
+                                    <mat-checkbox color="primary" formControlName="GLP_Analogues" (change)="antiDiabetesChange($event,'GLP_Analogues')" [checked]="checkAntiDiabetes('GLP_Analogues')" class="example-margin d-block mb-2">GLP Analogues
                                     </mat-checkbox>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="DPP4_Inhibitors" [checked]="antichecked.DPP4_Inhibitors" class="example-margin d-block mb-2">DPP4 Inhibitors
+                                    <mat-checkbox color="primary" formControlName="DPP4_Inhibitors" (change)="antiDiabetesChange($event,'DPP4_Inhibitors')" [checked]="checkAntiDiabetes('DPP4_Inhibitors')" class="example-margin d-block mb-2">DPP4 Inhibitors
                                     </mat-checkbox>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="DoubleDrugFixed" [checked]="antichecked.DoubleDrugFixed" class="example-margin d-block mb-2">Double Drug Fixed Dose Combination
+                                    <mat-checkbox color="primary" formControlName="DoubleDrugFixed" (change)="antiDiabetesChange($event,'DoubleDrugFixed')" [checked]="checkAntiDiabetes('DoubleDrugFixed')" class="example-margin d-block mb-2">Double Drug Fixed Dose Combination
                                     </mat-checkbox>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="TripleDrugFixed" [checked]="antichecked.TripleDrugFixed" class="example-margin d-block mb-2">Triple Drug Fixed Dose Combinations
+                                    <mat-checkbox color="primary" formControlName="TripleDrugFixed" (change)="antiDiabetesChange($event,'TripleDrugFixed')" [checked]="checkAntiDiabetes('TripleDrugFixed')" class="example-margin d-block mb-2">Triple Drug Fixed Dose Combinations
                                     </mat-checkbox>
                                 </div>
                             </div>
@@ -691,13 +692,14 @@
 
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <button mat-button matStepperPrevious class="next_btn">Back</button>
-                        <button mat-button class="next_btn" (click)="onSecondSubmit(true)">Save as Draft</button>
-                        <button mat-button matStepperNext class="next_btn">Next</button>
+                        <button mat-button class="next_btn"  *ngIf="!completed"  (click)="onSecondSubmit(true)">Save as Draft</button>
+                        <button mat-button matStepperNext (click)="onSecondSubmit(false)" class="next_btn">Next</button>
                     </div>
 
                 </div>
             </form>
         </mat-step>
+        <!---------------------------------Step 03----------------------------------------->
 
         <mat-step>
             <ng-template matStepLabel>Medical History</ng-template>
@@ -796,13 +798,14 @@
 
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <button mat-button matStepperPrevious class="next_btn">Back</button>
-                        <button mat-button class="next_btn" (click)="thirdForm(true)">Save as Draft</button>
-                        <button mat-button matStepperNext class="next_btn">Next</button>
+                        <button mat-button class="next_btn" *ngIf="!completed" (click)="thirdForm(true)">Save as Draft</button>
+                        <button mat-button matStepperNext  (click)="thirdForm(false)" class="next_btn">Next</button>
                         <!-- <button mat-button matStepperNext (click)="submit()" class="next_btn">Submit</button> -->
                     </div>
                 </div>
             </form>
         </mat-step>
+        <!---------------------------------Step 04----------------------------------------->
         <mat-step>
             <ng-template matStepLabel>Insulinisation</ng-template>
             <form [formGroup]="fourthFormGroup">
@@ -863,9 +866,9 @@
                 </div>
 
                 <div class="col-sm-12 col-lg-12 col-md-12">
-                    <button mat-button matStepperPrevious class="next_btn">Back</button>
-                    <button mat-button class="next_btn">Save as Draft</button>
-                    <button mat-button matStepperNext class="next_btn" (click)="submit()">Submit</button>
+                    <button mat-button matStepperPrevious  *ngIf="completed" (click)="btnClick();" class="next_btn" >Back</button>
+                    <!-- <button mat-button class="next_btn"  *ngIf="!completed">Save as Draft</button> -->
+                    <button mat-button matStepperNext class="next_btn"  *ngIf="!completed" (click)="submit()">Submit</button>
                 </div>
 
 

@@ -41,7 +41,7 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Date of Visit</mat-label>
-                                        <input matInput formControlName="date_visit" [matDatepicker]="visit_date" (dateChange)="vistedate($event)">
+                                        <input matInput formControlName="date_visit" [matDatepicker]="visit_date" >
                                         <mat-datepicker-toggle matSuffix [for]="visit_date"></mat-datepicker-toggle>
                                         <mat-datepicker #visit_date></mat-datepicker>
                                         <mat-error *ngIf="hasError('date_visit', 'required')">date_visit is required</mat-error>
