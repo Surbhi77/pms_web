@@ -73,3 +73,12 @@ body {
 .mat-checkbox-checked.mat-primary .mat-checkbox-background {
     background-color: #0f406b;
 }
+
+.invoicebtn {
+    background: #0f406b !important;
+    color: #fff;
+    border-radius: 50px;
+    padding: 6px 33px;
+    border: none;
+    letter-spacing: 1px;
+}
