@@ -28,22 +28,23 @@ export class QuriesComponent implements OnInit {
     return this.form.controls[controlName].hasError(errorName);
   }
   submit(){
-    
+    if(this.form.valid){
     console.log(this.form.value.user_id)
-     console.log(localStorage.getItem('userId'))
-   
+    //  console.log(localStorage.getItem('userId'))
     const formData = new FormData()
    // formData.append("user_id", '9');
    formData.append("user_id",JSON.parse(localStorage.getItem('doctor_id')));
     formData.append("message", this.form.value.message);
     console.log(formData)
     this.service.quries(formData).subscribe(res => {
-
       console.log(res)
       this.router.navigateByUrl("/dashboard");
 
-
-    })
+    })}
+    else{
+      console.log('not valid')
+      this.form.markAllAsTouched();
+    }
 
   }
 }
