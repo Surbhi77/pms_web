@@ -1084,7 +1084,7 @@ checkAntiDiabetes(name){
         this.initiateres = res
        // this.router.navigateByUrl('/add-entry-process')
        if(event){
-        alert("The draft has been saved successfully")
+        this.toastr.success("Form Updated successfully")
         this.router.navigateByUrl("/dashboard");
        }
 
