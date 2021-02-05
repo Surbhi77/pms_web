@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { MainService } from '../main.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class QuriesComponent implements OnInit {
   form:FormGroup;
   
 
-  constructor(private fb:FormBuilder, private router:Router, private service: MainService) { }
+  constructor(private fb:FormBuilder, private router:Router, private service: MainService,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -37,12 +38,14 @@ export class QuriesComponent implements OnInit {
     formData.append("message", this.form.value.message);
     console.log(formData)
     this.service.quries(formData).subscribe(res => {
+      this.form.reset();
       console.log(res)
+      this.toastr.success("Enquiry sent successfully");
       this.router.navigateByUrl("/dashboard");
 
     })}
     else{
-      console.log('not valid')
+      // console.log('not valid')
       this.form.markAllAsTouched();
     }
 
