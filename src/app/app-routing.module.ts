@@ -120,7 +120,9 @@ const routes: Routes = [
   },
   {
     path:'invoice-media',
-    component:InvoiceMediaComponent
+    component:InvoiceMediaComponent,
+    canActivate : [AuthGuard]
+
   }
  
 ];

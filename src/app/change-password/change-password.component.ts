@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { MainService } from '../main.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { MainService } from '../main.service';
 export class ChangePasswordComponent implements OnInit {
   form:FormGroup;
   formerror: boolean = false;
-  constructor(private fb:FormBuilder, private service:MainService) { }
+  constructor(private fb:FormBuilder, private service:MainService,private toastr: ToastrService) { }
    
   ngOnInit(): void {
     this.form =  this.fb.group({
@@ -37,6 +38,8 @@ export class ChangePasswordComponent implements OnInit {
      }
      this.service.changePass(formdata).subscribe(res=>{
        console.log(res)
+
+        this.toastr.success("password change successfully")
      })
 
 

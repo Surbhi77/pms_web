@@ -13,8 +13,15 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
      
       if(localStorage.getItem('email')!= null && localStorage.getItem('password')!= null){
-       console.log("valid")
        
+      //  if(localStorage.getItem('kdp_survey')=='no' && this.router.url !='/kap-survey'){
+      //   this.router.navigateByUrl('/kap-survey');
+      //   return true;
+      //  }
+      //  else{
+      //    return false
+      //  }
+       console.log("valid")
         return true;
           }
           else

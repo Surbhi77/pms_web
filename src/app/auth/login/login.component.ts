@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { MainService } from 'src/app/main.service';
-import { MatDialog} from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { TermsCheckingComponent } from '../terms-checking/terms-checking.component';
 import { ToastrService } from 'ngx-toastr';
 
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   //dialog: any;
  // invalidLogin: boolean = false;
 
-  constructor(private service:MainService, private fb:FormBuilder, private router:Router, public dialog: MatDialog,private toastr: ToastrService) { }
+  constructor(private service:MainService, private fb:FormBuilder, private router:Router, public dialog: MatDialog,private toastr: ToastrService ) { }
 
   ngOnInit(): void {
     
@@ -41,6 +41,7 @@ export class LoginComponent implements OnInit {
   public hasError = (controlName: string, errorName: string) => {
     return this.loginForm.controls[controlName].hasError(errorName);
   }
+ 
   userlogin(){
    
     if(this.loginForm.valid){
@@ -73,25 +74,28 @@ export class LoginComponent implements OnInit {
       this.service.check_terms(formdata).subscribe((res:any) => {
         console.log(res)
         this.agrredata = res.data
+        if(res.data){
         this.toastr.success("Login Successfully")
+        }
         console.log(this.agrredata)
         localStorage.setItem("aggrement",this.agrredata.aggrement);
         localStorage.setItem("kdp_survey",this.agrredata.kdp_survey);
        
         
         if(this.agrredata.aggrement == 'no'){
-          this.dialog.open(TermsCheckingComponent,{width: '40%'});   
+          // const dialogConfig:any = new MatDialogConfig();
+          // dialogConfig.disableClose = true;
+          // this.dialog.open(TermsCheckingComponent,{width: '40%'});   
+          this.dialog.open(TermsCheckingComponent, { disableClose: true, width:"40%"})
         }else{
-        this.router.navigateByUrl('/dashboard');
-       
+         this.router.navigateByUrl('/kap-survey');
         }
         if(this.agrredata.kdp_survey == 'no'){
-          this.router.navigate(['/kap-survey'])
+          this.router.navigateByUrl('/kap-survey');
         }else{
           this.router.navigateByUrl('/dashboard');
 
         }
-      
       }, err=>{
         console.log(err)
         this.toastr.error("Email and password does not match")

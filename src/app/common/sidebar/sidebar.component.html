@@ -13,24 +13,26 @@
                 <a>KAP Survey</a>
             </li>
             <li *ngIf="!kdp_surveyfilled">
-                <a href="javascript:void(0);" [routerLink]="['/kap-survey']">KAP Survey</a>
+                <a [routerLink]="['/kap-survey']">KAP Survey</a>
             </li>
 
             <li>
-                <a href="javascript:void(0);" [routerLink]="['/add-entry-process']" *ngIf="userType=='i'">Add Entry</a>
+                <a [routerLink]="['/add-entry-process']" *ngIf="userType=='i'">Add Entry</a>
+            </li>
+
+
+            <li>
+                <a [routerLink]="['/invoice-process']" *ngIf="userType=='b'">Add Entry</a>
             </li>
             <li>
-                <a href="javascript:void(0);" [routerLink]="['/invoice-process']" *ngIf="userType=='b'">Add Entry</a>
+                <a [routerLink]="['/initiate_completed_list']" *ngIf="userType=='i'">Patient Logs</a>
             </li>
             <li>
-                <a href="javascript:void(0);" [routerLink]="['/initiate_completed_list']" *ngIf="userType=='i'">Patient Logs</a>
-            </li>
-            <li>
-                <a href="javascript:void(0);" [routerLink]="['/begin-listing']" *ngIf="userType=='b'">Patient Logs</a>
+                <a [routerLink]="['/begin-listing']" *ngIf="userType=='b'">Patient Logs</a>
             </li>
 
             <li>
-                <a href="javascript:void(0);" [routerLink]="['/how-it-works']">How it works</a>
+                <a routerLink="/how-it-works">How it works</a>
             </li>
 
             <li>

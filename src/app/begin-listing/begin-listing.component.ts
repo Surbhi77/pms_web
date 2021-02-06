@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { MainService } from '../main.service';
 
 @Component({
@@ -13,11 +14,13 @@ export class BeginListingComponent implements OnInit {
   form: FormGroup ;
   beginlist:any[];
   begindraftlist:any[];
+  show: boolean;
+  beginshow: boolean;
  
 
   constructor(  private fb:FormBuilder,
     private router: Router,
-    private route: ActivatedRoute,private service:MainService) { }
+    private route: ActivatedRoute,private service:MainService,private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -31,6 +34,12 @@ export class BeginListingComponent implements OnInit {
   
     this.service.beginListing(formData).subscribe((res:any) => {
       this.beginlist =res.data
+      if(res.message == "No Data Found"){
+        this.show = true
+      }
+      else{
+        this.show = false
+      }
       console.log(res.data)
     })
    
@@ -41,22 +50,28 @@ export class BeginListingComponent implements OnInit {
   
     this.service.beginDraftListing(formData).subscribe((res:any) => {
       this.begindraftlist =res.data
+      if(res.message == "No Data Found"){
+        this.beginshow = true
+      }
+      else{
+        this.beginshow = false
+      }
       console.log(res.data)
     })
 
 
   }
   deletedata(ids,i){
-    if(window.confirm('Are sure you want to delete this item ?')){
+    
    let formdata= new FormData();
    formdata.append('id',ids)
    console.log(ids)
     this.service.beginDraftDelete(formdata).subscribe((result=>{
       console.log(result)
-      console.log("data delete sucessfullly !")
+      this.toastr.success("Data Deleted successfully")
       this.begindraftlist.splice(i,1)
     }))
-  }
+  
   
  
 

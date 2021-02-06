@@ -19,9 +19,11 @@ export class SidebarComponent implements OnInit {
     this.kdp_survey = localStorage.getItem('kdp_survey')
     if(this.kdp_survey=='yes'){
       this.kdp_surveyfilled = true
+
     }
     else{
       this.kdp_surveyfilled = false
+      this.router.navigateByUrl('/kap-survey')
     }
   }
   

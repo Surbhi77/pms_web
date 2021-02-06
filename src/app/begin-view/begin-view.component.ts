@@ -794,8 +794,8 @@ export class BeginViewComponent implements OnInit {
         console.log(res)
         console.log(this.formId)
        if( saveAsDraft){
-       // this.toastr.info("The draft has been saved successfully");
-       // this.router.navigateByUrl("/dashboard");
+       this.toastr.info("The draft has been saved successfully");
+       this.router.navigateByUrl("/dashboard");
       
        }
        
@@ -899,8 +899,8 @@ export class BeginViewComponent implements OnInit {
       this.service.postAddBegin(formData).subscribe((res:any) => {
        console.log(res)
        if(redirect){
-       // this.toastr.info("The draft has been saved successfully");
-      //  this.router.navigateByUrl("/dashboard");
+       this.toastr.info("The draft has been saved successfully");
+       this.router.navigateByUrl("/dashboard");
          }
        
       })
@@ -942,7 +942,7 @@ export class BeginViewComponent implements OnInit {
     
        if(event){
          this.toastr.info('The draft has been saved successfully')
-        // this.router.navigateByUrl("/dashboard");
+        this.router.navigateByUrl("/dashboard");
          }//else{
         //   // alert('Please fill all the fields')
         // }

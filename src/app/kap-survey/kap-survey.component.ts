@@ -5,6 +5,7 @@ import { MainService } from '../main.service';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { RatePopupComponent } from '../rate-popup/rate-popup.component';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -25,24 +26,48 @@ export class KapSurveyComponent implements OnInit {
   oneTotwo: boolean = false;
   threeTofive: boolean = false;
   fiveyears: boolean = false;
+  sum:any;
 
   updateSetting(event) {
     this.gridsize = event.value;
-    this.oneTotwo = true;
+    this.sum = this.forthFormGroup.value.six_months+this.forthFormGroup.value.one_to_two_year+this.forthFormGroup.value.three_to_five_year+this.forthFormGroup.value.five_years;
+    this.forthFormGroup.patchValue({
+      'six_months':this.forthFormGroup.value.six_months
+    })
+    this.forthFormGroup.updateValueAndValidity(); 
+ 
   }
   grid: number = 30;
   updateSet(event) {
     this.grid = event.value;
-    this.threeTofive = true;
+    this.sum = this.forthFormGroup.value.six_months+this.forthFormGroup.value.one_to_two_year+this.forthFormGroup.value.three_to_five_year+this.forthFormGroup.value.five_years;
+    this.forthFormGroup.patchValue({
+      'one_to_two_year':this.forthFormGroup.value.one_to_two_year
+    })
+    this.forthFormGroup.updateValueAndValidity(); 
+   
+  
   }
   value: number = 30;
   updatevalue(event) {
     this.value = event.value;
-    this.fiveyears = true
+    this.sum = this.forthFormGroup.value.six_months+this.forthFormGroup.value.one_to_two_year+this.forthFormGroup.value.three_to_five_year+this.forthFormGroup.value.five_years;
+    this.forthFormGroup.patchValue({
+      'three_to_five_year':this.forthFormGroup.value.three_to_five_year
+    })
+    this.forthFormGroup.updateValueAndValidity(); 
+   
+    
   }
   setvalue: number = 30;
   setvalues(event) {
-    this.value = event.value;
+    this.setvalue = event.value;
+    this.sum = this.forthFormGroup.value.six_months+this.forthFormGroup.value.one_to_two_year+this.forthFormGroup.value.three_to_five_year+this.forthFormGroup.value.five_years;
+    this.forthFormGroup.patchValue({
+      'five_years':this.forthFormGroup.value.five_years
+    })
+    this.forthFormGroup.updateValueAndValidity(); 
+   
   }
 
   isLinear = true;
@@ -61,7 +86,7 @@ export class KapSurveyComponent implements OnInit {
 
 
 
-  constructor(private _formBuilder: FormBuilder, private service: MainService,private router:Router, public dialog: MatDialog) { }
+  constructor(private _formBuilder: FormBuilder, private service: MainService,private router:Router, public dialog: MatDialog, private toastr: ToastrService ) { }
 
   ngOnInit() {
 
@@ -244,18 +269,16 @@ export class KapSurveyComponent implements OnInit {
       width: '40%'}); 
 
   }
-  closeDialog() {
-   
-  }
-  // popup2(){
-  //   this.dialog.open(ratePopup);
-  // }
+  
 
   submit() {
+    this.sum = this.forthFormGroup.value.six_months+this.forthFormGroup.value.one_to_two_year+this.forthFormGroup.value.three_to_five_year+this.forthFormGroup.value.five_years;
+   
+   
     var formData: any = new FormData();
-    if (this.thirdFormGroup.valid && this.patients.length > 1 && this.impacts.length > 2) {
+    if (this.thirdFormGroup.valid && this.patients.length > 1 && this.impacts.length > 2 ) {
      
-
+     
         console.log(this.firstFormGroup.value)
         this.people_with_tdm.Beta = (this.forthFormGroup.value.Beta == true) ? this.forthFormGroup.value.Beta : false;
         this.people_with_tdm.role = (this.forthFormGroup.value.role == true) ? this.forthFormGroup.value.role : false;
@@ -299,27 +322,14 @@ export class KapSurveyComponent implements OnInit {
         }
         formData.append('fear_injection', this.fear_injection);
         console.log(this.fear_injection);
-
-
-
-
         formData.append('six_months', this.forthFormGroup.value.six_months);
-
         console.log(this.forthFormGroup.value.six_months)
-
-
-
-
         formData.append('one_to_two_year', this.forthFormGroup.value.one_to_two_year);
-
-
         // if(this.value > 0 && this.value){
         //   formData.append('three_to_five_year',0);
 
         // }else{
         formData.append('three_to_five_year', this.forthFormGroup.value.three_to_five_year);
-
-
         // }
         //if(this.value > 0 && this.value){
         // formData.append('five_years',0);
@@ -328,10 +338,6 @@ export class KapSurveyComponent implements OnInit {
         formData.append('five_years', this.forthFormGroup.value.five_years);
 
         //}
-
-
-
-
         formData.append('people_with_tdm', JSON.stringify(this.people_with_tdm));
         formData.append('insulin_to_tdmpatients', JSON.stringify(this.insulin_to_tdmpatients));
 
@@ -343,15 +349,22 @@ export class KapSurveyComponent implements OnInit {
           // this.krvey =res
         console.log(res)
         localStorage.setItem("kdp_survey",'yes')
+       let kdp_survey = localStorage.getItem('kdp_survey')
+        if(kdp_survey=='no'){
+          this.router.navigateByUrl('/kap-survey')
+        }
+        else{
         this.router.navigateByUrl('/dashboard')
-
-        //this.router.navigateByUrl('/add-entry')
-
+        }
+       
       })
      
     }
     else {
       console.log('not valid')
+      if(this.sum != 100){
+        this.toastr.error("Som of insulinisation barriers should be equal to 100")
+       }
       this.thirdFormGroup.markAllAsTouched()
      
     }

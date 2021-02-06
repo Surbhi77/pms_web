@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef} from '@angular/material/dialog';
 import { Router, RouterLink } from '@angular/router';
 import { MainService } from 'src/app/main.service';
 
@@ -47,9 +47,9 @@ export class TermsCheckingComponent implements OnInit {
       this.router.navigateByUrl('/kap-survey')
     }
     if(this.kdp_survey=='yes'){
-      this.router.navigateByUrl('/quries')
+      this.router.navigateByUrl('/dashboard')
     }else{
-      this.router.navigateByUrl('/kap-survey')
+      this.router.navigateByUrl('/dashboard')
     }
   }
   check(event:any){
@@ -64,6 +64,13 @@ export class TermsCheckingComponent implements OnInit {
     }
       
   }
+  logout(){
+    localStorage.removeItem('userType')
+    localStorage.removeItem('email')
+    localStorage.removeItem('password')
+    this.router.navigateByUrl('/login')
+  }
+
   submit(){
     let formdata = new FormData()
     formdata.append("user_id", JSON.parse(localStorage.getItem('doctor_id')));
@@ -76,6 +83,7 @@ export class TermsCheckingComponent implements OnInit {
     //   localStorage.setItem("aggrement",'no')
     // }
    this.service.agreement(formdata).subscribe((res:any)=>{
+    this.router.navigateByUrl('/kap-survey');
    console.log(res)
    })
   }

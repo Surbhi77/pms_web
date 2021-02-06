@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 import { MainService } from '../main.service';
 
@@ -17,7 +18,11 @@ export class InitiateCompletedListComponent implements OnInit {
   data: any = [];
   deletedata: boolean;
   draftview: any =[];
-  constructor(private service:MainService,private _formBuilder:FormBuilder,private router:Router, private route:ActivatedRoute) { }
+  show: boolean;
+  draftshow: boolean;
+  approve: boolean;
+  rejected: boolean;
+  constructor(private service:MainService,private _formBuilder:FormBuilder,private toastr: ToastrService,private router:Router, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.firstFormGroup = this._formBuilder.group({
@@ -32,6 +37,25 @@ export class InitiateCompletedListComponent implements OnInit {
     this.service.initiateList(formdata).subscribe((res:any)=>{
       console.log(res)
       this.datalist = res.data 
+      console.log(res['data'].helpcenter_status)
+      if(res.message == "No Data Found"){
+        this.show = true
+      }
+      else{
+        this.show = false
+      }
+      // if(this.datalist.helpcenter_status == 'Approve'){
+      //    this.approve = true;
+      // }
+      // else{
+      // this.approve = false
+      // }
+      // if(this.datalist.helpcenter_status == 'Rejected'){
+      //   this.rejected = true
+      // }
+      // else{
+      //   this.rejected = false
+      // }
       },
       err=>{
         console.log(err)
@@ -43,6 +67,12 @@ export class InitiateCompletedListComponent implements OnInit {
       this.service.draftList(formdata).subscribe((res:any)=>{
         console.log(res)
         this.draftdata = res.data
+        if(res.message == "No Data Found"){
+         this.draftshow = true
+        }
+        else{
+          this.draftshow = false
+        }
       })   
   }
 
@@ -53,7 +83,7 @@ export class InitiateCompletedListComponent implements OnInit {
     console.log(id)
     this.service.deleteDraftdata(formdata).subscribe((res:any)=>{
       console.log(res)
-  
+      this.toastr.success("Data Deleted successfully")
       console.log(i)
         this.draftdata.splice(i,1)
        
