@@ -56,6 +56,7 @@ export class AddEntryComponent implements OnInit {
   bmi: any;
   resetform: any=[];
   formId:any;
+  check: boolean;
 
 
   //isEditable = false;
@@ -247,19 +248,27 @@ export class AddEntryComponent implements OnInit {
       var i = this.anti_diabetes.indexOf(name);
       this.anti_diabetes.splice(i,1);
     }
+    // if (this.anti_diabetes.length) {
+    //   this.check=false
+      
+    // }
+    // else{
+    //   this.check = true
+    // }
   }
   secondForm(event: any) {
 
     console.log(event)
-    if (!this.secondFormGroup.valid ) {
+    if (!this.secondFormGroup.valid || this.anti_diabetes.length==0) {
      // this.isLinear = true;
+     this.check = true
       this.secondFormGroup.markAllAsTouched()
       console.log("not valid")
       this.toastr.error("Please fill all the fields")
       console.log(this.secondFormGroup.value)
     }
     else {
-     
+      this.check = false
       const formData = new FormData()
       this.medical.hypertension_dur = (this.secondFormGroup.value.hypertension_dur==true)?this.secondFormGroup.value.hypertension_dur:false;
       this.medical.duration_hypertension = this.secondFormGroup.value.duration;

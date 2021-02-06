@@ -207,7 +207,7 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Treated for Diabetes since(in years)</mat-label>
-                                        
+
                                         <mat-select formControlName="treated_diabetes">
                                             <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getTreateddiabeties();" value='{{index}}'>{{index}}</mat-option>
@@ -524,7 +524,7 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Duration(years)</mat-label>
-                                      
+
                                         <mat-select formControlName="coronary_artery_duration">
                                             <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getHyperdur();" value='{{index}}'>{{index}}</mat-option>
@@ -774,7 +774,9 @@
                                     <mat-checkbox color="primary" (change)="antiDiabetes($event,'TripleDrugFixed')" formControlName="TripleDrugFixed" class="example-margin d-block mb-2">Triple Drug Fixed Dose Combinations</mat-checkbox>
                                 </div>
                             </div>
+
                         </div>
+                        <p *ngIf="check" class="text-danger">Choose atleast one options</p>
                     </div>
 
                     <div class="col-sm-12 col-lg-12 col-md-12">
@@ -960,7 +962,7 @@
                             <div class="entry-inputs-block">
                                 <mat-checkbox color="primary" formControlName="human_premixed_fifty" (change)="oncheked9($event,'human_premixed_fifty')" class="example-margin d-block mb-2">Human Premixed 50/50</mat-checkbox>
                             </div>
-                           
+
                             <div class="row" *ngIf="human_premixedfifty">
                                 <div class="col-lg-4 col-md-4 col-12 mb-3">
 
@@ -1122,7 +1124,7 @@
                                         </mat-form-field>
                                     </div>
                                 </div>
-                               
+
 
 
                                 <div class="col-lg-4 col-md-4 col-12 mb-3">
