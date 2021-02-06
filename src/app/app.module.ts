@@ -71,6 +71,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { InvoiceMediaComponent } from './invoice-media/invoice-media.component';
 import { RatePopupComponent } from './rate-popup/rate-popup.component';
+import { MbscModule } from '@mobiscroll/angular-lite';
+
 
 
 
@@ -127,6 +129,7 @@ import { RatePopupComponent } from './rate-popup/rate-popup.component';
     OverlayModule,  
     HttpClientModule,
     MatDialogModule,
+    MbscModule,
     ToastrModule.forRoot(),
   ],
   exports:[
@@ -148,6 +151,7 @@ import { RatePopupComponent } from './rate-popup/rate-popup.component';
     MatSelectModule,
     NgbModule,
     OverlayModule
+    
     
   ],
   providers: [AuthGuard],

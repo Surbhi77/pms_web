@@ -153,14 +153,19 @@ export class AddEntryComponent implements OnInit {
       nph_insulin: new FormControl(''),
       glargine_insulin: new FormControl(''),
       human_premixed_thirty_breakfast: new FormControl(''),
+      human_premixed_thirty_lunch: new FormControl(''),
       human_premixed_thirty_dinner: new FormControl(''),
       human_premixed_fifty_breakfast: new FormControl(''),
+      human_premixed_fifty_lunch: new FormControl(''),
       human_premixed_fifty_dinner: new FormControl(''),
       regular_insulin_breakfast: new FormControl(''),
+      regular_insulin_lunch: new FormControl(''),
       regular_insulin_dinner: new FormControl(''),
       nph_insulin_breakfast: new FormControl(''),
+      nph_insulin_lunch: new FormControl(''),
        nph_insulin_dinner: new FormControl(''),
       glargine_insulin_breakfast: new FormControl(''),
+      glargine_insulin_lunch: new FormControl(''),
       glargine_insulin_dinner: new FormControl('')
 
     })
@@ -589,6 +594,8 @@ export class AddEntryComponent implements OnInit {
       if (event.checked == true && name == 'human_premixed_thirty') {
         this.fourthFormGroup.controls["human_premixed_thirty_breakfast"].setValidators([Validators.required]);
         this.fourthFormGroup.controls["human_premixed_thirty_breakfast"].updateValueAndValidity();
+        this.fourthFormGroup.controls["human_premixed_thirty_lunch"].setValidators([Validators.required]);
+        this.fourthFormGroup.controls["human_premixed_thirty_lunch"].updateValueAndValidity();
         this.fourthFormGroup.controls["human_premixed_thirty_dinner"].setValidators([Validators.required]);
         this.fourthFormGroup.controls["human_premixed_thirty_dinner"].updateValueAndValidity();
       }
@@ -597,6 +604,8 @@ export class AddEntryComponent implements OnInit {
       this.human_premixedthirty = false
       this.fourthFormGroup.controls["human_premixed_thirty_breakfast"].clearValidators();
       this.fourthFormGroup.controls["human_premixed_thirty_breakfast"].updateValueAndValidity();
+      this.fourthFormGroup.controls["human_premixed_thirty_lunch"].clearValidators();
+      this.fourthFormGroup.controls["human_premixed_thirty_lunch"].updateValueAndValidity();
       this.fourthFormGroup.controls["human_premixed_thirty_dinner"].clearValidators();
       this.fourthFormGroup.controls["human_premixed_thirty_dinner"].updateValueAndValidity();
     }
@@ -608,6 +617,8 @@ export class AddEntryComponent implements OnInit {
       if (event.checked == true && name == 'human_premixed_fifty') {
         this.fourthFormGroup.controls["human_premixed_fifty_breakfast"].setValidators([Validators.required]);
         this.fourthFormGroup.controls["human_premixed_fifty_breakfast"].updateValueAndValidity();
+        this.fourthFormGroup.controls["human_premixed_fifty_lunch"].setValidators([Validators.required]);
+        this.fourthFormGroup.controls["human_premixed_fifty_lunch"].updateValueAndValidity();
         this.fourthFormGroup.controls["human_premixed_fifty_dinner"].setValidators([Validators.required]);
         this.fourthFormGroup.controls["human_premixed_fifty_dinner"].updateValueAndValidity();
       }
@@ -616,6 +627,8 @@ export class AddEntryComponent implements OnInit {
       this.human_premixedfifty = false
       this.fourthFormGroup.controls["human_premixed_fifty_breakfast"].clearValidators();
       this.fourthFormGroup.controls["human_premixed_fifty_breakfast"].updateValueAndValidity();
+      this.fourthFormGroup.controls["human_premixed_fifty_lunch"].clearValidators();
+      this.fourthFormGroup.controls["human_premixed_fifty_lunch"].updateValueAndValidity();
       this.fourthFormGroup.controls["human_premixed_fifty_dinner"].clearValidators();
       this.fourthFormGroup.controls["human_premixed_fifty_dinner"].updateValueAndValidity();
     }
@@ -625,6 +638,8 @@ export class AddEntryComponent implements OnInit {
       this.regular = true
       this.fourthFormGroup.get('regular_insulin_breakfast').setValidators(Validators.required)
       this.fourthFormGroup.controls["regular_insulin_breakfast"].updateValueAndValidity();
+      this.fourthFormGroup.get('regular_insulin_lunch').setValidators(Validators.required)
+      this.fourthFormGroup.controls["regular_insulin_lunch"].updateValueAndValidity();
       this.fourthFormGroup.get('regular_insulin_dinner').setValidators(Validators.required)
       this.fourthFormGroup.controls["regular_insulin_dinner"].updateValueAndValidity();
     }
@@ -632,15 +647,19 @@ export class AddEntryComponent implements OnInit {
       this.regular = false
       this.fourthFormGroup.get('regular_insulin_breakfast').clearValidators();
       this.fourthFormGroup.controls["regular_insulin_breakfast"].updateValueAndValidity();
+      this.fourthFormGroup.get('regular_insulin_lunch').clearValidators();
+      this.fourthFormGroup.controls["regular_insulin_lunch"].updateValueAndValidity();
       this.fourthFormGroup.get('regular_insulin_dinner').clearValidators();
       this.fourthFormGroup.controls["regular_insulin_dinner"].updateValueAndValidity();
     }
   }
-  oncheked11(event: any) {
+  oncheked11(event: any) { 
     if (event.checked == true) {
       this.nph = true
       this.fourthFormGroup.get('nph_insulin_breakfast').setValidators(Validators.required)
       this.fourthFormGroup.controls["nph_insulin_breakfast"].updateValueAndValidity();
+      this.fourthFormGroup.get('nph_insulin_lunch').setValidators(Validators.required)
+      this.fourthFormGroup.controls["nph_insulin_lunch"].updateValueAndValidity();
       this.fourthFormGroup.get('nph_insulin_dinner').setValidators(Validators.required)
       this.fourthFormGroup.controls["nph_insulin_dinner"].updateValueAndValidity();
     }
@@ -648,6 +667,8 @@ export class AddEntryComponent implements OnInit {
       this.nph = false
       this.fourthFormGroup.get('nph_insulin_breakfast').clearValidators();
       this.fourthFormGroup.controls["nph_insulin_breakfast"].updateValueAndValidity();
+      this.fourthFormGroup.get('nph_insulin_lunch').clearValidators();
+      this.fourthFormGroup.controls["nph_insulin_lunch"].updateValueAndValidity();
       this.fourthFormGroup.get('nph_insulin_dinner').clearValidators();
       this.fourthFormGroup.controls["nph_insulin_dinner"].updateValueAndValidity();
     }
@@ -657,6 +678,8 @@ export class AddEntryComponent implements OnInit {
       this.glargine = true
       this.fourthFormGroup.get('glargine_insulin_breakfast').setValidators(Validators.required)
       this.fourthFormGroup.controls["glargine_insulin_breakfast"].updateValueAndValidity();
+      this.fourthFormGroup.get('glargine_insulin_lunch').setValidators(Validators.required)
+      this.fourthFormGroup.controls["glargine_insulin_lunch"].updateValueAndValidity();
       this.fourthFormGroup.get('glargine_insulin_dinner').setValidators(Validators.required)
       this.fourthFormGroup.controls["glargine_insulin_dinner"].updateValueAndValidity();
     }
@@ -664,6 +687,8 @@ export class AddEntryComponent implements OnInit {
       this.glargine = false
       this.fourthFormGroup.get('glargine_insulin_breakfast').clearValidators();
       this.fourthFormGroup.controls["glargine_insulin_breakfast"].updateValueAndValidity();
+      this.fourthFormGroup.get(' glargine_insulin_lunch').clearValidators();
+      this.fourthFormGroup.controls[" glargine_insulin_lunch"].updateValueAndValidity();
       this.fourthFormGroup.get('glargine_insulin_dinner').clearValidators();
       this.fourthFormGroup.controls["glargine_insulin_dinner"].updateValueAndValidity();
     }
@@ -687,13 +712,13 @@ export class AddEntryComponent implements OnInit {
 
   }
   getDurationdiabeties(){
-    return Array.from({length:51 }, (_value , k) => k  );
+    return Array.from({length:50 }, (_value , k) => k +1 );
   }
   getTreateddiabeties(){
-    return Array.from({length:51 }, (_value , k) => k  );
+    return Array.from({length:50 }, (_value , k) => k +1 );
   }
   getHyperdur(){
-    return Array.from({length:51 }, (_value , k) => k  );
+    return Array.from({length:50 }, (_value , k) => k +1  );
   }
   getSystolic(){
     return Array.from({length:361 }, (_value , k) => k + 40  );
@@ -741,23 +766,28 @@ export class AddEntryComponent implements OnInit {
   submit(event:any) {
      
     if(this.fourthFormGroup.valid){
-      // this.vascular.vascular_dignosis = this.secondFormGroup.value.vascular_dignosis;
+      // this.vascular.vascular_dignosis = this.secondFormGroup.value.vascular_dignosis;nph_insulin_lunch
       // this.vascular.complication = this.secondFormGroup.value.complication;
-      // console.log('vascular', this.vascular)
+      // console.log('vascular', this.vascular)human_premixed_thirty_lunch
       this.human_premixed_thirty_Obj.human_premixed_thirty = (this.fourthFormGroup.value.human_premixed_thirty==true) ?this.fourthFormGroup.value.human_premixed_thirty :false ;
       this.human_premixed_thirty_Obj.human_premixed_thirty_breakfast = this.fourthFormGroup.value.human_premixed_thirty_breakfast;
+      this.human_premixed_thirty_Obj.human_premixed_thirty_lunch = this.fourthFormGroup.value.human_premixed_thirty_lunch;
       this.human_premixed_thirty_Obj.human_premixed_thirty_dinner = this.fourthFormGroup.value.human_premixed_thirty_dinner;
       this.human_premixed_fifty_Obj.human_premixed_fifty = (this.fourthFormGroup.value.human_premixed_fifty==true) ? this.fourthFormGroup.value.human_premixed_fifty:false;
       this.human_premixed_fifty_Obj.human_premixed_fifty_breakfast = this.fourthFormGroup.value.human_premixed_fifty_breakfast;
+      this.human_premixed_fifty_Obj.human_premixed_fifty_lunch = this.fourthFormGroup.value.human_premixed_fifty_lunch;
       this.human_premixed_fifty_Obj.human_premixed_fifty_dinner = this.fourthFormGroup.value.human_premixed_fifty_dinner;
       this.regular_insulin_Obj.regular_insulin = (this.fourthFormGroup.value.regular_insulin == true) ? this.fourthFormGroup.value.regular_insulin:false ;
       this.regular_insulin_Obj.regular_insulin_breakfast = this.fourthFormGroup.value.regular_insulin_breakfast;
+      this.regular_insulin_Obj.regular_insulin_lunch = this.fourthFormGroup.value.regular_insulin_lunch;
       this.regular_insulin_Obj.regular_insulin_dinner = this.fourthFormGroup.value.regular_insulin_dinner;
       this.nph_insulin_Obj.nph_insulin = (this.fourthFormGroup.value.nph_insulin == true) ? this.fourthFormGroup.value.nph_insulin : false;
       this.nph_insulin_Obj.nph_insulin_breakfast = this.fourthFormGroup.value.nph_insulin_breakfast;
+      this.nph_insulin_Obj.nph_insulin_lunch = this.fourthFormGroup.value.nph_insulin_lunch;
       this.nph_insulin_Obj.nph_insulin_dinner = this.fourthFormGroup.value.nph_insulin_dinner;
       this.glargine_insulin_Obj.glargine_insulin = (this.fourthFormGroup.value.glargine_insulin==true) ?this.fourthFormGroup.value.glargine_insulin:false ;
       this.glargine_insulin_Obj.glargine_insulin_breakfast = this.fourthFormGroup.value.glargine_insulin_breakfast;
+      this.glargine_insulin_Obj.glargine_insulin_lunch = this.fourthFormGroup.value.glargine_insulin_lunch;
       this.glargine_insulin_Obj.glargine_insulin_dinner = this.fourthFormGroup.value.glargine_insulin_dinner;
       const formData = new FormData()
       formData.append("id", this.formId)
@@ -770,7 +800,7 @@ export class AddEntryComponent implements OnInit {
      
       console.log(formData)
 
-      // this.firstFormGroup.reset();
+      // this.firstFormGroup.reset(); 
       // this.secondFormGroup.reset();
       // this.thirdFormGroup.reset();
       //  this.fourthFormGroup.reset();

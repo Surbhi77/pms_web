@@ -176,8 +176,9 @@
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
-                                        <mat-label>Duration of Diabetes</mat-label>
+                                        <mat-label>Duration of Diabetes(in years)</mat-label>
                                         <mat-select formControlName="duration_diabetes" value="{{beginview.duration_diabetes}}">
+                                            <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
 
@@ -188,8 +189,9 @@
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
-                                        <mat-label>Treated for Diabetes since</mat-label>
+                                        <mat-label>Treated for Diabetes since(in years)</mat-label>
                                         <mat-select formControlName="treated_diabetes" value="{{beginview.treated_diabetes}}">
+                                            <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
                                     </mat-form-field>
@@ -239,8 +241,9 @@
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
-                                        <mat-label>Duration of Hypertension:</mat-label>
+                                        <mat-label>Duration of Hypertension(in years)</mat-label>
                                         <mat-select formControlName="duration_hypertension" value="{{beginview.duration_hypertension}}">
+                                            <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
 
@@ -360,9 +363,9 @@
                     <div class="col-sm-12 col-lg-12 col-md-12 mb-3" *ngIf="medication">
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12">
-                                <div class="check_nones mb-3">
+                                <!-- <div class="check_nones mb-3">
                                     <p>Condition</p>
-                                </div>
+                                </div> -->
                                 <div class="entry-inputs-block">
                                     <mat-checkbox color="primary" formControlName="hypertension_dur" [checked]="beginview.hypertension_dur" (change)="oncheked($event, 'hypertension_dur')" class="example-margin d-block mb-2">Hypertension
                                     </mat-checkbox>
@@ -375,8 +378,9 @@
                                 </div>
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
-                                        <mat-label>Duration</mat-label>
+                                        <mat-label>Duration(years)</mat-label>
                                         <mat-select formControlName="duration" value="{{hypercheck.duration}}">
+                                            <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
 
@@ -400,9 +404,9 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12">
-                                <div class="check_nones mb-3">
+                                <!-- <div class="check_nones mb-3">
                                     <p>Condition</p>
-                                </div>
+                                </div> -->
                                 <div class="entry-inputs-block">
                                     <mat-checkbox color="primary" formControlName="dyslipidemia_dur" (change)="oncheked2($event,'dyslipidemia_dur')" [checked]="dysncheck.dyslipidemia_dur" class="example-margin d-block mb-2">Dyslipidemia
                                     </mat-checkbox>
@@ -415,8 +419,9 @@
                                 </div>
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
-                                        <mat-label>Duration</mat-label>
+                                        <mat-label>Duration(years)</mat-label>
                                         <mat-select formControlName="dyslipidemia_duration" value="{{dysncheck.dyslipidemia_duration}}">
+                                            <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
                                     </mat-form-field>
@@ -437,9 +442,9 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12">
-                                <div class="check_nones mb-3">
+                                <!-- <div class="check_nones mb-3">
                                     <p>Condition</p>
-                                </div>
+                                </div> -->
                                 <div class="entry-inputs-block">
                                     <mat-checkbox color="primary" formControlName="coronary_artery_dur" [checked]="beginview.coronary_artery_dur" (change)="oncheked3($event,'coronary_artery_dur')" class="example-margin d-block mb-2">Coronary Artery Disease
                                     </mat-checkbox>
@@ -452,8 +457,9 @@
                                 </div>
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
-                                        <mat-label>Duration</mat-label>
+                                        <mat-label>Duration(years)</mat-label>
                                         <mat-select formControlName="coronary_artery_duration" value="coroncheck.coronary_artery_duration">
+                                            <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
                                     </mat-form-field>
@@ -474,9 +480,9 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12">
-                                <div class="check_nones mb-3">
+                                <!-- <div class="check_nones mb-3">
                                     <p>Condition</p>
-                                </div>
+                                </div> -->
                                 <div class="entry-inputs-block">
                                     <mat-checkbox color="primary" formControlName="stroke_dur" [checked]="beginview.stroke_dur" (change)="oncheked4($event,'stroke_dur')" class="example-margin d-block mb-2">Stroke
                                     </mat-checkbox>
@@ -489,8 +495,9 @@
                                 </div>
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
-                                        <mat-label>Duration</mat-label>
+                                        <mat-label>Duration(years)</mat-label>
                                         <mat-select formControlName="stroke_duration" value="{{strokecheck.stroke_duration}}">
+                                            <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
                                     </mat-form-field>
@@ -511,9 +518,9 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12">
-                                <div class="check_nones mb-3">
+                                <!-- <div class="check_nones mb-3">
                                     <p>Condition</p>
-                                </div>
+                                </div> -->
                                 <div class="entry-inputs-block">
                                     <mat-checkbox color="primary" formControlName="neuropathy_dur" [change]="beginview.neuropathy_dur" (change)="oncheked5($event,'neuropathy_dur')" class="example-margin d-block mb-2">Neuropathy
                                     </mat-checkbox>
@@ -526,8 +533,9 @@
                                 </div>
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
-                                        <mat-label>Duration</mat-label>
+                                        <mat-label>Duration(years)</mat-label>
                                         <mat-select formControlName="neuropathy_duration" value="{{neuropathycheck.neuropathy_duration}}">
+                                            <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
                                     </mat-form-field>
@@ -548,9 +556,9 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12">
-                                <div class="check_nones mb-3">
+                                <!-- <div class="check_nones mb-3">
                                     <p>Condition</p>
-                                </div>
+                                </div> -->
                                 <div class="entry-inputs-block">
                                     <mat-checkbox color="primary" formControlName="retinopathy_dur" [checked]="beginview.retinopathy_dur" (change)="oncheked6($event,'retinopathy_dur')" class="example-margin d-block mb-2">Retinopathy
                                     </mat-checkbox>
@@ -563,8 +571,9 @@
                                 </div>
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
-                                        <mat-label>Duration</mat-label>
+                                        <mat-label>Duration(years)</mat-label>
                                         <mat-select formControlName="retinopathy_duration" value="{{retinopathycheck.retinopathy_duration}}">
+                                            <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
                                     </mat-form-field>
@@ -585,9 +594,9 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12">
-                                <div class="check_nones mb-3">
+                                <!-- <div class="check_nones mb-3">
                                     <p>Condition</p>
-                                </div>
+                                </div> -->
                                 <div class="entry-inputs-block">
                                     <mat-checkbox color="primary" formControlName="nephropathy_dur" [checked]="beginview.nephropathy_dur" (change)="oncheked7($event,'nephropathy_dur')" class="example-margin d-block mb-2">Nephropathy
                                     </mat-checkbox>
@@ -600,8 +609,9 @@
                                 </div>
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
-                                        <mat-label>Duration</mat-label>
+                                        <mat-label>Duration(years)</mat-label>
                                         <mat-select formControlName="nephropathy_duration" value="nephrocheck.nephropathy_duration">
+                                            <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
                                     </mat-form-field>
@@ -844,6 +854,18 @@
                                         <mat-option *ngFor="let index of getmulvalues()" value="{{index}}">{{index}}</mat-option>
                                     </mat-select>
                                     <!-- <mat-error *ngIf="hasError4('glargine_insulin_breakfast', 'required')">select field is required</mat-error> -->
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-12 mb-3">
+
+                            <div class="entry-inputs-block">
+                                <mat-form-field>
+                                    <mat-label>Lunch (IU)</mat-label>
+                                    <mat-select formControlName="glargine_insulin_lunch">
+                                        <mat-option *ngFor="let index of getmulvalues()" value="{{index}}">{{index}}</mat-option>
+                                    </mat-select>
+                                    <!-- <mat-error *ngIf="hasError4('glargine_insulin_lunch', 'required')">Glargine insulin lunch field is required</mat-error> -->
                                 </mat-form-field>
                             </div>
                         </div>

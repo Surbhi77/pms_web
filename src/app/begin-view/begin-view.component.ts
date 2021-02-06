@@ -156,7 +156,7 @@ export class BeginViewComponent implements OnInit {
       dose_insulin: new FormControl(''),
       glargine_insulin: new FormControl(''),
       glargine_insulin_breakfast: new FormControl(''),
-      // glargine_insulin_lunch: new FormControl('', [Validators.required]),
+      glargine_insulin_lunch: new FormControl(''),
       glargine_insulin_dinner: new FormControl(''),
       status: new FormControl(''),
       
@@ -594,6 +594,9 @@ export class BeginViewComponent implements OnInit {
         'glargine_insulin_breakfast':this.garglineArray.glargine_insulin_breakfast
       });
       this.fourthFormGroup.patchValue({
+        'glargine_insulin_lunch':this.garglineArray.glargine_insulin_lunch
+      });
+      this.fourthFormGroup.patchValue({
         'glargine_insulin_dinner':this.garglineArray.glargine_insulin_dinner
       });
       this.fourthFormGroup.updateValueAndValidity()
@@ -660,7 +663,7 @@ export class BeginViewComponent implements OnInit {
   }
  
   getvaluediabetes() {
-    return Array.from({ length: 51 }, (v, k) => k);
+    return Array.from({ length: 50 }, (v, k) => k + 1);
   }
   getmulvalues() {
     return Array.from({ length: 198 }, (v, k) => k + 3);
@@ -959,7 +962,7 @@ export class BeginViewComponent implements OnInit {
       console.log(this.glargineinsulinobj)
       this.glargineinsulinobj.glargine_insulin_breakfast = this.fourthFormGroup.value.glargine_insulin_breakfast;
      // console.log(this.glargineinsulinobj.breakfast)
-      // this.glargineinsulinobj.glargine_insulin_lunch = this.thirdFormGroup.value.glargine_insulin_lunch;
+       this.glargineinsulinobj.glargine_insulin_lunch = this.thirdFormGroup.value.glargine_insulin_lunch;
       this.glargineinsulinobj.glargine_insulin_dinner = this.fourthFormGroup.value.glargine_insulin_dinner;
       console.log(this.glargineinsulinobj)
       formData.append('dose_insulin', this.fourthFormGroup.value.dose_insulin);
