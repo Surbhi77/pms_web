@@ -193,8 +193,9 @@
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
-                                        <mat-label>Duration of Diabetes</mat-label>
+                                        <mat-label>Duration of Diabetes(in years)</mat-label>
                                         <mat-select formControlName="duration_diabetes">
+                                            <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getDurationdiabeties();" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
                                         <mat-error *ngIf="hasError2('duration_diabetes', 'required')">duration_diabetes field is required</mat-error>
@@ -205,8 +206,10 @@
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
-                                        <mat-label>Treated for Diabetes since</mat-label>
+                                        <mat-label>Treated for Diabetes since(in years)</mat-label>
+                                        
                                         <mat-select formControlName="treated_diabetes">
+                                            <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getTreateddiabeties();" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
                                         <mat-error *ngIf="hasError2('treated_diabetes', 'required')">treated_diabetes field is required</mat-error>
@@ -276,8 +279,9 @@
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
-                                        <mat-label>Duration of Hypertension:</mat-label>
+                                        <mat-label>Duration of Hypertension(in years)</mat-label>
                                         <mat-select formControlName="duration_hypertension">
+                                            <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getHyperdur();" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
                                     </mat-form-field>
@@ -419,9 +423,9 @@
                     <div class="col-sm-12 col-lg-12 col-md-12 mb-3" *ngIf="medication">
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12">
-                                <div class="check_nones mb-3">
+                                <!-- <div class="check_nones mb-3">
                                     <p>Condition</p>
-                                </div>
+                                </div> -->
                                 <div class="entry-inputs-block">
                                     <mat-checkbox color="primary" formControlName="hypertension_dur" (change)="oncheked($event,'hypertension_dur');" value="1" class="example-margin d-block mb-2">Hypertension</mat-checkbox>
                                 </div>
@@ -433,8 +437,9 @@
                                 </div>
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
-                                        <mat-label>Duration</mat-label>
+                                        <mat-label>Duration(years)</mat-label>
                                         <mat-select formControlName="duration">
+                                            <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getHyperdur();" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
                                         <mat-error *ngIf="hasError2('duration', 'required')">duration field is required</mat-error>
@@ -462,9 +467,9 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12">
-                                <div class="check_nones mb-3">
+                                <!-- <div class="check_nones mb-3">
                                     <p>Condition</p>
-                                </div>
+                                </div> -->
                                 <div class="entry-inputs-block">
                                     <mat-checkbox color="primary" formControlName="dyslipidemia_dur" (change)="oncheked2($event,'dyslipidemia_dur')" class="example-margin d-block mb-2">Dyslipidemia</mat-checkbox>
                                 </div>
@@ -476,8 +481,9 @@
                                 </div>
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
-                                        <mat-label>Duration</mat-label>
+                                        <mat-label>Duration(years)</mat-label>
                                         <mat-select formControlName="dyslipidemia_duration">
+                                            <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getHyperdur();" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
                                         <mat-error *ngIf="hasError2('dyslipidemia_duration', 'required')">dyslipidemia_duration field is required</mat-error>
@@ -503,9 +509,9 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12">
-                                <div class="check_nones mb-3">
+                                <!-- <div class="check_nones mb-3">
                                     <p>Condition</p>
-                                </div>
+                                </div> -->
                                 <div class="entry-inputs-block">
                                     <mat-checkbox color="primary" formControlName="coronary_artery_dur" (change)="oncheked3($event,'coronary_artery_dur')" class="example-margin d-block mb-2">Coronary Artery Disease</mat-checkbox>
                                 </div>
@@ -517,8 +523,10 @@
                                 </div>
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
-                                        <mat-label>Duration</mat-label>
+                                        <mat-label>Duration(years)</mat-label>
+                                      
                                         <mat-select formControlName="coronary_artery_duration">
+                                            <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getHyperdur();" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
                                         <mat-error *ngIf="hasError2('coronary_artery_duration', 'required')">coronary_artery_duration field is required</mat-error>
@@ -544,9 +552,9 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12">
-                                <div class="check_nones mb-3">
+                                <!-- <div class="check_nones mb-3">
                                     <p>Condition</p>
-                                </div>
+                                </div> -->
                                 <div class="entry-inputs-block">
                                     <mat-checkbox color="primary" formControlName="stroke_dur" (change)="oncheked4($event,'stroke_dur')" class="example-margin d-block mb-2">Stroke</mat-checkbox>
                                 </div>
@@ -558,8 +566,9 @@
                                 </div>
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
-                                        <mat-label>Duration</mat-label>
+                                        <mat-label>Duration(years)</mat-label>
                                         <mat-select formControlName="stroke_duration">
+                                            <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getHyperdur();" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
                                         <mat-error *ngIf="hasError2('stroke_duration', 'required')">stroke_duration field is required</mat-error>
@@ -585,9 +594,9 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12">
-                                <div class="check_nones mb-3">
+                                <!-- <div class="check_nones mb-3">
                                     <p>Condition</p>
-                                </div>
+                                </div> -->
                                 <div class="entry-inputs-block">
                                     <mat-checkbox color="primary" formControlName="neuropathy_dur" (change)="oncheked5($event,'neuropathy_dur')" class="example-margin d-block mb-2">Neuropathy</mat-checkbox>
                                 </div>
@@ -599,8 +608,9 @@
                                 </div>
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
-                                        <mat-label>Duration</mat-label>
+                                        <mat-label>Duration(years)</mat-label>
                                         <mat-select formControlName="neuropathy_duration">
+                                            <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getHyperdur();" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
                                         <mat-error *ngIf="hasError2('neuropathy_duration', 'required')">neuropathy_duration field is required</mat-error>
@@ -626,9 +636,9 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12">
-                                <div class="check_nones mb-3">
+                                <!-- <div class="check_nones mb-3">
                                     <p>Condition</p>
-                                </div>
+                                </div> -->
                                 <div class="entry-inputs-block">
                                     <mat-checkbox color="primary" formControlName="retinopathy_dur" (change)="oncheked6($event,'retinopathy_dur')" class="example-margin d-block mb-2">Retinopathy</mat-checkbox>
                                 </div>
@@ -640,8 +650,9 @@
                                 </div>
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
-                                        <mat-label>Duration</mat-label>
+                                        <mat-label>Duration(years)</mat-label>
                                         <mat-select formControlName="retinopathy_duration">
+                                            <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getHyperdur();" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
                                         <mat-error *ngIf="hasError2('retinopathy_duration', 'required')">retinopathy_duration field is required</mat-error>
@@ -667,9 +678,9 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12">
-                                <div class="check_nones mb-3">
+                                <!-- <div class="check_nones mb-3">
                                     <p>Condition</p>
-                                </div>
+                                </div> -->
                                 <div class="entry-inputs-block">
                                     <mat-checkbox color="primary" formControlName="nephropathy_dur" (change)="oncheked7($event,'nephropathy_dur')" class="example-margin d-block mb-2">Nephropathy</mat-checkbox>
                                 </div>
@@ -681,8 +692,9 @@
                                 </div>
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
-                                        <mat-label>Duration</mat-label>
+                                        <mat-label>Duration(years)</mat-label>
                                         <mat-select formControlName="nephropathy_duration">
+                                            <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getHyperdur();" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
                                         <mat-error *ngIf="hasError2('nephropathy_duration', 'required')">nephropathy_duration field is required</mat-error>
@@ -922,6 +934,18 @@
 
                                     <div class="entry-inputs-block">
                                         <mat-form-field>
+                                            <mat-label>Lunch</mat-label>
+                                            <mat-select formControlName="human_premixed_thirty_lunch">
+                                                <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
+                                            </mat-select>
+                                            <mat-error *ngIf="hasError4('human_premixed_thirty_lunch', 'required')">Lunch field is required</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-12 mb-3">
+
+                                    <div class="entry-inputs-block">
+                                        <mat-form-field>
                                             <mat-label>Dinner</mat-label>
                                             <mat-select formControlName="human_premixed_thirty_dinner">
                                                 <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
@@ -936,7 +960,7 @@
                             <div class="entry-inputs-block">
                                 <mat-checkbox color="primary" formControlName="human_premixed_fifty" (change)="oncheked9($event,'human_premixed_fifty')" class="example-margin d-block mb-2">Human Premixed 50/50</mat-checkbox>
                             </div>
-
+                           
                             <div class="row" *ngIf="human_premixedfifty">
                                 <div class="col-lg-4 col-md-4 col-12 mb-3">
 
@@ -950,6 +974,19 @@
                                         </mat-form-field>
                                     </div>
                                 </div>
+                                <div class="col-lg-4 col-md-4 col-12 mb-3">
+
+                                    <div class="entry-inputs-block">
+                                        <mat-form-field>
+                                            <mat-label>Lunch</mat-label>
+                                            <mat-select formControlName="human_premixed_fifty_lunch">
+                                                <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
+                                            </mat-select>
+                                            <mat-error *ngIf="hasError4('human_premixed_fifty_lunch', 'required')">Lunch field is required</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
 
                                 <div class="col-lg-4 col-md-4 col-12 mb-3">
 
@@ -980,6 +1017,18 @@
                                                 <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                             </mat-select>
                                             <mat-error *ngIf="hasError4('regular_insulin_breakfast', 'required')">Breakfast field is required</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-12 mb-3">
+
+                                    <div class="entry-inputs-block">
+                                        <mat-form-field>
+                                            <mat-label>Lunch</mat-label>
+                                            <mat-select formControlName="regular_insulin_lunch">
+                                                <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
+                                            </mat-select>
+                                            <mat-error *ngIf="hasError4('regular_insulin_lunch', 'required')">Lunch field is required</mat-error>
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -1017,7 +1066,18 @@
                                         </mat-form-field>
                                     </div>
                                 </div>
+                                <div class="col-lg-4 col-md-4 col-12 mb-3">
 
+                                    <div class="entry-inputs-block">
+                                        <mat-form-field>
+                                            <mat-label>Lunch</mat-label>
+                                            <mat-select formControlName="nph_insulin_lunch">
+                                                <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
+                                            </mat-select>
+                                            <mat-error *ngIf="hasError4('nph_insulin_lunch', 'required')">Lunch field is required</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
                                 <div class="col-lg-4 col-md-4 col-12 mb-3">
 
                                     <div class="entry-inputs-block">
@@ -1050,6 +1110,19 @@
                                         </mat-form-field>
                                     </div>
                                 </div>
+                                <div class="col-lg-4 col-md-4 col-12 mb-3">
+
+                                    <div class="entry-inputs-block">
+                                        <mat-form-field>
+                                            <mat-label>Lunch</mat-label>
+                                            <mat-select formControlName="glargine_insulin_lunch">
+                                                <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
+                                            </mat-select>
+                                            <mat-error *ngIf="hasError4('glargine_insulin_lunch', 'required')">Lunch field is required</mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                               
 
 
                                 <div class="col-lg-4 col-md-4 col-12 mb-3">

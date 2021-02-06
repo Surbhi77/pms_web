@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
+
 import * as moment from 'moment';
 import { MainService } from '../main.service';
 import { Router } from '@angular/router';
@@ -43,6 +44,7 @@ export class InvoiceComponent implements OnInit {
   now3: any;
   bmi: any;
   formId:any;
+  check: boolean = false;
 
   glargine_condition: boolean;
   //nph: boolean;
@@ -135,7 +137,7 @@ export class InvoiceComponent implements OnInit {
       dose_insulin: new FormControl('', [Validators.required]),
       glargine_insulin: new FormControl(''),
       glargine_insulin_breakfast: new FormControl(''),
-      // glargine_insulin_lunch: new FormControl('', [Validators.required]),
+       glargine_insulin_lunch: new FormControl(''),
       glargine_insulin_dinner: new FormControl(''),
      
 
@@ -156,7 +158,7 @@ export class InvoiceComponent implements OnInit {
     return Array.from({ length: 451 }, (v, k) => k + 50);
   }
   getvaluediabetes() {
-    return Array.from({ length: 51 }, (v, k) => k );
+    return Array.from({ length: 50 }, (v, k) => k + 1 );
   }
   getvalueset(num: number) {
     return Array.from({ length: num }, (v, k) => k + 1);
@@ -166,6 +168,9 @@ export class InvoiceComponent implements OnInit {
   }
   getmulvalues() {
     return Array.from({ length: 198 }, (v, k) => k + 3);
+  }
+  getdigit() {
+    return Array.from({ length: 10 }, (v, k) => k + 1);
   }
   public hasError4 = (controlName: string, errorName: string) => {
     return this.fourthFormGroup.controls[controlName].hasError(errorName);
@@ -223,6 +228,10 @@ export class InvoiceComponent implements OnInit {
     return this.thirdFormGroup.controls;
 
   }
+  get i() {
+    return this.fourthFormGroup.controls;
+
+  }
   public hasError = (controlName: string, errorName: string) => {
     return this.firstFormGroup.controls[controlName].hasError(errorName);
   }
@@ -277,33 +286,57 @@ export class InvoiceComponent implements OnInit {
     if (event.checked) {
       this.anti.push(name)
       console.log(this.anti)
+      
     } else {
       let i = this.anti.indexOf(name);
       this.anti.splice(i, 1)
       console.log(this.anti)
     }
     if (this.anti.length) {
+      this.check=false
       this.secondFormGroup.patchValue({
         'people_with_tdm': this.anti.toString()
       });
       this.secondFormGroup.updateValueAndValidity()
     } else {
+      this.check=true
       this.secondFormGroup.patchValue({
         'people_with_tdm': ''
       })
     }
+    // if (this.anti.length < 1) {
+    //   this.check = false
+      
+    //   console.log("check box ")
+    // } else {
+    //   this.check = true;
+     
+
+    // }
   }
   onSecondSubmit(redirect) {
-
-    if (!this.secondFormGroup.valid) {
-     // this.isLinear = true
+    // if (this.anti.length < 1) {
+    //   this.check = true
     
+      
+    //   console.log("check box ")
+    // } else {
+    //   this.check = false;
+    // }
+    
+    
+    console.log("check",this.check);
+
+    if (!this.secondFormGroup.valid || this.anti.length==0) {
+     // this.isLinear = true
+     this.check = true
       console.log(this.secondFormGroup.value)
       this.secondFormGroup.markAllAsTouched();
-      this.toastr.error("Please fill all the fields")
+      // this.toastr.error("Please fill all the fields")
     }
     else {
-      //this.isLinear = false
+      this.check = false;
+   
       var formData: any = new FormData();
       formData.append('duration_hypertension', this.secondFormGroup.value.duration_hypertension);
       formData.append('duration_diabetes', this.secondFormGroup.value.duration_diabetes);
@@ -582,8 +615,8 @@ export class InvoiceComponent implements OnInit {
 
       this.fourthFormGroup.controls['glargine_insulin_breakfast'].setValidators([Validators.required])
       this.fourthFormGroup.controls['glargine_insulin_breakfast'].updateValueAndValidity()
-      // this.thirdFormGroup.controls['glargine_insulin_lunch'].setValidators([Validators.required]);
-      // this.thirdFormGroup.controls['glargine_insulin_lunch'].updateValueAndValidity()
+      this.fourthFormGroup.controls['glargine_insulin_lunch'].setValidators([Validators.required]);
+      this.fourthFormGroup.controls['glargine_insulin_lunch'].updateValueAndValidity()
       this.fourthFormGroup.controls['glargine_insulin_dinner'].setValidators([Validators.required]);
       this.fourthFormGroup.controls['glargine_insulin_dinner'].updateValueAndValidity()
       this.fourthFormGroup.updateValueAndValidity()
@@ -593,8 +626,8 @@ export class InvoiceComponent implements OnInit {
 
       this.fourthFormGroup.controls['glargine_insulin_breakfast'].clearValidators()
       this.fourthFormGroup.controls['glargine_insulin_breakfast'].updateValueAndValidity();
-      // this.thirdFormGroup.controls['glargine_insulin_lunch'].clearValidators();
-      // this.thirdFormGroup.controls['glargine_insulin_lunch'].updateValueAndValidity();
+       this.fourthFormGroup.controls['glargine_insulin_lunch'].clearValidators();
+       this.fourthFormGroup.controls['glargine_insulin_lunch'].updateValueAndValidity();
       this.fourthFormGroup.controls['glargine_insulin_dinner'].clearValidators();
       this.fourthFormGroup.controls['glargine_insulin_dinner'].updateValueAndValidity();
       this.fourthFormGroup.updateValueAndValidity()
@@ -615,6 +648,7 @@ export class InvoiceComponent implements OnInit {
   //   console.log(this.now3)
 
   // }
+  
   onchange($event: any) {
     console.log($event)
     if ($event.value == 'yes') {
@@ -634,7 +668,7 @@ export class InvoiceComponent implements OnInit {
       console.log(this.glargineinsulinobj)
       this.glargineinsulinobj.glargine_insulin_breakfast = this.fourthFormGroup.value.glargine_insulin_breakfast;
      // console.log(this.glargineinsulinobj.breakfast)
-      // this.glargineinsulinobj.glargine_insulin_lunch = this.thirdFormGroup.value.glargine_insulin_lunch;
+      this.glargineinsulinobj.glargine_insulin_lunch = this.thirdFormGroup.value.glargine_insulin_lunch;
       this.glargineinsulinobj.glargine_insulin_dinner = this.fourthFormGroup.value.glargine_insulin_dinner;
       console.log(this.glargineinsulinobj)
       formData.append('dose_insulin', this.fourthFormGroup.value.dose_insulin);

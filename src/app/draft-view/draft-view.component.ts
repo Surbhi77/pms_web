@@ -154,20 +154,26 @@ export class DraftViewComponent implements OnInit {
       // hundred_iu_vial: new FormControl(''),
       // refill: new FormControl(''),
       human_premixed_thirty: new FormControl(''),
+     
       human_premixed_fifty: new FormControl(''),
       regular_insulin: new FormControl(''),
       nph_insulin: new FormControl(''),
       glargine_insulin: new FormControl(''),
      
       human_premixed_thirty_breakfast: new FormControl(''),
+      human_premixed_thirty_lunch: new FormControl(''),
       human_premixed_thirty_dinner: new FormControl(''),
       human_premixed_fifty_breakfast: new FormControl(''),
+      human_premixed_fifty_lunch: new FormControl(''),
       human_premixed_fifty_dinner: new FormControl(''),
       regular_insulin_breakfast: new FormControl(''),
+      regular_insulin_lunch: new FormControl(''),
       regular_insulin_dinner: new FormControl(''),
       nph_insulin_breakfast: new FormControl(''),
+      nph_insulin_lunch: new FormControl(''),
       nph_insulin_dinner: new FormControl(''),
       glargine_insulin_breakfast: new FormControl(''),
+      glargine_insulin_lunch: new FormControl(''),
       glargine_insulin_dinner: new FormControl('')
 
     })
@@ -540,6 +546,7 @@ populateDetails(){
     this.fourthFormGroup.patchValue({
       "human_premixed_thirty":this.human_premixedthirtyArray.human_premixed_thirty,
         "human_premixed_thirty_breakfast":this.human_premixedthirtyArray.human_premixed_thirty_breakfast,
+        "human_premixed_thirty_lunch":this.human_premixedthirtyArray.human_premixed_thirty_lunch,
        "human_premixed_thirty_dinner":this.human_premixedthirtyArray.human_premixed_thirty_dinner,
     });
     this.fourthFormGroup.updateValueAndValidity()
@@ -556,6 +563,7 @@ populateDetails(){
     this.fourthFormGroup.patchValue({
       "human_premixed_fifty":this.human_premixedfiftyArray.human_premixed_fifty,
        "human_premixed_fifty_breakfast":this.human_premixedfiftyArray.human_premixed_fifty_breakfast,
+       "human_premixed_fifty_lunch":this.human_premixedfiftyArray.human_premixed_fifty_lunch,
         "human_premixed_fifty_dinner":this.human_premixedfiftyArray.human_premixed_fifty_dinner,
     });
     this.fourthFormGroup.updateValueAndValidity()
@@ -571,6 +579,7 @@ populateDetails(){
     this.fourthFormGroup.patchValue({
       "regular_insulin":this.regular_insulinArray.regular_insulin,
       "regular_insulin_breakfast":this.regular_insulinArray.regular_insulin_breakfast,
+      "regular_insulin_lunch":this.regular_insulinArray.regular_insulin_lunch,
       "regular_insulin_dinner":this.regular_insulinArray.regular_insulin_dinner,
     });
     this.fourthFormGroup.updateValueAndValidity()
@@ -586,6 +595,7 @@ populateDetails(){
     this.fourthFormGroup.patchValue({
       "nph_insulin": this.nph_insulinArray.nph_insulin,
       "nph_insulin_breakfast": this.nph_insulinArray.nph_insulin_breakfast,
+      "nph_insulin_lunch": this.nph_insulinArray.nph_insulin_lunch,
       "nph_insulin_dinner": this.nph_insulinArray.nph_insulin_dinner
     });
     this.fourthFormGroup.updateValueAndValidity();
@@ -602,6 +612,7 @@ populateDetails(){
     this.fourthFormGroup.patchValue({
       "glargine_insulin": this.glargine_insulinArray.glargine_insulin,
       "glargine_insulin_breakfast": this.glargine_insulinArray.glargine_insulin_breakfast,
+      "glargine_insulin_lunch": this.glargine_insulinArray.glargine_insulin_lunch,
       "glargine_insulin_dinner": this.glargine_insulinArray.glargine_insulin_dinner
     });
     this.fourthFormGroup.updateValueAndValidity();
@@ -649,13 +660,13 @@ checkAntiDiabetes(name){
 
   }
   getDurationdiabeties(){
-    return Array.from({length:51 }, (_value , k) => k  );
+    return Array.from({length:50 }, (_value , k) => k + 1 );
   }
   getTreateddiabeties(){
-    return Array.from({length:51 }, (_value , k) => k  );
+    return Array.from({length:50 }, (_value , k) => k + 1 );
   }
   getHyperdur(){
-    return Array.from({length:51 }, (_value , k) => k  );
+    return Array.from({length:50 }, (_value , k) => k + 1 );
   }
   getSystolic(){
     return Array.from({length:361 }, (_value , k) => k + 40  );
@@ -1043,18 +1054,23 @@ checkAntiDiabetes(name){
       // console.log('vascular', this.vascular)
       this.human_premixed_thirty_Obj.human_premixed_thirty = (this.fourthFormGroup.value.human_premixed_thirty==true) ?this.fourthFormGroup.value.human_premixed_thirty :false ;
       this.human_premixed_thirty_Obj.human_premixed_thirty_breakfast = this.fourthFormGroup.value.human_premixed_thirty_breakfast;
+      this.human_premixed_thirty_Obj.human_premixed_thirty_lunch = this.fourthFormGroup.value.human_premixed_thirty_lunch;
       this.human_premixed_thirty_Obj.human_premixed_thirty_dinner = this.fourthFormGroup.value.human_premixed_thirty_dinner;
       this.human_premixed_fifty_Obj.human_premixed_fifty = (this.fourthFormGroup.value.human_premixed_fifty==true) ? this.fourthFormGroup.value.human_premixed_fifty:false;
       this.human_premixed_fifty_Obj.human_premixed_fifty_breakfast = this.fourthFormGroup.value.human_premixed_fifty_breakfast;
+      this.human_premixed_fifty_Obj.human_premixed_fifty_lunch = this.fourthFormGroup.value.human_premixed_fifty_lunch;
       this.human_premixed_fifty_Obj.human_premixed_fifty_dinner = this.fourthFormGroup.value.human_premixed_fifty_dinner;
       this.regular_insulin_Obj.regular_insulin = (this.fourthFormGroup.value.regular_insulin == true) ? this.fourthFormGroup.value.regular_insulin:false ;
       this.regular_insulin_Obj.regular_insulin_breakfast = this.fourthFormGroup.value.regular_insulin_breakfast;
+      this.regular_insulin_Obj.regular_insulin_lunch = this.fourthFormGroup.value.regular_insulin_lunch;
       this.regular_insulin_Obj.regular_insulin_dinner = this.fourthFormGroup.value.regular_insulin_dinner;
       this.nph_insulin_Obj.nph_insulin = (this.fourthFormGroup.value.nph_insulin == true) ? this.fourthFormGroup.value.nph_insulin : false;
       this.nph_insulin_Obj.nph_insulin_breakfast = this.fourthFormGroup.value.nph_insulin_breakfast;
+      this.nph_insulin_Obj.nph_insulin_lunch = this.fourthFormGroup.value.nph_insulin_lunch;
       this.nph_insulin_Obj.nph_insulin_dinner = this.fourthFormGroup.value.nph_insulin_dinner;
       this.glargine_insulin_Obj.glargine_insulin = (this.fourthFormGroup.value.glargine_insulin==true) ?this.fourthFormGroup.value.glargine_insulin:false ;
       this.glargine_insulin_Obj.glargine_insulin_breakfast = this.fourthFormGroup.value.glargine_insulin_breakfast;
+      this.glargine_insulin_Obj.glargine_insulin_lunch = this.fourthFormGroup.value.glargine_insulin_lunch;
       this.glargine_insulin_Obj.glargine_insulin_dinner = this.fourthFormGroup.value.glargine_insulin_dinner;
       const formData = new FormData()
       // formData.append("id",this.route.snapshot.params.id)
