@@ -86,7 +86,7 @@ export class LoginComponent implements OnInit {
           // const dialogConfig:any = new MatDialogConfig();
           // dialogConfig.disableClose = true;
           // this.dialog.open(TermsCheckingComponent,{width: '40%'});   
-          this.dialog.open(TermsCheckingComponent, { disableClose: true, width:"40%"})
+          this.dialog.open(TermsCheckingComponent, { disableClose: true, width:"40%" })
         }else{
          this.router.navigateByUrl('/kap-survey');
         }

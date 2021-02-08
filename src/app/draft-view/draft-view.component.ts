@@ -147,7 +147,8 @@ export class DraftViewComponent implements OnInit {
       postprandial_plasma:new FormControl(''),
       glyscolated:new FormControl(''),
       hba1_c:new FormControl(''),
-      s_creatinine:new FormControl('')
+      s_creatinine:new FormControl(''),
+      glycosylated_decimal: new FormControl('',Validators.required)
     })
     this.fourthFormGroup = this._formBuilder.group({
       // fourty_iu_vial: new FormControl(''),
@@ -529,12 +530,29 @@ populateDetails(){
     this.thirdFormGroup.patchValue({
       'fasting_plasma':this.bloodInvetigateObj.fasting_plasma,
       'postprandial_plasma':this.bloodInvetigateObj.postprandial_plasma,
-      'glyscolated':this.bloodInvetigateObj.glyscolated,
+      // 'glyscolated':this.bloodInvetigateObj.glyscolated + '.'+ this.bloodInvetigateObj.glycosylated_decimal,
       'hba1_c':this.bloodInvetigateObj.hba1_c,
       's_creatinine':this.bloodInvetigateObj.s_creatinine
+      // this.blood_investigation_obj.glyscolated = this.thirdFormGroup.value.glyscolated+'.'+this.thirdFormGroup.value.glycosylated_decimal
     });
     this.thirdFormGroup.updateValueAndValidity()
+
+
   }
+  console.log(this.bloodInvetigateObj)
+    if(this.viewData && this.viewData.blood_investigation && this.bloodInvetigateObj.glyscolated){
+      let arr = this.bloodInvetigateObj.glyscolated.split(".");
+      console.log(arr)
+      this.thirdFormGroup.patchValue({
+        'glyscolated':arr[0]
+      });
+      this.thirdFormGroup.updateValueAndValidity()
+      this.thirdFormGroup.patchValue({
+        'glycosylated_decimal':arr[1]?arr[1]:'0'
+      });
+      this.thirdFormGroup.updateValueAndValidity()
+    }
+  
   if(this.viewData && this.viewData.human_premixed_thirty!=''){
     this.human_premixedthirtyArray = JSON.parse(this.viewData.human_premixed_thirty);
     if(this.human_premixedthirtyArray.human_premixed_thirty){
@@ -682,6 +700,12 @@ checkAntiDiabetes(name){
   }
   getinsulin(){
     return Array.from({length:198 }, (_value , k) => k + 3  );
+  }
+  getvalues() {
+    return Array.from({ length: 20 }, (v, k) => k + 1);
+  }
+  getdigit() {
+    return Array.from({ length: 10 }, (v, k) => k + 1);
   }
   antiDiabetes(event,name){
     if(event.checked){
@@ -1023,7 +1047,7 @@ checkAntiDiabetes(name){
       const formData = new FormData()
       this.blood_investigation_obj.s_creatinine = this.thirdFormGroup.value.s_creatinine
       this.blood_investigation_obj.hba1_c = this.thirdFormGroup.value.hba1_c
-      this.blood_investigation_obj.glyscolated = this.thirdFormGroup.value.glyscolated
+      this.blood_investigation_obj.glyscolated = this.thirdFormGroup.value.glyscolated+'.'+this.thirdFormGroup.value.glycosylated_decimal
       this.blood_investigation_obj.postprandial_plasma = this.thirdFormGroup.value.postprandial_plasma
       this.blood_investigation_obj.fasting_plasma = this.thirdFormGroup.value.fasting_plasma;
       formData.append("blood_investigation", JSON.stringify(this.blood_investigation_obj));

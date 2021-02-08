@@ -585,7 +585,7 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Duration(years)</mat-label>
-                                        <mat-select formControlName="retinopathy_duration" value="{{retinopathyObj.retinopathy_duration}}">
+                                        <mat-select formControlName="retinopathy_duration">
                                             <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getHyperdur();" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
@@ -599,7 +599,7 @@
                                     <p>Medication :</p>
                                 </div>
                                 <div class="entry-inputs-block">
-                                    <mat-radio-group formControlName="retinopathy_medication" value="{{retinopathyObj.retinopathy_medication}}" color="primary" aria-label="Select an option">
+                                    <mat-radio-group formControlName="retinopathy_medication" color="primary" aria-label="Select an option">
                                         <mat-radio-button value="Yes" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="No">No</mat-radio-button>
                                     </mat-radio-group>
@@ -762,8 +762,14 @@
                             <div class="entry-inputs-block">
                                 <mat-form-field>
                                     <mat-label>Hemoglobin</mat-label>
-                                    <mat-select formControlName="glyscolated" [value]="bloodInvetigateObj.glyscolated">
-                                        <mat-option *ngFor="let index of gethbalc()" value='{{index}}'>{{index}}</mat-option>
+                                    <mat-select formControlName="glyscolated" class="col-md-4">
+                                        <mat-option *ngFor="let index of getvalues()" value="{{index}}">{{index}}</mat-option>
+
+                                    </mat-select>
+                                    <p>.</p>
+                                    <mat-select formControlName="glycosylated_decimal" class="col-md-4">
+                                        <mat-option *ngFor="let index of getdigit()" value="{{index}}">{{index}}</mat-option>
+
                                     </mat-select>
 
                                 </mat-form-field>
@@ -776,8 +782,8 @@
                             </div>
                             <div class="entry-inputs-block">
                                 <mat-radio-group formControlName="hba1_c" [value]="bloodInvetigateObj.hba1_c" color="primary" aria-label="Select an option">
-                                    <mat-radio-button value="yes" class="mr-5">Yes</mat-radio-button>
-                                    <mat-radio-button value="no">No</mat-radio-button>
+                                    <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
+                                    <mat-radio-button value="0">No</mat-radio-button>
 
                                 </mat-radio-group>
                             </div>

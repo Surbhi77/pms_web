@@ -57,6 +57,8 @@ export class AddEntryComponent implements OnInit {
   resetform: any=[];
   formId:any;
   check: boolean;
+  humanArray:any = []
+  humancheck: boolean;
 
 
   //isEditable = false;
@@ -174,6 +176,8 @@ export class AddEntryComponent implements OnInit {
       glargine_insulin_dinner: new FormControl('')
 
     })
+   
+   
   }
 
   // changeValidators() {
@@ -260,13 +264,13 @@ export class AddEntryComponent implements OnInit {
         })
       }
     }
-    // if (this.anti_diabetes.length) {
-    //   this.check=false
+    if (this.anti_diabetes.length) {
+      this.check=false
       
-    // }
-    // else{
-    //   this.check = true
-    // }
+    }
+    else{
+      this.check = true
+    }
   }
   secondForm(event: any) {
 
@@ -616,6 +620,7 @@ export class AddEntryComponent implements OnInit {
   oncheked8(event: any, name: any) {
     if (event.checked == true) {
       this.human_premixedthirty = true
+      this.humanArray.push('human_premixedthirty')
       if (event.checked == true && name == 'human_premixed_thirty') {
         this.fourthFormGroup.controls["human_premixed_thirty_breakfast"].setValidators([Validators.required]);
         this.fourthFormGroup.controls["human_premixed_thirty_breakfast"].updateValueAndValidity();
@@ -627,6 +632,8 @@ export class AddEntryComponent implements OnInit {
     }
     else {
       this.human_premixedthirty = false
+      let index = this.humanArray.indexOf('human_premixedthirty');
+      this.humanArray.splice(index,1)
       this.fourthFormGroup.controls["human_premixed_thirty_breakfast"].clearValidators();
       this.fourthFormGroup.controls["human_premixed_thirty_breakfast"].updateValueAndValidity();
       this.fourthFormGroup.controls["human_premixed_thirty_lunch"].clearValidators();
@@ -639,6 +646,7 @@ export class AddEntryComponent implements OnInit {
   oncheked9(event: any, name: any) {
     if (event.checked == true) {
       this.human_premixedfifty = true
+      this.humanArray.push('human_premixedfifty')
       if (event.checked == true && name == 'human_premixed_fifty') {
         this.fourthFormGroup.controls["human_premixed_fifty_breakfast"].setValidators([Validators.required]);
         this.fourthFormGroup.controls["human_premixed_fifty_breakfast"].updateValueAndValidity();
@@ -650,6 +658,8 @@ export class AddEntryComponent implements OnInit {
     }
     else {
       this.human_premixedfifty = false
+      let index = this.humanArray.indexOf('human_premixedfifty');
+      this.humanArray.splice(index,1)
       this.fourthFormGroup.controls["human_premixed_fifty_breakfast"].clearValidators();
       this.fourthFormGroup.controls["human_premixed_fifty_breakfast"].updateValueAndValidity();
       this.fourthFormGroup.controls["human_premixed_fifty_lunch"].clearValidators();
@@ -661,6 +671,7 @@ export class AddEntryComponent implements OnInit {
   oncheked10(event: any) {
     if (event.checked == true) {
       this.regular = true
+      this.humanArray.push('regular')
       this.fourthFormGroup.get('regular_insulin_breakfast').setValidators(Validators.required)
       this.fourthFormGroup.controls["regular_insulin_breakfast"].updateValueAndValidity();
       this.fourthFormGroup.get('regular_insulin_lunch').setValidators(Validators.required)
@@ -670,6 +681,8 @@ export class AddEntryComponent implements OnInit {
     }
     else {
       this.regular = false
+      let index = this.humanArray.indexOf('regular');
+      this.humanArray.splice(index,1)
       this.fourthFormGroup.get('regular_insulin_breakfast').clearValidators();
       this.fourthFormGroup.controls["regular_insulin_breakfast"].updateValueAndValidity();
       this.fourthFormGroup.get('regular_insulin_lunch').clearValidators();
@@ -681,6 +694,7 @@ export class AddEntryComponent implements OnInit {
   oncheked11(event: any) { 
     if (event.checked == true) {
       this.nph = true
+      this.humanArray.push('nph')
       this.fourthFormGroup.get('nph_insulin_breakfast').setValidators(Validators.required)
       this.fourthFormGroup.controls["nph_insulin_breakfast"].updateValueAndValidity();
       this.fourthFormGroup.get('nph_insulin_lunch').setValidators(Validators.required)
@@ -690,6 +704,8 @@ export class AddEntryComponent implements OnInit {
     }
     else {
       this.nph = false
+      let index = this.humanArray.indexOf('nph');
+      this.humanArray.splice(index,1)
       this.fourthFormGroup.get('nph_insulin_breakfast').clearValidators();
       this.fourthFormGroup.controls["nph_insulin_breakfast"].updateValueAndValidity();
       this.fourthFormGroup.get('nph_insulin_lunch').clearValidators();
@@ -701,6 +717,7 @@ export class AddEntryComponent implements OnInit {
   oncheked12(event: any) {
     if (event.checked == true) {
       this.glargine = true
+      this.humanArray.push('glargine')
       this.fourthFormGroup.get('glargine_insulin_breakfast').setValidators(Validators.required)
       this.fourthFormGroup.controls["glargine_insulin_breakfast"].updateValueAndValidity();
       this.fourthFormGroup.get('glargine_insulin_lunch').setValidators(Validators.required)
@@ -709,7 +726,9 @@ export class AddEntryComponent implements OnInit {
       this.fourthFormGroup.controls["glargine_insulin_dinner"].updateValueAndValidity();
     }
     else {
-      this.glargine = false
+      this.glargine = false;
+      let index = this.humanArray.indexOf('glargine');
+      this.humanArray.splice(index,1)
       this.fourthFormGroup.get('glargine_insulin_breakfast').clearValidators();
       this.fourthFormGroup.controls["glargine_insulin_breakfast"].updateValueAndValidity();
       this.fourthFormGroup.get(' glargine_insulin_lunch').clearValidators();
@@ -794,9 +813,12 @@ export class AddEntryComponent implements OnInit {
     }
      console.log( this.bmi)
   }
+  
   submit(event:any) {
      
-    if(this.fourthFormGroup.valid){
+    if(this.fourthFormGroup.valid && this.humanArray.length){
+      this.humancheck=false
+      console.log(this.humancheck)
       // this.vascular.vascular_dignosis = this.secondFormGroup.value.vascular_dignosis;nph_insulin_lunch
       // this.vascular.complication = this.secondFormGroup.value.complication;
       // console.log('vascular', this.vascular)human_premixed_thirty_lunch
@@ -848,6 +870,9 @@ export class AddEntryComponent implements OnInit {
       })
     }
     else{
+    
+        this.humancheck = true
+      
       console.log('not valid')
       this.toastr.error("Please fill all the fields")
        this.fourthFormGroup.markAllAsTouched()
