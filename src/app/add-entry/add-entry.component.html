@@ -853,8 +853,17 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Hemoglobin</mat-label>
-                                        <mat-select formControlName="glyscolated">
+                                        <!-- <mat-select formControlName="glyscolated">
                                             <mat-option *ngFor="let index of gethbalc()" value='{{index}}'>{{index}}</mat-option>
+                                        </mat-select> -->
+                                        <mat-select formControlName="glyscolated" class="col-md-4">
+                                            <mat-option *ngFor="let index of getvalues()" value="{{index}}">{{index}}</mat-option>
+
+                                        </mat-select>
+                                        <p>.</p>
+                                        <mat-select formControlName="glycosylated_decimal" class="col-md-4">
+                                            <mat-option *ngFor="let index of getdigit()" value="{{index}}">{{index}}</mat-option>
+
                                         </mat-select>
                                         <mat-error *ngIf="hasError3('glyscolated', 'required')">blood_investigation_hba1c field is required</mat-error>
                                     </mat-form-field>

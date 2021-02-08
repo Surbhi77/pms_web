@@ -139,6 +139,7 @@ export class AddEntryComponent implements OnInit {
 
     this.thirdFormGroup = this._formBuilder.group({
     //  blood_investigation: new FormControl(''),
+    glycosylated_decimal: new FormControl('',Validators.required),
     fasting_plasma:new FormControl('' ,[Validators.required]),
     postprandial_plasma:new FormControl('',[Validators.required]),
     glyscolated:new FormControl('',[Validators.required]),
@@ -367,7 +368,8 @@ export class AddEntryComponent implements OnInit {
       const formData = new FormData()
       this.blood_investigation_obj.s_creatinine = this.thirdFormGroup.value.s_creatinine
       this.blood_investigation_obj.hba1_c = this.thirdFormGroup.value.hba1_c
-      this.blood_investigation_obj.glyscolated = this.thirdFormGroup.value.glyscolated
+      this.blood_investigation_obj.glyscolated = this.thirdFormGroup.value.glyscolated+'.'+this.thirdFormGroup.value.glycosylated_decimal
+     // formData.append('glycosylated', this.thirdFormGroup.value.glycosylated+'.'+this.thirdFormGroup.value.glycosylated_decimal);
       this.blood_investigation_obj.postprandial_plasma = this.thirdFormGroup.value.postprandial_plasma
       this.blood_investigation_obj.fasting_plasma = this.thirdFormGroup.value.fasting_plasma;
       formData.append("blood_investigation", JSON.stringify(this.blood_investigation_obj));
@@ -757,6 +759,12 @@ export class AddEntryComponent implements OnInit {
   }
   getinsulin(){
     return Array.from({length:198 }, (_value , k) => k + 3  );
+  }
+  getvalues() {
+    return Array.from({ length: 20 }, (v, k) => k + 1);
+  }
+  getdigit() {
+    return Array.from({ length: 10 }, (v, k) => k + 1);
   }
   weight(event:any){
   console.log(event.value)
