@@ -40,6 +40,7 @@
                                         <input matInput formControlName="date_visit" [matDatepicker]="visit_date" [value]="date_visit">
                                         <mat-datepicker-toggle matSuffix [for]="visit_date"></mat-datepicker-toggle>
                                         <mat-datepicker #visit_date></mat-datepicker>
+                                        <mat-error *ngIf="hasError('date_visit', 'required')">date_visit is required</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -57,6 +58,10 @@
                                     <mat-radio-group color="primary" formControlName="sex" aria-label="Select an option" value={{beginview.sex}}>
                                         <mat-radio-button value="male" class="mr-5">Male</mat-radio-button>
                                         <mat-radio-button value="female">Female</mat-radio-button>
+                                        <div *ngIf="g.sex.touched && g.sex.invalid" class="text-danger">
+                                            <div *ngIf="g.sex.errors.required" class="errors ">Please select male/female
+                                            </div>
+                                        </div>
                                     </mat-radio-group>
 
                                 </div>
@@ -73,6 +78,7 @@
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Enter Age in years</mat-label>
                                         <input matInput formControlName="age" type="number" placeholder="Ex. 24 Year" value="{{beginview.age}}">
+                                        <mat-error *ngIf="hasError('age', 'required')"> Age is required.</mat-error>
 
                                     </mat-form-field>
                                 </div>
@@ -86,6 +92,7 @@
 
                                             <mat-option *ngFor="let index of getweight()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
+                                        <mat-error *ngIf="hasError('weight', 'required')"> weight is required.</mat-error>
 
                                     </mat-form-field>
                                 </div>
@@ -102,6 +109,7 @@
                                         <mat-select formControlName="height" value="{{beginview.height}}" (selectionChange)="height($event)">
                                             <mat-option *ngFor="let index of getheight()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
+                                        <mat-error *ngIf="hasError('height', 'required')"> height is required.</mat-error>
 
                                     </mat-form-field>
                                 </div>
@@ -137,8 +145,9 @@
                                         <mat-radio-button value="Pre-University">Pre-University</mat-radio-button>
                                         <mat-radio-button value="Graduate">Graduate</mat-radio-button>
                                     </mat-radio-group>
-
-
+                                    <div *ngIf="g.education.touched && g.education.invalid">
+                                        <div *ngIf="g.education.errors.required" class="errors text-danger">Please select any one </div>
+                                    </div>
 
                                 </div>
                             </div>
@@ -152,6 +161,9 @@
                                         <mat-radio-button value="Employed" class="mr-5">Employed</mat-radio-button>
                                         <mat-radio-button value="Unemployed">Unemployed</mat-radio-button>
                                     </mat-radio-group>
+                                    <div *ngIf="g.employment.touched && g.employment.invalid">
+                                        <div *ngIf="g.employment.errors.required" class="errors text-danger">Please select employed/unemployed </div>
+                                    </div>
 
 
                                 </div>
@@ -181,6 +193,7 @@
                                             <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
+                                        <mat-error *ngIf="hasError2('duration_diabetes', 'required')"> duration_diabetes is required.</mat-error>
 
                                     </mat-form-field>
                                 </div>
@@ -194,6 +207,7 @@
                                             <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
+                                        <mat-error *ngIf="hasError2('treated_diabetes', 'required')"> treated_diabetes is required.</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -213,6 +227,12 @@
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="0">No</mat-radio-button>
                                     </mat-radio-group>
+                                    <ng-container *ngIf="f.family_diabetes.touched && f.family_diabetes.invalid">
+                                        <mat-error *ngIf="f.family_diabetes.errors.required" class="errors">
+                                            select any one option
+                                        </mat-error>
+                                    </ng-container>
+
 
                                 </div>
                             </div>
@@ -232,6 +252,11 @@
                                     <mat-radio-group color="primary" formControlName="hypertension" aria-label="Select an option" value="{{beginview.hypertension}}">
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="0">No</mat-radio-button>
+                                        <ng-container *ngIf="f.hypertension.touched && f.hypertension.invalid">
+                                            <mat-error *ngIf="f.hypertension.errors.required" class="errors">
+                                                select any one option
+                                            </mat-error>
+                                        </ng-container>
 
                                     </mat-radio-group>
 
@@ -246,6 +271,7 @@
                                             <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
+                                        <mat-error *ngIf="hasError2('duration_hypertension', 'required')"> duration_hypertension is required.</mat-error>
 
                                     </mat-form-field>
                                 </div>
@@ -284,6 +310,7 @@
                                         <mat-select formControlName="systolic" value="{{beginview.systolic}}">
                                             <mat-option *ngFor="let index of getvaluefast()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
+                                        <mat-error *ngIf="hasError2('systolic', 'required')"> Systolic is required.</mat-error>
 
                                     </mat-form-field>
                                 </div>
@@ -301,6 +328,7 @@
                                         <mat-select formControlName="diastolic" value="{{beginview.diastolic}}">
                                             <mat-option *ngFor="let index of getvaluefast()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
+                                        <mat-error *ngIf="hasError2('diastolic', 'required')"> Diastolic is required.</mat-error>
 
                                     </mat-form-field>
                                 </div>
@@ -320,6 +348,11 @@
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="0">No</mat-radio-button>
                                     </mat-radio-group>
+                                    <ng-container *ngIf="f.smoking.touched && f.smoking.invalid">
+                                        <mat-error *ngIf="f.smoking.errors.required" class="errors">
+                                            select any one option
+                                        </mat-error>
+                                    </ng-container>
 
                                 </div>
                             </div>
@@ -334,6 +367,12 @@
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="0">No</mat-radio-button>
                                     </mat-radio-group>
+                                    <ng-container *ngIf="f.alcohol.touched && f.alcohol.invalid">
+                                        <mat-error *ngIf="f.alcohol.errors.required" class="errors">
+                                            select any one option
+                                        </mat-error>
+                                    </ng-container>
+
 
 
                                 </div>
@@ -352,6 +391,11 @@
                                     <mat-radio-group formControlName="medical_condition" color="primary" aria-label="Select an option" [checked]="beginview.medical_condition" (change)="onchange($event)" value="{{beginview.medical_condition}}">
                                         <mat-radio-button value="yes" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="no">No</mat-radio-button>
+                                        <ng-container *ngIf="f.medical_condition.touched && f.medical_condition.invalid">
+                                            <mat-error *ngIf="f.medical_condition.errors.required" class="errors">
+                                                Complications and Co morbid medical conditions field is required
+                                            </mat-error>
+                                        </ng-container>
 
                                     </mat-radio-group>
                                 </div>
@@ -379,10 +423,11 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Duration(years)</mat-label>
-                                        <mat-select formControlName="duration" value="{{hypercheck.duration}}">
+                                        <mat-select formControlName="duration" >
                                             <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
+                                        <mat-error *ngIf="hasError2('duration', 'required')"> Hypertension duration field is required</mat-error>
 
                                     </mat-form-field>
                                 </div>
@@ -394,9 +439,14 @@
                                     <p>Medication :</p>
                                 </div>
                                 <div class="entry-inputs-block">
-                                    <mat-radio-group color="primary" formControlName="medications" aria-label="Select an option" value="{{hypercheck.medications}}">
+                                    <mat-radio-group color="primary" formControlName="medications" aria-label="Select an option" >
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="2">No</mat-radio-button>
+                                        <ng-container *ngIf="f.medications.touched && f.medications.invalid">
+                                            <mat-error *ngIf="f.medications.errors.required" class="errors">
+                                                Hypertension  medications field is required
+                                            </mat-error>
+                                        </ng-container>
                                     </mat-radio-group>
 
                                 </div>
@@ -424,6 +474,7 @@
                                             <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
+                                        <mat-error *ngIf="hasError2('dyslipidemia_duration', 'required')">Dyslipidemia duration field is required</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -436,6 +487,11 @@
                                     <mat-radio-group formControlName="dyslipidemia_medication" color="primary" aria-label="Select an option" value="{{dysncheck.dyslipidemia_medication}}">
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="2">No</mat-radio-button>
+                                        <ng-container *ngIf="f.dyslipidemia_medication.touched && f.dyslipidemia_medication.invalid">
+                                            <mat-error *ngIf="f.dyslipidemia_medication.errors.required" class="errors">
+                                                Dyslipidemia  medications field is required
+                                            </mat-error>
+                                        </ng-container>
                                     </mat-radio-group>
                                 </div>
                             </div>
@@ -462,6 +518,7 @@
                                             <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
+                                        <mat-error *ngIf="hasError2('coronary_artery_duration', 'required')">Coronary artery duration field is required</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -474,6 +531,11 @@
                                     <mat-radio-group color="primary" formControlName="coronary_artery_medication" aria-label="Select an option" value="coroncheck.coronary_artery_medication">
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="2">No</mat-radio-button>
+                                        <ng-container *ngIf="f.coronary_artery_medication.touched && f.coronary_artery_medication.invalid">
+                                            <mat-error *ngIf="f.coronary_artery_medication.errors.required" class="errors">
+                                                Coronary artery  medications field is required
+                                            </mat-error>
+                                        </ng-container>
                                     </mat-radio-group>
                                 </div>
                             </div>
@@ -500,6 +562,7 @@
                                             <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
+                                        <mat-error *ngIf="hasError2('stroke_duration', 'required')">Stroke duration field is required</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -512,6 +575,11 @@
                                     <mat-radio-group color="primary" formControlName="stroke_medication" aria-label="Select an option" value="{{strokecheck.stroke_medication}}">
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="2">No</mat-radio-button>
+                                        <ng-container *ngIf="f.stroke_medication.touched && f.stroke_medication.invalid">
+                                            <mat-error *ngIf="f.stroke_medication.errors.required" class="errors">
+                                                Stroke medications field is required
+                                            </mat-error>
+                                        </ng-container>
                                     </mat-radio-group>
                                 </div>
                             </div>
@@ -538,6 +606,7 @@
                                             <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
+                                        <mat-error *ngIf="hasError2('neuropathy_duration', 'required')">Neuropathy duration field is required</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -550,6 +619,11 @@
                                     <mat-radio-group color="primary" formControlName="neuropathy_medication" aria-label="Select an option" value="neuropathycheck.neuropathy_medication">
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="2">No</mat-radio-button>
+                                        <ng-container *ngIf="f.neuropathy_medication.touched && f.neuropathy_medication.invalid">
+                                            <mat-error *ngIf="f.neuropathy_medication.errors.required" class="errors">
+                                                Neuropathy medications field is required
+                                            </mat-error>
+                                        </ng-container>
                                     </mat-radio-group>
                                 </div>
                             </div>
@@ -576,6 +650,7 @@
                                             <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
+                                        <mat-error *ngIf="hasError2('retinopathy_dur', 'required')">Retinopathy duration field is required</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -588,6 +663,11 @@
                                     <mat-radio-group formControlName="retinopathy_medication" color="primary" aria-label="Select an option" value="{{retinopathycheck.retinopathy_medication}}">
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="2">No</mat-radio-button>
+                                        <ng-container *ngIf="f.retinopathy_medication.touched && f.retinopathy_medication.invalid">
+                                            <mat-error *ngIf="f.retinopathy_medication.errors.required" class="errors">
+                                                Retinopathy medications field is required
+                                            </mat-error>
+                                        </ng-container>
                                     </mat-radio-group>
                                 </div>
                             </div>
@@ -614,6 +694,7 @@
                                             <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
+                                        <mat-error *ngIf="hasError2('nephropathy_dur', 'required')">Nephropathy duration field is required</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -626,6 +707,11 @@
                                     <mat-radio-group color="primary" formControlName="nephropathy_medication" aria-label="Select an option" value="{{nephrocheck.nephropathy_medication}}">
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="2">No</mat-radio-button>
+                                        <ng-container *ngIf="f.nephropathy_medication.touched && f.nephropathy_medication.invalid">
+                                            <mat-error *ngIf="f.nephropathy_medication.errors.required" class="errors">
+                                                Nephropathy medications field is required
+                                            </mat-error>
+                                        </ng-container>
                                     </mat-radio-group>
                                 </div>
                             </div>
@@ -658,12 +744,11 @@
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="Meglitinides" (change)="antiDiabetesChange($event,'Meglitinides')" [checked]="checkAntiDiabetes('Meglitinides')" class="example-margin d-block mb-2">Meglitinides
+                                    <mat-checkbox color="primary" formControlName="SGLT2Inhibitors" (change)="antiDiabetesChange($event,'SGLT2 Inhibitors')" [checked]="checkAntiDiabetes('SGLT2 Inhibitors')" class="example-margin d-block mb-2">SGLT2 Inhibitors
                                     </mat-checkbox>
 
                                 </div>
                             </div>
-
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
                                     <mat-checkbox color="primary" formControlName="Thiazolidendiones" (change)="antiDiabetesChange($event,'Thiazolidendiones')" [checked]="checkAntiDiabetes('Thiazolidendiones')" class="example-margin d-block mb-2">
@@ -672,32 +757,33 @@
                             </div>
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="GLP_Analogues" (change)="antiDiabetesChange($event,'GLP_Analogues')" [checked]="checkAntiDiabetes('GLP_Analogues')" class="example-margin d-block mb-2">GLP Analogues
+                                    <mat-checkbox color="primary" formControlName="GLP_Analogues" (change)="antiDiabetesChange($event,'GLP Analogues')" [checked]="checkAntiDiabetes('GLP Analogues')" class="example-margin d-block mb-2">GLP Analogues
                                     </mat-checkbox>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="DPP4_Inhibitors" (change)="antiDiabetesChange($event,'DPP4_Inhibitors')" [checked]="checkAntiDiabetes('DPP4_Inhibitors')" class="example-margin d-block mb-2">DPP4 Inhibitors
+                                    <mat-checkbox color="primary" formControlName="DPP4_Inhibitors" (change)="antiDiabetesChange($event,'DPP4 Inhibitors')" [checked]="checkAntiDiabetes('DPP4 Inhibitors')" class="example-margin d-block mb-2">DPP4 Inhibitors
                                     </mat-checkbox>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="DoubleDrugFixed" (change)="antiDiabetesChange($event,'DoubleDrugFixed')" [checked]="checkAntiDiabetes('DoubleDrugFixed')" class="example-margin d-block mb-2">Double Drug Fixed Dose Combination
+                                    <mat-checkbox color="primary" formControlName="DoubleDrugFixed" (change)="antiDiabetesChange($event,'Double Drug Fixed Dose Combination')" [checked]="checkAntiDiabetes('Double Drug Fixed Dose Combination')" class="example-margin d-block mb-2">Double Drug Fixed Dose Combination
                                     </mat-checkbox>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="TripleDrugFixed" (change)="antiDiabetesChange($event,'TripleDrugFixed')" [checked]="checkAntiDiabetes('TripleDrugFixed')" class="example-margin d-block mb-2">Triple Drug Fixed Dose Combinations
+                                    <mat-checkbox color="primary" formControlName="TripleDrugFixed" (change)="antiDiabetesChange($event,'Triple Drug Fixed Dose Combinations')" [checked]="checkAntiDiabetes('Triple Drug Fixed Dose Combinations')" class="example-margin d-block mb-2">Triple Drug Fixed Dose Combinations
                                     </mat-checkbox>
                                 </div>
                             </div>
                         </div>
+                        <p *ngIf="check" class="text-danger">Choose atleast one options</p>
                     </div>
 
                     <div class="col-sm-12 col-lg-12 col-md-12">
@@ -711,7 +797,7 @@
         </mat-step>
         <!---------------------------------Step 03----------------------------------------->
 
-        <mat-step>
+        <mat-step [stepControl]="thirdFormGroup">
             <ng-template matStepLabel>Medical History</ng-template>
             <form [formGroup]="thirdFormGroup">
                 <div class="row">
@@ -724,9 +810,10 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Duration</mat-label>
-                                        <mat-select formControlName="fasting_plasma" value="{{beginview.fasting_plasma}}">
+                                        <mat-select formControlName="fasting_plasma" >
                                             <mat-option *ngFor="let index of getvaluefast()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
+                                         <mat-error *ngIf="hasError3('fasting_plasma', 'required')">Select Fasting Plasma Glucose field is required</mat-error>
 
                                     </mat-form-field>
                                 </div>
@@ -738,9 +825,10 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Plasma Glucose</mat-label>
-                                        <mat-select formControlName="postprandial_plasma" value="{{beginview.postprandial_plasma}}">
+                                        <mat-select formControlName="postprandial_plasma">
                                             <mat-option *ngFor="let index of getvalue()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
+                                        <mat-error *ngIf="hasError3('postprandial_plasma', 'required')">Select Postprandial Plasma Glucose field is required</mat-error>
 
                                     </mat-form-field>
                                 </div>
@@ -760,8 +848,8 @@
                                             <mat-option *ngFor="let index of getdigit()" value="{{index}}">{{index}}</mat-option>
 
                                         </mat-select>
-                                        <!-- <mat-error *ngIf="hasError3('glycosylated_decimal', 'required')">select field is required
-                                        </mat-error> -->
+                                        <mat-error *ngIf="hasError3('glycosylated_decimal', 'required')">Glycosylated Hemoglobin select field is required
+                                        </mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -783,9 +871,14 @@
                                     </mat-form-field>
                                 </div> -->
                                 <div class="entry-inputs-block">
-                                    <mat-radio-group formControlName="hbac_lab" color="primary" aria-label="Select an option" value={{beginview.hbac_lab}}>
+                                    <mat-radio-group formControlName="hbac_lab" color="primary" aria-label="Select an option">
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="0">No</mat-radio-button>
+                                        <ng-container *ngIf="h.hbac_lab.touched && h.hbac_lab.invalid">
+                                            <mat-error *ngIf="h.hbac_lab.errors.required" class="errors">
+                                                HbA1c test performed in Lab medications field is required
+                                            </mat-error>
+                                        </ng-container>
                                         <!-- <mat-error *ngIf="hasError3('hbac_lab', 'required')">blood_investigation_HPLC field is required</mat-error> -->
                                     </mat-radio-group>
                                 </div>
@@ -797,7 +890,7 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>S.Creatinine</mat-label>
-                                        <mat-select formControlName="s_creatinine" value="{{beginview.s_creatinine}}">
+                                        <mat-select formControlName="s_creatinine" >
                                             <mat-option *ngFor="let index of getCreatinine()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
 
@@ -831,7 +924,7 @@
                         <p>Dose of Insulin Glargine at initiation: </p>
                     </div>
                     <div class="entry-inputs-block">
-                        <mat-radio-group color="primary" formControlName="dose_insulin" value={{beginview.dose_insulin}}>
+                        <mat-radio-group color="primary" formControlName="dose_insulin">
                             <mat-radio-button value="0.1U/kg body weight" class="mr-2">0.1U/kg body weight
                             </mat-radio-button>
                             <mat-radio-button value="0.2U/Kg body weight" class="mr-2">0.2U/Kg body weight
@@ -840,6 +933,9 @@
                             <mat-radio-button value="10 U" class="mr-2">10 U</mat-radio-button>
                             <mat-radio-button value="Others" class="mr-2">Others</mat-radio-button>
                         </mat-radio-group>
+                        <div *ngIf="i.dose_insulin.touched && i.dose_insulin.invalid">
+                            <div *ngIf="i.dose_insulin.errors.required" class="errors text-danger">Please select any one option </div>
+                        </div>
                     </div>
 
 
@@ -859,7 +955,7 @@
                                     <mat-select formControlName="glargine_insulin_breakfast">
                                         <mat-option *ngFor="let index of getmulvalues()" value="{{index}}">{{index}}</mat-option>
                                     </mat-select>
-                                    <!-- <mat-error *ngIf="hasError4('glargine_insulin_breakfast', 'required')">select field is required</mat-error> -->
+                                    <mat-error *ngIf="hasError4('glargine_insulin_breakfast', 'required')">Glargine insulin breakfast field is required</mat-error>
                                 </mat-form-field>
                             </div>
                         </div>
@@ -871,7 +967,7 @@
                                     <mat-select formControlName="glargine_insulin_lunch">
                                         <mat-option *ngFor="let index of getmulvalues()" value="{{index}}">{{index}}</mat-option>
                                     </mat-select>
-                                    <!-- <mat-error *ngIf="hasError4('glargine_insulin_lunch', 'required')">Glargine insulin lunch field is required</mat-error> -->
+                                    <mat-error *ngIf="hasError4('glargine_insulin_lunch', 'required')">Glargine insulin lunch field is required</mat-error>
                                 </mat-form-field>
                             </div>
                         </div>
@@ -886,7 +982,7 @@
                                     <mat-select formControlName="glargine_insulin_dinner">
                                         <mat-option *ngFor="let index of getmulvalues()" value="{{index}}">{{index}}</mat-option>
                                     </mat-select>
-                                    <!-- <mat-error *ngIf="hasError4('glargine_insulin_dinner', 'required')">select field is required</mat-error> -->
+                                    <mat-error *ngIf="hasError4('glargine_insulin_dinner', 'required')">Glargine insulin dinner field is required</mat-error>
                                 </mat-form-field>
                             </div>
                         </div>

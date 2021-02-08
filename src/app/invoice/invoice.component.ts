@@ -100,7 +100,7 @@ export class InvoiceComponent implements OnInit {
       Biguanides: new FormControl(''),
       medical_condition: new FormControl('',[Validators.required]),
       Sulphonylureas: new FormControl(''),
-      Meglitinides: new FormControl(''),
+      SGLT2Inhibitors: new FormControl(''),
       Thiazolidendiones: new FormControl(''),
       GLP_Analogues: new FormControl(''),
       DPP4_Inhibitors: new FormControl(''),

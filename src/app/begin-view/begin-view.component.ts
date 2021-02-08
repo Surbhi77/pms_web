@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MainService } from '../main.service';
 import { ToastrService } from 'ngx-toastr';
@@ -66,6 +66,7 @@ export class BeginViewComponent implements OnInit {
   date_visit: Date;
   isEditScreen: boolean;
   listingId: any;
+  check: boolean = false;
   constructor( private _formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,private service:MainService,private toastr: ToastrService) { }
@@ -85,30 +86,30 @@ export class BeginViewComponent implements OnInit {
     // form_id:new FormControl(''),
      mobile: new FormControl(''),
       pen_serial: new FormControl(''),
-      date_visit: new FormControl(''),
-      sex: new FormControl(''),
+      date_visit: new FormControl('', [Validators.required]),
+      sex: new FormControl('', [Validators.required]),
       status:new FormControl(''),
-      weight: new FormControl(''),
-      height: new FormControl(''),
-      bmi: new FormControl(''),
-      age: new FormControl(''),
-      education: new FormControl(''),
-      employment: new FormControl('')
+      weight: new FormControl('', [Validators.required]),
+      height: new FormControl('', [Validators.required]),
+      bmi: new FormControl('', [Validators.required]),
+      age: new FormControl('', [Validators.required]),
+      education: new FormControl('', [Validators.required]),
+      employment: new FormControl('', [Validators.required])
     });
     this.secondFormGroup = this._formBuilder.group({
      
-      duration_diabetes: new FormControl(''),
-      treated_diabetes: new FormControl(''),
-      family_diabetes: new FormControl(''),
+      duration_diabetes: new FormControl('',[Validators.required]),
+      treated_diabetes: new FormControl('',[Validators.required]),
+      family_diabetes: new FormControl('',[Validators.required]),
       anti_diabetes_medication:new FormControl(''),
-      hypertension: new FormControl(''),
-      duration_hypertension: new FormControl('',),
+      hypertension: new FormControl('',[Validators.required]),
+      duration_hypertension: new FormControl('',[Validators.required]),
       blood_pressure: new FormControl(''),
-      systolic: new FormControl(''),
-      diastolic: new FormControl(''),
-      smoking: new FormControl(''),
-      alcohol: new FormControl(''),
-      hypertension_dur: new FormControl(''),
+      systolic: new FormControl('',[Validators.required]),
+      diastolic: new FormControl('',[Validators.required]),
+      smoking: new FormControl('',[Validators.required]),
+      alcohol: new FormControl('',[Validators.required]),
+      hypertension_dur: new FormControl('',),
       dyslipidemia_dur: new FormControl(''),
       coronary_artery_dur: new FormControl(''),
       stroke_dur: new FormControl(''),
@@ -116,9 +117,9 @@ export class BeginViewComponent implements OnInit {
       retinopathy_dur: new FormControl(''),
       nephropathy_dur: new FormControl(''),
       Biguanides: new FormControl(''),
-      medical_condition: new FormControl(''),
+      medical_condition: new FormControl('',[Validators.required]),
       Sulphonylureas: new FormControl(''),
-      Meglitinides: new FormControl(''),
+      SGLT2Inhibitors: new FormControl(''),
       Thiazolidendiones: new FormControl(''),
       GLP_Analogues: new FormControl(''),
       DPP4_Inhibitors: new FormControl(''),
@@ -146,23 +147,23 @@ export class BeginViewComponent implements OnInit {
     this.thirdFormGroup = this._formBuilder.group({
 
 
-      fasting_plasma: new FormControl(''),
-      postprandial_plasma: new FormControl(''),
-      glycosylated: new FormControl(''),
+      fasting_plasma: new FormControl('',[Validators.required]),
+      postprandial_plasma: new FormControl('',[Validators.required]),
+      glycosylated: new FormControl('',[Validators.required]),
       glycosylated_decimal:new FormControl(''),
-      hbac_lab: new FormControl(''),
+      hbac_lab: new FormControl('',[Validators.required]),
       s_creatinine: new FormControl(''),
       
       
 
     })
     this.fourthFormGroup =this._formBuilder.group({
-      dose_insulin: new FormControl(''),
-      glargine_insulin: new FormControl(''),
-      glargine_insulin_breakfast: new FormControl(''),
-      glargine_insulin_lunch: new FormControl(''),
-      glargine_insulin_dinner: new FormControl(''),
-      status: new FormControl(''),
+      dose_insulin: new FormControl('',[Validators.required]),
+      glargine_insulin: new FormControl('',[Validators.required]),
+      glargine_insulin_breakfast: new FormControl('',[Validators.required]),
+      glargine_insulin_lunch: new FormControl('',[Validators.required]),
+      glargine_insulin_dinner: new FormControl('',[Validators.required]),
+      status: new FormControl('',[Validators.required]),
       
       // thirdCtrl: ['gg', Validators.required],
 
@@ -410,10 +411,10 @@ getdigit() {
         'hypertension_dur':this.hypercheck.hypertension_dur
       });
       this.secondFormGroup.patchValue({
-        "duration":this.hypercheck.duration,
+        "duration":this.hypercheck.duration_hypertension,
       })
       this.secondFormGroup.patchValue({
-        "medications":this.hypercheck.medications,
+        "medications":this.hypercheck.hypertension_medications,
       })
       this.secondFormGroup.updateValueAndValidity();
     }
@@ -618,7 +619,13 @@ getdigit() {
   }
   checkAntiDiabetes(name){
     // console.log('checkAntiDiabetes name',name)
-    
+    // if (this.antichecked.length) {
+    //   this.check=false
+     
+    // } else {
+    //   this.check=true
+      
+    // }
    
     if(this.antichecked.indexOf(name)>-1){
     
@@ -626,6 +633,7 @@ getdigit() {
     }else{
       return false
     }
+    
    
   }
 
@@ -685,6 +693,33 @@ getdigit() {
   getCreatinine() {
     //return Array.from({length:50 }, (_value , k) =>  k / 10);
     return Array.from({length:50 }, (_value , k=1) => ((k / 10)+0.1).toFixed(1) );
+
+  }
+  public hasError = (controlName: string, errorName: string) => {
+    return this.firstFormGroup.controls[controlName].hasError(errorName);
+  }
+  public hasError2 = (controlName: string, errorName: string) => {
+    return this.secondFormGroup.controls[controlName].hasError(errorName);
+  }
+  public hasError3 = (controlName: string, errorName: string) => {
+    return this.thirdFormGroup.controls[controlName].hasError(errorName);
+  }
+  public hasError4 = (controlName: string, errorName: string) => {
+    return this.fourthFormGroup.controls[controlName].hasError(errorName);
+  }
+  get g() {
+    return this.firstFormGroup.controls;
+  }
+  get f() {
+    return this.secondFormGroup.controls;
+
+  }
+  get h() {
+    return this.thirdFormGroup.controls;
+
+  }
+  get i() {
+    return this.fourthFormGroup.controls;
 
   }
 
@@ -834,12 +869,14 @@ getdigit() {
       this.anti.splice(i, 1)
       console.log(this.anti)
     }
-    if (this.anti.length) {
+    if (this.anti.length && this.antichecked.length) {
+      this.check=false
       this.secondFormGroup.patchValue({
         'people_with_tdm': this.anti.toString()
       });
       this.secondFormGroup.updateValueAndValidity()
     } else {
+      this.check=true
       this.secondFormGroup.patchValue({
         'people_with_tdm': ''
       })
@@ -847,14 +884,15 @@ getdigit() {
   }
   onSecondSubmit(redirect) {
 
-    if (!this.secondFormGroup.valid) {
+    if (!this.secondFormGroup.valid || this.anti.length==0 && this.antichecked.length==0) {
      // this.isLinear = true
-    
+     this.check = true
       console.log(this.secondFormGroup.value)
       this.secondFormGroup.markAllAsTouched();
       this.toastr.error("Please fill all the fields")
     }
     else {
+      this.check = false
       //this.isLinear = false
       var formData: any = new FormData();
       formData.append('duration_hypertension', this.secondFormGroup.value.duration_hypertension);
@@ -928,7 +966,7 @@ getdigit() {
   }
   thirdForm(event) {
 
-    console.log(event)
+    console.log(event,this.thirdFormGroup.valid)
     if (!this.thirdFormGroup.valid) {
       this.thirdFormGroup.markAllAsTouched();
       ///this.isLinear = true
