@@ -25,6 +25,9 @@ export class InitiateCompletedListComponent implements OnInit {
   constructor(private service:MainService,private _formBuilder:FormBuilder,private toastr: ToastrService,private router:Router, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem("kdp_survey") != "yes"){
+      this.router.navigateByUrl('/kap-survey')
+    }
     this.firstFormGroup = this._formBuilder.group({
       user_id : new FormControl(''),
       status :new FormControl(''),

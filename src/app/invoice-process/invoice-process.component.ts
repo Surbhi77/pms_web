@@ -12,6 +12,9 @@ export class InvoiceProcessComponent implements OnInit {
   form:FormGroup
   constructor(private fb:FormBuilder, private router:Router) { }
   ngOnInit(): void {
+    if(localStorage.getItem("kdp_survey") != "yes"){
+      this.router.navigateByUrl('/kap-survey')
+    }
     this.form = this.fb.group({
       mobile: new FormControl('',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
       declare:new FormControl('',[Validators.required])

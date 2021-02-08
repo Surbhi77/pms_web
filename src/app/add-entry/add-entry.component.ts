@@ -65,6 +65,9 @@ export class AddEntryComponent implements OnInit {
 
   ngOnInit() {
     // this.dateformatecommon();
+    if(localStorage.getItem("kdp_survey") != "yes"){
+      this.router.navigateByUrl('/kap-survey')
+    }
     this.firstFormGroup = this._formBuilder.group({
       user_id: new FormControl(''),
       mobile: new FormControl(''),
@@ -125,7 +128,7 @@ export class AddEntryComponent implements OnInit {
       retinopathy_medication: new FormControl(''),
       nephropathy_duration: new FormControl(''),
       nephropathy_medication: new FormControl(''),
-
+      diabetes_valid: new FormControl('',Validators.required)
     });
     // this.secondFormGroup.get("vascular_dignosis").valueChanges
     //   .subscribe(data => {
@@ -136,6 +139,7 @@ export class AddEntryComponent implements OnInit {
 
     this.thirdFormGroup = this._formBuilder.group({
     //  blood_investigation: new FormControl(''),
+    glycosylated_decimal: new FormControl('',Validators.required),
     fasting_plasma:new FormControl('' ,[Validators.required]),
     postprandial_plasma:new FormControl('',[Validators.required]),
     glyscolated:new FormControl('',[Validators.required]),
@@ -244,9 +248,17 @@ export class AddEntryComponent implements OnInit {
     if(event.checked){
       this.anti_diabetes.push(name)
       console.log(this.anti_diabetes)
+      this.secondFormGroup.patchValue({
+        'diabetes_valid':'abc'
+      })
     }else{
       var i = this.anti_diabetes.indexOf(name);
       this.anti_diabetes.splice(i,1);
+      if(this.anti_diabetes.length == 0){
+        this.secondFormGroup.patchValue({
+          'diabetes_valid':''
+        })
+      }
     }
     // if (this.anti_diabetes.length) {
     //   this.check=false
@@ -261,7 +273,10 @@ export class AddEntryComponent implements OnInit {
     console.log(event)
     if (!this.secondFormGroup.valid || this.anti_diabetes.length==0) {
      // this.isLinear = true;
-     this.check = true
+     if(this.anti_diabetes.length == 0){
+      this.check = true
+     }
+     
       this.secondFormGroup.markAllAsTouched()
       console.log("not valid")
       this.toastr.error("Please fill all the fields")
@@ -353,7 +368,8 @@ export class AddEntryComponent implements OnInit {
       const formData = new FormData()
       this.blood_investigation_obj.s_creatinine = this.thirdFormGroup.value.s_creatinine
       this.blood_investigation_obj.hba1_c = this.thirdFormGroup.value.hba1_c
-      this.blood_investigation_obj.glyscolated = this.thirdFormGroup.value.glyscolated
+      this.blood_investigation_obj.glyscolated = this.thirdFormGroup.value.glyscolated+'.'+this.thirdFormGroup.value.glycosylated_decimal
+     // formData.append('glycosylated', this.thirdFormGroup.value.glycosylated+'.'+this.thirdFormGroup.value.glycosylated_decimal);
       this.blood_investigation_obj.postprandial_plasma = this.thirdFormGroup.value.postprandial_plasma
       this.blood_investigation_obj.fasting_plasma = this.thirdFormGroup.value.fasting_plasma;
       formData.append("blood_investigation", JSON.stringify(this.blood_investigation_obj));
@@ -743,6 +759,12 @@ export class AddEntryComponent implements OnInit {
   }
   getinsulin(){
     return Array.from({length:198 }, (_value , k) => k + 3  );
+  }
+  getvalues() {
+    return Array.from({ length: 20 }, (v, k) => k + 1);
+  }
+  getdigit() {
+    return Array.from({ length: 10 }, (v, k) => k + 1);
   }
   weight(event:any){
   console.log(event.value)

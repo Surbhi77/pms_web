@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { MainService } from '../main.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-change-password',
@@ -11,9 +12,12 @@ import { MainService } from '../main.service';
 export class ChangePasswordComponent implements OnInit {
   form:FormGroup;
   formerror: boolean = false;
-  constructor(private fb:FormBuilder, private service:MainService,private toastr: ToastrService) { }
+  constructor(private fb:FormBuilder,private router:Router, private service:MainService,private toastr: ToastrService) { }
    
   ngOnInit(): void {
+    if(localStorage.getItem("kdp_survey") != "yes"){
+      this.router.navigateByUrl('/kap-survey')
+    }
     this.form =  this.fb.group({
       old_pass: new FormControl('',[Validators.required]),
       new_pass: new FormControl('',[Validators.required]),

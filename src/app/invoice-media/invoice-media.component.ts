@@ -18,7 +18,9 @@ export class InvoiceMediaComponent implements OnInit {
   constructor(private service:MainService, private fb:FormBuilder,private toastr: ToastrService,private router:Router) { }
 
   ngOnInit(): void {
-
+    if(localStorage.getItem("kdp_survey") != "yes"){
+      this.router.navigateByUrl('/kap-survey')
+    }
  this.form = this.fb.group({
    declare: new FormControl(''),
    user_id: new FormControl('')
