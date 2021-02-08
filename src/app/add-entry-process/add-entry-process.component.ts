@@ -15,6 +15,9 @@ export class AddEntryProcessComponent implements OnInit {
   constructor(private fb:FormBuilder, private router:Router,private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem("kdp_survey") != "yes"){
+      this.router.navigateByUrl('/kap-survey')
+    }
  this.form = this.fb.group({
    mobile: new FormControl('',[Validators.required, Validators.pattern(this.mobNumberPattern)]),
    declare:new FormControl('',[Validators.required])

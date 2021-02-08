@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MainService } from '../main.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-how-it-works',
@@ -12,9 +13,12 @@ export class HowItWorksComponent implements OnInit {
   data:any=[]
   beginvideo:boolean=false;
   initiatevideo:boolean=false
-  constructor(private service:MainService) { }
+  constructor(private service:MainService,private router:Router) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem("kdp_survey") != "yes"){
+      this.router.navigateByUrl('/kap-survey')
+    }
     this.service.howitworks().subscribe((res:any)=>{
       this.data = res.data;
       console.log(res)

@@ -90,12 +90,13 @@ export class KapSurveyComponent implements OnInit {
 
   ngOnInit() {
 
-    this.firstFormGroup = this._formBuilder.group({
-      // user_id: [''],
-     user_id: new FormControl(''),
-      delay_insulin: new FormControl('', [Validators.required]),
+    if(localStorage.getItem("kdp_survey") == "yes"){
+      this.router.navigateByUrl('/dashboard')
+    }
 
-      //delay_insulin: new FormControl('',[Validators.required]),
+    this.firstFormGroup = this._formBuilder.group({
+      user_id: new FormControl(''),
+      delay_insulin: new FormControl('', [Validators.required]),
       insulin_tdm: new FormControl('', [Validators.required]),
       insulin_regardless: new FormControl('', [Validators.required]),
       benifit_insulin: new FormControl('', [Validators.required]),
@@ -103,21 +104,20 @@ export class KapSurveyComponent implements OnInit {
       success_insulin: new FormControl('', [Validators.required]),
       notcomplicated_insulin: new FormControl('', [Validators.required]),
       insulin_therapy: new FormControl('', [Validators.required]),
-
-
       firstCtrl: ['hf', Validators.required]
     });
-    this.secondFormGroup = this._formBuilder.group({
 
+    this.secondFormGroup = this._formBuilder.group({
       aggreetype: new FormControl(''),
       secondCtrl: ['gh', Validators.required]
     });
+
     this.thirdFormGroup = this._formBuilder.group({
       agreedropped: new FormControl(''),
       thirdformCtrl: ['yhujy', Validators.required]
     });
-    this.forthFormGroup = this._formBuilder.group(
-      {
+
+    this.forthFormGroup = this._formBuilder.group({
         six_months: new FormControl('', [Validators.required]),
         one_to_two_year: new FormControl(''),
         three_to_five_year: new FormControl(''),
@@ -135,11 +135,8 @@ export class KapSurveyComponent implements OnInit {
         High: new FormControl(''),
         Infections: new FormControl(''),
         HighA1c: new FormControl(''),
-        //insulin_to_tdmpatients: new FormControl(''),
         forthform: ['', Validators.required]
-
-      }
-    );
+    });
   }
 
 

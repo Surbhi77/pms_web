@@ -65,6 +65,9 @@ export class AddEntryComponent implements OnInit {
 
   ngOnInit() {
     // this.dateformatecommon();
+    if(localStorage.getItem("kdp_survey") != "yes"){
+      this.router.navigateByUrl('/kap-survey')
+    }
     this.firstFormGroup = this._formBuilder.group({
       user_id: new FormControl(''),
       mobile: new FormControl(''),
@@ -125,7 +128,7 @@ export class AddEntryComponent implements OnInit {
       retinopathy_medication: new FormControl(''),
       nephropathy_duration: new FormControl(''),
       nephropathy_medication: new FormControl(''),
-
+      diabetes_valid: new FormControl('',Validators.required)
     });
     // this.secondFormGroup.get("vascular_dignosis").valueChanges
     //   .subscribe(data => {
@@ -244,9 +247,17 @@ export class AddEntryComponent implements OnInit {
     if(event.checked){
       this.anti_diabetes.push(name)
       console.log(this.anti_diabetes)
+      this.secondFormGroup.patchValue({
+        'diabetes_valid':'abc'
+      })
     }else{
       var i = this.anti_diabetes.indexOf(name);
       this.anti_diabetes.splice(i,1);
+      if(this.anti_diabetes.length == 0){
+        this.secondFormGroup.patchValue({
+          'diabetes_valid':''
+        })
+      }
     }
     // if (this.anti_diabetes.length) {
     //   this.check=false
@@ -261,7 +272,10 @@ export class AddEntryComponent implements OnInit {
     console.log(event)
     if (!this.secondFormGroup.valid || this.anti_diabetes.length==0) {
      // this.isLinear = true;
-     this.check = true
+     if(this.anti_diabetes.length == 0){
+      this.check = true
+     }
+     
       this.secondFormGroup.markAllAsTouched()
       console.log("not valid")
       this.toastr.error("Please fill all the fields")

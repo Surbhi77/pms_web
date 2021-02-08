@@ -134,7 +134,7 @@
                                         <mat-radio-button value="none" class="mr-5">None</mat-radio-button>
                                         <mat-radio-button value="primary" class="mr-5">Primary</mat-radio-button>
                                         <mat-radio-button value="high school">High School</mat-radio-button>
-                                        <mat-radio-button value="Pre_University">Pre_University</mat-radio-button>
+                                        <mat-radio-button value="Pre-University">Pre-University</mat-radio-button>
                                         <mat-radio-button value="Graduate">Graduate</mat-radio-button>
                                     </mat-radio-group>
 
@@ -752,10 +752,16 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Hemoglobin</mat-label>
-                                        <mat-select formControlName="glycosylated" value="{{beginview.glycosylated}}">
+                                        <mat-select formControlName="glycosylated" >
                                             <mat-option *ngFor="let index of getvalues()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
+                                        <p>.</p>
+                                        <mat-select formControlName="glycosylated_decimal" class="col-md-4">
+                                            <mat-option *ngFor="let index of getdigit()" value="{{index}}">{{index}}</mat-option>
 
+                                        </mat-select>
+                                        <!-- <mat-error *ngIf="hasError3('glycosylated_decimal', 'required')">select field is required
+                                        </mat-error> -->
                                     </mat-form-field>
                                 </div>
                             </div>

@@ -55,6 +55,10 @@ export class InvoiceComponent implements OnInit {
 
   ngOnInit(): void {
 
+    if(localStorage.getItem("kdp_survey") != "yes"){
+      this.router.navigateByUrl('/kap-survey')
+    }
+
 //this.toastr.success('submitted')
     this.firstFormGroup = this._formBuilder.group({
 
@@ -128,6 +132,7 @@ export class InvoiceComponent implements OnInit {
       fasting_plasma: new FormControl('', [Validators.required]),
       postprandial_plasma: new FormControl('', [Validators.required]),
       glycosylated: new FormControl('', [Validators.required]),
+      glycosylated_decimal: new FormControl('',Validators.required),
       hbac_lab: new FormControl('', [Validators.required]),
       s_creatinine: new FormControl(''),
 
@@ -417,7 +422,7 @@ export class InvoiceComponent implements OnInit {
       var formData: any = new FormData();
       formData.append('fasting_plasma', this.thirdFormGroup.value.fasting_plasma);
       formData.append('postprandial_plasma', this.thirdFormGroup.value.postprandial_plasma);
-      formData.append('glycosylated', this.thirdFormGroup.value.glycosylated);
+      formData.append('glycosylated', this.thirdFormGroup.value.glycosylated+'.'+this.thirdFormGroup.value.glycosylated_decimal);
       formData.append('hbac_lab', this.thirdFormGroup.value.hbac_lab);
       formData.append('s_creatinine', this.thirdFormGroup.value.s_creatinine);
       formData.append('id',this.formId)
@@ -668,7 +673,7 @@ export class InvoiceComponent implements OnInit {
       console.log(this.glargineinsulinobj)
       this.glargineinsulinobj.glargine_insulin_breakfast = this.fourthFormGroup.value.glargine_insulin_breakfast;
      // console.log(this.glargineinsulinobj.breakfast)
-      this.glargineinsulinobj.glargine_insulin_lunch = this.thirdFormGroup.value.glargine_insulin_lunch;
+      this.glargineinsulinobj.glargine_insulin_lunch = this.fourthFormGroup.value.glargine_insulin_lunch;
       this.glargineinsulinobj.glargine_insulin_dinner = this.fourthFormGroup.value.glargine_insulin_dinner;
       console.log(this.glargineinsulinobj)
       formData.append('dose_insulin', this.fourthFormGroup.value.dose_insulin);

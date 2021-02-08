@@ -71,6 +71,9 @@ export class BeginViewComponent implements OnInit {
     private route: ActivatedRoute,private service:MainService,private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem("kdp_survey") != "yes"){
+      this.router.navigateByUrl('/kap-survey')
+    }
     this.form = this._formBuilder.group({
       id: new FormControl('')
       
@@ -146,6 +149,7 @@ export class BeginViewComponent implements OnInit {
       fasting_plasma: new FormControl(''),
       postprandial_plasma: new FormControl(''),
       glycosylated: new FormControl(''),
+      glycosylated_decimal:new FormControl(''),
       hbac_lab: new FormControl(''),
       s_creatinine: new FormControl(''),
       
@@ -275,6 +279,10 @@ export class BeginViewComponent implements OnInit {
       this.secondFormGroup.updateValueAndValidity()
     }
   })
+}
+
+getdigit() {
+  return Array.from({ length: 10 }, (v, k) => k + 1);
 }
   updatevalue(){
     if(this.beginview && this.beginview.pen_serial!=''){
@@ -554,8 +562,14 @@ export class BeginViewComponent implements OnInit {
       this.thirdFormGroup.updateValueAndValidity()
     }
     if(this.beginview && this.beginview.glycosylated){
+      let arr = this.beginview.glycosylated.split(".");
+      console.log(arr)
       this.thirdFormGroup.patchValue({
-        'glycosylated':this.beginview.glycosylated
+        'glycosylated':arr[0]
+      });
+      this.thirdFormGroup.updateValueAndValidity()
+      this.thirdFormGroup.patchValue({
+        'glycosylated_decimal':arr[1]?arr[1]:'0'
       });
       this.thirdFormGroup.updateValueAndValidity()
     }
@@ -927,7 +941,7 @@ export class BeginViewComponent implements OnInit {
       var formData: any = new FormData();
       formData.append('fasting_plasma', this.thirdFormGroup.value.fasting_plasma);
       formData.append('postprandial_plasma', this.thirdFormGroup.value.postprandial_plasma);
-      formData.append('glycosylated', this.thirdFormGroup.value.glycosylated);
+      formData.append('glycosylated', this.thirdFormGroup.value.glycosylated+'.'+this.thirdFormGroup.value.glycosylated_decimal);
       formData.append('hbac_lab', this.thirdFormGroup.value.hbac_lab);
       formData.append('s_creatinine', this.thirdFormGroup.value.s_creatinine);
       formData.append('id',this.route.snapshot.params.id)
@@ -962,7 +976,7 @@ export class BeginViewComponent implements OnInit {
       console.log(this.glargineinsulinobj)
       this.glargineinsulinobj.glargine_insulin_breakfast = this.fourthFormGroup.value.glargine_insulin_breakfast;
      // console.log(this.glargineinsulinobj.breakfast)
-       this.glargineinsulinobj.glargine_insulin_lunch = this.thirdFormGroup.value.glargine_insulin_lunch;
+       this.glargineinsulinobj.glargine_insulin_lunch = this.fourthFormGroup.value.glargine_insulin_lunch;
       this.glargineinsulinobj.glargine_insulin_dinner = this.fourthFormGroup.value.glargine_insulin_dinner;
       console.log(this.glargineinsulinobj)
       formData.append('dose_insulin', this.fourthFormGroup.value.dose_insulin);
