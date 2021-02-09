@@ -10,10 +10,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./invoice-media.component.css']
 })
 export class InvoiceMediaComponent implements OnInit {
-  invoiceAvailable: boolean;
+  invoiceAvailable: boolean=false;
   link: any='';
   form:FormGroup;
-  invoiceAcceptShow: boolean;
+  invoiceAcceptShow: boolean=false;
 
   constructor(private service:MainService, private fb:FormBuilder,private toastr: ToastrService,private router:Router) { }
 
@@ -47,8 +47,12 @@ export class InvoiceMediaComponent implements OnInit {
     this.service.invoicemedia(formData).subscribe((res:any)=>{
       console.log(res);
       if(res.status == "1"){
-        this.invoiceAvailable = true;
-        this.link = res.data.file
+        
+        this.link = res.data.file;
+        if(this.link != ""){
+          this.invoiceAvailable = true;
+        }
+        
         if(res.data.invoicestatus == '0'){
           this.invoiceAcceptShow = true
         }else{

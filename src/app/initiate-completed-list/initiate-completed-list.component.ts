@@ -40,7 +40,7 @@ export class InitiateCompletedListComponent implements OnInit {
     this.service.initiateList(formdata).subscribe((res:any)=>{
       console.log(res)
       this.datalist = res.data 
-      console.log(res['data'].helpcenter_status)
+      
       if(res.message == "No Data Found"){
         this.show = true
       }

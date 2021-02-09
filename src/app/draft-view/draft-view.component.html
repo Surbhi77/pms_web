@@ -1,4 +1,4 @@
-<div class="page-content" *ngIf="viewData">
+<div class="page-content  right-body" *ngIf="viewData">
     <div class="row">
         <div class="col-lg-12">
             <div class="page-title">
@@ -585,7 +585,7 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Duration(years)</mat-label>
-                                        <mat-select formControlName="retinopathy_duration" value="{{retinopathyObj.retinopathy_duration}}">
+                                        <mat-select formControlName="retinopathy_duration">
                                             <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getHyperdur();" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
@@ -599,9 +599,9 @@
                                     <p>Medication :</p>
                                 </div>
                                 <div class="entry-inputs-block">
-                                    <mat-radio-group formControlName="retinopathy_medication" value="{{retinopathyObj.retinopathy_medication}}" color="primary" aria-label="Select an option">
-                                        <mat-radio-button value="Yes" class="mr-5">Yes</mat-radio-button>
-                                        <mat-radio-button value="No">No</mat-radio-button>
+                                    <mat-radio-group formControlName="retinopathy_medication" color="primary" aria-label="Select an option">
+                                        <mat-radio-button value="yes" class="mr-5">Yes</mat-radio-button>
+                                        <mat-radio-button value="no">No</mat-radio-button>
                                     </mat-radio-group>
 
                                 </div>
@@ -658,48 +658,51 @@
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'Biguanides' )" [checked]="checkAntiDiabetes('Biguanides')" formControlName="Biguanides" class="example-margin d-block mb-2">Biguanides</mat-checkbox>
+                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'Biguanides')" [checked]="checkAntiDiabetes('Biguanides')" formControlName="Biguanides" class="example-margin d-block mb-2">Biguanides</mat-checkbox>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'Sulphonylureas' )" [checked]="checkAntiDiabetes('Sulphonylureas')" formControlName="Sulphonylureas" class="example-margin d-block mb-2">Sulphonylureas</mat-checkbox>
+                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'Sulphonylureas')" [checked]="checkAntiDiabetes('Sulphonylureas')" formControlName="Sulphonylureas" class="example-margin d-block mb-2">Sulphonylureas</mat-checkbox>
                                 </div>
                             </div>
-
                             <div class="col-lg-4 col-md-4 col-12">
+                                <mat-checkbox color="primary" (change)="antiDiabetes($event,'SGLT2 Inhibitors')" [checked]="checkAntiDiabetes('SGLT2 Inhibitors')" class="example-margin d-block mb-2" color="primary">SGLT2 Inhibitors</mat-checkbox>
+
+                            </div>
+                            <!-- <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
                                     <mat-checkbox color="primary" (change)="antiDiabetes($event,'Meglitinides' )" [checked]="checkAntiDiabetes('Meglitinides')" formControlName="Meglitinides" class="example-margin d-block mb-2">Meglitinides</mat-checkbox>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'Thiazolidendiones' )" [checked]="checkAntiDiabetes('Thiazolidendiones')" formControlName="Thiazolidendiones" class="example-margin d-block mb-2">Thiazolidendiones</mat-checkbox>
+                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'Thiazolidendiones')" [checked]="checkAntiDiabetes('Thiazolidendiones')" formControlName="Thiazolidendiones" class="example-margin d-block mb-2">Thiazolidendiones</mat-checkbox>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'GLP_Analogues' )" [checked]="checkAntiDiabetes('GLP_Analogues')" formControlName="GLP_Analogues" class="example-margin d-block mb-2">GLP Analogues</mat-checkbox>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-4 col-12">
-                                <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'DPP4_Inhibitors' )" [checked]="checkAntiDiabetes('DPP4_Inhibitors')" formControlName="DPP4_Inhibitors" class="example-margin d-block mb-2">DPP4 Inhibitors</mat-checkbox>
+                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'GLP Analogues')" [checked]="checkAntiDiabetes('GLP Analogues')" formControlName="GLP_Analogues" class="example-margin d-block mb-2">GLP Analogues</mat-checkbox>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'DoubleDrugFixed' )" [checked]="checkAntiDiabetes('DoubleDrugFixed')" formControlName="DoubleDrugFixed" class="example-margin d-block mb-2">Double Drug Fixed Dose Combination</mat-checkbox>
+                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'DPP4 Inhibitors')" [checked]="checkAntiDiabetes('DPP4 Inhibitors')" formControlName="DPP4_Inhibitors" class="example-margin d-block mb-2">DPP4 Inhibitors</mat-checkbox>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'TripleDrugFixed' )" [checked]="checkAntiDiabetes('TripleDrugFixed')" formControlName="TripleDrugFixed" class="example-margin d-block mb-2">Triple Drug Fixed Dose Combinations</mat-checkbox>
+                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'Double Drug Fixed Dose Combination')" [checked]="checkAntiDiabetes('Double Drug Fixed Dose Combination')" formControlName="DoubleDrugFixed" class="example-margin d-block mb-2">Double Drug Fixed Dose Combination</mat-checkbox>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'Triple Drug Fixed Dose Combinations')" [checked]="checkAntiDiabetes('Triple Drug Fixed Dose Combinations')" formControlName="TripleDrugFixed" class="example-margin d-block mb-2">Triple Drug Fixed Dose Combinations</mat-checkbox>
                                 </div>
                             </div>
                         </div>
@@ -762,8 +765,14 @@
                             <div class="entry-inputs-block">
                                 <mat-form-field>
                                     <mat-label>Hemoglobin</mat-label>
-                                    <mat-select formControlName="glyscolated" [value]="bloodInvetigateObj.glyscolated">
-                                        <mat-option *ngFor="let index of gethbalc()" value='{{index}}'>{{index}}</mat-option>
+                                    <mat-select formControlName="glyscolated" class="col-md-4">
+                                        <mat-option *ngFor="let index of getvalues()" value="{{index}}">{{index}}</mat-option>
+
+                                    </mat-select>
+                                    <p>.</p>
+                                    <mat-select formControlName="glycosylated_decimal" class="col-md-4">
+                                        <mat-option *ngFor="let index of getdigit()" value="{{index}}">{{index}}</mat-option>
+
                                     </mat-select>
 
                                 </mat-form-field>
@@ -776,8 +785,8 @@
                             </div>
                             <div class="entry-inputs-block">
                                 <mat-radio-group formControlName="hba1_c" [value]="bloodInvetigateObj.hba1_c" color="primary" aria-label="Select an option">
-                                    <mat-radio-button value="yes" class="mr-5">Yes</mat-radio-button>
-                                    <mat-radio-button value="no">No</mat-radio-button>
+                                    <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
+                                    <mat-radio-button value="0">No</mat-radio-button>
 
                                 </mat-radio-group>
                             </div>
@@ -1033,8 +1042,8 @@
                                             </mat-form-field>
                                         </div>
                                     </div>
-                                   
-    
+
+
 
                                     <div class="col-lg-4 col-md-4 col-12 mb-3">
 

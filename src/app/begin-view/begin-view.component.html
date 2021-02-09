@@ -1,4 +1,4 @@
-<div class="page-content" *ngIf='beginview'>
+<div class="page-content  right-body" *ngIf='beginview'>
 
     <div class="row">
         <div class="col-lg-12">
@@ -172,8 +172,8 @@
                     </div>
 
                     <div class="col-sm-12 col-lg-12 col-md-12">
-                        <button mat-button class="next_btn"  *ngIf="!completed" (click)="submitFirst(true)">Save as Draft</button>
-                        <button mat-button matStepperNext (click)="(!completed)?submitFirst(false):'javascript:void(0)'"  class="next_btn">Next</button>
+                        <button mat-button class="next_btn" *ngIf="!completed" (click)="submitFirst(true)">Save as Draft</button>
+                        <button mat-button matStepperNext (click)="(!completed)?submitFirst(false):'javascript:void(0)'" class="next_btn">Next</button>
                     </div>
                 </div>
             </form>
@@ -728,7 +728,7 @@
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="Biguanides" class="example-margin d-block mb-2"  (change)="antiDiabetesChange($event,'Biguanides')" [checked]="checkAntiDiabetes('Biguanides')">Biguanides
+                                    <mat-checkbox color="primary" formControlName="Biguanides" class="example-margin d-block mb-2" (change)="antiDiabetesChange($event,'Biguanides')" [checked]="checkAntiDiabetes('Biguanides')">Biguanides
                                     </mat-checkbox>
 
                                 </div>
@@ -736,7 +736,7 @@
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="Sulphonylureas"  (change)="antiDiabetesChange($event,'Sulphonylureas')" [checked]="checkAntiDiabetes('Sulphonylureas')" class="example-margin d-block mb-2">
+                                    <mat-checkbox color="primary" formControlName="Sulphonylureas" (change)="antiDiabetesChange($event,'Sulphonylureas')" [checked]="checkAntiDiabetes('Sulphonylureas')" class="example-margin d-block mb-2">
                                         Sulphonylureas</mat-checkbox>
 
                                 </div>
@@ -788,7 +788,7 @@
 
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <button mat-button matStepperPrevious class="next_btn">Back</button>
-                        <button mat-button class="next_btn"  *ngIf="!completed"  (click)="onSecondSubmit(true)">Save as Draft</button>
+                        <button mat-button class="next_btn" *ngIf="!completed" (click)="onSecondSubmit(true)">Save as Draft</button>
                         <button mat-button matStepperNext (click)="(!completed)?onSecondSubmit(false):'javascript:void(0)'" class="next_btn">Next</button>
                     </div>
 
@@ -908,7 +908,7 @@
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <button mat-button matStepperPrevious class="next_btn">Back</button>
                         <button mat-button class="next_btn" *ngIf="!completed" (click)="thirdForm(true)">Save as Draft</button>
-                        <button mat-button matStepperNext  (click)="(!completed)?thirdForm(false):'javascript:void(0)'" class="next_btn">Next</button>
+                        <button mat-button matStepperNext (click)="(!completed)?thirdForm(false):'javascript:void(0)'" class="next_btn">Next</button>
                         <!-- <button mat-button matStepperNext (click)="submit()" class="next_btn">Submit</button> -->
                     </div>
                 </div>
@@ -991,7 +991,7 @@
 
                 <div class="col-sm-12 col-lg-12 col-md-12">
                     <button mat-button matStepperPrevious *ngIf="!completed" class="next_btn">Back</button>
-                    <button mat-button matStepperPrevious  *ngIf="completed" (click)="btnClick();" class="next_btn" >Back</button>
+                    <button mat-button matStepperPrevious *ngIf="completed" (click)="btnClick();" class="next_btn">Back</button>
                     <!-- <button mat-button class="next_btn"  *ngIf="!completed">Save as Draft</button> -->
                     <button mat-button type="submit" class="next_btn"  *ngIf="!completed" (click)="submit()">Submit</button>
                 </div>

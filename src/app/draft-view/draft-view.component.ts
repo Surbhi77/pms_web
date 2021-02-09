@@ -118,8 +118,9 @@ export class DraftViewComponent implements OnInit {
       medical_condition: new FormControl(''),
       Biguanides:new FormControl(''),
       Sulphonylureas: new FormControl(''),
-      Meglitinides: new FormControl(''),
+      //Meglitinides: new FormControl(''),
       Thiazolidendiones: new FormControl(''),
+      sglt2_inhibitors:new FormControl(''),
       GLP_Analogues: new FormControl(''),
       DPP4_Inhibitors: new FormControl(''),
       DoubleDrugFixed: new FormControl(''),
@@ -147,7 +148,8 @@ export class DraftViewComponent implements OnInit {
       postprandial_plasma:new FormControl(''),
       glyscolated:new FormControl(''),
       hba1_c:new FormControl(''),
-      s_creatinine:new FormControl('')
+      s_creatinine:new FormControl(''),
+      glycosylated_decimal: new FormControl('',Validators.required)
     })
     this.fourthFormGroup = this._formBuilder.group({
       // fourty_iu_vial: new FormControl(''),
@@ -529,12 +531,29 @@ populateDetails(){
     this.thirdFormGroup.patchValue({
       'fasting_plasma':this.bloodInvetigateObj.fasting_plasma,
       'postprandial_plasma':this.bloodInvetigateObj.postprandial_plasma,
-      'glyscolated':this.bloodInvetigateObj.glyscolated,
+      // 'glyscolated':this.bloodInvetigateObj.glyscolated + '.'+ this.bloodInvetigateObj.glycosylated_decimal,
       'hba1_c':this.bloodInvetigateObj.hba1_c,
       's_creatinine':this.bloodInvetigateObj.s_creatinine
+      // this.blood_investigation_obj.glyscolated = this.thirdFormGroup.value.glyscolated+'.'+this.thirdFormGroup.value.glycosylated_decimal
     });
     this.thirdFormGroup.updateValueAndValidity()
+
+
   }
+  console.log(this.bloodInvetigateObj)
+    if(this.viewData && this.viewData.blood_investigation && this.bloodInvetigateObj.glyscolated){
+      let arr = this.bloodInvetigateObj.glyscolated.split(".");
+      console.log(arr)
+      this.thirdFormGroup.patchValue({
+        'glyscolated':arr[0]
+      });
+      this.thirdFormGroup.updateValueAndValidity()
+      this.thirdFormGroup.patchValue({
+        'glycosylated_decimal':arr[1]?arr[1]:'0'
+      });
+      this.thirdFormGroup.updateValueAndValidity()
+    }
+  
   if(this.viewData && this.viewData.human_premixed_thirty!=''){
     this.human_premixedthirtyArray = JSON.parse(this.viewData.human_premixed_thirty);
     if(this.human_premixedthirtyArray.human_premixed_thirty){
@@ -554,6 +573,7 @@ populateDetails(){
   if(this.viewData && this.viewData.human_premixed_fifty!=''){
     
     this.human_premixedfiftyArray  = JSON.parse(this.viewData.human_premixed_fifty);
+    console.log(this.human_premixedfiftyArray.human_premixed_50_breakfast)
     if(this.human_premixedfiftyArray.human_premixed_fifty){
       this.human_premixedfifty = true
     }
@@ -562,7 +582,7 @@ populateDetails(){
     }
     this.fourthFormGroup.patchValue({
       "human_premixed_fifty":this.human_premixedfiftyArray.human_premixed_fifty,
-       "human_premixed_fifty_breakfast":this.human_premixedfiftyArray.human_premixed_fifty_breakfast,
+       "human_premixed_fifty_breakfast":this.human_premixedfiftyArray.human_premixed_50_breakfast,
        "human_premixed_fifty_lunch":this.human_premixedfiftyArray.human_premixed_fifty_lunch,
         "human_premixed_fifty_dinner":this.human_premixedfiftyArray.human_premixed_fifty_dinner,
     });
@@ -682,6 +702,12 @@ checkAntiDiabetes(name){
   }
   getinsulin(){
     return Array.from({length:198 }, (_value , k) => k + 3  );
+  }
+  getvalues() {
+    return Array.from({ length: 20 }, (v, k) => k + 1);
+  }
+  getdigit() {
+    return Array.from({ length: 10 }, (v, k) => k + 1);
   }
   antiDiabetes(event,name){
     if(event.checked){
@@ -1023,7 +1049,7 @@ checkAntiDiabetes(name){
       const formData = new FormData()
       this.blood_investigation_obj.s_creatinine = this.thirdFormGroup.value.s_creatinine
       this.blood_investigation_obj.hba1_c = this.thirdFormGroup.value.hba1_c
-      this.blood_investigation_obj.glyscolated = this.thirdFormGroup.value.glyscolated
+      this.blood_investigation_obj.glyscolated = this.thirdFormGroup.value.glyscolated+'.'+this.thirdFormGroup.value.glycosylated_decimal
       this.blood_investigation_obj.postprandial_plasma = this.thirdFormGroup.value.postprandial_plasma
       this.blood_investigation_obj.fasting_plasma = this.thirdFormGroup.value.fasting_plasma;
       formData.append("blood_investigation", JSON.stringify(this.blood_investigation_obj));
@@ -1057,7 +1083,7 @@ checkAntiDiabetes(name){
       this.human_premixed_thirty_Obj.human_premixed_thirty_lunch = this.fourthFormGroup.value.human_premixed_thirty_lunch;
       this.human_premixed_thirty_Obj.human_premixed_thirty_dinner = this.fourthFormGroup.value.human_premixed_thirty_dinner;
       this.human_premixed_fifty_Obj.human_premixed_fifty = (this.fourthFormGroup.value.human_premixed_fifty==true) ? this.fourthFormGroup.value.human_premixed_fifty:false;
-      this.human_premixed_fifty_Obj.human_premixed_fifty_breakfast = this.fourthFormGroup.value.human_premixed_fifty_breakfast;
+      this.human_premixed_fifty_Obj.human_premixed_50_breakfast = this.fourthFormGroup.value.human_premixed_fifty_breakfast;
       this.human_premixed_fifty_Obj.human_premixed_fifty_lunch = this.fourthFormGroup.value.human_premixed_fifty_lunch;
       this.human_premixed_fifty_Obj.human_premixed_fifty_dinner = this.fourthFormGroup.value.human_premixed_fifty_dinner;
       this.regular_insulin_Obj.regular_insulin = (this.fourthFormGroup.value.regular_insulin == true) ? this.fourthFormGroup.value.regular_insulin:false ;

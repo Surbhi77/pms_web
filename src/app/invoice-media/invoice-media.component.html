@@ -1,4 +1,4 @@
-<div class="page-content">
+<div class="page-content  right-body">
     <div class="row">
         <div class="col-lg-12">
             <div class="page-title">
@@ -24,7 +24,7 @@
                     </div>
 
                     <div *ngIf="!invoiceAvailable" class="data_notfound">
-                        <h1>Invoice Not Fund</h1>
+                        <h1>Invoice Not Found</h1>
                     </div>
 
                     <button *ngIf="invoiceAvailable && invoiceAcceptShow" mat-button type="submit" (click)="submit()" class="next_btn">Submit</button>
