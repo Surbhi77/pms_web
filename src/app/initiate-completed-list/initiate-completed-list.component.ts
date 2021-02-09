@@ -81,6 +81,7 @@ export class InitiateCompletedListComponent implements OnInit {
 
  
   delete(id:any,i){
+    if(window.confirm('Are You sure ?')){
     const formdata:any = new FormData()
     formdata.append('id',id)
     console.log(id)
@@ -91,6 +92,7 @@ export class InitiateCompletedListComponent implements OnInit {
         this.draftdata.splice(i,1)
        
     })
+  }
   }
 
   
