@@ -145,9 +145,9 @@
 
                                     <mat-radio-group formControlName="education" color="primary" formControlName="education" aria-label="Select an option">
                                         <mat-radio-button value="none" class="mr-5">None</mat-radio-button>
-                                        <mat-radio-button value="primary" class="mr-5">Primary</mat-radio-button>
-                                        <mat-radio-button value="high school">High School</mat-radio-button>
-                                        <mat-radio-button value="Pre-University" class="ml-1">Pre-University</mat-radio-button>
+                                        <mat-radio-button value="Primary" class="mr-5">Primary</mat-radio-button>
+                                        <mat-radio-button value="High school">High School</mat-radio-button>
+                                        <mat-radio-button value="Pre-University">Pre-University</mat-radio-button>
                                         <mat-radio-button value="Graduate">Graduate</mat-radio-button>
                                         <!-- <mat-error *ngIf="hasError('education', 'required')">education field is required</mat-error> -->
                                         <div *ngIf="g.education.touched && g.education.invalid" class="text-danger">
@@ -667,8 +667,8 @@
                                 </div>
                                 <div class="entry-inputs-block">
                                     <mat-radio-group formControlName="retinopathy_medication" color="primary" aria-label="Select an option">
-                                        <mat-radio-button value="Yes" class="mr-5">Yes</mat-radio-button>
-                                        <mat-radio-button value="No">No</mat-radio-button>
+                                        <mat-radio-button value="yes" class="mr-5">Yes</mat-radio-button>
+                                        <mat-radio-button value="no">No</mat-radio-button>
                                         <div *ngIf="f.retinopathy_medication.touched && f.retinopathy_medication.invalid" class="text-danger">
                                             <div *ngIf="f.retinopathy_medication.errors.required" class="errors">Retinopathy medication field is required</div>
                                         </div>
@@ -777,7 +777,7 @@
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'Triple Drug Fixed Dose Combination')" formControlName="TripleDrugFixed" class="example-margin d-block mb-2">Triple Drug Fixed Dose Combinations</mat-checkbox>
+                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'Triple Drug Fixed Dose Combinations')" formControlName="TripleDrugFixed" class="example-margin d-block mb-2">Triple Drug Fixed Dose Combinations</mat-checkbox>
                                 </div>
                             </div>
 
@@ -856,7 +856,7 @@
                                 <div class="check_nones">
                                     <p>Glycosylated Hemoglobin (HbA1c)</p>
                                 </div>
-                                <div class="entry-inputs-block">
+                                <div class="entry-inputs-block dd">
                                     <mat-form-field>
                                         <mat-label>Hemoglobin</mat-label>
                                         <!-- <mat-select formControlName="glyscolated">
@@ -1154,8 +1154,9 @@
                                         </mat-form-field>
                                     </div>
                                 </div>
-                                <p *ngIf="humancheck" class="text-danger">Choose atleast one options</p>
+
                             </div>
+                            <p *ngIf="humancheck">Please Select At least one </p>
                         </div>
 
                         <div class="col-sm-12 col-lg-12 col-md-12">

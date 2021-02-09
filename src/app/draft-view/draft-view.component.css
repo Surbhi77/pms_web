@@ -102,3 +102,17 @@
     display: flex;
     align-items: center;
 }
+
+.dd {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dd p {
+    margin: 0 30px;
+}
+
+.dd mat-form-field {
+    width: 40% !important;
+}

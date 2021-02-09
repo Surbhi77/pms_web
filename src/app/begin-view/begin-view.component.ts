@@ -485,6 +485,7 @@ getdigit() {
     if(this.beginview && this.beginview.anti_diabetes_medication!='')
     {
       this.antichecked =JSON.parse(this.beginview.anti_diabetes_medication)
+      
       this.anti=JSON.parse(this.beginview.anti_diabetes_medication)
       console.log(this.antichecked)
       

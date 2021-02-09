@@ -13,6 +13,7 @@ import { MainService } from '../main.service';
 })
 export class DraftViewComponent implements OnInit {
   //vascular: any = {};
+  isLinear = true;
   antidiabetes: any = [];
   hyperArray: any={};
   dyslipidemiaObj:any = {};
@@ -52,6 +53,9 @@ export class DraftViewComponent implements OnInit {
   isEditScreen: boolean;
   date_visit : Date;
   initiateres: any;
+  humanArray: any=[];
+  humancheck: boolean;
+  check: boolean;
   //routeParams: any;
  
   constructor(private service:MainService,private _formBuilder:FormBuilder,private route:ActivatedRoute, private toastr: ToastrService, private router:Router) { }
@@ -60,52 +64,53 @@ export class DraftViewComponent implements OnInit {
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
   fourthFormGroup: FormGroup;
-  isLinear = false;
+
   complications: any;
   medication: any;
-  hypertension: any;
-  dyslipidemia: any;
-  stroke: any;
-  neuropathy: any;
-  retinopathy: any;
-  nephropathy: any;
-  coronary: any;
-  bloodInvestigation: any;
-  human_premixedthirty: any;
-  human_premixedfifty: boolean;
-  regular: boolean;
-  nph: boolean;
-  glargine: boolean;
+  hypertension: any = false;
+  dyslipidemia: any = false;
+  stroke: any = false;
+  neuropathy: any=false;
+  retinopathy: any=false;
+  nephropathy: any=false;
+  coronary: any=false;
+  bloodInvestigation: any=false;
+  human_premixedthirty: any = false;
+  human_premixedfifty: boolean = false;
+  regular: boolean = false;
+  nph: boolean = false;
+  glargine: boolean = false;
   ngOnInit(): void {
     this.firstFormGroup = this._formBuilder.group({
       user_id: new FormControl(''),
       id:new FormControl(''),
     // mobile: new FormControl(''),
       pen_serial: new FormControl(),
-      date_visit: new FormControl(''),
-      sex: new FormControl(''),
-      weight: new FormControl(''),
-      height: new FormControl(''),
+      date_visit: new FormControl('',[Validators.required]),
+      sex: new FormControl('',[Validators.required]),
+      weight: new FormControl('',[Validators.required]),
+      height: new FormControl('',[Validators.required]),
       bmi: new FormControl(''),
-      age: new FormControl(''),
-      education: new FormControl(''),
-      employment: new FormControl(''),
+      age: new FormControl('',[Validators.required]),
+      education: new FormControl('',[Validators.required]),
+      employment: new FormControl('',[Validators.required]),
       form_id :new FormControl(''),
       status:new FormControl('')
     });
 
     this.secondFormGroup = this._formBuilder.group({
-      duration_diabetes: new FormControl(''),
-      treated_diabetes: new FormControl(''),
-      age_at_diabetes: new FormControl(''),
-      family_diabetes: new FormControl(''),
-      hypertension: new FormControl(''),
-      duration_hypertension: new FormControl(''),
+      
+      duration_diabetes: new FormControl('',[Validators.required]),
+      treated_diabetes: new FormControl('',[Validators.required]),
+      //age_at_diabetes: new FormControl(''),
+      family_diabetes: new FormControl('',[Validators.required]),
+      hypertension: new FormControl('',[Validators.required]),
+      duration_hypertension: new FormControl('',[Validators.required]),
      // blood_pressure: new FormControl(''),
-      systolic: new FormControl(''),
-      diastolic: new FormControl(''),
-      smoking: new FormControl(''),
-      alcohol: new FormControl(''),
+      systolic: new FormControl('', [Validators.required]),
+      diastolic: new FormControl('', [Validators.required]),
+      smoking: new FormControl('', [Validators.required]),
+      alcohol: new FormControl('', [Validators.required]),
      
       hypertension_dur: new FormControl(''),
       dyslipidemia_dur: new FormControl(''),
@@ -115,7 +120,7 @@ export class DraftViewComponent implements OnInit {
       retinopathy_dur: new FormControl(''),
       nephropathy_dur: new FormControl(''),
       anti_diabetes_medication: new FormControl(''),
-      medical_condition: new FormControl(''),
+      medical_condition: new FormControl('',[Validators.required]),
       Biguanides:new FormControl(''),
       Sulphonylureas: new FormControl(''),
       //Meglitinides: new FormControl(''),
@@ -144,10 +149,10 @@ export class DraftViewComponent implements OnInit {
     });
     
     this.thirdFormGroup = this._formBuilder.group({
-      fasting_plasma:new FormControl(''),
-      postprandial_plasma:new FormControl(''),
-      glyscolated:new FormControl(''),
-      hba1_c:new FormControl(''),
+      fasting_plasma:new FormControl('', [Validators.required]),
+      postprandial_plasma:new FormControl('', [Validators.required]),
+      glyscolated:new FormControl('', [Validators.required]),
+      hba1_c:new FormControl('', [Validators.required]),
       s_creatinine:new FormControl(''),
       glycosylated_decimal: new FormControl('',Validators.required)
     })
@@ -179,6 +184,7 @@ export class DraftViewComponent implements OnInit {
       glargine_insulin_dinner: new FormControl('')
 
     })
+
    let routeParams = this.route.snapshot.params;
    if( routeParams != undefined && Object.keys( routeParams).length>0){
     console.log(routeParams)
@@ -204,6 +210,29 @@ export class DraftViewComponent implements OnInit {
  }
 back(){
   this.router.navigateByUrl('/dashboard')
+}
+//errors functions
+get g() {
+  return this.firstFormGroup.controls;
+}
+get f() {
+  return this.secondFormGroup.controls;
+}
+get h(){
+  return this.thirdFormGroup.controls;
+}
+public hasError = (controlName: string, errorName: string) => {
+  return this.firstFormGroup.controls[controlName].hasError(errorName);
+}
+public hasError2 = (controlName: string, errorName: string) => {
+  return this.secondFormGroup.controls[controlName].hasError(errorName);
+}
+public hasError3 = (controlName: string, errorName: string) => {
+  return this.thirdFormGroup.controls[controlName].hasError(errorName);
+}
+
+public hasError4 = (controlName: string, errorName: string) => {
+  return this.fourthFormGroup.controls[controlName].hasError(errorName);
 }
 getDetails(){
   const formdata = new FormData();
@@ -642,26 +671,10 @@ populateDetails(){
 
 
 checkAntiDiabetes(name){
-    // console.log('checkAntiDiabetes name',name)
     
-   
     if(this.antidiabetes.indexOf(name)>-1){
-      // if(this.anti_diabetes.indexOf(name)==-1){
-      //   // return true
-      //   this.anti_diabetes.push(name)
-      //   console.log('anti_diabetes', this.anti_diabetes)
-      // }
-      // else{
-      //   var i = this.anti_diabetes.indexOf(name);
-      // this.anti_diabetes.splice(i,1);
-      // }
-     
       return true
     }else{
-      // var i = this.anti_diabetes.indexOf(name);
-
-      // this.anti_diabetes.splice(i,1);
-      // console.log(this.anti_diabetes)
       return false
     }
    
@@ -709,31 +722,70 @@ checkAntiDiabetes(name){
   getdigit() {
     return Array.from({ length: 10 }, (v, k) => k + 1);
   }
-  antiDiabetes(event,name){
-    if(event.checked){
+  // antiDiabetes(event,name){
+  //   if(event.checked){
+  //     this.anti_diabetes.push(name)
+     
+  //   }else{
+  //     var i = this.anti_diabetes.indexOf(name);
+  //     this.anti_diabetes.splice(i,1);
+     
+  //   }
+  //   if (this.anti_diabetes.length && this.antiDiabetes.length) {
+  //     this.check=false
+  //     // this.secondFormGroup.patchValue({
+  //     //   "anti":this.anti_diabetes.toString()
+  //     // })
+  //     // this.secondFormGroup.updateValueAndValidity()
+      
+  //   }
+  //   else{
+  //     this.check = true
+  //     // this.secondFormGroup.patchValue({
+  //     //   "anti":''
+  //     // })
+
+  //   }
+  // }
+  antiDiabetes(event, name) {
+    console.log(event)
+    if (event.checked) {
       this.anti_diabetes.push(name)
-     
-    }else{
-      var i = this.anti_diabetes.indexOf(name);
-      this.anti_diabetes.splice(i,1);
-     
+      console.log(this.anti_diabetes)
+    } else {
+      let i = this.anti_diabetes.indexOf(name);
+      this.anti_diabetes.splice(i, 1)
+      console.log(this.anti_diabetes)
+    }
+    if (this.anti_diabetes.length && this.antidiabetes.length) {
+      this.check=false
+      this.secondFormGroup.patchValue({
+        'people_with_tdm': this.anti_diabetes.toString()
+      });
+      this.secondFormGroup.updateValueAndValidity()
+    } else {
+      this.check=true
+      this.secondFormGroup.patchValue({
+        'people_with_tdm': ''
+      })
     }
   }
-  onclick(event: any) {
-    console.log(event)
-    if (event.value == 'yes' ) {
-      console.log(event.value)
+  
+  // onclick(event: any) {
+  //   console.log(event)
+  //   if (event.value == 'yes' ) {
+  //     console.log(event.value)
     
-      this.complications = 'yes';
-      this.complications = true;
-    }
-    else {
-      this.complications = 'no';
-      this.complications = false;
+  //     this.complications = 'yes';
+  //     this.complications = true;
+  //   }
+  //   else {
+  //     this.complications = 'no';
+  //     this.complications = false;
      
 
-    }
-  }
+  //   }
+  // }
 
   onchange(event: any) {
 
@@ -753,11 +805,17 @@ checkAntiDiabetes(name){
   oncheked(event: any) {
 
     if (event.checked == true) {
-      
+      this.secondFormGroup.controls["duration"].setValidators([Validators.required]);
+      this.secondFormGroup.controls["duration"].updateValueAndValidity();
+      this.secondFormGroup.controls["medications"].setValidators([Validators.required]);
+      this.secondFormGroup.controls["medications"].updateValueAndValidity();
       this.hypertension = true;
     }
     else {
-      
+      this.secondFormGroup.controls["duration"].clearValidators();
+      this.secondFormGroup.controls["duration"].updateValueAndValidity();
+      this.secondFormGroup.controls["medications"].clearValidators();
+      this.secondFormGroup.controls["medications"].updateValueAndValidity();
       this.hypertension = false
     }
 
@@ -765,66 +823,102 @@ checkAntiDiabetes(name){
   oncheked2(event: any) {
     if (event.checked == true) {
       this.dyslipidemia = true
-     
+      this.secondFormGroup.controls["dyslipidemia_duration"].setValidators([Validators.required]);
+      this.secondFormGroup.controls["dyslipidemia_duration"].updateValueAndValidity();
+      this.secondFormGroup.controls["dyslipidemia_medication"].setValidators([Validators.required]);
+      this.secondFormGroup.controls["dyslipidemia_medication"].updateValueAndValidity();
 
     }
     else {
       this.dyslipidemia = false
-      
+      this.secondFormGroup.controls["dyslipidemia_duration"].clearValidators();
+      this.secondFormGroup.controls["dyslipidemia_duration"].updateValueAndValidity();
+      this.secondFormGroup.controls["dyslipidemia_medication"].clearValidators();
+      this.secondFormGroup.controls["dyslipidemia_medication"].updateValueAndValidity();
     }
   }
   oncheked3(event: any){
     if (event.checked == true) {
-
+      this.secondFormGroup.controls["coronary_artery_duration"].setValidators([Validators.required]);
+      this.secondFormGroup.controls["coronary_artery_duration"].updateValueAndValidity();
+      this.secondFormGroup.controls["coronary_artery_medication"].setValidators([Validators.required]);
+      this.secondFormGroup.controls["coronary_artery_medication"].updateValueAndValidity();
       this.coronary = true
      
     }
     else {
       this.coronary = false
-      
+      this.secondFormGroup.controls["coronary_artery_duration"].clearValidators();
+      this.secondFormGroup.controls["coronary_artery_duration"].updateValueAndValidity();
+      this.secondFormGroup.controls["coronary_artery_medication"].clearValidators();
+      this.secondFormGroup.controls["coronary_artery_medication"].updateValueAndValidity();
     }
 
   }
   oncheked4(event: any) {
     if (event.checked == true) {
       this.stroke = true
-     
+      this.secondFormGroup.controls["stroke_duration"].setValidators([Validators.required]);
+      this.secondFormGroup.controls["stroke_duration"].updateValueAndValidity();
+      this.secondFormGroup.controls["stroke_medication"].setValidators([Validators.required]);
+      this.secondFormGroup.controls["stroke_medication"].updateValueAndValidity();
     }
     else {
       this.stroke = false
-      
+      this.secondFormGroup.controls["stroke_duration"].clearValidators();
+      this.secondFormGroup.controls["stroke_duration"].updateValueAndValidity();
+      this.secondFormGroup.controls["stroke_medication"].clearValidators();
+      this.secondFormGroup.controls["stroke_medication"].updateValueAndValidity();
     }
   }
   oncheked5(event: any, name: any) {
     if (event.checked == true) {
       this.neuropathy = true
-      
+      this.secondFormGroup.controls["neuropathy_duration"].setValidators([Validators.required]);
+      this.secondFormGroup.controls["neuropathy_duration"].updateValueAndValidity();
+      this.secondFormGroup.controls["neuropathy_medication"].setValidators([Validators.required]);
+      this.secondFormGroup.controls["neuropathy_medication"].updateValueAndValidity();
     }
     else {
       this.neuropathy = false
-      
+      this.secondFormGroup.controls["neuropathy_duration"].clearValidators();
+      this.secondFormGroup.controls["neuropathy_duration"].updateValueAndValidity();
+      this.secondFormGroup.controls["neuropathy_medication"].clearValidators();
+      this.secondFormGroup.controls["neuropathy_medication"].updateValueAndValidity();
     }
 
   }
   oncheked6(event: any) {
     if (event.checked == true) {
       this.retinopathy = true
-     
+      this.secondFormGroup.controls["retinopathy_duration"].setValidators([Validators.required]);
+      this.secondFormGroup.controls["retinopathy_duration"].updateValueAndValidity();
+      this.secondFormGroup.controls["retinopathy_medication"].setValidators([Validators.required]);
+      this.secondFormGroup.controls["retinopathy_medication"].updateValueAndValidity();
     }
     else {
       this.retinopathy = false
-     
+      this.secondFormGroup.controls["retinopathy_duration"].clearValidators();
+      this.secondFormGroup.controls["retinopathy_duration"].updateValueAndValidity();
+      this.secondFormGroup.controls["retinopathy_medication"].clearValidators();
+      this.secondFormGroup.controls["retinopathy_medication"].updateValueAndValidity();
     }
   }
   oncheked7(event: any) {
     if (event.checked == true) {
-
+      this.secondFormGroup.controls["nephropathy_duration"].setValidators([Validators.required]);
+      this.secondFormGroup.controls["nephropathy_duration"].updateValueAndValidity();
+      this.secondFormGroup.controls["nephropathy_medication"].setValidators([Validators.required]);
+      this.secondFormGroup.controls["nephropathy_medication"].updateValueAndValidity();
      
       this.nephropathy = true
     }
     else {
       this.nephropathy = false
-   
+      this.secondFormGroup.controls["nephropathy_duration"].clearValidators();
+      this.secondFormGroup.controls["nephropathy_duration"].updateValueAndValidity();
+      this.secondFormGroup.controls["nephropathy_medication"].clearValidators();
+      this.secondFormGroup.controls["nephropathy_duration"].updateValueAndValidity();
     }
   }
   bloodinvestigate(event: any) {
@@ -843,52 +937,129 @@ checkAntiDiabetes(name){
   oncheked8(event: any, name: any) {
     if (event.checked == true) {
       this.human_premixedthirty = true
-     
+      this.humanArray.push('human_premixedthirty')
+      this.humancheck=false
+      this.fourthFormGroup.controls["human_premixed_thirty_breakfast"].setValidators([Validators.required]);
+        this.fourthFormGroup.controls["human_premixed_thirty_breakfast"].updateValueAndValidity();
+        this.fourthFormGroup.controls["human_premixed_thirty_lunch"].setValidators([Validators.required]);
+        this.fourthFormGroup.controls["human_premixed_thirty_lunch"].updateValueAndValidity();
+        this.fourthFormGroup.controls["human_premixed_thirty_dinner"].setValidators([Validators.required]);
+        this.fourthFormGroup.controls["human_premixed_thirty_dinner"].updateValueAndValidity();
     }
     else {
       this.human_premixedthirty = false
-     
+      let index = this.humanArray.indexOf('human_premixedthirty');
+      this.humanArray.splice(index,1)
+      this.humancheck=true
+      this.fourthFormGroup.controls["human_premixed_thirty_breakfast"].clearValidators();
+      this.fourthFormGroup.controls["human_premixed_thirty_breakfast"].updateValueAndValidity();
+      this.fourthFormGroup.controls["human_premixed_thirty_lunch"].clearValidators();
+      this.fourthFormGroup.controls["human_premixed_thirty_lunch"].updateValueAndValidity();
+      this.fourthFormGroup.controls["human_premixed_thirty_dinner"].clearValidators();
+      this.fourthFormGroup.controls["human_premixed_thirty_dinner"].updateValueAndValidity();
     }
 
   }
   oncheked9(event: any, name: any) {
     if (event.checked == true) {
       this.human_premixedfifty = true
+      this.humanArray.push('human_premixedfifty')
+      this.humancheck=false
+      this.fourthFormGroup.controls["human_premixed_fifty_breakfast"].setValidators([Validators.required]);
+        this.fourthFormGroup.controls["human_premixed_fifty_breakfast"].updateValueAndValidity();
+        this.fourthFormGroup.controls["human_premixed_fifty_lunch"].setValidators([Validators.required]);
+        this.fourthFormGroup.controls["human_premixed_fifty_lunch"].updateValueAndValidity();
+        this.fourthFormGroup.controls["human_premixed_fifty_dinner"].setValidators([Validators.required]);
+        this.fourthFormGroup.controls["human_premixed_fifty_dinner"].updateValueAndValidity();
       
     }
     else {
       this.human_premixedfifty = false
-     
+      let index = this.humanArray.indexOf('human_premixedfifty');
+      this.humanArray.splice(index,1)
+      this.humancheck=true
+      this.fourthFormGroup.controls["human_premixed_fifty_breakfast"].clearValidators();
+      this.fourthFormGroup.controls["human_premixed_fifty_breakfast"].updateValueAndValidity();
+      this.fourthFormGroup.controls["human_premixed_fifty_lunch"].clearValidators();
+      this.fourthFormGroup.controls["human_premixed_fifty_lunch"].updateValueAndValidity();
+      this.fourthFormGroup.controls["human_premixed_fifty_dinner"].clearValidators();
+      this.fourthFormGroup.controls["human_premixed_fifty_dinner"].updateValueAndValidity();
     }
   }
   oncheked10(event: any) {
     if (event.checked == true) {
       this.regular = true
-     
+      this.humanArray.push('regular')
+      this.humancheck=false
+      this.fourthFormGroup.get('regular_insulin_breakfast').setValidators(Validators.required)
+      this.fourthFormGroup.controls["regular_insulin_breakfast"].updateValueAndValidity();
+      this.fourthFormGroup.get('regular_insulin_lunch').setValidators(Validators.required)
+      this.fourthFormGroup.controls["regular_insulin_lunch"].updateValueAndValidity();
+      this.fourthFormGroup.get('regular_insulin_dinner').setValidators(Validators.required)
+      this.fourthFormGroup.controls["regular_insulin_dinner"].updateValueAndValidity();
     }
     else {
       this.regular = false
-     
+      let index = this.humanArray.indexOf('regular');
+      this.humanArray.splice(index,1)
+      this.humancheck=true
+      this.fourthFormGroup.get('regular_insulin_breakfast').clearValidators();
+      this.fourthFormGroup.controls["regular_insulin_breakfast"].updateValueAndValidity();
+      this.fourthFormGroup.get('regular_insulin_lunch').clearValidators();
+      this.fourthFormGroup.controls["regular_insulin_lunch"].updateValueAndValidity();
+      this.fourthFormGroup.get('regular_insulin_dinner').clearValidators();
+      this.fourthFormGroup.controls["regular_insulin_dinner"].updateValueAndValidity();
     }
   }
   oncheked11(event: any) {
     if (event.checked == true) {
       this.nph = true
-     
+      this.humancheck=false
+      this.humanArray.push('nph')
+      this.fourthFormGroup.get('nph_insulin_breakfast').setValidators(Validators.required)
+      this.fourthFormGroup.controls["nph_insulin_breakfast"].updateValueAndValidity();
+      this.fourthFormGroup.get('nph_insulin_lunch').setValidators(Validators.required)
+      this.fourthFormGroup.controls["nph_insulin_lunch"].updateValueAndValidity();
+      this.fourthFormGroup.get('nph_insulin_dinner').setValidators(Validators.required)
+      this.fourthFormGroup.controls["nph_insulin_dinner"].updateValueAndValidity();
     }
     else {
       this.nph = false
-     
+      this.humancheck=true
+      let index = this.humanArray.indexOf('nph');
+      this.humanArray.splice(index,1)
+      this.fourthFormGroup.get('nph_insulin_breakfast').clearValidators();
+      this.fourthFormGroup.controls["nph_insulin_breakfast"].updateValueAndValidity();
+      this.fourthFormGroup.get('nph_insulin_lunch').clearValidators();
+      this.fourthFormGroup.controls["nph_insulin_lunch"].updateValueAndValidity();
+      this.fourthFormGroup.get('nph_insulin_dinner').clearValidators();
+      this.fourthFormGroup.controls["nph_insulin_dinner"].updateValueAndValidity();
     }
   }
   oncheked12(event: any) {
     if (event.checked == true) {
       this.glargine = true
-      
+      this.humanArray.push('glargine')
+      this.humancheck=false
+      this.fourthFormGroup.get('glargine_insulin_breakfast').setValidators(Validators.required)
+      this.fourthFormGroup.controls["glargine_insulin_breakfast"].updateValueAndValidity();
+      this.fourthFormGroup.get('glargine_insulin_lunch').setValidators(Validators.required)
+      this.fourthFormGroup.controls["glargine_insulin_lunch"].updateValueAndValidity();
+      this.fourthFormGroup.get('glargine_insulin_dinner').setValidators(Validators.required)
+      this.fourthFormGroup.controls["glargine_insulin_dinner"].updateValueAndValidity();
     }
     else {
       this.glargine = false
      
+      let index = this.humanArray.indexOf('glargine');
+      this.humancheck=true
+      this.humanArray.splice(index,1)
+      this.fourthFormGroup.get('glargine_insulin_breakfast').clearValidators();
+      this.fourthFormGroup.controls["glargine_insulin_breakfast"].updateValueAndValidity();
+      this.fourthFormGroup.get('glargine_insulin_lunch').clearValidators();
+      this.fourthFormGroup.controls[" glargine_insulin_lunch"].updateValueAndValidity();
+      this.fourthFormGroup.get('glargine_insulin_dinner').clearValidators();
+      this.fourthFormGroup.controls["glargine_insulin_dinner"].updateValueAndValidity();
     }
   }
   date(e){
@@ -961,42 +1132,66 @@ checkAntiDiabetes(name){
   secondForm(event: any) {
 
     console.log(event)
-    if (!this.secondFormGroup.valid ) {
-    
+    if (!this.secondFormGroup.valid || this.anti_diabetes.length == 0 && this.antidiabetes.length ==0) {
+      
+        this.check = true
+       
       this.secondFormGroup.markAllAsTouched()
       console.log("not valid")
       this.toastr.error("Please fill all the fields")
     }
     else {
+      this.check = false
       const formData = new FormData()
-      this.medical.hypertension_dur = (this.secondFormGroup.value.hypertension_dur==true)?this.secondFormGroup.value.hypertension_dur:false;
-      this.medical.duration_hypertension = this.secondFormGroup.value.duration;
-      this.medical.hypertension_medications = this.secondFormGroup.value.medications;
-      console.log('this.medical', this.medical);
-      this.dyslipidemiaArrray.dyslipidemia_dur = (this.secondFormGroup.value.dyslipidemia_dur==true) ? this.secondFormGroup.value.dyslipidemia_dur:false;
-      this.dyslipidemiaArrray.dyslipidemia_duration = this.secondFormGroup.value.dyslipidemia_duration;
-      this.dyslipidemiaArrray.dyslipidemia_medication = this.secondFormGroup.value.dyslipidemia_medication;
-      console.log(this.dyslipidemiaArrray)
-      this.coronaryArray.coronary_artery_dur = (this.secondFormGroup.value.coronary_artery_dur==true) ? this.secondFormGroup.value.coronary_artery_dur:false;
-      this.coronaryArray.coronary_artery_duration = this.secondFormGroup.value.coronary_artery_duration;
-      this.coronaryArray.coronary_artery_medication = this.secondFormGroup.value.coronary_artery_medication;
-      console.log(this.coronaryArray);
-      this.strokeArray.stroke_dur = (this.secondFormGroup.value.stroke_dur==true) ? this.secondFormGroup.value.stroke_dur:false;
-      this.strokeArray.stroke_duration = this.secondFormGroup.value.stroke_duration;
-      this.strokeArray.stroke_medication = this.secondFormGroup.value.stroke_medication;
-      console.log(this.strokeArray);
-      this.neuropathyArray.neuropathy_dur = (this.secondFormGroup.value.neuropathy_dur==true) ? this.secondFormGroup.value.neuropathy_dur:false;
-      this.neuropathyArray.neuropathy_duration = this.secondFormGroup.value.neuropathy_duration;
-      this.neuropathyArray.neuropathy_medication = this.secondFormGroup.value.neuropathy_medication;
-      console.log(this.neuropathyArray);
-      this.retinopathyArray.retinopathy_dur = (this.secondFormGroup.value.retinopathy_dur==true) ? this.secondFormGroup.value.retinopathy_dur:false;
-      this.retinopathyArray.retinopathy_duration = this.secondFormGroup.value.retinopathy_duration;
-      this.retinopathyArray.retinopathy_medication = this.secondFormGroup.value.retinopathy_medication;
-      console.log(this.retinopathyArray);
-      this.nephropathyArray.nephropathy_dur = (this.secondFormGroup.value.nephropathy_dur==true) ? this.secondFormGroup.value.nephropathy_dur:false;
-      this.nephropathyArray.nephropathy_duration = this.secondFormGroup.value.nephropathy_duration;
-      this.nephropathyArray.nephropathy_medication = this.secondFormGroup.value.nephropathy_medication;
-      console.log(this.nephropathyArray);
+      if(this.hypertension){
+        this.medical.hypertension_dur = (this.secondFormGroup.value.hypertension_dur==true)?this.secondFormGroup.value.hypertension_dur:false;
+        this.medical.duration_hypertension = this.secondFormGroup.value.duration;
+        this.medical.hypertension_medications = this.secondFormGroup.value.medications;
+        formData.append("hypertension_dur", JSON.stringify(this.medical));
+        }
+        console.log('this.medical', this.medical);
+        if(this.dyslipidemia){
+        this.dyslipidemiaArrray.dyslipidemia_dur = (this.secondFormGroup.value.dyslipidemia_dur==true) ? this.secondFormGroup.value.dyslipidemia_dur:false;
+        this.dyslipidemiaArrray.dyslipidemia_duration = this.secondFormGroup.value.dyslipidemia_duration;
+        this.dyslipidemiaArrray.dyslipidemia_medication = this.secondFormGroup.value.dyslipidemia_medication;
+        console.log(this.dyslipidemiaArrray)
+        formData.append("dyslipidemia_dur", JSON.stringify(this.dyslipidemiaArrray));
+        }
+        if(this.coronary){
+        this.coronaryArray.coronary_artery_dur = (this.secondFormGroup.value.coronary_artery_dur==true) ? this.secondFormGroup.value.coronary_artery_dur:false;
+        this.coronaryArray.coronary_artery_duration = this.secondFormGroup.value.coronary_artery_duration;
+        this.coronaryArray.coronary_artery_medication = this.secondFormGroup.value.coronary_artery_medication;
+        console.log(this.coronaryArray);
+        formData.append("coronary_artery_dur", JSON.stringify(this.coronaryArray));
+        }
+        if(this.stroke){
+        this.strokeArray.stroke_dur = (this.secondFormGroup.value.stroke_dur==true) ? this.secondFormGroup.value.stroke_dur:false;
+        this.strokeArray.stroke_duration = this.secondFormGroup.value.stroke_duration;
+        this.strokeArray.stroke_medication = this.secondFormGroup.value.stroke_medication;
+        console.log(this.strokeArray);
+        formData.append("stroke_dur", JSON.stringify(this.strokeArray));
+        }
+        if(this.neuropathy){
+        this.neuropathyArray.neuropathy_dur = (this.secondFormGroup.value.neuropathy_dur==true) ? this.secondFormGroup.value.neuropathy_dur:false;
+        this.neuropathyArray.neuropathy_duration = this.secondFormGroup.value.neuropathy_duration;
+        this.neuropathyArray.neuropathy_medication = this.secondFormGroup.value.neuropathy_medication;
+        console.log(this.neuropathyArray);
+        formData.append("neuropathy_dur", JSON.stringify(this.neuropathyArray));
+        }
+        if(this.retinopathy){
+        this.retinopathyArray.retinopathy_dur = (this.secondFormGroup.value.retinopathy_dur==true) ? this.secondFormGroup.value.retinopathy_dur:false;
+        this.retinopathyArray.retinopathy_duration = this.secondFormGroup.value.retinopathy_duration;
+        this.retinopathyArray.retinopathy_medication = this.secondFormGroup.value.retinopathy_medication;
+        console.log(this.retinopathyArray);
+        formData.append("retinopathy_dur", JSON.stringify(this.retinopathyArray));
+        }
+        if(this.nephropathy){
+        this.nephropathyArray.nephropathy_dur = (this.secondFormGroup.value.nephropathy_dur==true) ? this.secondFormGroup.value.nephropathy_dur:false;
+        this.nephropathyArray.nephropathy_duration = this.secondFormGroup.value.nephropathy_duration;
+        this.nephropathyArray.nephropathy_medication = this.secondFormGroup.value.nephropathy_medication;
+        console.log(this.nephropathyArray);
+        formData.append("nephropathy_dur", JSON.stringify(this.nephropathyArray));
+        }
       formData.append("duration_diabetes", this.secondFormGroup.value.duration_diabetes);
       formData.append("treated_diabetes", this.secondFormGroup.value.treated_diabetes);
       formData.append("family_diabetes", this.secondFormGroup.value.family_diabetes);
@@ -1008,13 +1203,7 @@ checkAntiDiabetes(name){
       formData.append("smoking", this.secondFormGroup.value.smoking);
       formData.append("alcohol", this.secondFormGroup.value.alcohol);
      
-      formData.append("hypertension_dur", JSON.stringify(this.medical));
-      formData.append("dyslipidemia_dur", JSON.stringify(this.dyslipidemiaArrray));
-      formData.append("coronary_artery_dur", JSON.stringify(this.coronaryArray));
-      formData.append("stroke_dur", JSON.stringify(this.strokeArray));
-      formData.append("neuropathy_dur", JSON.stringify(this.neuropathyArray));
-      formData.append("retinopathy_dur", JSON.stringify(this.retinopathyArray));
-      formData.append("nephropathy_dur", JSON.stringify(this.nephropathyArray));
+     
       formData.append("medical_condition",this.secondFormGroup.value.medical_condition)
       formData.append("anti_diabetes_medication", JSON.stringify(this.anti_diabetes));
       console.log('anti_diabetes',this.anti_diabetes);
@@ -1074,39 +1263,52 @@ checkAntiDiabetes(name){
  
   submit(event:any) {
      
-    if(this.fourthFormGroup.valid){
+    if(this.fourthFormGroup.valid && this.humanArray.length){
+      this.humancheck=false
+      const formData = new FormData()
       // this.vascular.vascular_dignosis = this.secondFormGroup.value.vascular_dignosis;
       // this.vascular.complication = this.secondFormGroup.value.complication;
       // console.log('vascular', this.vascular)
-      this.human_premixed_thirty_Obj.human_premixed_thirty = (this.fourthFormGroup.value.human_premixed_thirty==true) ?this.fourthFormGroup.value.human_premixed_thirty :false ;
-      this.human_premixed_thirty_Obj.human_premixed_thirty_breakfast = this.fourthFormGroup.value.human_premixed_thirty_breakfast;
-      this.human_premixed_thirty_Obj.human_premixed_thirty_lunch = this.fourthFormGroup.value.human_premixed_thirty_lunch;
-      this.human_premixed_thirty_Obj.human_premixed_thirty_dinner = this.fourthFormGroup.value.human_premixed_thirty_dinner;
-      this.human_premixed_fifty_Obj.human_premixed_fifty = (this.fourthFormGroup.value.human_premixed_fifty==true) ? this.fourthFormGroup.value.human_premixed_fifty:false;
-      this.human_premixed_fifty_Obj.human_premixed_50_breakfast = this.fourthFormGroup.value.human_premixed_fifty_breakfast;
-      this.human_premixed_fifty_Obj.human_premixed_fifty_lunch = this.fourthFormGroup.value.human_premixed_fifty_lunch;
-      this.human_premixed_fifty_Obj.human_premixed_fifty_dinner = this.fourthFormGroup.value.human_premixed_fifty_dinner;
-      this.regular_insulin_Obj.regular_insulin = (this.fourthFormGroup.value.regular_insulin == true) ? this.fourthFormGroup.value.regular_insulin:false ;
-      this.regular_insulin_Obj.regular_insulin_breakfast = this.fourthFormGroup.value.regular_insulin_breakfast;
-      this.regular_insulin_Obj.regular_insulin_lunch = this.fourthFormGroup.value.regular_insulin_lunch;
-      this.regular_insulin_Obj.regular_insulin_dinner = this.fourthFormGroup.value.regular_insulin_dinner;
-      this.nph_insulin_Obj.nph_insulin = (this.fourthFormGroup.value.nph_insulin == true) ? this.fourthFormGroup.value.nph_insulin : false;
-      this.nph_insulin_Obj.nph_insulin_breakfast = this.fourthFormGroup.value.nph_insulin_breakfast;
-      this.nph_insulin_Obj.nph_insulin_lunch = this.fourthFormGroup.value.nph_insulin_lunch;
-      this.nph_insulin_Obj.nph_insulin_dinner = this.fourthFormGroup.value.nph_insulin_dinner;
-      this.glargine_insulin_Obj.glargine_insulin = (this.fourthFormGroup.value.glargine_insulin==true) ?this.fourthFormGroup.value.glargine_insulin:false ;
-      this.glargine_insulin_Obj.glargine_insulin_breakfast = this.fourthFormGroup.value.glargine_insulin_breakfast;
-      this.glargine_insulin_Obj.glargine_insulin_lunch = this.fourthFormGroup.value.glargine_insulin_lunch;
-      this.glargine_insulin_Obj.glargine_insulin_dinner = this.fourthFormGroup.value.glargine_insulin_dinner;
-      const formData = new FormData()
+      if(this.human_premixedthirty){
+        this.human_premixed_thirty_Obj.human_premixed_thirty = (this.fourthFormGroup.value.human_premixed_thirty==true) ?this.fourthFormGroup.value.human_premixed_thirty :false ;
+        this.human_premixed_thirty_Obj.human_premixed_thirty_breakfast = this.fourthFormGroup.value.human_premixed_thirty_breakfast;
+        this.human_premixed_thirty_Obj.human_premixed_thirty_lunch = this.fourthFormGroup.value.human_premixed_thirty_lunch;
+        this.human_premixed_thirty_Obj.human_premixed_thirty_dinner = this.fourthFormGroup.value.human_premixed_thirty_dinner;
+        formData.append("human_premixed_thirty", JSON.stringify(this.human_premixed_thirty_Obj));
+      }
+        if(this.human_premixedfifty){
+        this.human_premixed_fifty_Obj.human_premixed_fifty = (this.fourthFormGroup.value.human_premixed_fifty==true) ? this.fourthFormGroup.value.human_premixed_fifty:false;
+        this.human_premixed_fifty_Obj.human_premixed_50_breakfast = this.fourthFormGroup.value.human_premixed_fifty_breakfast;
+        this.human_premixed_fifty_Obj.human_premixed_fifty_lunch = this.fourthFormGroup.value.human_premixed_fifty_lunch;
+        this.human_premixed_fifty_Obj.human_premixed_fifty_dinner = this.fourthFormGroup.value.human_premixed_fifty_dinner;
+        formData.append("human_premixed_fifty", JSON.stringify(this.human_premixed_fifty_Obj));
+      }
+        if(this.regular){
+        this.regular_insulin_Obj.regular_insulin = (this.fourthFormGroup.value.regular_insulin == true) ? this.fourthFormGroup.value.regular_insulin:false ;
+        this.regular_insulin_Obj.regular_insulin_breakfast = this.fourthFormGroup.value.regular_insulin_breakfast;
+        this.regular_insulin_Obj.regular_insulin_lunch = this.fourthFormGroup.value.regular_insulin_lunch;
+        this.regular_insulin_Obj.regular_insulin_dinner = this.fourthFormGroup.value.regular_insulin_dinner;
+        formData.append("regular_insulin", JSON.stringify(this.regular_insulin_Obj));
+      }
+        if(this.nph){
+        this.nph_insulin_Obj.nph_insulin = (this.fourthFormGroup.value.nph_insulin == true) ? this.fourthFormGroup.value.nph_insulin : false;
+        this.nph_insulin_Obj.nph_insulin_breakfast = this.fourthFormGroup.value.nph_insulin_breakfast;
+        this.nph_insulin_Obj.nph_insulin_lunch = this.fourthFormGroup.value.nph_insulin_lunch;
+        this.nph_insulin_Obj.nph_insulin_dinner = this.fourthFormGroup.value.nph_insulin_dinner;
+        formData.append("nph_insulin", JSON.stringify(this.nph_insulin_Obj));
+      }
+        if(this.glargine){
+        this.glargine_insulin_Obj.glargine_insulin = (this.fourthFormGroup.value.glargine_insulin==true) ?this.fourthFormGroup.value.glargine_insulin:false ;
+        this.glargine_insulin_Obj.glargine_insulin_breakfast = this.fourthFormGroup.value.glargine_insulin_breakfast;
+        this.glargine_insulin_Obj.glargine_insulin_lunch = this.fourthFormGroup.value.glargine_insulin_lunch;
+        this.glargine_insulin_Obj.glargine_insulin_dinner = this.fourthFormGroup.value.glargine_insulin_dinner;
+        formData.append("glargine_insulin", JSON.stringify(this.glargine_insulin_Obj));
+      }
+      
       // formData.append("id",this.route.snapshot.params.id)
       // formData.append("form_id", this.formId)
       formData.append("status", 'yes')
-      formData.append("human_premixed_thirty", JSON.stringify(this.human_premixed_thirty_Obj));
-      formData.append("human_premixed_fifty", JSON.stringify(this.human_premixed_fifty_Obj));
-      formData.append("regular_insulin", JSON.stringify(this.regular_insulin_Obj));
-      formData.append("nph_insulin", JSON.stringify(this.nph_insulin_Obj));
-      formData.append("glargine_insulin", JSON.stringify(this.glargine_insulin_Obj));
+     
       if(this.isEditScreen){
         formData.append('id',this.listingId);
       }else{
@@ -1134,6 +1336,8 @@ checkAntiDiabetes(name){
     }
     else{
       console.log('not valid')
+      this.humancheck = true
+      this.toastr.error("Please fill all fields")
        this.fourthFormGroup.markAllAsTouched()
      }
     }

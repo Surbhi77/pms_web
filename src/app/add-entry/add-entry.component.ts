@@ -23,19 +23,19 @@ export class AddEntryComponent implements OnInit {
   isLinear = true;
   complications: any;
   medication: any;
-  hypertension: any;
-  dyslipidemia: any;
-  stroke: any;
-  neuropathy: any;
-  retinopathy: any;
-  nephropathy: any;
-  coronary: any;
-  bloodInvestigation: any;
-  human_premixedthirty: any;
-  human_premixedfifty: boolean;
-  regular: boolean;
-  nph: boolean;
-  glargine: boolean;
+  hypertension: any = false;
+  dyslipidemia: any = false;
+  stroke: any = false;
+  neuropathy: any=false;
+  retinopathy: any=false;
+  nephropathy: any=false;
+  coronary: any=false;
+  bloodInvestigation: any=false;
+  human_premixedthirty: any = false;
+  human_premixedfifty: boolean = false;
+  regular: boolean = false;
+  nph: boolean = false;
+  glargine: boolean = false;
  // vascular: any = {};
   medical: any = {};
   dyslipidemiaArrray: any = {}
@@ -290,34 +290,55 @@ export class AddEntryComponent implements OnInit {
     else {
       this.check = false
       const formData = new FormData()
+      if(this.hypertension){
       this.medical.hypertension_dur = (this.secondFormGroup.value.hypertension_dur==true)?this.secondFormGroup.value.hypertension_dur:false;
       this.medical.duration_hypertension = this.secondFormGroup.value.duration;
       this.medical.hypertension_medications = this.secondFormGroup.value.medications;
+      formData.append("hypertension_dur", JSON.stringify(this.medical));
+      }
       console.log('this.medical', this.medical);
+      if(this.dyslipidemia){
       this.dyslipidemiaArrray.dyslipidemia_dur = (this.secondFormGroup.value.dyslipidemia_dur==true) ? this.secondFormGroup.value.dyslipidemia_dur:false;
       this.dyslipidemiaArrray.dyslipidemia_duration = this.secondFormGroup.value.dyslipidemia_duration;
       this.dyslipidemiaArrray.dyslipidemia_medication = this.secondFormGroup.value.dyslipidemia_medication;
       console.log(this.dyslipidemiaArrray)
+      formData.append("dyslipidemia_dur", JSON.stringify(this.dyslipidemiaArrray));
+      }
+      if(this.coronary){
       this.coronaryArray.coronary_artery_dur = (this.secondFormGroup.value.coronary_artery_dur==true) ? this.secondFormGroup.value.coronary_artery_dur:false;
       this.coronaryArray.coronary_artery_duration = this.secondFormGroup.value.coronary_artery_duration;
       this.coronaryArray.coronary_artery_medication = this.secondFormGroup.value.coronary_artery_medication;
       console.log(this.coronaryArray);
+      formData.append("coronary_artery_dur", JSON.stringify(this.coronaryArray));
+      }
+      if(this.stroke){
       this.strokeArray.stroke_dur = (this.secondFormGroup.value.stroke_dur==true) ? this.secondFormGroup.value.stroke_dur:false;
       this.strokeArray.stroke_duration = this.secondFormGroup.value.stroke_duration;
       this.strokeArray.stroke_medication = this.secondFormGroup.value.stroke_medication;
       console.log(this.strokeArray);
+      formData.append("stroke_dur", JSON.stringify(this.strokeArray));
+      }
+      if(this.neuropathy){
       this.neuropathyArray.neuropathy_dur = (this.secondFormGroup.value.neuropathy_dur==true) ? this.secondFormGroup.value.neuropathy_dur:false;
       this.neuropathyArray.neuropathy_duration = this.secondFormGroup.value.neuropathy_duration;
       this.neuropathyArray.neuropathy_medication = this.secondFormGroup.value.neuropathy_medication;
       console.log(this.neuropathyArray);
+      formData.append("neuropathy_dur", JSON.stringify(this.neuropathyArray));
+      }
+      if(this.retinopathy){
       this.retinopathyArray.retinopathy_dur = (this.secondFormGroup.value.retinopathy_dur==true) ? this.secondFormGroup.value.retinopathy_dur:false;
       this.retinopathyArray.retinopathy_duration = this.secondFormGroup.value.retinopathy_duration;
       this.retinopathyArray.retinopathy_medication = this.secondFormGroup.value.retinopathy_medication;
       console.log(this.retinopathyArray);
+      formData.append("retinopathy_dur", JSON.stringify(this.retinopathyArray));
+      }
+      if(this.nephropathy){
       this.nephropathyArray.nephropathy_dur = (this.secondFormGroup.value.nephropathy_dur==true) ? this.secondFormGroup.value.nephropathy_dur:false;
       this.nephropathyArray.nephropathy_duration = this.secondFormGroup.value.nephropathy_duration;
       this.nephropathyArray.nephropathy_medication = this.secondFormGroup.value.nephropathy_medication;
       console.log(this.nephropathyArray);
+      formData.append("nephropathy_dur", JSON.stringify(this.nephropathyArray));
+      }
       // this.anti_diabetes.Biguanides = (this.secondFormGroup.value.Biguanides==true) ? this.secondFormGroup.value.Biguanides : false;
       // this.anti_diabetes.Sulphonylureas = (this.secondFormGroup.value.Sulphonylureas == true) ? this.secondFormGroup.value.Sulphonylureas : false;
       // this.anti_diabetes.Meglitinides = (this.secondFormGroup.value.Meglitinides == true) ? this.secondFormGroup.value.Meglitinides : false;
@@ -338,13 +359,6 @@ export class AddEntryComponent implements OnInit {
       formData.append("smoking", this.secondFormGroup.value.smoking);
       formData.append("alcohol", this.secondFormGroup.value.alcohol);
       formData.append("id", this.formId )
-      formData.append("hypertension_dur", JSON.stringify(this.medical));
-      formData.append("dyslipidemia_dur", JSON.stringify(this.dyslipidemiaArrray));
-      formData.append("coronary_artery_dur", JSON.stringify(this.coronaryArray));
-      formData.append("stroke_dur", JSON.stringify(this.strokeArray));
-      formData.append("neuropathy_dur", JSON.stringify(this.neuropathyArray));
-      formData.append("retinopathy_dur", JSON.stringify(this.retinopathyArray));
-      formData.append("nephropathy_dur", JSON.stringify(this.nephropathyArray));
       formData.append("medical_condition",this.secondFormGroup.value.medical_condition)
       formData.append("anti_diabetes_medication", JSON.stringify(this.anti_diabetes));
       this.service.addInitiate(formData).subscribe((res:any) => {
@@ -621,7 +635,7 @@ export class AddEntryComponent implements OnInit {
   oncheked8(event: any, name: any) {
     if (event.checked == true) {
       this.human_premixedthirty = true
-      this.humancheck = true
+      this.humancheck = false
       this.humanArray.push('human_premixedthirty')
      
       if (event.checked == true && name == 'human_premixed_thirty') {
@@ -634,7 +648,7 @@ export class AddEntryComponent implements OnInit {
       }
     }
     else {
-      this.human_premixedthirty = false
+      this.human_premixedthirty = true
       this.humancheck = false
       let index = this.humanArray.indexOf('human_premixedthirty');
       this.humanArray.splice(index,1)
@@ -650,7 +664,9 @@ export class AddEntryComponent implements OnInit {
   oncheked9(event: any, name: any) {
     if (event.checked == true) {
       this.human_premixedfifty = true
+     
       this.humanArray.push('human_premixedfifty')
+      this.humancheck=false
       if (event.checked == true && name == 'human_premixed_fifty') {
         this.fourthFormGroup.controls["human_premixed_fifty_breakfast"].setValidators([Validators.required]);
         this.fourthFormGroup.controls["human_premixed_fifty_breakfast"].updateValueAndValidity();
@@ -664,6 +680,7 @@ export class AddEntryComponent implements OnInit {
       this.human_premixedfifty = false
       let index = this.humanArray.indexOf('human_premixedfifty');
       this.humanArray.splice(index,1)
+      this.humancheck=true
       this.fourthFormGroup.controls["human_premixed_fifty_breakfast"].clearValidators();
       this.fourthFormGroup.controls["human_premixed_fifty_breakfast"].updateValueAndValidity();
       this.fourthFormGroup.controls["human_premixed_fifty_lunch"].clearValidators();
@@ -676,6 +693,7 @@ export class AddEntryComponent implements OnInit {
     if (event.checked == true) {
       this.regular = true
       this.humanArray.push('regular')
+      this.humancheck=false
       this.fourthFormGroup.get('regular_insulin_breakfast').setValidators(Validators.required)
       this.fourthFormGroup.controls["regular_insulin_breakfast"].updateValueAndValidity();
       this.fourthFormGroup.get('regular_insulin_lunch').setValidators(Validators.required)
@@ -687,6 +705,7 @@ export class AddEntryComponent implements OnInit {
       this.regular = false
       let index = this.humanArray.indexOf('regular');
       this.humanArray.splice(index,1)
+      this.humancheck=true
       this.fourthFormGroup.get('regular_insulin_breakfast').clearValidators();
       this.fourthFormGroup.controls["regular_insulin_breakfast"].updateValueAndValidity();
       this.fourthFormGroup.get('regular_insulin_lunch').clearValidators();
@@ -699,6 +718,7 @@ export class AddEntryComponent implements OnInit {
     if (event.checked == true) {
       this.nph = true
       this.humanArray.push('nph')
+      this.humancheck=false
       this.fourthFormGroup.get('nph_insulin_breakfast').setValidators(Validators.required)
       this.fourthFormGroup.controls["nph_insulin_breakfast"].updateValueAndValidity();
       this.fourthFormGroup.get('nph_insulin_lunch').setValidators(Validators.required)
@@ -710,6 +730,7 @@ export class AddEntryComponent implements OnInit {
       this.nph = false
       let index = this.humanArray.indexOf('nph');
       this.humanArray.splice(index,1)
+      this.humancheck=true
       this.fourthFormGroup.get('nph_insulin_breakfast').clearValidators();
       this.fourthFormGroup.controls["nph_insulin_breakfast"].updateValueAndValidity();
       this.fourthFormGroup.get('nph_insulin_lunch').clearValidators();
@@ -722,7 +743,7 @@ export class AddEntryComponent implements OnInit {
     if (event.checked == true) {
       this.glargine = true
       this.humanArray.push('glargine')
-      this.humancheck = true
+      this.humancheck = false
       this.fourthFormGroup.get('glargine_insulin_breakfast').setValidators(Validators.required)
       this.fourthFormGroup.controls["glargine_insulin_breakfast"].updateValueAndValidity();
       this.fourthFormGroup.get('glargine_insulin_lunch').setValidators(Validators.required)
@@ -734,9 +755,10 @@ export class AddEntryComponent implements OnInit {
       this.glargine = false;
       let index = this.humanArray.indexOf('glargine');
       this.humanArray.splice(index,1)
+      this.humancheck=true
       this.fourthFormGroup.get('glargine_insulin_breakfast').clearValidators();
       this.fourthFormGroup.controls["glargine_insulin_breakfast"].updateValueAndValidity();
-      this.fourthFormGroup.get(' glargine_insulin_lunch').clearValidators();
+      this.fourthFormGroup.get('glargine_insulin_lunch').clearValidators();
       this.fourthFormGroup.controls[" glargine_insulin_lunch"].updateValueAndValidity();
       this.fourthFormGroup.get('glargine_insulin_dinner').clearValidators();
       this.fourthFormGroup.controls["glargine_insulin_dinner"].updateValueAndValidity();
@@ -824,38 +846,47 @@ export class AddEntryComponent implements OnInit {
     if(this.fourthFormGroup.valid && this.humanArray.length){
       this.humancheck=false
       console.log(this.humancheck)
+      const formData = new FormData()
       // this.vascular.vascular_dignosis = this.secondFormGroup.value.vascular_dignosis;nph_insulin_lunch
       // this.vascular.complication = this.secondFormGroup.value.complication;
       // console.log('vascular', this.vascular)human_premixed_thirty_lunch
+      if(this.human_premixedthirty){
       this.human_premixed_thirty_Obj.human_premixed_thirty = (this.fourthFormGroup.value.human_premixed_thirty==true) ?this.fourthFormGroup.value.human_premixed_thirty :false ;
       this.human_premixed_thirty_Obj.human_premixed_thirty_breakfast = this.fourthFormGroup.value.human_premixed_thirty_breakfast;
       this.human_premixed_thirty_Obj.human_premixed_thirty_lunch = this.fourthFormGroup.value.human_premixed_thirty_lunch;
       this.human_premixed_thirty_Obj.human_premixed_thirty_dinner = this.fourthFormGroup.value.human_premixed_thirty_dinner;
+      formData.append("human_premixed_thirty", JSON.stringify(this.human_premixed_thirty_Obj));
+    }
+      if(this.human_premixedfifty){
       this.human_premixed_fifty_Obj.human_premixed_fifty = (this.fourthFormGroup.value.human_premixed_fifty==true) ? this.fourthFormGroup.value.human_premixed_fifty:false;
       this.human_premixed_fifty_Obj.human_premixed_50_breakfast = this.fourthFormGroup.value.human_premixed_fifty_breakfast;
       this.human_premixed_fifty_Obj.human_premixed_fifty_lunch = this.fourthFormGroup.value.human_premixed_fifty_lunch;
       this.human_premixed_fifty_Obj.human_premixed_fifty_dinner = this.fourthFormGroup.value.human_premixed_fifty_dinner;
+      formData.append("human_premixed_fifty", JSON.stringify(this.human_premixed_fifty_Obj));
+    }
+      if(this.regular){
       this.regular_insulin_Obj.regular_insulin = (this.fourthFormGroup.value.regular_insulin == true) ? this.fourthFormGroup.value.regular_insulin:false ;
       this.regular_insulin_Obj.regular_insulin_breakfast = this.fourthFormGroup.value.regular_insulin_breakfast;
       this.regular_insulin_Obj.regular_insulin_lunch = this.fourthFormGroup.value.regular_insulin_lunch;
       this.regular_insulin_Obj.regular_insulin_dinner = this.fourthFormGroup.value.regular_insulin_dinner;
+      formData.append("regular_insulin", JSON.stringify(this.regular_insulin_Obj));
+    }
+      if(this.nph){
       this.nph_insulin_Obj.nph_insulin = (this.fourthFormGroup.value.nph_insulin == true) ? this.fourthFormGroup.value.nph_insulin : false;
       this.nph_insulin_Obj.nph_insulin_breakfast = this.fourthFormGroup.value.nph_insulin_breakfast;
       this.nph_insulin_Obj.nph_insulin_lunch = this.fourthFormGroup.value.nph_insulin_lunch;
       this.nph_insulin_Obj.nph_insulin_dinner = this.fourthFormGroup.value.nph_insulin_dinner;
+      formData.append("nph_insulin", JSON.stringify(this.nph_insulin_Obj));
+    }
+      if(this.glargine){
       this.glargine_insulin_Obj.glargine_insulin = (this.fourthFormGroup.value.glargine_insulin==true) ?this.fourthFormGroup.value.glargine_insulin:false ;
       this.glargine_insulin_Obj.glargine_insulin_breakfast = this.fourthFormGroup.value.glargine_insulin_breakfast;
       this.glargine_insulin_Obj.glargine_insulin_lunch = this.fourthFormGroup.value.glargine_insulin_lunch;
       this.glargine_insulin_Obj.glargine_insulin_dinner = this.fourthFormGroup.value.glargine_insulin_dinner;
-      const formData = new FormData()
+      formData.append("glargine_insulin", JSON.stringify(this.glargine_insulin_Obj));
+    }
       formData.append("id", this.formId)
       formData.append("status", 'yes')
-      formData.append("human_premixed_thirty", JSON.stringify(this.human_premixed_thirty_Obj));
-      formData.append("human_premixed_fifty", JSON.stringify(this.human_premixed_fifty_Obj));
-      formData.append("regular_insulin", JSON.stringify(this.regular_insulin_Obj));
-      formData.append("nph_insulin", JSON.stringify(this.nph_insulin_Obj));
-      formData.append("glargine_insulin", JSON.stringify(this.glargine_insulin_Obj));
-     
       console.log(formData)
 
       // this.firstFormGroup.reset(); 
@@ -864,7 +895,6 @@ export class AddEntryComponent implements OnInit {
       //  this.fourthFormGroup.reset();
     
       this.service.addInitiate(formData).subscribe(res => {
-       
         console.log(res)
        // this.router.navigateByUrl('/add-entry-process')
        if(event){
@@ -879,7 +909,7 @@ export class AddEntryComponent implements OnInit {
         this.humancheck = true
       
       console.log('not valid')
-      this.toastr.error("Please select atleast one")
+      this.toastr.error("Please fill all the fields")
        this.fourthFormGroup.markAllAsTouched()
      }
     }
