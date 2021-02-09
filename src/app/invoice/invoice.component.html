@@ -921,65 +921,8 @@
                                 </div>
                             </div>
 
-                            <!-- <div class="col-lg-3 col-md-3 col-12">
-                                <div class="check_nones mb-3">
-                                    <p>Dose of Insulin Glargine at initiation: </p>
-                                </div>
-                                <div class="entry-inputs-block">
-                                    <mat-radio-group color="primary" formControlName="dose_insulin">
-                                        <mat-radio-button value="0.1U/kg body weight" class="mr-5">0.1U/kg body weight
-                                        </mat-radio-button>
-                                        <mat-radio-button value="0.2U/Kg body weight">0.2U/Kg body weight
-                                        </mat-radio-button>
-                                        <mat-radio-button value="10 U">10 U</mat-radio-button>
-                                        <mat-radio-button value="Others">Others</mat-radio-button>
-                                    </mat-radio-group>
-                                </div>
-                            </div> -->
-                            <!-- <div class="col-lg-12 col-md-12 col-12 mb-3">
-                                <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="glargine_insulin" (change)="oncheked10($event)" class="example-margin d-block mb-2">Regular insulin
-                                    </mat-checkbox>
-                                </div>
-
-                                <div class="row" *ngIf="glargine_condition">
-                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
-
-                                        <div class="entry-inputs-block">
-                                            <mat-form-field>
-                                                <mat-label>Breakfast</mat-label>
-                                                <mat-select formControlName="glargine_insulin_breakfast">
-                                                    <mat-option value="0">0</mat-option>
-                                                    <mat-option value="1">1</mat-option>
-                                                    <mat-option value="2">2</mat-option>
-                                                    <mat-option value="3">3</mat-option>
-                                                    <mat-option value="4">4</mat-option>
-                                                </mat-select>
-                                                <mat-error *ngIf="hasError3('fasting_plasma', 'required')">select field is required</mat-error>
-                                            </mat-form-field>
-                                        </div>
-                                    </div>
-
-                                    
-
-                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
-
-                                        <div class="entry-inputs-block">
-                                            <mat-form-field>
-                                                <mat-label>Dinner</mat-label>
-                                                <mat-select formControlName="glargine_insulin_dinner">
-                                                    <mat-option value="0">0</mat-option>
-                                                    <mat-option value="1">1</mat-option>
-                                                    <mat-option value="2">2</mat-option>
-                                                    <mat-option value="3">3</mat-option>
-                                                    <mat-option value="4">4</mat-option>
-                                                </mat-select>
-                                                <mat-error *ngIf="hasError3('fasting_plasma', 'required')">select field is required</mat-error>
-                                            </mat-form-field>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
+                          
+                            
                         </div>
                     </div>
 
@@ -1108,7 +1051,7 @@
                 <div class="col-sm-12 col-lg-12 col-md-12">
                     <button mat-button matStepperPrevious class="next_btn">Back</button>
                     <!-- <button mat-button class="next_btn">Save as Draft</button> -->
-                    <button mat-button matStepperNext class="next_btn" (click)="submit()">Submit</button>
+                    <button mat-button type="submit" class="next_btn" (click)="submit()">Submit</button>
                 </div>
 
 

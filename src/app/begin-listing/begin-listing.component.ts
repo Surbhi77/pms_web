@@ -65,6 +65,9 @@ export class BeginListingComponent implements OnInit {
 
   }
   deletedata(ids,i){
+    if(window.confirm("Are You want to sure delete data sucessfully")){
+
+   
     
    let formdata= new FormData();
    formdata.append('id',ids)
@@ -75,7 +78,7 @@ export class BeginListingComponent implements OnInit {
       this.begindraftlist.splice(i,1)
     }))
   
-  
+  }
  
 
 

@@ -434,9 +434,7 @@ export class InvoiceComponent implements OnInit {
        if(event){
          this.toastr.info('The draft has been saved successfully')
          this.router.navigateByUrl("/dashboard");
-         }//else{
-        //   // alert('Please fill all the fields')
-        // }
+         }
 
        
       })
@@ -640,19 +638,7 @@ export class InvoiceComponent implements OnInit {
       this.glargine_condition = false
     }
   }
-  // vistedate(e) {
-  //   console.log(e.value)
-  //   this.now2 = moment(e.value);
-  //   this.format2 = this.now2;
-  //   console.log(this.now2)
-
-  // }
-  // birthdate(ev) {
-  //   this.now3 = moment(ev.value).format("YYYY-MM-DD");
-  //   this.format3 = this.now3;
-  //   console.log(this.now3)
-
-  // }
+  
   
   onchange($event: any) {
     console.log($event)
@@ -672,7 +658,7 @@ export class InvoiceComponent implements OnInit {
       this.glargineinsulinobj.glargine_insulin = (this.fourthFormGroup.value.glargine_insulin == true) ? this.fourthFormGroup.value.glargine_insulin : false;
       console.log(this.glargineinsulinobj)
       this.glargineinsulinobj.glargine_insulin_breakfast = this.fourthFormGroup.value.glargine_insulin_breakfast;
-     // console.log(this.glargineinsulinobj.breakfast)
+   
       this.glargineinsulinobj.glargine_insulin_lunch = this.fourthFormGroup.value.glargine_insulin_lunch;
       this.glargineinsulinobj.glargine_insulin_dinner = this.fourthFormGroup.value.glargine_insulin_dinner;
       console.log(this.glargineinsulinobj)

@@ -84,7 +84,7 @@ export class BeginViewComponent implements OnInit {
      
       user_id: new FormControl(''),
     // form_id:new FormControl(''),
-     mobile: new FormControl(''),
+    // mobile: new FormControl(''),
       pen_serial: new FormControl(''),
       date_visit: new FormControl('', [Validators.required]),
       sex: new FormControl('', [Validators.required]),
@@ -170,63 +170,7 @@ export class BeginViewComponent implements OnInit {
     })
     
     
-    // if(this.neuropathycheck.neuropathy_dur){
-    //   this.neuropathy=true
-
-    // }
-    // else{
-    //  this.neuropathy=false
-    // }
-    // if(this.retinopathycheck.retinopathy_dur){
-    //   this.retinopathy=true
-
-    // }
-    // else{
-    //  this.retinopathy=false
-    // }
-    //  if(this.nephrocheck.nephropathy_dur){
-    //    this.nephropathy=true
-
-    //  }
-    //  else{
-    //   this.nephropathy=false
-    //  }
-
-    //  this.secondFormGroup.patchValue({
-    // "hypertension_dur":this.hypercheck.hypertension_dur,
-    // "duration":this.hypercheck.duration,
-    // "medications":this.hypercheck.medications,
-    // "dyslipidemia_dur":this.dysncheck.dyslipidemia_dur,
-    // "dyslipidemia_duration":this.dysncheck.dyslipidemia_duration,
-    // "dyslipidemia_medication":this.dysncheck.dyslipidemia_medication,
-    // "coronary_artery_dur":this.coroncheck.coronary_artery_dur,
-    // "coronary_artery_duration":this.coroncheck.coronary_artery_duration,
-    // "coronary_artery_medication":this.coroncheck.coronary_artery_medication,
-    // "stroke_dur":this.strokecheck.stroke_dur,
-    // "stroke_duration":this.strokecheck.stroke_duration,
-    // "stroke_medication":this.strokecheck.stroke_medication,
-    // "neuropathy_dur":this.neuropathycheck.neuropathy_dur,
-    // "neuropathy_duration":this.neuropathycheck.neuropathy_duration,
-    // "neuropathy_medication":this.neuropathycheck.neuropathy_medication,
-    // "retinopathy_dur":this.retinopathycheck.retinopathy_dur,
-    // "retinopathy_duration":this.retinopathycheck.retinopathy_duration,
-    // "retinopathy_medication":this.retinopathycheck.retinopathy_medication,
-    // "nephropathy_dur":this.nephrocheck.nephropathy_dur,
-    // "nephropathy_duration":this.nephrocheck.nephropathy_duration,
-    // "nephropathy_medication":this.nephrocheck.nephropathy_medication,
-    //   })
-    // this.secondFormGroup.updateValueAndValidity();
-
-    //   this.fourthFormGroup.patchValue({
-    //   "glargine_insulin_breakfast":this.garglineArray.glargine_insulin_breakfast,
-      
-    //   "glargine_insulin_dinner":this.garglineArray.glargine_insulin_dinner
-
-
-    //  })
-    //  this.fourthFormGroup.updateValueAndValidity();
-
-    // })
+   
 
     let routeParams = this.route.snapshot.params;
    if( routeParams != undefined && Object.keys( routeParams).length>0){
@@ -401,6 +345,7 @@ getdigit() {
    
     if(this.beginview && this.beginview.hypertension_dur != ''){
       this.hypercheck = JSON.parse(this.beginview.hypertension_dur)
+      console.log(this.hypercheck.hypertension_medications)
       if(this.hypercheck.hypertension_dur){
         this.hypertension = true;
       }
@@ -618,14 +563,7 @@ getdigit() {
     }
   }
   checkAntiDiabetes(name){
-    // console.log('checkAntiDiabetes name',name)
-    // if (this.antichecked.length) {
-    //   this.check=false
-     
-    // } else {
-    //   this.check=true
-      
-    // }
+    
    
     if(this.antichecked.indexOf(name)>-1){
     
@@ -830,7 +768,7 @@ getdigit() {
       formData.append("user_id", JSON.parse(localStorage.getItem('doctor_id')));
       console.log(localStorage.getItem('doctor_id'))
       formData.append('age', this.firstFormGroup.value.age);
-      formData.append('mobile', JSON.parse(localStorage.getItem('mobile')))
+     // formData.append('mobile', JSON.parse(localStorage.getItem('mobile')))
       formData.append('sex', this.firstFormGroup.value.sex);
       formData.append('weight', this.firstFormGroup.value.weight);
       formData.append('height', this.firstFormGroup.value.height);
