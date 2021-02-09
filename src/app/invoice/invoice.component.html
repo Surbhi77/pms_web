@@ -158,8 +158,8 @@
 
                                     <mat-radio-group formControlName="education" color="primary" formControlName="education" aria-label="Select an option">
                                         <mat-radio-button value="none" class="mr-5">None</mat-radio-button>
-                                        <mat-radio-button value="primary" class="mr-5">Primary</mat-radio-button>
-                                        <mat-radio-button value="high school">High School</mat-radio-button>
+                                        <mat-radio-button value="Primary" class="mr-5">Primary</mat-radio-button>
+                                        <mat-radio-button value="High school">High School</mat-radio-button>
                                         <mat-radio-button value="Pre-University">Pre-University</mat-radio-button>
                                         <mat-radio-button value="Graduate">Graduate</mat-radio-button>
                                     </mat-radio-group>
@@ -950,11 +950,11 @@
                         <mat-radio-group color="primary" formControlName="dose_insulin">
                             <mat-radio-button value="0.1U/kg body weight" class="mr-2">0.1U/kg body weight
                             </mat-radio-button>
-                            <mat-radio-button value="0.2U/Kg body weight" class="mr-2">0.2U/Kg body weight
+                            <mat-radio-button value="0.2U/kg body weight" class="mr-2">0.2U/Kg body weight
                             </mat-radio-button>
                             <br>
                             <mat-radio-button value="10 U" class="mr-2">10 U</mat-radio-button>
-                            <mat-radio-button value="Others" class="mr-2">Others</mat-radio-button>
+                            <mat-radio-button value="Other" class="mr-2">Others</mat-radio-button>
                         </mat-radio-group>
                         <div *ngIf="i.dose_insulin.touched && i.dose_insulin.invalid">
                             <div *ngIf="i.dose_insulin.errors.required" class="errors text-danger">Please select any one option </div>
