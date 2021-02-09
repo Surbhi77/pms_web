@@ -284,6 +284,7 @@
                                             <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getHyperdur();" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
+                                        <mat-error *ngIf="hasError2('duration_hypertension', 'required')">Duration hypertension field is required</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -730,22 +731,27 @@
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'Biguanides' )" formControlName="Biguanides" class="example-margin d-block mb-2">Biguanides</mat-checkbox>
+                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'Biguanides')" formControlName="Biguanides" class="example-margin d-block mb-2">Biguanides</mat-checkbox>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'Sulphonylureas' )" formControlName="Sulphonylureas" class="example-margin d-block mb-2">Sulphonylureas</mat-checkbox>
+                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'Sulphonylureas')" formControlName="Sulphonylureas" class="example-margin d-block mb-2">Sulphonylureas</mat-checkbox>
                                 </div>
                             </div>
+                            <!-- 
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'Meglitinides')" formControlName="Meglitinides" class="example-margin d-block mb-2">Meglitinides</mat-checkbox>
+                                </div>
+                            </div> -->
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'Meglitinides' )" formControlName="Meglitinides" class="example-margin d-block mb-2">Meglitinides</mat-checkbox>
+                                    <mat-checkbox color="primary" (change)=" antiDiabetes($event,'SGLT2 Inhibitors')" formControlName="sglt2_inhibitors" class="example-margin d-block mb-2">Meglitinides</mat-checkbox>
                                 </div>
                             </div>
-
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
                                     <mat-checkbox color="primary" (change)="antiDiabetes($event,'Thiazolidendiones')" formControlName="Thiazolidendiones" class="example-margin d-block mb-2">Thiazolidendiones</mat-checkbox>
@@ -765,13 +771,13 @@
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'DoubleDrugFixed')" formControlName="DoubleDrugFixed" class="example-margin d-block mb-2">Double Drug Fixed Dose Combination</mat-checkbox>
+                                    <mat-checkbox color="primary" (change)="checkAntiDiabetes('Double Drug Fixed Dose Combination')" formControlName="DoubleDrugFixed" class="example-margin d-block mb-2">Double Drug Fixed Dose Combination</mat-checkbox>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'TripleDrugFixed')" formControlName="TripleDrugFixed" class="example-margin d-block mb-2">Triple Drug Fixed Dose Combinations</mat-checkbox>
+                                    <mat-checkbox color="primary" (change)="checkAntiDiabetes('Triple Drug Fixed Dose Combination')" formControlName="TripleDrugFixed" class="example-margin d-block mb-2">Triple Drug Fixed Dose Combinations</mat-checkbox>
                                 </div>
                             </div>
 

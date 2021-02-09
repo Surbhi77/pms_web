@@ -118,8 +118,9 @@ export class DraftViewComponent implements OnInit {
       medical_condition: new FormControl(''),
       Biguanides:new FormControl(''),
       Sulphonylureas: new FormControl(''),
-      Meglitinides: new FormControl(''),
+      //Meglitinides: new FormControl(''),
       Thiazolidendiones: new FormControl(''),
+      sglt2_inhibitors:new FormControl(''),
       GLP_Analogues: new FormControl(''),
       DPP4_Inhibitors: new FormControl(''),
       DoubleDrugFixed: new FormControl(''),
@@ -572,6 +573,7 @@ populateDetails(){
   if(this.viewData && this.viewData.human_premixed_fifty!=''){
     
     this.human_premixedfiftyArray  = JSON.parse(this.viewData.human_premixed_fifty);
+    console.log(this.human_premixedfiftyArray.human_premixed_50_breakfast)
     if(this.human_premixedfiftyArray.human_premixed_fifty){
       this.human_premixedfifty = true
     }
@@ -580,7 +582,7 @@ populateDetails(){
     }
     this.fourthFormGroup.patchValue({
       "human_premixed_fifty":this.human_premixedfiftyArray.human_premixed_fifty,
-       "human_premixed_fifty_breakfast":this.human_premixedfiftyArray.human_premixed_fifty_breakfast,
+       "human_premixed_fifty_breakfast":this.human_premixedfiftyArray.human_premixed_50_breakfast,
        "human_premixed_fifty_lunch":this.human_premixedfiftyArray.human_premixed_fifty_lunch,
         "human_premixed_fifty_dinner":this.human_premixedfiftyArray.human_premixed_fifty_dinner,
     });
@@ -1081,7 +1083,7 @@ checkAntiDiabetes(name){
       this.human_premixed_thirty_Obj.human_premixed_thirty_lunch = this.fourthFormGroup.value.human_premixed_thirty_lunch;
       this.human_premixed_thirty_Obj.human_premixed_thirty_dinner = this.fourthFormGroup.value.human_premixed_thirty_dinner;
       this.human_premixed_fifty_Obj.human_premixed_fifty = (this.fourthFormGroup.value.human_premixed_fifty==true) ? this.fourthFormGroup.value.human_premixed_fifty:false;
-      this.human_premixed_fifty_Obj.human_premixed_fifty_breakfast = this.fourthFormGroup.value.human_premixed_fifty_breakfast;
+      this.human_premixed_fifty_Obj.human_premixed_50_breakfast = this.fourthFormGroup.value.human_premixed_fifty_breakfast;
       this.human_premixed_fifty_Obj.human_premixed_fifty_lunch = this.fourthFormGroup.value.human_premixed_fifty_lunch;
       this.human_premixed_fifty_Obj.human_premixed_fifty_dinner = this.fourthFormGroup.value.human_premixed_fifty_dinner;
       this.regular_insulin_Obj.regular_insulin = (this.fourthFormGroup.value.regular_insulin == true) ? this.fourthFormGroup.value.regular_insulin:false ;

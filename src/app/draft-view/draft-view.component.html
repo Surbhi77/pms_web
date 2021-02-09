@@ -600,8 +600,8 @@
                                 </div>
                                 <div class="entry-inputs-block">
                                     <mat-radio-group formControlName="retinopathy_medication" color="primary" aria-label="Select an option">
-                                        <mat-radio-button value="Yes" class="mr-5">Yes</mat-radio-button>
-                                        <mat-radio-button value="No">No</mat-radio-button>
+                                        <mat-radio-button value="yes" class="mr-5">Yes</mat-radio-button>
+                                        <mat-radio-button value="no">No</mat-radio-button>
                                     </mat-radio-group>
 
                                 </div>
@@ -658,48 +658,51 @@
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'Biguanides' )" [checked]="checkAntiDiabetes('Biguanides')" formControlName="Biguanides" class="example-margin d-block mb-2">Biguanides</mat-checkbox>
+                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'Biguanides')" [checked]="checkAntiDiabetes('Biguanides')" formControlName="Biguanides" class="example-margin d-block mb-2">Biguanides</mat-checkbox>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'Sulphonylureas' )" [checked]="checkAntiDiabetes('Sulphonylureas')" formControlName="Sulphonylureas" class="example-margin d-block mb-2">Sulphonylureas</mat-checkbox>
+                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'Sulphonylureas')" [checked]="checkAntiDiabetes('Sulphonylureas')" formControlName="Sulphonylureas" class="example-margin d-block mb-2">Sulphonylureas</mat-checkbox>
                                 </div>
                             </div>
-
                             <div class="col-lg-4 col-md-4 col-12">
+                                <mat-checkbox color="primary" (change)="antiDiabetes($event,'SGLT2 Inhibitors')" [checked]="checkAntiDiabetes('SGLT2 Inhibitors')" class="example-margin d-block mb-2" color="primary">SGLT2 Inhibitors</mat-checkbox>
+
+                            </div>
+                            <!-- <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
                                     <mat-checkbox color="primary" (change)="antiDiabetes($event,'Meglitinides' )" [checked]="checkAntiDiabetes('Meglitinides')" formControlName="Meglitinides" class="example-margin d-block mb-2">Meglitinides</mat-checkbox>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'Thiazolidendiones' )" [checked]="checkAntiDiabetes('Thiazolidendiones')" formControlName="Thiazolidendiones" class="example-margin d-block mb-2">Thiazolidendiones</mat-checkbox>
+                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'Thiazolidendiones')" [checked]="checkAntiDiabetes('Thiazolidendiones')" formControlName="Thiazolidendiones" class="example-margin d-block mb-2">Thiazolidendiones</mat-checkbox>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'GLP_Analogues' )" [checked]="checkAntiDiabetes('GLP_Analogues')" formControlName="GLP_Analogues" class="example-margin d-block mb-2">GLP Analogues</mat-checkbox>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-4 col-12">
-                                <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'DPP4_Inhibitors' )" [checked]="checkAntiDiabetes('DPP4_Inhibitors')" formControlName="DPP4_Inhibitors" class="example-margin d-block mb-2">DPP4 Inhibitors</mat-checkbox>
+                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'GLP Analogues')" [checked]="checkAntiDiabetes('GLP Analogues')" formControlName="GLP_Analogues" class="example-margin d-block mb-2">GLP Analogues</mat-checkbox>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'DoubleDrugFixed' )" [checked]="checkAntiDiabetes('DoubleDrugFixed')" formControlName="DoubleDrugFixed" class="example-margin d-block mb-2">Double Drug Fixed Dose Combination</mat-checkbox>
+                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'DPP4 Inhibitors')" [checked]="checkAntiDiabetes('DPP4 Inhibitors')" formControlName="DPP4_Inhibitors" class="example-margin d-block mb-2">DPP4 Inhibitors</mat-checkbox>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'TripleDrugFixed' )" [checked]="checkAntiDiabetes('TripleDrugFixed')" formControlName="TripleDrugFixed" class="example-margin d-block mb-2">Triple Drug Fixed Dose Combinations</mat-checkbox>
+                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'Double Drug Fixed Dose Combination')" [checked]="checkAntiDiabetes('Double Drug Fixed Dose Combination')" formControlName="DoubleDrugFixed" class="example-margin d-block mb-2">Double Drug Fixed Dose Combination</mat-checkbox>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" (change)="antiDiabetes($event,'Triple Drug Fixed Dose Combinations')" [checked]="checkAntiDiabetes('Triple Drug Fixed Dose Combinations')" formControlName="TripleDrugFixed" class="example-margin d-block mb-2">Triple Drug Fixed Dose Combinations</mat-checkbox>
                                 </div>
                             </div>
                         </div>
