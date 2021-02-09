@@ -22,13 +22,13 @@ export class InvoiceComponent implements OnInit {
   isLinear = true;
   secondFormGroup: FormGroup;
   medication: any;
-  hypertension: any;
-  dyslipidemia: any;
-  stroke: any;
-  neuropathy: any;
-  retinopathy: any;
-  nephropathy: any;
-  coronary: any;
+  hypertension: boolean =false;
+  dyslipidemia: boolean =false;
+  stroke: boolean =false;
+  neuropathy: boolean =false;
+  retinopathy:boolean =false;
+  nephropathy:boolean =false;
+  coronary: boolean =false;
   anti_diabetes_medication: any = {};
   Complications: any = {};
   dyslipidemiaobj: any = {};
@@ -45,6 +45,7 @@ export class InvoiceComponent implements OnInit {
   bmi: any;
   formId:any;
   check: boolean = false;
+  //showHypertensionDiv:boolean =false;
 
   glargine_condition: boolean;
   //nph: boolean;
@@ -142,7 +143,7 @@ export class InvoiceComponent implements OnInit {
       dose_insulin: new FormControl('', [Validators.required]),
       glargine_insulin: new FormControl(''),
       glargine_insulin_breakfast: new FormControl(''),
-       glargine_insulin_lunch: new FormControl(''),
+      glargine_insulin_lunch: new FormControl(''),
       glargine_insulin_dinner: new FormControl(''),
      
 
@@ -352,27 +353,47 @@ export class InvoiceComponent implements OnInit {
       formData.append('diastolic', this.secondFormGroup.value.diastolic);
       formData.append('smoking', this.secondFormGroup.value.smoking);
       formData.append('alcohol', this.secondFormGroup.value.alcohol);
+      if(this.hypertension){
       this.Complications.hypertension_dur = this.secondFormGroup.value.hypertension_dur;
-      this.Complications.duration = this.secondFormGroup.value.duration;
-      this.Complications.medications = this.secondFormGroup.value.medications;
+      this.Complications.duration_hypertension = this.secondFormGroup.value.duration;
+      this.Complications.hypertension_medications = this.secondFormGroup.value.medications;
+      formData.append('hypertension_dur', JSON.stringify(this.Complications));
+      }
+      if(this.dyslipidemia){
       this.dyslipidemiaobj.dyslipidemia_dur = this.secondFormGroup.value.dyslipidemia_dur;
       this.dyslipidemiaobj.dyslipidemia_duration = this.secondFormGroup.value.dyslipidemia_duration;
       this.dyslipidemiaobj.dyslipidemia_medication = this.secondFormGroup.value.dyslipidemia_medication;
+      formData.append('dyslipidemia_dur', JSON.stringify(this.dyslipidemiaobj));
+      }
+      if(this.coronary){
       this.coronaryartery.coronary_artery_dur = this.secondFormGroup.value.coronary_artery_dur;
       this.coronaryartery.coronary_artery_duration = this.secondFormGroup.value.coronary_artery_duration;
       this.coronaryartery.coronary_artery_medication = this.secondFormGroup.value.coronary_artery_medication;
+      formData.append('coronary_artery_dur', JSON.stringify(this.coronaryartery));
+    }if(this.stroke){
       this.strokeobj.stroke_dur = this.secondFormGroup.value.stroke_dur;
       this.strokeobj.stroke_duration = this.secondFormGroup.value.stroke_duration;
       this.strokeobj.stroke_medication = this.secondFormGroup.value.stroke_medication;
+      formData.append('stroke_dur', JSON.stringify(this.strokeobj));
+    }
+    if(this.neuropathy){
       this.neuropathyobj.neuropathy_dur = this.secondFormGroup.value.neuropathy_dur;
       this.neuropathyobj.neuropathy_duration = this.secondFormGroup.value.neuropathy_duration;
       this.neuropathyobj.neuropathy_medication = this.secondFormGroup.value.neuropathy_medication;
+      formData.append('neuropathy_dur', JSON.stringify(this.neuropathyobj));
+    }
+    if(this.retinopathy){
       this.retinopathyobj.retinopathy_dur = this.secondFormGroup.value.retinopathy_dur;
       this.retinopathyobj.retinopathy_duration = this.secondFormGroup.value.retinopathy_duration;
       this.retinopathyobj.retinopathy_medication = this.secondFormGroup.value.retinopathy_medication;
+      formData.append('retinopathy_dur', JSON.stringify(this.retinopathyobj));
+    }
+    if(this.nephropathy){
       this.nephropathyobj.nephropathy_dur = this.secondFormGroup.value.nephropathy_dur;
       this.nephropathyobj.nephropathy_duration = this.secondFormGroup.value.nephropathy_duration;
       this.nephropathyobj.nephropathy_medication = this.secondFormGroup.value.nephropathy_medication;
+      formData.append('nephropathy_dur', JSON.stringify(this.nephropathyobj));
+    }
       // this.anti_diabetes_medication.Biguanides = (this.secondFormGroup.value.Biguanides == true) ? this.secondFormGroup.value.Biguanides : false;
       // this.anti_diabetes_medication.Sulphonylureas = (this.secondFormGroup.value.Sulphonylureas == true) ? this.secondFormGroup.value.Sulphonylureas : false;
       // this.anti_diabetes_medication.Meglitinides = (this.secondFormGroup.value.Meglitinides == true) ? this.secondFormGroup.value.Meglitinides : false;
@@ -382,13 +403,13 @@ export class InvoiceComponent implements OnInit {
       // this.anti_diabetes_medication.DoubleDrugFixed = (this.secondFormGroup.value.DoubleDrugFixed == true) ? this.secondFormGroup.value.DoubleDrugFixed : false;
       // this.anti_diabetes_medication.TripleDrugFixed = (this.secondFormGroup.value.TripleDrugFixed == true) ? this.secondFormGroup.value.TripleDrugFixed : false;
       formData.append(' medical_condition', this.secondFormGroup.value.medical_condition);
-      formData.append('hypertension_dur', JSON.stringify(this.Complications));
-      formData.append('dyslipidemia_dur', JSON.stringify(this.dyslipidemiaobj));
-      formData.append('coronary_artery_dur', JSON.stringify(this.coronaryartery));
-      formData.append('stroke_dur', JSON.stringify(this.strokeobj));
-      formData.append('neuropathy_dur', JSON.stringify(this.neuropathyobj));
-      formData.append('retinopathy_dur', JSON.stringify(this.retinopathyobj));
-      formData.append('nephropathy_dur', JSON.stringify(this.nephropathyobj));
+    
+     
+    
+    
+     
+    
+    
       formData.append('anti_diabetes_medication', JSON.stringify(this.anti));
       formData.append('id',this.formId)
       this.service.postAddBegin(formData).subscribe(res => {

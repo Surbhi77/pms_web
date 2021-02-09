@@ -140,8 +140,8 @@
 
                                     <mat-radio-group formControlName="education" color="primary" formControlName="education" aria-label="Select an option" value="{{beginview.education}}">
                                         <mat-radio-button value="none" class="mr-5">None</mat-radio-button>
-                                        <mat-radio-button value="primary" class="mr-5">Primary</mat-radio-button>
-                                        <mat-radio-button value="high school">High School</mat-radio-button>
+                                        <mat-radio-button value="Primary" class="mr-5">Primary</mat-radio-button>
+                                        <mat-radio-button value="High school">High School</mat-radio-button>
                                         <mat-radio-button value="Pre-University">Pre-University</mat-radio-button>
                                         <mat-radio-button value="Graduate">Graduate</mat-radio-button>
                                     </mat-radio-group>
@@ -411,7 +411,7 @@
                                     <p>Condition</p>
                                 </div> -->
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="hypertension_dur" [checked]="beginview.hypertension_dur" (change)="oncheked($event, 'hypertension_dur')" class="example-margin d-block mb-2">Hypertension
+                                    <mat-checkbox color="primary" formControlName="hypertension_dur" [checked]="hypercheck.hypertension_dur" (change)="oncheked($event, 'hypertension_dur')" class="example-margin d-block mb-2">Hypertension
                                     </mat-checkbox>
                                 </div>
                             </div>
@@ -502,7 +502,7 @@
                                     <p>Condition</p>
                                 </div> -->
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="coronary_artery_dur" [checked]="beginview.coronary_artery_dur" (change)="oncheked3($event,'coronary_artery_dur')" class="example-margin d-block mb-2">Coronary Artery Disease
+                                    <mat-checkbox color="primary" formControlName="coronary_artery_dur" [checked]="coroncheck.coronary_artery_dur" (change)="oncheked3($event,'coronary_artery_dur')" class="example-margin d-block mb-2">Coronary Artery Disease
                                     </mat-checkbox>
                                 </div>
                             </div>
@@ -546,7 +546,7 @@
                                     <p>Condition</p>
                                 </div> -->
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="stroke_dur" [checked]="beginview.stroke_dur" (change)="oncheked4($event,'stroke_dur')" class="example-margin d-block mb-2">Stroke
+                                    <mat-checkbox color="primary" formControlName="stroke_dur" [checked]="strokecheck.stroke_dur" (change)="oncheked4($event,'stroke_dur')" class="example-margin d-block mb-2">Stroke
                                     </mat-checkbox>
                                 </div>
                             </div>
@@ -590,7 +590,7 @@
                                     <p>Condition</p>
                                 </div> -->
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="neuropathy_dur" [change]="beginview.neuropathy_dur" (change)="oncheked5($event,'neuropathy_dur')" class="example-margin d-block mb-2">Neuropathy
+                                    <mat-checkbox color="primary" formControlName="neuropathy_dur" [change]="neuropathycheck.neuropathy_dur" (change)="oncheked5($event,'neuropathy_dur')" class="example-margin d-block mb-2">Neuropathy
                                     </mat-checkbox>
                                 </div>
                             </div>
@@ -634,7 +634,7 @@
                                     <p>Condition</p>
                                 </div> -->
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="retinopathy_dur" [checked]="beginview.retinopathy_dur" (change)="oncheked6($event,'retinopathy_dur')" class="example-margin d-block mb-2">Retinopathy
+                                    <mat-checkbox color="primary" formControlName="retinopathy_dur" [checked]="retinopathycheck.retinopathy_dur" (change)="oncheked6($event,'retinopathy_dur')" class="example-margin d-block mb-2">Retinopathy
                                     </mat-checkbox>
                                 </div>
                             </div>
@@ -678,7 +678,7 @@
                                     <p>Condition</p>
                                 </div> -->
                                 <div class="entry-inputs-block">
-                                    <mat-checkbox color="primary" formControlName="nephropathy_dur" [checked]="beginview.nephropathy_dur" (change)="oncheked7($event,'nephropathy_dur')" class="example-margin d-block mb-2">Nephropathy
+                                    <mat-checkbox color="primary" formControlName="nephropathy_dur" [checked]="nephrocheck.nephropathy_dur" (change)="oncheked7($event,'nephropathy_dur')" class="example-margin d-block mb-2">Nephropathy
                                     </mat-checkbox>
                                 </div>
                             </div>
@@ -993,7 +993,7 @@
                     <button mat-button matStepperPrevious *ngIf="!completed" class="next_btn">Back</button>
                     <button mat-button matStepperPrevious *ngIf="completed" (click)="btnClick();" class="next_btn">Back</button>
                     <!-- <button mat-button class="next_btn"  *ngIf="!completed">Save as Draft</button> -->
-                    <button mat-button type="submit" class="next_btn"  *ngIf="!completed" (click)="submit()">Submit</button>
+                    <button mat-button type="submit" class="next_btn"  *ngIf="!completed" (click)="submit(true)">Submit</button>
                 </div>
 
 
