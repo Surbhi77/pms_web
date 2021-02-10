@@ -361,8 +361,9 @@ export class KapSurveyComponent implements OnInit {
       console.log('not valid')
       if(this.sum != 100){
         this.toastr.error("Som of insulinisation barriers should be equal to 100")
-       }
+      
       this.thirdFormGroup.markAllAsTouched()
+      }
      
     }
   }
