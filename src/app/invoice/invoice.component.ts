@@ -691,7 +691,7 @@ export class InvoiceComponent implements OnInit {
       formData.append('status','yes');
       this.service.postAddBegin(formData).subscribe(res => {
       console.log(res)
-      this.toastr.success("The draft has been saved successfully");
+      this.toastr.info("The draft has been saved successfully");
       this.router.navigateByUrl("/dashboard");
       })
     } else {

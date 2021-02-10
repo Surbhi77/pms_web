@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
         console.log(res)
         this.agrredata = res.data
         if(res.data){
-        this.toastr.success("Login Successfully")
+        this.toastr.info("Login Successfully")
         }
         console.log(this.agrredata)
         localStorage.setItem("aggrement",this.agrredata.aggrement);

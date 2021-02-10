@@ -43,7 +43,7 @@ export class ChangePasswordComponent implements OnInit {
      this.service.changePass(formdata).subscribe(res=>{
        console.log(res)
 
-        this.toastr.success("password change successfully")
+        this.toastr.info("password change successfully")
      })
 
 

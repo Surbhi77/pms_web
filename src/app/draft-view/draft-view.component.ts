@@ -762,21 +762,21 @@ checkAntiDiabetes(name){
       this.check=true
       console.log(this.anti_diabetes)
     }
-    if (this.anti_diabetes.length && this.antidiabetes.length) {
-      this.check=false
-      this.secondFormGroup.patchValue({
-        'anti': this.anti_diabetes.toString(),
+    // if (this.anti_diabetes.length && this.antidiabetes.length) {
+    //   this.check=false
+    //   this.secondFormGroup.patchValue({
+    //     'anti': this.anti_diabetes.toString(),
         
-      });
-      this.secondFormGroup.updateValueAndValidity()
-    } else {
-      this.check=true
-      this.secondFormGroup.patchValue({
-        'anti': '',
+    //   });
+    //   this.secondFormGroup.updateValueAndValidity()
+    // } else {
+    //   this.check=true
+    //   this.secondFormGroup.patchValue({
+    //     'anti': '',
        
-      })
-      this.secondFormGroup.updateValueAndValidity()
-    }
+    //   })
+    //   this.secondFormGroup.updateValueAndValidity()
+    // }
   }
   
   // onclick(event: any) {
@@ -1129,7 +1129,7 @@ checkAntiDiabetes(name){
         }else{
           this.formId = res['data'].id;
           if(event){
-            this.toastr.success("The draft has been saved successfully")
+            this.toastr.info("The draft has been saved successfully")
             this.router.navigateByUrl('/dashboard')
           }
         }
@@ -1140,7 +1140,7 @@ checkAntiDiabetes(name){
   secondForm(event: any) {
 
     console.log(event)
-    if (!this.secondFormGroup.valid && this.anti_diabetes.length == 0) {  
+    if (!this.secondFormGroup.valid && this.anti_diabetes.length == 0 && this.antidiabetes.length) {  
      console.log(!this.secondFormGroup.valid)
       this.secondFormGroup.markAllAsTouched()
       this.check = true
@@ -1202,13 +1202,16 @@ checkAntiDiabetes(name){
       formData.append("duration_diabetes", this.secondFormGroup.value.duration_diabetes);
       formData.append("treated_diabetes", this.secondFormGroup.value.treated_diabetes);
       formData.append("family_diabetes", this.secondFormGroup.value.family_diabetes);
+      console.log(this.secondFormGroup.value.family_diabetes)
       formData.append("hypertension", this.secondFormGroup.value.hypertension);
       formData.append("duration_hypertension", this.secondFormGroup.value.duration_hypertension);
       //formData.append("blood_pressure", this.secondFormGroup.value.blood_pressure);
       formData.append("systolic", this.secondFormGroup.value.systolic);
       formData.append(" diastolic", this.secondFormGroup.value.diastolic);
       formData.append("smoking", this.secondFormGroup.value.smoking);
+      console.log(this.secondFormGroup.value.smoking)
       formData.append("alcohol", this.secondFormGroup.value.alcohol);
+      console.log(this.secondFormGroup.value.alcohol)
      
      
       formData.append("medical_condition",this.secondFormGroup.value.medical_condition)
@@ -1224,7 +1227,7 @@ checkAntiDiabetes(name){
         console.log(this.secondFormGroup.valid)
         this.initiateres = res
         if(event){
-         this.toastr.success("The draft has been saved successfully")
+         this.toastr.info("The draft has been saved successfully")
          this.router.navigateByUrl("/dashboard"); 
         }
         
@@ -1262,7 +1265,7 @@ checkAntiDiabetes(name){
         console.log(res)
         this.initiateres = res
         if(event){
-          this.toastr.success("The draft has been saved successfully")
+          this.toastr.info("The draft has been saved successfully")
          this.router.navigateByUrl("/dashboard");
         }
       })
@@ -1336,7 +1339,7 @@ checkAntiDiabetes(name){
         this.initiateres = res
        // this.router.navigateByUrl('/add-entry-process')
        if(event){
-        this.toastr.success("Form Updated successfully")
+        this.toastr.info("Form Updated successfully")
         this.router.navigateByUrl("/dashboard");
        }
 

@@ -997,7 +997,7 @@ getdigit() {
       this.service.postAddBegin(formData).subscribe(res => {
       console.log(res)
       if(event){
-      this.toastr.success("The update data  successfully");
+      this.toastr.info("The update data  successfully");
       this.router.navigateByUrl("/dashboard");}
       })
     } else {

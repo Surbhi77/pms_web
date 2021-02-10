@@ -239,7 +239,7 @@ export class AddEntryComponent implements OnInit {
           this.formId = res['data'].id;
           console.log(this.formId)
           if(event){
-            this.toastr.success("The draft has been saved successfully")
+            this.toastr.info("The draft has been saved successfully")
             this.router.navigateByUrl('/dashboard')
           }
         }
@@ -365,7 +365,7 @@ export class AddEntryComponent implements OnInit {
         console.log(res)
         if(event){
          
-         this.toastr.success("The draft has been saved successfully")
+         this.toastr.info("The draft has been saved successfully")
          this.router.navigateByUrl("/dashboard"); 
         }
         
@@ -396,7 +396,7 @@ export class AddEntryComponent implements OnInit {
       this.service.addInitiate(formData).subscribe((res:any) => {
         console.log(res)
         if(event){
-          this.toastr.success("The draft has been saved successfully")
+          this.toastr.info("The draft has been saved successfully")
          this.router.navigateByUrl("/dashboard");
         }
       })
@@ -898,7 +898,7 @@ export class AddEntryComponent implements OnInit {
         console.log(res)
        // this.router.navigateByUrl('/add-entry-process')
        if(event){
-        this.toastr.success("Data has been saved successfully")
+        this.toastr.info("Data has been saved successfully")
         this.router.navigateByUrl("/dashboard");
        }
 

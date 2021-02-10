@@ -87,7 +87,7 @@ export class InitiateCompletedListComponent implements OnInit {
     console.log(id)
     this.service.deleteDraftdata(formdata).subscribe((res:any)=>{
       console.log(res)
-      this.toastr.success("Data Deleted successfully")
+      this.toastr.info("Data Deleted successfully")
       console.log(i)
         this.draftdata.splice(i,1)
        

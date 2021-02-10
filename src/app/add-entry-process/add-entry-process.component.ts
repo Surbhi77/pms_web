@@ -35,7 +35,7 @@ export class AddEntryProcessComponent implements OnInit {
       
     localStorage.setItem('mobile',this.form.value.mobile)
     this.router.navigateByUrl('/add-entry')
-    this.toastr.success("Form submitted successfully")
+    this.toastr.info("Form submitted successfully")
     }
     else{
       console.log("not valid")

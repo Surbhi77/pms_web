@@ -110,9 +110,9 @@
 }
 
 .dd p {
-    margin: 0 30px;
+    margin: 0;
 }
 
-.dd mat-form-field {
+.dd mat-form-field mat-select {
     width: 40% !important;
 }

@@ -71,7 +71,7 @@ export class BeginListingComponent implements OnInit {
    console.log(ids)
     this.service.beginDraftDelete(formdata).subscribe((result=>{
       console.log(result)
-      this.toastr.success("Data Deleted successfully")
+      this.toastr.info("Data Deleted successfully")
       this.begindraftlist.splice(i,1)
     }))
   

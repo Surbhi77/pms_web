@@ -43,7 +43,7 @@ export class QuriesComponent implements OnInit {
     this.service.quries(formData).subscribe(res => {
       this.form.reset();
       console.log(res)
-      this.toastr.success("Enquiry sent successfully");
+      this.toastr.info("Enquiry sent successfully");
       this.router.navigateByUrl("/dashboard");
 
     })}
