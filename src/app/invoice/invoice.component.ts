@@ -267,18 +267,24 @@ export class InvoiceComponent implements OnInit {
       formData.append('education', this.firstFormGroup.value.education);
       formData.append('employment', this.firstFormGroup.value.employment);
       this.service.postAddBegin(formData).subscribe((res:any) => {
-        this.formId = res.data.from_id;
-        this.response = res.data
+        if(res.status == "0"){
+          this.toastr.warning("mobile no already exits")
+          return false
+        }else{
+          this.formId = res['data'].id;
+          console.log(this.formId)
+          if(saveAsDraft){
+            this.toastr.success("The draft has been saved successfully")
+            this.router.navigateByUrl('/dashboard')
+          }
+        }
+        // this.formId = res['data'].from_id;
+        // this.response = res.data
         console.log(res)
-        console.log(this.formId)
-       if( saveAsDraft){
-        this.toastr.info("The draft has been saved successfully");
-        this.router.navigateByUrl("/dashboard");
-       
-     
-      
-       }
-       
+      //   console.log(this.formId)
+      //  if( saveAsDraft){
+      //   this.toastr.info("The draft has been saved successfully");
+      //   this.router.navigateByUrl("/dashboard");
       })
      
     } else {

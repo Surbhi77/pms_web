@@ -849,6 +849,7 @@ getdigit() {
       formData.append('duration_diabetes', this.secondFormGroup.value.duration_diabetes);
       formData.append('treated_diabetes', this.secondFormGroup.value.treated_diabetes);
       formData.append('family_diabetes', this.secondFormGroup.value.family_diabetes);
+      console.log(this.secondFormGroup.value.family_diabetes)
       formData.append('hypertension', this.secondFormGroup.value.hypertension);
       formData.append('systolic', this.secondFormGroup.value.systolic);
       formData.append('diastolic', this.secondFormGroup.value.diastolic);
