@@ -268,10 +268,10 @@ export class InvoiceComponent implements OnInit {
       formData.append('employment', this.firstFormGroup.value.employment);
       this.service.postAddBegin(formData).subscribe((res:any) => {
         if(res.status == "0"){
-          this.toastr.warning("mobile no already exits")
+          this.toastr.warning("mobile no. already exist");
           return false
         }else{
-          this.formId = res['data'].id;
+          this.formId =  res.data.from_id;
           console.log(this.formId)
           if(saveAsDraft){
             this.toastr.success("The draft has been saved successfully")
@@ -409,14 +409,7 @@ export class InvoiceComponent implements OnInit {
       // this.anti_diabetes_medication.DPP4_Inhibitors = (this.secondFormGroup.value.DPP4_Inhibitors == true) ? this.secondFormGroup.value.DPP4_Inhibitors : false;
       // this.anti_diabetes_medication.DoubleDrugFixed = (this.secondFormGroup.value.DoubleDrugFixed == true) ? this.secondFormGroup.value.DoubleDrugFixed : false;
       // this.anti_diabetes_medication.TripleDrugFixed = (this.secondFormGroup.value.TripleDrugFixed == true) ? this.secondFormGroup.value.TripleDrugFixed : false;
-      formData.append(' medical_condition', this.secondFormGroup.value.medical_condition);
-    
-     
-    
-    
-     
-    
-    
+      formData.append(' medical_condition', this.secondFormGroup.value.medical_condition)
       formData.append('anti_diabetes_medication', JSON.stringify(this.anti));
       formData.append('id',this.formId)
       this.service.postAddBegin(formData).subscribe(res => {
@@ -697,7 +690,7 @@ export class InvoiceComponent implements OnInit {
       formData.append('status','yes');
       this.service.postAddBegin(formData).subscribe(res => {
       console.log(res)
-      this.toastr.info("The draft has been saved successfully");
+      this.toastr.success("The draft has been saved successfully");
       this.router.navigateByUrl("/dashboard");
       })
     } else {
