@@ -107,7 +107,7 @@ const routes: Routes = [
   {
     path:'change_password',
     component:ChangePasswordComponent
-    ,canActivate : [AuthGuard]
+   
   },{
     path:'quries',
     component:QuriesComponent

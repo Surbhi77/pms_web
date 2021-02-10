@@ -273,7 +273,7 @@ export class KapSurveyComponent implements OnInit {
    
    
     var formData: any = new FormData();
-    if (this.thirdFormGroup.valid && this.patients.length > 1 && this.impacts.length > 2 ) {
+    if (this.thirdFormGroup.valid && this.patients.length > 1 && this.impacts.length > 2 && this.sum ==100) {
      
      
         console.log(this.firstFormGroup.value)
@@ -362,6 +362,7 @@ export class KapSurveyComponent implements OnInit {
       if(this.sum != 100){
         this.toastr.error("Som of insulinisation barriers should be equal to 100")
        }
+       this.toastr.error("Please fill all fields")
       this.thirdFormGroup.markAllAsTouched()
      
     }
