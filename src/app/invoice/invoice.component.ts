@@ -309,6 +309,7 @@ export class InvoiceComponent implements OnInit {
       this.secondFormGroup.patchValue({
         'people_with_tdm': ''
       })
+      this.secondFormGroup.updateValueAndValidity()
     }
     // if (this.anti.length < 1) {
     //   this.check = false

@@ -39,7 +39,7 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Enter Pen Serial No.</mat-label>
-                                        <input [disabled]="completed" formControlName="pen_serial" matInput placeholder="Ex. 123456">
+                                        <input [disabled]="completed" formControlName="pen_serial" [value]="viewData.pen_serial" matInput placeholder="Ex. 123456">
 
                                     </mat-form-field>
                                 </div>
@@ -193,9 +193,9 @@
                                         <mat-select formControlName="duration_diabetes">
                                             <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getDurationdiabeties();" value='{{index}}'>{{index}}</mat-option>
-                                            <mat-error *ngIf="hasError2('duration_diabetes', 'required')">Duration diabetes field is required</mat-error>
-                                        </mat-select>
 
+                                        </mat-select>
+                                        <mat-error *ngIf="hasError2('duration_diabetes', 'required')">Duration diabetes field is required</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -345,7 +345,7 @@
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
                                         <mat-radio-button value="0">No</mat-radio-button>
                                         <div *ngIf="f.smoking.touched && f.smoking.invalid" class="text-danger">
-                                            <div *ngIf="f.smoking.errors.required" class="errors">Smoking field is required</div>
+                                            <div *ngIf="f.smoking.errors.required" class="errors">Alcohal field is required</div>
                                         </div>
                                     </mat-radio-group>
                                 </div>

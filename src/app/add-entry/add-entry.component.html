@@ -161,7 +161,7 @@
                                     <p>Employment</p>
                                 </div>
                                 <div class="entry-inputs-block">
-                                    <mat-radio-group formControlName="employment" color="primary" formControlName="employment" aria-label="Select an option">
+                                    <mat-radio-group formControlName="employment" color="primary" aria-label="Select an option">
                                         <mat-radio-button value="None" class="mr-5">None</mat-radio-button>
                                         <mat-radio-button value="Employed" class="mr-5">Employed</mat-radio-button>
                                         <mat-radio-button value="Unemployed">Unemployed</mat-radio-button>
@@ -362,7 +362,7 @@
                                         <mat-radio-button value="0">No</mat-radio-button>
                                         <!-- <mat-error *ngIf="hasError2('alcohol', 'required')">alcohol field is required</mat-error> -->
                                         <div *ngIf="f.smoking.touched && f.smoking.invalid" class="text-danger">
-                                            <div *ngIf="f.smoking.errors.required" class="errors">Smoking field is required</div>
+                                            <div *ngIf="f.smoking.errors.required" class="errors">Alcohal field is required</div>
                                         </div>
                                     </mat-radio-group>
                                 </div>
@@ -1156,7 +1156,7 @@
                                 </div>
 
                             </div>
-                            <p *ngIf="humancheck">Please Select At least one </p>
+                            <p *ngIf="humancheck" class="errors text-danger">Please Select At least one </p>
                         </div>
 
                         <div class="col-sm-12 col-lg-12 col-md-12">

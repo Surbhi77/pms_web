@@ -829,6 +829,7 @@ getdigit() {
       this.secondFormGroup.patchValue({
         'people_with_tdm': ''
       })
+      this.secondFormGroup.updateValueAndValidity()
     }
   }
   onSecondSubmit(redirect) {

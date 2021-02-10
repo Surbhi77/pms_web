@@ -94,6 +94,7 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl('/kap-survey');
         }else{
           this.router.navigateByUrl('/dashboard');
+          
 
         }
       }, err=>{

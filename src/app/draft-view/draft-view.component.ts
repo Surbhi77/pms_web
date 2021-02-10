@@ -747,27 +747,35 @@ checkAntiDiabetes(name){
 
   //   }
   // }
+  
   antiDiabetes(event, name) {
     console.log(event)
     if (event.checked) {
       this.anti_diabetes.push(name)
+      if(this.anti_diabetes.length ){
+      this.check=false
+      }
       console.log(this.anti_diabetes)
     } else {
       let i = this.anti_diabetes.indexOf(name);
       this.anti_diabetes.splice(i, 1)
+      this.check=true
       console.log(this.anti_diabetes)
     }
     if (this.anti_diabetes.length && this.antidiabetes.length) {
       this.check=false
       this.secondFormGroup.patchValue({
-        'people_with_tdm': this.anti_diabetes.toString()
+        'anti': this.anti_diabetes.toString(),
+        
       });
       this.secondFormGroup.updateValueAndValidity()
     } else {
       this.check=true
       this.secondFormGroup.patchValue({
-        'people_with_tdm': ''
+        'anti': '',
+       
       })
+      this.secondFormGroup.updateValueAndValidity()
     }
   }
   
@@ -1132,11 +1140,10 @@ checkAntiDiabetes(name){
   secondForm(event: any) {
 
     console.log(event)
-    if (!this.secondFormGroup.valid || this.anti_diabetes.length == 0 && this.antidiabetes.length ==0) {
-      
-        this.check = true
-       
+    if (!this.secondFormGroup.valid && this.anti_diabetes.length == 0) {  
+     console.log(!this.secondFormGroup.valid)
       this.secondFormGroup.markAllAsTouched()
+      this.check = true
       console.log("not valid")
       this.toastr.error("Please fill all the fields")
     }
@@ -1214,6 +1221,7 @@ checkAntiDiabetes(name){
       }
       this.service.addInitiate(formData).subscribe((res:any) => {
         console.log(res)
+        console.log(this.secondFormGroup.valid)
         this.initiateres = res
         if(event){
          this.toastr.success("The draft has been saved successfully")
@@ -1337,7 +1345,7 @@ checkAntiDiabetes(name){
     else{
       console.log('not valid')
       this.humancheck = true
-      this.toastr.error("Please fill all fields")
+     // this.toastr.error("Please fill all fields")
        this.fourthFormGroup.markAllAsTouched()
      }
     }
