@@ -73,6 +73,7 @@ import { InvoiceMediaComponent } from './invoice-media/invoice-media.component';
 import { RatePopupComponent } from './rate-popup/rate-popup.component';
 import { MbscModule } from '@mobiscroll/angular-lite';
 import { InvoiceComponent } from './invoice/invoice.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
 
 
@@ -105,7 +106,8 @@ import { InvoiceComponent } from './invoice/invoice.component';
     PatientLogsComponent,
     TermsCheckingComponent,
     InvoiceMediaComponent,
-    RatePopupComponent
+    RatePopupComponent,
+    ForgetPasswordComponent
     
    
   ],

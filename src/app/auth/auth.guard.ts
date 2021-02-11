@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
      
-      if(localStorage.getItem('email')!= null && localStorage.getItem('password')!= null){
+      if(localStorage.getItem('email')!= null && localStorage.getItem('password')!= null ){
        
       //  if(localStorage.getItem('kdp_survey')=='no' && this.router.url !='/kap-survey'){
       //   this.router.navigateByUrl('/kap-survey');
@@ -26,7 +26,9 @@ export class AuthGuard implements CanActivate {
           }
           else
           {
+            if( this.router.url !='/forgot_password'){
             this.router.navigateByUrl('/login');
+            }
             console.log("invalid")
             return false;
           }

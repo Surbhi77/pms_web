@@ -33,17 +33,13 @@ export class InvoiceProcessComponent implements OnInit {
   }
   checkMobile(){
     let formdata = new FormData();
-    // formdata.append('mobile',this.form.value.mobile);
-    // formdata.append('user_type',localStorage.getItem('userType') );
-    this.router.navigateByUrl('/add-entry')
-    this.toastr.info("Form submitted successfully")
-    
     formdata.append('mobile',this.form.value.mobile);
     formdata.append('user_type',localStorage.getItem('userType'));
     this.service.checkMobile(formdata).subscribe((res:any)=>{
       console.log(res);
       if(res.message == 'Already exists'){
         this.toastr.error("Mobile Number already exists")
+      
       }else{
         localStorage.setItem('mobile',this.form.value.mobile)
         if(localStorage.getItem('userType')!= "i"){

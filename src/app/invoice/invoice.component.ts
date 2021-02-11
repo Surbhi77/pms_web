@@ -169,15 +169,17 @@ export class InvoiceComponent implements OnInit {
   getvalueset(num: number) {
     return Array.from({ length: num }, (v, k) => k + 1);
   }
-  getvalues() {
-    return Array.from({ length: 20 }, (v, k) => k + 1);
-  }
+ 
   getmulvalues() {
     return Array.from({ length: 198 }, (v, k) => k + 3);
   }
-  getdigit() {
-    return Array.from({ length: 10 }, (v, k) => k + 1);
+  getvalues() {
+    return Array.from({ length: 21 }, (v, k) => k );
   }
+  getdigit() {
+    return Array.from({ length: 11 }, (v, k) => k );
+  }
+  
   public hasError4 = (controlName: string, errorName: string) => {
     return this.fourthFormGroup.controls[controlName].hasError(errorName);
   }
