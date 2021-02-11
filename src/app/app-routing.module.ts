@@ -19,6 +19,7 @@ import { QuriesComponent } from './quries/quries.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { InvoiceMediaComponent } from './invoice-media/invoice-media.component';
 import { InvoiceComponent } from './invoice/invoice.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
 
 const routes: Routes = [
@@ -123,6 +124,12 @@ const routes: Routes = [
     path:'invoice',
     component:InvoiceMediaComponent,
     canActivate : [AuthGuard]
+
+  },
+  {
+    path:'forgot_password',
+    component:ForgetPasswordComponent
+  
 
   }
  

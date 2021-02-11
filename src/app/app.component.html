@@ -1,16 +1,16 @@
-<app-header *ngIf="router.url !== '/login' ">
+<app-header *ngIf="router.url !== '/login' && router.url !=='/forgot_password' ">
 
 </app-header>
 
 <div class="main-body">
-    <app-sidebar *ngIf="router.url !== '/login' "></app-sidebar>
+    <app-sidebar *ngIf="router.url !== '/login' && router.url !=='/forgot_password'"></app-sidebar>
 
     <div>
 
         <router-outlet></router-outlet>
     </div>
 </div>
-<app-footer *ngIf="router.url !== '/login' "></app-footer>
+<app-footer *ngIf="router.url !== '/login' && router.url !=='/forgot_password'"></app-footer>
 
 
 
