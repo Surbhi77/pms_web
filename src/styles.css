@@ -82,3 +82,11 @@ body {
     border: none;
     letter-spacing: 1px;
 }
+
+@media (max-width:767.99px) {
+
+}
+
+@media (min-width:768px) and (max-width: 1023.99px) {
+    
+}
