@@ -807,10 +807,10 @@ export class AddEntryComponent implements OnInit {
     return Array.from({length:198 }, (_value , k) => k + 3  );
   }
   getvalues() {
-    return Array.from({ length: 20 }, (v, k) => k + 1);
+    return Array.from({ length: 21 }, (v, k) => k );
   }
   getdigit() {
-    return Array.from({ length: 10 }, (v, k) => k + 1);
+    return Array.from({ length: 11 }, (v, k) => k );
   }
   weight(event:any){
   console.log(event.value)

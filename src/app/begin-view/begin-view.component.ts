@@ -236,9 +236,6 @@ export class BeginViewComponent implements OnInit {
   })
 }
 
-getdigit() {
-  return Array.from({ length: 10 }, (v, k) => k + 1);
-}
   updatevalue(){
     if(this.beginview && this.beginview.pen_serial!=''){
       this.firstFormGroup.patchValue({
@@ -621,8 +618,12 @@ getdigit() {
     return Array.from({ length: 451 }, (v, k) => k + 50);
   }
   getvalues() {
-    return Array.from({ length: 20 }, (v, k) => k + 1);
+    return Array.from({ length: 21 }, (v, k) => k );
   }
+  getdigit() {
+    return Array.from({ length: 11 }, (v, k) => k );
+  }
+  
   getvaluefast() {
     return Array.from({ length: 361 }, (v, k) => k + 40);
   }
