@@ -149,7 +149,7 @@ export class BeginViewComponent implements OnInit {
       retinopathy_medication: new FormControl(''),
       nephropathy_duration: new FormControl(''),
       nephropathy_medication: new FormControl(''),
-     
+      diabetes_valid:new FormControl('',Validators.required)
 
     });
    
@@ -160,7 +160,7 @@ export class BeginViewComponent implements OnInit {
       fasting_plasma: new FormControl('',[Validators.required]),
       postprandial_plasma: new FormControl('',[Validators.required]),
       glycosylated: new FormControl('',[Validators.required]),
-      glycosylated_decimal:new FormControl(''),
+      glycosylated_decimal:new FormControl('',[Validators.required]),
       hbac_lab: new FormControl('',[Validators.required]),
       s_creatinine: new FormControl(''),
       
@@ -497,7 +497,7 @@ export class BeginViewComponent implements OnInit {
       console.log(this.antichecked)
       
       this.secondFormGroup.patchValue({
-        'anti_diabetes_medication':this.antichecked.anti_diabetes_medication
+        'anti_diabetes_medication':this.antichecked
       })
       this.secondFormGroup.updateValueAndValidity();
    
@@ -805,41 +805,46 @@ export class BeginViewComponent implements OnInit {
      
     } else {
       this.firstFormGroup.markAllAsTouched();
-     // this.toastr.error("Please fill all the fields")
+     this.toastr.error("Please fill all the fields")
     
         }
   }
-  antiDiabetesChange(event, name) {
-    console.log(event)
-    if (event.checked) {
+  antiDiabetesChange(event,name){
+    if(event.checked){
       this.anti.push(name)
-      this.check=false
       console.log(this.anti)
-    } else {
-      let i = this.anti.indexOf(name);
-      this.anti.splice(i, 1)
-      this.check=true
-      console.log(this.anti)
+     // this.check=false
+      this.secondFormGroup.patchValue({
+        'diabetes_valid':this.anti.toString()
+      });
+      this.secondFormGroup.updateValueAndValidity()
+    }else{
+      var i = this.anti.indexOf(name);
+      this.anti.splice(i,1);
+      if(this.anti.length == 0){
+       // this.check = true
+        this.secondFormGroup.patchValue({
+          'diabetes_valid':''
+        })
+        this.secondFormGroup.updateValueAndValidity()
+      }
     }
-    // if (this.anti.length && this.antichecked.length) {
-    //   this.check=false
-    //   this.secondFormGroup.patchValue({
-    //     'people_with_tdm': this.anti.toString()
-    //   });
-    //   this.secondFormGroup.updateValueAndValidity()
-    // } else {
-    //   this.check=true
-    //   this.secondFormGroup.patchValue({
-    //     'people_with_tdm': ''
-    //   })
-    //   this.secondFormGroup.updateValueAndValidity()
-    // }
+    if (this.anti.length ) {
+      this.check=false
+      
+    }
+    else{
+      this.check = true
+    }
   }
   onSecondSubmit(redirect) {
 
-    if (!this.secondFormGroup.valid || this.anti.length==0 && this.antichecked.length==0) {
+    if (!this.secondFormGroup.valid || this.anti.length==0 ) {
      // this.isLinear = true
-     this.check = true
+     if(this.anti.length == 0 ){
+      this.check = true
+      
+     }
       console.log(this.secondFormGroup.value)
       this.secondFormGroup.markAllAsTouched();
       this.toastr.error("Please fill all the fields")
@@ -936,13 +941,13 @@ export class BeginViewComponent implements OnInit {
     console.log(event,this.thirdFormGroup.valid)
     if (!this.thirdFormGroup.valid) {
       this.thirdFormGroup.markAllAsTouched();
-      ///this.isLinear = true
+    
       this.toastr.error('Please fill all the fields')
       console.log(this.thirdFormGroup.value)
      
     }
     else {
-     // this.isLinear = false;
+    
       var formData: any = new FormData();
       formData.append('fasting_plasma', this.thirdFormGroup.value.fasting_plasma);
       formData.append('postprandial_plasma', this.thirdFormGroup.value.postprandial_plasma);
@@ -965,11 +970,8 @@ export class BeginViewComponent implements OnInit {
        if(event){
          this.toastr.info('The draft has been saved successfully')
         this.router.navigateByUrl("/dashboard");
-         }//else{
-        //   // alert('Please fill all the fields')
-        // }
+         }
 
-       
       })
     }
   }

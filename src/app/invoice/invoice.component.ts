@@ -122,6 +122,7 @@ export class InvoiceComponent implements OnInit {
       retinopathy_medication: new FormControl(''),
       nephropathy_duration: new FormControl(''),
       nephropathy_medication: new FormControl(''),
+      diabetes_valid:new FormControl('',Validators.required)
       // medications:new FormControl(''),
 
     });
@@ -295,59 +296,72 @@ export class InvoiceComponent implements OnInit {
     
         }
   }
-  antiDiabetesChange(event, name) {
-    console.log(event)
-    if (event.checked) {
+  // antiDiabetesChange(event, name) {
+  //   console.log(event)
+  //   if (event.checked) {
+  //     this.anti.push(name)
+  //     console.log(this.anti)
+      
+  //   } else {
+  //     let i = this.anti.indexOf(name);
+  //     this.anti.splice(i, 1)
+  //     console.log(this.anti)
+  //   }
+  //   if (this.anti.length) {
+  //     this.check=false
+  //     this.secondFormGroup.patchValue({
+  //       'people_with_tdm': 'tdm'
+  //     });
+  //     this.secondFormGroup.updateValueAndValidity()
+  //   } else {
+  //     this.check=true
+  //     this.secondFormGroup.patchValue({
+  //       'people_with_tdm': ''
+  //     })
+  //     this.secondFormGroup.updateValueAndValidity()
+  //   }
+  // }
+  antiDiabetesChange(event,name){
+    if(event.checked){
       this.anti.push(name)
       console.log(this.anti)
-      
-    } else {
-      let i = this.anti.indexOf(name);
-      this.anti.splice(i, 1)
-      console.log(this.anti)
+     // this.check=false
+      this.secondFormGroup.patchValue({
+        'diabetes_valid':'abc'
+      });
+      this.secondFormGroup.updateValueAndValidity()
+    }else{
+      var i = this.anti.indexOf(name);
+      this.anti.splice(i,1);
+      if(this.anti.length == 0){
+       // this.check = true
+        this.secondFormGroup.patchValue({
+          'diabetes_valid':''
+        })
+        this.secondFormGroup.updateValueAndValidity()
+      }
     }
     if (this.anti.length) {
       this.check=false
-      this.secondFormGroup.patchValue({
-        'people_with_tdm': this.anti.toString()
-      });
-      this.secondFormGroup.updateValueAndValidity()
-    } else {
-      this.check=true
-      this.secondFormGroup.patchValue({
-        'people_with_tdm': ''
-      })
-      this.secondFormGroup.updateValueAndValidity()
-    }
-    // if (this.anti.length < 1) {
-    //   this.check = false
       
-    //   console.log("check box ")
-    // } else {
-    //   this.check = true;
-     
-
-    // }
+    }
+    else{
+      this.check = true
+    }
   }
   onSecondSubmit(redirect) {
-    // if (this.anti.length < 1) {
-    //   this.check = true
-    
-      
-    //   console.log("check box ")
-    // } else {
-    //   this.check = false;
-    // }
-    
-    
+  
     console.log("check",this.check);
 
     if (!this.secondFormGroup.valid || this.anti.length==0) {
-     // this.isLinear = true
-     this.check = true
+      if(this.anti.length == 0){
+        this.check = true
+        
+       }
+       this.secondFormGroup.markAllAsTouched();
       console.log(this.secondFormGroup.value)
-      this.secondFormGroup.markAllAsTouched();
-      // this.toastr.error("Please fill all the fields")
+     
+      this.toastr.error("Please fill all the fields")
     }
     else {
       this.check = false;
@@ -403,14 +417,6 @@ export class InvoiceComponent implements OnInit {
       this.nephropathyobj.nephropathy_medication = this.secondFormGroup.value.nephropathy_medication;
       formData.append('nephropathy_dur', JSON.stringify(this.nephropathyobj));
     }
-      // this.anti_diabetes_medication.Biguanides = (this.secondFormGroup.value.Biguanides == true) ? this.secondFormGroup.value.Biguanides : false;
-      // this.anti_diabetes_medication.Sulphonylureas = (this.secondFormGroup.value.Sulphonylureas == true) ? this.secondFormGroup.value.Sulphonylureas : false;
-      // this.anti_diabetes_medication.Meglitinides = (this.secondFormGroup.value.Meglitinides == true) ? this.secondFormGroup.value.Meglitinides : false;
-      // this.anti_diabetes_medication.Thiazolidendiones = (this.secondFormGroup.value.Thiazolidendiones == true) ? this.secondFormGroup.value.Thiazolidendiones : false;
-      // this.anti_diabetes_medication.GLP_Analogues = (this.secondFormGroup.value.GLP_Analogues == true) ? this.secondFormGroup.value.GLP_Analogues : false;
-      // this.anti_diabetes_medication.DPP4_Inhibitors = (this.secondFormGroup.value.DPP4_Inhibitors == true) ? this.secondFormGroup.value.DPP4_Inhibitors : false;
-      // this.anti_diabetes_medication.DoubleDrugFixed = (this.secondFormGroup.value.DoubleDrugFixed == true) ? this.secondFormGroup.value.DoubleDrugFixed : false;
-      // this.anti_diabetes_medication.TripleDrugFixed = (this.secondFormGroup.value.TripleDrugFixed == true) ? this.secondFormGroup.value.TripleDrugFixed : false;
       formData.append(' medical_condition', this.secondFormGroup.value.medical_condition)
       formData.append('anti_diabetes_medication', JSON.stringify(this.anti));
       formData.append('id',this.formId)
@@ -463,10 +469,6 @@ export class InvoiceComponent implements OnInit {
       })
     }
   }
-
-  
-
-
 
   oncheked(event: any, name: any) {
     if (event.checked == true) {
