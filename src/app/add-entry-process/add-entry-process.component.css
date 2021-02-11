@@ -25,3 +25,13 @@
 .inline_check {
     display: flex;
 }
+
+.Entry_mobileNumber_info {
+    padding: 15px 15px 30px;
+    background: #fff;
+    border: 1px solid #eee;
+}
+
+.Entry_mobileNumber_info mat-form-field {
+    margin: 0 !important;
+}

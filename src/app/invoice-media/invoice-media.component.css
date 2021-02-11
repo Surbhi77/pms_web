@@ -46,3 +46,13 @@
 .inline_check {
     display: flex;
 }
+
+@media (max-width:767.99px) {
+    .data_notfound h1 {
+        font-size: 24px;
+    }
+    
+    .data_notfound {
+        text-align: center;
+    }
+}

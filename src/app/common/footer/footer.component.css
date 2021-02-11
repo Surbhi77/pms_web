@@ -9,13 +9,19 @@ footer {
     position: relative;
     bottom: 0;
     background: #f2f4f8;
-    box-shadow: 0 0 5px #ddd;
+    box-shadow: 0 -3px 5px -4px #ddd;
 }
 
 footer p {
     margin: 0;
     font-size: 14px;
     opacity: 0.6;
+}
+
+@media (max-width:767.99px) {
+    footer {
+        justify-content: center;
+    }
 }
 
 /* footer css */

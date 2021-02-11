@@ -31,3 +31,12 @@ video {
 .howitworks video {
     align-items: center;
 }
+
+@media (max-width:767.99px) {
+    .video-box video {
+        height: 200px;
+    }
+    .card-details h1 {
+        font-size: 24px;
+    }
+}

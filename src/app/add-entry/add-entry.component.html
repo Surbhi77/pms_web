@@ -13,11 +13,16 @@
             <form [formGroup]="firstFormGroup">
 
                 <div class="row">
+                    <div class="col-sm-12 col-lg-12 col-md-12 d-block d-md-none">
+                        <div class="Step-Head mb-3">
+                            <p>Demographic data</p>
+                        </div>
+                    </div>
+
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <div class="row">
-
                             <div class="col-sm-12 col-lg-12 col-md-12">
-                                <div class="check_nones mb-3">
+                                <div class="check_nones mb-2">
                                     <p>Pen Serial No.</p>
                                 </div>
                             </div>
@@ -47,7 +52,7 @@
                     </div>
 
                     <div class="col-sm-12 col-lg-12 col-md-12">
-                        <div class="check_nones">
+                        <div class="check_nones mb-2">
                             <p>Sex</p>
                         </div>
 
@@ -137,13 +142,13 @@
                     <div class="col-sm-12 col-lg-12 col-md-12">
 
                         <div class="row">
-                            <div class="col-lg-4 col-md-4 col-12">
-                                <div class="check_nones">
+                            <div class="col-lg-4 col-md-4 col-12 mb-3 mb-md-0">
+                                <div class="check_nones mb-2">
                                     <p> Education</p>
                                 </div>
-                                <div class="entry-inputs-block">
 
-                                    <mat-radio-group formControlName="education" color="primary" formControlName="education" aria-label="Select an option">
+                                <div class="entry-inputs-block">
+                                    <mat-radio-group formControlName="education" class="full-radio" color="primary" formControlName="education" aria-label="Select an option">
                                         <mat-radio-button value="none" class="mr-5">None</mat-radio-button>
                                         <mat-radio-button value="Primary" class="mr-5">Primary</mat-radio-button>
                                         <mat-radio-button value="High school">High School</mat-radio-button>
@@ -157,11 +162,11 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-12">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>Employment</p>
                                 </div>
                                 <div class="entry-inputs-block">
-                                    <mat-radio-group formControlName="employment" color="primary" aria-label="Select an option">
+                                    <mat-radio-group formControlName="employment" class="full-radio" color="primary" aria-label="Select an option">
                                         <mat-radio-button value="None" class="mr-5">None</mat-radio-button>
                                         <mat-radio-button value="Employed" class="mr-5">Employed</mat-radio-button>
                                         <mat-radio-button value="Unemployed">Unemployed</mat-radio-button>
@@ -188,6 +193,13 @@
             <ng-template matStepLabel>Medical History</ng-template>
             <form [formGroup]="secondFormGroup">
                 <div class="row">
+
+                    <div class="col-sm-12 col-lg-12 col-md-12 d-block d-md-none">
+                        <div class="Step-Head mb-3">
+                            <p>Medical History</p>
+                        </div>
+                    </div>
+
                     <div class="col-sm-12 col-lg-12 col-md-12 mb-3">
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12">
@@ -222,7 +234,7 @@
                     <div class="col-sm-12 col-lg-12 col-md-12 mb-3">
                         <div class="row">
                             <!-- <div class="col-lg-4 col-md-4 col-12">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>Age at Diabetes since</p>
                                 </div>
 
@@ -236,7 +248,7 @@
                             </div> -->
 
                             <div class="col-lg-4 col-md-4 col-12">
-                                <div class="check_nones mb-3">
+                                <div class="check_nones mb-2">
                                     <p>Family history of Diabetes:</p>
                                 </div>
 
@@ -258,7 +270,7 @@
                     <div class="col-sm-12 col-lg-12 col-md-12 mb-3">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-12">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>Hypertension:</p>
                                 </div>
                             </div>
@@ -293,13 +305,11 @@
 
                     <div class="col-sm-12 col-lg-12 col-md-12 mb-3">
                         <div class="row">
-                            <div class="col-lg-12 col-md-12 col-12">
-                                <div class="check_nones">
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="check_nones mb-2">
                                     <p>Blood Pressure (mmHg) Systolic :</p>
                                 </div>
-                            </div>
 
-                            <div class="col-lg-4 col-md-4 col-12">
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Blood Pressure</mat-label>
@@ -311,12 +321,11 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-12 col-md-12 col-12">
-                                <div class="check_nones">
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="check_nones mb-2">
                                     <p>Blood Pressure (mmHg) Diastolic:</p>
                                 </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-12">
+
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Blood Pressure</mat-label>
@@ -333,7 +342,7 @@
                     <div class="col-sm-12 col-lg-12 col-md-12  mb-3">
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12 mb-3">
-                                <div class="check_nones mb-3">
+                                <div class="check_nones mb-2">
                                     <p>Smoking :</p>
                                 </div>
 
@@ -352,7 +361,7 @@
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12 mb-3">
-                                <div class="check_nones mb-3">
+                                <div class="check_nones mb-2">
                                     <p>Alcohol :</p>
                                 </div>
 
@@ -373,7 +382,7 @@
                     <div class="col-sm-12 col-lg-12 col-md-12 mb-3">
                         <div class="row">
                             <!-- <div class="col-lg-4 col-md-4 col-12 mb-3">
-                                <div class="check_nones mb-3">
+                                <div class="check_nones mb-2">
                                     <p>Any vascular Complications present at diagnosis :</p>
                                 </div>
 
@@ -386,7 +395,7 @@
                             </div> -->
 
                             <div class="col-lg-4 col-md-4 col-12 mb-3">
-                                <div class="check_nones mb-3">
+                                <div class="check_nones mb-2">
                                     <p>Does the subject have any co morbid medical conditions ?</p>
                                 </div>
 
@@ -406,7 +415,7 @@
                     <!-- <div class="col-sm-12 col-lg-12 col-md-12 mb-3" *ngIf="complications">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>Kindly provide details of the complications at diagnosis :</p>
                                 </div>
 
@@ -424,7 +433,7 @@
                     <div class="col-sm-12 col-lg-12 col-md-12 mb-3" *ngIf="medication">
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12">
-                                <!-- <div class="check_nones mb-3">
+                                <!-- <div class="check_nones mb-2">
                                     <p>Condition</p>
                                 </div> -->
                                 <div class="entry-inputs-block">
@@ -433,7 +442,7 @@
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12" *ngIf="hypertension">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>Duration</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -450,8 +459,8 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-4 col-md-4 col-12" *ngIf="hypertension">
-                                <div class="check_nones mb-3">
+                            <div class="col-lg-4 col-md-4 col-12 mb-3" *ngIf="hypertension">
+                                <div class="check_nones mb-2">
                                     <p>Medication :</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -468,7 +477,7 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12">
-                                <!-- <div class="check_nones mb-3">
+                                <!-- <div class="check_nones mb-2">
                                     <p>Condition</p>
                                 </div> -->
                                 <div class="entry-inputs-block">
@@ -477,7 +486,7 @@
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12" *ngIf="dyslipidemia">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>Duration</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -492,8 +501,8 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-4 col-md-4 col-12" *ngIf="dyslipidemia">
-                                <div class="check_nones mb-3">
+                            <div class="col-lg-4 col-md-4 col-12 mb-3" *ngIf="dyslipidemia">
+                                <div class="check_nones mb-2">
                                     <p>Medication :</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -510,7 +519,7 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12">
-                                <!-- <div class="check_nones mb-3">
+                                <!-- <div class="check_nones mb-2">
                                     <p>Condition</p>
                                 </div> -->
                                 <div class="entry-inputs-block">
@@ -519,7 +528,7 @@
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12" *ngIf="coronary">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>Duration</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -535,8 +544,8 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-4 col-md-4 col-12" *ngIf="coronary">
-                                <div class="check_nones mb-3">
+                            <div class="col-lg-4 col-md-4 col-12 mb-3" *ngIf="coronary">
+                                <div class="check_nones mb-2">
                                     <p>Medication :</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -553,7 +562,7 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12">
-                                <!-- <div class="check_nones mb-3">
+                                <!-- <div class="check_nones mb-2">
                                     <p>Condition</p>
                                 </div> -->
                                 <div class="entry-inputs-block">
@@ -562,7 +571,7 @@
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12" *ngIf="stroke">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>Duration</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -577,8 +586,8 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-4 col-md-4 col-12" *ngIf="stroke">
-                                <div class="check_nones mb-3">
+                            <div class="col-lg-4 col-md-4 col-12 mb-3" *ngIf="stroke">
+                                <div class="check_nones mb-2">
                                     <p>Medication :</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -595,7 +604,7 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12">
-                                <!-- <div class="check_nones mb-3">
+                                <!-- <div class="check_nones mb-2">
                                     <p>Condition</p>
                                 </div> -->
                                 <div class="entry-inputs-block">
@@ -604,7 +613,7 @@
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12" *ngIf="neuropathy">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>Duration</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -619,8 +628,8 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-4 col-md-4 col-12" *ngIf="neuropathy">
-                                <div class="check_nones mb-3">
+                            <div class="col-lg-4 col-md-4 col-12 mb-3" *ngIf="neuropathy">
+                                <div class="check_nones mb-2">
                                     <p>Medication :</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -637,7 +646,7 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12">
-                                <!-- <div class="check_nones mb-3">
+                                <!-- <div class="check_nones mb-2">
                                     <p>Condition</p>
                                 </div> -->
                                 <div class="entry-inputs-block">
@@ -646,7 +655,7 @@
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12" *ngIf="retinopathy">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>Duration</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -661,8 +670,8 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-4 col-md-4 col-12" *ngIf="retinopathy">
-                                <div class="check_nones mb-3">
+                            <div class="col-lg-4 col-md-4 col-12 mb-3" *ngIf="retinopathy">
+                                <div class="check_nones mb-2">
                                     <p>Medication :</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -679,7 +688,7 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12">
-                                <!-- <div class="check_nones mb-3">
+                                <!-- <div class="check_nones mb-2">
                                     <p>Condition</p>
                                 </div> -->
                                 <div class="entry-inputs-block">
@@ -688,7 +697,7 @@
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12" *ngIf="nephropathy">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>Duration</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -703,8 +712,8 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-4 col-md-4 col-12" *ngIf="nephropathy">
-                                <div class="check_nones mb-3">
+                            <div class="col-lg-4 col-md-4 col-12 mb-3" *ngIf="nephropathy">
+                                <div class="check_nones mb-2">
                                     <p>Medication :</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -725,7 +734,7 @@
                     <div class="col-sm-12 col-lg-12 col-md-12 mb-3">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-12">
-                                <div class="check_nones mb-3">
+                                <div class="check_nones mb-2">
                                     <p>Anti-Diabetes Medication (except Insulin) :</p>
                                 </div>
                             </div>
@@ -799,10 +808,16 @@
             <ng-template matStepLabel>Efficacy Tests</ng-template>
             <form [formGroup]="thirdFormGroup">
                 <div class="row">
+                    <div class="col-sm-12 col-lg-12 col-md-12 d-block d-md-none">
+                        <div class="Step-Head mb-3">
+                            <p>Efficacy Tests</p>
+                        </div>
+                    </div>
+
                     <!-- <div class="col-sm-12 col-lg-12 col-md-12 mb-2">
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12 mb-3">
-                                <div class="check_nones mb-3">
+                                <div class="check_nones mb-2">
                                     <p>Were Efficacy tests performed?</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -818,13 +833,13 @@
                     <div class="col-sm-12 col-lg-12 col-md-12 mb-3">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-12 mb-3">
-                                <div class="check_nones mb-3">
+                                <div class="check_nones mb-2">
                                     <h5>Blood Investigations</h5>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12 mb-3">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>Fasting Plasma Glucose (FPG)</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -839,7 +854,7 @@
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12 mb-3">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>Postprandial Plasma Glucose (PPG)</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -854,7 +869,7 @@
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12 mb-3">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>Glycosylated Hemoglobin (HbA1c)</p>
                                 </div>
                                 <!-- <div class="entry-inputs-block dd">
@@ -897,7 +912,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-12 mb-3">
-                                <div class="check_nones mb-3">
+                                <div class="check_nones mb-2">
                                     <p>HbA1c test performed in Lab (HPLC)</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -913,7 +928,7 @@
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12 mb-3">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>S.Creatinine (mg/dl)</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -929,262 +944,269 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-sm-12 col-lg-12 col-md-12">
+                        <button mat-button matStepperPrevious class="next_btn">Back</button>
+                        <button mat-button (click)="thirdForm(true)" class="next_btn">Save as Draft</button>
+                        <button mat-button matStepperNext (click)="thirdForm(false)" class="next_btn">Next</button>
+                    </div>
                 </div>
             </form>
-            <div class="col-sm-12 col-lg-12 col-md-12">
-                <button mat-button matStepperPrevious class="next_btn">Back</button>
-                <button mat-button (click)="thirdForm(true)" class="next_btn">Save as Draft</button>
-                <button mat-button matStepperNext (click)="thirdForm(false)" class="next_btn">Next</button>
-            </div>
-
         </mat-step>
         <mat-step>
             <ng-template matStepLabel>Insulinisation</ng-template>
             <form [formGroup]="fourthFormGroup">
-
-                <div class="col-sm-12 col-lg-12 col-md-12 mb-3">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12 col-12">
-                            <div class="check_nones mb-3">
-                                <p>Insulin initiated with initiation dose & time</p>
-                            </div>
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12 col-md-12 d-block d-md-none">
+                        <div class="Step-Head mb-3">
+                            <p>Efficacy Tests</p>
                         </div>
+                    </div>
 
-                        <div class="col-lg-12 col-md-12 col-12 mb-3 mt-3">
-                            <div class="entry-inputs-block">
-                                <mat-checkbox color="primary" formControlName="human_premixed_thirty" (change)="oncheked8($event,'human_premixed_thirty')" class="example-margin d-block mb-2">Human Premixed 30/70 (In Units)</mat-checkbox>
-                            </div>
-
-                            <div class="row" *ngIf="human_premixedthirty">
-                                <div class="col-lg-4 col-md-4 col-12 mb-3">
-
-                                    <div class="entry-inputs-block">
-                                        <mat-form-field>
-                                            <mat-label>Breakfast</mat-label>
-                                            <mat-select formControlName="human_premixed_thirty_breakfast">
-                                                <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
-                                            </mat-select>
-                                            <mat-error *ngIf="hasError4('human_premixed_thirty_breakfast', 'required')">Breakfast field is required</mat-error>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-12 mb-3">
-
-                                    <div class="entry-inputs-block">
-                                        <mat-form-field>
-                                            <mat-label>Lunch</mat-label>
-                                            <mat-select formControlName="human_premixed_thirty_lunch">
-                                                <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
-                                            </mat-select>
-                                            <mat-error *ngIf="hasError4('human_premixed_thirty_lunch', 'required')">Lunch field is required</mat-error>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-12 mb-3">
-
-                                    <div class="entry-inputs-block">
-                                        <mat-form-field>
-                                            <mat-label>Dinner</mat-label>
-                                            <mat-select formControlName="human_premixed_thirty_dinner">
-                                                <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
-                                            </mat-select>
-                                            <mat-error *ngIf="hasError4('human_premixed_thirty_dinner', 'required')">Dinner field is required</mat-error>
-                                        </mat-form-field>
-                                    </div>
+                    <div class="col-sm-12 col-lg-12 col-md-12 mb-3">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-12">
+                                <div class="check_nones mb-2">
+                                    <p>Insulin initiated with initiation dose & time</p>
                                 </div>
                             </div>
+    
+                            <div class="col-lg-12 col-md-12 col-12 mb-3 mt-3">
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" formControlName="human_premixed_thirty" (change)="oncheked8($event,'human_premixed_thirty')" class="example-margin d-block mb-2">Human Premixed 30/70 (In Units)</mat-checkbox>
+                                </div>
+    
+                                <div class="row" *ngIf="human_premixedthirty">
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+    
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Breakfast</mat-label>
+                                                <mat-select formControlName="human_premixed_thirty_breakfast">
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
+                                                </mat-select>
+                                                <mat-error *ngIf="hasError4('human_premixed_thirty_breakfast', 'required')">Breakfast field is required</mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+    
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Lunch</mat-label>
+                                                <mat-select formControlName="human_premixed_thirty_lunch">
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
+                                                </mat-select>
+                                                <mat-error *ngIf="hasError4('human_premixed_thirty_lunch', 'required')">Lunch field is required</mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+    
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Dinner</mat-label>
+                                                <mat-select formControlName="human_premixed_thirty_dinner">
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
+                                                </mat-select>
+                                                <mat-error *ngIf="hasError4('human_premixed_thirty_dinner', 'required')">Dinner field is required</mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-12 mb-3">
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" formControlName="human_premixed_fifty" (change)="oncheked9($event,'human_premixed_fifty')" class="example-margin d-block mb-2">Human Premixed 50/50 (In Units)</mat-checkbox>
+                                </div>
+    
+                                <div class="row" *ngIf="human_premixedfifty">
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+    
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Breakfast</mat-label>
+                                                <mat-select formControlName="human_premixed_fifty_breakfast">
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
+                                                </mat-select>
+                                                <mat-error *ngIf="hasError4('human_premixed_fifty_breakfast', 'required')">Breakfast field is required</mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+    
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Lunch</mat-label>
+                                                <mat-select formControlName="human_premixed_fifty_lunch">
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
+                                                </mat-select>
+                                                <mat-error *ngIf="hasError4('human_premixed_fifty_lunch', 'required')">Lunch field is required</mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+    
+    
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+    
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Dinner</mat-label>
+                                                <mat-select formControlName="human_premixed_fifty_dinner">
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
+                                                </mat-select>
+                                                <mat-error *ngIf="hasError4('human_premixed_fifty_dinner', 'required')">Dinner field is required</mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-12 mb-3">
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" formControlName="regular_insulin" (change)="oncheked10($event);" class="example-margin d-block mb-2">Regular insulin (In Units)</mat-checkbox>
+                                </div>
+    
+                                <div class="row" *ngIf="regular">
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+    
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Breakfast</mat-label>
+                                                <mat-select formControlName="regular_insulin_breakfast">
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
+                                                </mat-select>
+                                                <mat-error *ngIf="hasError4('regular_insulin_breakfast', 'required')">Breakfast field is required</mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+    
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Lunch</mat-label>
+                                                <mat-select formControlName="regular_insulin_lunch">
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
+                                                </mat-select>
+                                                <mat-error *ngIf="hasError4('regular_insulin_lunch', 'required')">Lunch field is required</mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+    
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Dinner</mat-label>
+                                                <mat-select formControlName="regular_insulin_dinner">
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
+                                                </mat-select>
+                                                <mat-error *ngIf="hasError4('regular_insulin_dinner', 'required')">Dinner field is required</mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="col-lg-12 col-md-12 col-12 mb-3">
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" formControlName="nph_insulin" (change)="oncheked11($event)" class="example-margin d-block mb-2">Regular NPH (In Units)</mat-checkbox>
+                                </div>
+    
+                                <div class="row" *ngIf="nph">
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+    
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Breakfast</mat-label>
+                                                <mat-select formControlName="nph_insulin_breakfast">
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
+                                                </mat-select>
+                                                <mat-error *ngIf="hasError4('nph_insulin_breakfast', 'required')">Breakfast field is required</mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+    
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Lunch</mat-label>
+                                                <mat-select formControlName="nph_insulin_lunch">
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
+                                                </mat-select>
+                                                <mat-error *ngIf="hasError4('nph_insulin_lunch', 'required')">Lunch field is required</mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+    
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Dinner</mat-label>
+                                                <mat-select formControlName="nph_insulin_dinner">
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
+                                                </mat-select>
+                                                <mat-error *ngIf="hasError4('nph_insulin_dinner', 'required')">Dinner field is required</mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-12 mb-3">
+                                <div class="entry-inputs-block">
+                                    <mat-checkbox color="primary" formControlName="glargine_insulin" (change)="oncheked12($event)" class="example-margin d-block mb-2">Insulin Glargine (In Units)</mat-checkbox>
+                                </div>
+    
+                                <div class="row" *ngIf="glargine">
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+    
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Breakfast</mat-label>
+                                                <mat-select formControlName="glargine_insulin_breakfast">
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
+                                                </mat-select>
+                                                <mat-error *ngIf="hasError4('glargine_insulin_breakfast', 'required')">Breakfast field is required</mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+    
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Lunch</mat-label>
+                                                <mat-select formControlName="glargine_insulin_lunch">
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
+                                                </mat-select>
+                                                <mat-error *ngIf="hasError4('glargine_insulin_lunch', 'required')">Lunch field is required</mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+    
+    
+    
+                                    <div class="col-lg-4 col-md-4 col-12 mb-3">
+    
+                                        <div class="entry-inputs-block">
+                                            <mat-form-field>
+                                                <mat-label>Dinner</mat-label>
+                                                <mat-select formControlName="glargine_insulin_dinner">
+                                                    <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
+                                                </mat-select>
+                                                <mat-error *ngIf="hasError4('glargine_insulin_dinner', 'required')">Dinner field is required</mat-error>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+    
+                                </div>
+                                <p *ngIf="humancheck" class="errors text-danger">Please Select At least one </p>
+                            </div>
+    
+                            <div class="col-sm-12 col-lg-12 col-md-12">
+                                <button mat-button matStepperPrevious class="next_btn">Back</button>
+                                <button mat-button type="submit" (click)="submit(true);" class="next_btn">Submit</button>
+                            </div>
+    
                         </div>
-                        <div class="col-lg-12 col-md-12 col-12 mb-3">
-                            <div class="entry-inputs-block">
-                                <mat-checkbox color="primary" formControlName="human_premixed_fifty" (change)="oncheked9($event,'human_premixed_fifty')" class="example-margin d-block mb-2">Human Premixed 50/50 (In Units)</mat-checkbox>
-                            </div>
-
-                            <div class="row" *ngIf="human_premixedfifty">
-                                <div class="col-lg-4 col-md-4 col-12 mb-3">
-
-                                    <div class="entry-inputs-block">
-                                        <mat-form-field>
-                                            <mat-label>Breakfast</mat-label>
-                                            <mat-select formControlName="human_premixed_fifty_breakfast">
-                                                <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
-                                            </mat-select>
-                                            <mat-error *ngIf="hasError4('human_premixed_fifty_breakfast', 'required')">Breakfast field is required</mat-error>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-12 mb-3">
-
-                                    <div class="entry-inputs-block">
-                                        <mat-form-field>
-                                            <mat-label>Lunch</mat-label>
-                                            <mat-select formControlName="human_premixed_fifty_lunch">
-                                                <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
-                                            </mat-select>
-                                            <mat-error *ngIf="hasError4('human_premixed_fifty_lunch', 'required')">Lunch field is required</mat-error>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-
-
-                                <div class="col-lg-4 col-md-4 col-12 mb-3">
-
-                                    <div class="entry-inputs-block">
-                                        <mat-form-field>
-                                            <mat-label>Dinner</mat-label>
-                                            <mat-select formControlName="human_premixed_fifty_dinner">
-                                                <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
-                                            </mat-select>
-                                            <mat-error *ngIf="hasError4('human_premixed_fifty_dinner', 'required')">Dinner field is required</mat-error>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-12 mb-3">
-                            <div class="entry-inputs-block">
-                                <mat-checkbox color="primary" formControlName="regular_insulin" (change)="oncheked10($event);" class="example-margin d-block mb-2">Regular insulin (In Units)</mat-checkbox>
-                            </div>
-
-                            <div class="row" *ngIf="regular">
-                                <div class="col-lg-4 col-md-4 col-12 mb-3">
-
-                                    <div class="entry-inputs-block">
-                                        <mat-form-field>
-                                            <mat-label>Breakfast</mat-label>
-                                            <mat-select formControlName="regular_insulin_breakfast">
-                                                <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
-                                            </mat-select>
-                                            <mat-error *ngIf="hasError4('regular_insulin_breakfast', 'required')">Breakfast field is required</mat-error>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-12 mb-3">
-
-                                    <div class="entry-inputs-block">
-                                        <mat-form-field>
-                                            <mat-label>Lunch</mat-label>
-                                            <mat-select formControlName="regular_insulin_lunch">
-                                                <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
-                                            </mat-select>
-                                            <mat-error *ngIf="hasError4('regular_insulin_lunch', 'required')">Lunch field is required</mat-error>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4 col-md-4 col-12 mb-3">
-
-                                    <div class="entry-inputs-block">
-                                        <mat-form-field>
-                                            <mat-label>Dinner</mat-label>
-                                            <mat-select formControlName="regular_insulin_dinner">
-                                                <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
-                                            </mat-select>
-                                            <mat-error *ngIf="hasError4('regular_insulin_dinner', 'required')">Dinner field is required</mat-error>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-12 col-md-12 col-12 mb-3">
-                            <div class="entry-inputs-block">
-                                <mat-checkbox color="primary" formControlName="nph_insulin" (change)="oncheked11($event)" class="example-margin d-block mb-2">Regular NPH (In Units)</mat-checkbox>
-                            </div>
-
-                            <div class="row" *ngIf="nph">
-                                <div class="col-lg-4 col-md-4 col-12 mb-3">
-
-                                    <div class="entry-inputs-block">
-                                        <mat-form-field>
-                                            <mat-label>Breakfast</mat-label>
-                                            <mat-select formControlName="nph_insulin_breakfast">
-                                                <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
-                                            </mat-select>
-                                            <mat-error *ngIf="hasError4('nph_insulin_breakfast', 'required')">Breakfast field is required</mat-error>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-12 mb-3">
-
-                                    <div class="entry-inputs-block">
-                                        <mat-form-field>
-                                            <mat-label>Lunch</mat-label>
-                                            <mat-select formControlName="nph_insulin_lunch">
-                                                <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
-                                            </mat-select>
-                                            <mat-error *ngIf="hasError4('nph_insulin_lunch', 'required')">Lunch field is required</mat-error>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-12 mb-3">
-
-                                    <div class="entry-inputs-block">
-                                        <mat-form-field>
-                                            <mat-label>Dinner</mat-label>
-                                            <mat-select formControlName="nph_insulin_dinner">
-                                                <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
-                                            </mat-select>
-                                            <mat-error *ngIf="hasError4('nph_insulin_dinner', 'required')">Dinner field is required</mat-error>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-12 mb-3">
-                            <div class="entry-inputs-block">
-                                <mat-checkbox color="primary" formControlName="glargine_insulin" (change)="oncheked12($event)" class="example-margin d-block mb-2">Insulin Glargine (In Units)</mat-checkbox>
-                            </div>
-
-                            <div class="row" *ngIf="glargine">
-                                <div class="col-lg-4 col-md-4 col-12 mb-3">
-
-                                    <div class="entry-inputs-block">
-                                        <mat-form-field>
-                                            <mat-label>Breakfast</mat-label>
-                                            <mat-select formControlName="glargine_insulin_breakfast">
-                                                <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
-                                            </mat-select>
-                                            <mat-error *ngIf="hasError4('glargine_insulin_breakfast', 'required')">Breakfast field is required</mat-error>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-12 mb-3">
-
-                                    <div class="entry-inputs-block">
-                                        <mat-form-field>
-                                            <mat-label>Lunch</mat-label>
-                                            <mat-select formControlName="glargine_insulin_lunch">
-                                                <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
-                                            </mat-select>
-                                            <mat-error *ngIf="hasError4('glargine_insulin_lunch', 'required')">Lunch field is required</mat-error>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-
-
-
-                                <div class="col-lg-4 col-md-4 col-12 mb-3">
-
-                                    <div class="entry-inputs-block">
-                                        <mat-form-field>
-                                            <mat-label>Dinner</mat-label>
-                                            <mat-select formControlName="glargine_insulin_dinner">
-                                                <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
-                                            </mat-select>
-                                            <mat-error *ngIf="hasError4('glargine_insulin_dinner', 'required')">Dinner field is required</mat-error>
-                                        </mat-form-field>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <p *ngIf="humancheck" class="errors text-danger">Please Select At least one </p>
-                        </div>
-
-                        <div class="col-sm-12 col-lg-12 col-md-12">
-                            <button mat-button matStepperPrevious class="next_btn">Back</button>
-                            <button mat-button type="submit" (click)="submit(true);" class="next_btn">Submit</button>
-                        </div>
-
                     </div>
                 </div>
             </form>

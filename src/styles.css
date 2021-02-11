@@ -102,6 +102,37 @@ body {
     .mat-vertical-content-container {
         margin-left: 27px !important;
     }
+
+    .mat-horizontal-stepper-header-container .mat-step-text-label {
+        text-indent: -9999px;
+    }
+
+    .mat-horizontal-stepper-header-container .mat-step-label {
+        min-width: auto;
+    }
+
+    .Step-Head {
+        padding: 10px;
+        background: #0f406b;
+    }
+    
+    .Step-Head p {
+        margin: 0;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+    .mat-horizontal-stepper-header {
+        padding: 0 15px;
+    }
+
+    .mat-horizontal-content-container {
+        padding: 0 15px 15px 15px;
+    }
+
+    .page-content {
+        padding: 15px 15px 15px;
+    }
 }
 
 @media (min-width:768px) and (max-width: 1023.99px) {

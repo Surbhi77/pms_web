@@ -7,51 +7,49 @@
         </div>
     </div>
     <form [formGroup]="form" class="mt-3">
-        <div>
-            <!-- <div class="col-sm-12 col-lg-12 col-md-12">
-                <div class="check_nones mb-3">
-                    <p>Patient Mobile No.</p>
-                </div>
-            </div> -->
+        <div class="row">
             <div class="col-lg-12 col-md-12 col-12">
-                <div class="entry-inputs-block in_fulls">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Patient Mobile No.</mat-label>
-                        <input formControlName="mobile" matInput maxlength="10" value="">
-                        <!-- <mat-error *ngIf="hasError('mobile','required')">Please Enter Mobile No.</mat-error> -->
-
-                        <!-- <mat-error *ngIf="form.controls.mobile.errors.pattern">
-                            Mobile no. is not statndard pattern
-                        </mat-error>
-                        <mat-error *ngIf="form.controls.mobile.errors.required">
-                            Mobile no is required
-                        </mat-error> -->
-                        <mat-error *ngIf="form.get('mobile').hasError('required')">
-                            Phone number is <strong>required</strong>
-                        </mat-error>
-                        <mat-error *ngIf="!form.get('mobile').hasError('required') && form.get('mobile').hasError('pattern')">
-                            Please enter valid mumber
-                        </mat-error>
-                    </mat-form-field>
-
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="entry-inputs-block inline_check">
-                            <mat-checkbox formControlName="declare" (change)="tnc($event)" color="primary" class="example-margin d-block mb-2"></mat-checkbox>
-                            I hereby acknowledge that I have explained to the “Patient” in a language the Patient understands, that he/she would be reached out by third party service providers (diabetes helpline) who would share educational information about the “Insulin Device”
-                            and would also guide them about various aspects of diabetes viz quality of life, during the course of their treatment. I have informed the “Patient” that any data generated during the course of the treatment will be used for
-                            educational, scientific research and commercial purposes. I do hereby confirm that the “Patient” has given his/her unconditional written consent for the aforementioned and that I undertake to share the same if so required by
-                            response to any directions from a government department/authority.
+                <div class="Entry_mobileNumber_info">
+                    <div class="entry-inputs-block in_fulls">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Patient Mobile No.</mat-label>
+                            <input formControlName="mobile" matInput maxlength="10" value="">
+                            <!-- <mat-error *ngIf="hasError('mobile','required')">Please Enter Mobile No.</mat-error> -->
+    
+                            <!-- <mat-error *ngIf="form.controls.mobile.errors.pattern">
+                                Mobile no. is not statndard pattern
+                            </mat-error>
+                            <mat-error *ngIf="form.controls.mobile.errors.required">
+                                Mobile no is required
+                            </mat-error> -->
+                            <mat-error *ngIf="form.get('mobile').hasError('required')">
+                                Phone number is <strong>required</strong>
+                            </mat-error>
+                            <mat-error *ngIf="!form.get('mobile').hasError('required') && form.get('mobile').hasError('pattern')">
+                                Please enter valid mumber
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+    
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="entry-inputs-block inline_check">
+                                <mat-checkbox formControlName="declare" (change)="tnc($event)" color="primary" class="example-margin d-block mb-2"></mat-checkbox>
+                                I hereby acknowledge that I have explained to the “Patient” in a language the Patient understands, that he/she would be reached out by third party service providers (diabetes helpline) who would share educational information about the “Insulin Device”
+                                and would also guide them about various aspects of diabetes viz quality of life, during the course of their treatment. I have informed the “Patient” that any data generated during the course of the treatment will be used for
+                                educational, scientific research and commercial purposes. I do hereby confirm that the “Patient” has given his/her unconditional written consent for the aforementioned and that I undertake to share the same if so required by
+                                response to any directions from a government department/authority.
+                            </div>
+                        </div>
+    
+                        <div class="col-12">
+                            <div *ngIf="g.declare.touched && g.declare.invalid" class="alert alert-danger">
+                                <div *ngIf="g.declare.errors.required" class="errors">Please select checkbox</div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-12">
-                        <div *ngIf="g.declare.touched && g.declare.invalid" class="alert alert-danger">
-                            <div *ngIf="g.declare.errors.required" class="errors">Please select checkbox</div>
-                        </div>
-                    </div>
+                    <button mat-button (click)="submit()" class="next_btn">Submit</button>
                 </div>
-                <button mat-button (click)="submit()" class="next_btn">Submit</button>
             </div>
         </div>
     </form>
