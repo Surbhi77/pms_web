@@ -57,13 +57,19 @@
 }
 
 .fill_color {
-    background: #cc7186 !important;
+    background: #f39d2d;
 }
 
-.fill_color h5 {
-    color: #000 !important;
+.fill_color a:hover svg path {
+    fill: #0f406b;
 }
 
-.fill_color img {
-    filter: grayscale(5) !important;
+.fill_color a:hover h5 {
+    color: #0f406b;
 }
+
+.fill_color a:hover {
+    box-shadow: 0 -4px 0 inset #0f406b;
+}
+
+

@@ -9,7 +9,7 @@
     </div>
 
     <div class="row mt-4">
-        <div class="col-lg-3" *ngIf="userType=='i'">
+        <div class="col-lg-3 col-md-6 col-6" *ngIf="userType=='i'">
             <div class="dashboard-card">
                 <a [routerLink]="['/add-entry-process']">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="512" height="512">
@@ -28,7 +28,7 @@
                 </a>
             </div>
         </div>
-        <div class="col-lg-3" *ngIf="userType=='b'">
+        <div class="col-lg-3 col-md-6 col-6" *ngIf="userType=='b'">
             <div class="dashboard-card">
                 <a [routerLink]="['/begin-process']">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="512" height="512">
@@ -48,7 +48,7 @@
             </div>
         </div>
 
-        <div class="col-lg-3" *ngIf="!kdp_surveyfilled">
+        <div class="col-lg-3 col-md-6 col-6" *ngIf="!kdp_surveyfilled">
             <div class="dashboard-card">
                 <a [routerLink]="['/kap-survey']">
                     <svg id="Capa_1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
@@ -60,7 +60,7 @@
                 </a>
             </div>
         </div>
-        <div class="col-lg-3 " *ngIf="kdp_surveyfilled">
+        <div class="col-lg-3 col-md-6 col-6" *ngIf="kdp_surveyfilled">
             <div class="dashboard-card fill_color">
                 <a>
                     <svg id="Capa_1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
@@ -73,7 +73,7 @@
             </div>
         </div>
 
-        <div class="col-lg-3" *ngIf="userType=='i'">
+        <div class="col-lg-3 col-md-6 col-6" *ngIf="userType=='i'">
             <div class="dashboard-card">
                 <a [routerLink]="['/initiate_completed_list']">
                     <svg id="Capa_1" enable-background="new 0 0 510.5 510.5" height="512" viewBox="0 0 510.5 510.5" width="512" xmlns="http://www.w3.org/2000/svg">
@@ -89,7 +89,7 @@
                 </a>
             </div>
         </div>
-        <div class="col-lg-3" *ngIf="userType=='b'">
+        <div class="col-lg-3 col-md-6 col-6" *ngIf="userType=='b'">
             <div class="dashboard-card">
                 <a [routerLink]="['/begin-listing']">
                     <svg id="Capa_1" enable-background="new 0 0 510.5 510.5" height="512" viewBox="0 0 510.5 510.5" width="512" xmlns="http://www.w3.org/2000/svg">
@@ -106,7 +106,7 @@
             </div>
         </div>
 
-        <div class="col-lg-3">
+        <div class="col-lg-3 col-md-6 col-6">
             <div class="dashboard-card">
                 <a [routerLink]="['/how-it-works']">
                     <svg height="496pt" viewBox="0 0 496 496" width="496pt" xmlns="http://www.w3.org/2000/svg">
@@ -131,7 +131,7 @@
             </div>
         </div>
 
-        <div class="col-lg-3">
+        <div class="col-lg-3 col-md-6 col-6">
             <div class="dashboard-card">
                 <a [routerLink]="['/quries']">
                     <svg id="Capa_1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg">
@@ -150,7 +150,7 @@
             </div>
         </div>
 
-        <div class="col-lg-3">
+        <div class="col-lg-3 col-md-6 col-6">
             <div class="dashboard-card">
                 <a [routerLink]="['/change_password']">
                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512.004 512.004" style="enable-background:new 0 0 512.004 512.004;" xml:space="preserve">
@@ -200,7 +200,7 @@
             </div>
         </div>
 
-        <div class="col-lg-3">
+        <div class="col-lg-3 col-md-6 col-6">
             <div class="dashboard-card">
                 <a [routerLink]="['/invoice']">
                     <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512.003 512.003" style="enable-background:new 0 0 512.003 512.003;" xml:space="preserve">
@@ -272,7 +272,7 @@
             </div>
         </div>
 
-        <div class="col-lg-3">
+        <div class="col-lg-3 col-md-6 col-6">
             <div class="dashboard-card">
                 <a (click)="logout()">
                     <svg id="light" enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg">
