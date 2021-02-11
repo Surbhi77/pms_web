@@ -103,16 +103,19 @@
     align-items: center;
 }
 
-.dd {
+.combo-select {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-wrap: wrap;
 }
 
-.dd p {
+.dot {
     margin: 0;
 }
 
-.dd mat-form-field mat-select {
-    width: 40% !important;
+.Hemoglobin-value-1 {
+    width: 45%;
+}
+
+.Hemoglobin-value-2 {
+    width: 40%;
 }
