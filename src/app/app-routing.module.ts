@@ -4,7 +4,7 @@ import  {HowItWorksComponent} from './how-it-works/how-it-works.component';
 import {LoginComponent} from './auth/login/login.component';
 import {AddEntryComponent} from './add-entry/add-entry.component';
 import {InstrutionsComponent} from './instrutions/instrutions.component';
-import {InvoiceComponent} from './invoice/invoice.component';
+//import {InvoiceComponent} from './invoice/invoice.component';
 import {KapSurveyComponent} from './kap-survey/kap-survey.component';
 import {PatientLogsComponent} from './patient-logs/patient-logs.component';
 import { BeginListingComponent } from './begin-listing/begin-listing.component';
@@ -18,6 +18,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { QuriesComponent } from './quries/quries.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { InvoiceMediaComponent } from './invoice-media/invoice-media.component';
+import { InvoiceComponent } from './invoice/invoice.component';
 
 
 const routes: Routes = [
@@ -51,7 +52,7 @@ const routes: Routes = [
     ,canActivate : [AuthGuard]
   },
   {
-    path:'invoice',
+    path:'begin',
     component:InvoiceComponent
     ,canActivate : [AuthGuard]
   },
@@ -100,7 +101,7 @@ const routes: Routes = [
     ,canActivate : [AuthGuard]
   },
   {
-    path:'invoice-process',
+    path:'begin-process',
     component:InvoiceProcessComponent
     ,canActivate : [AuthGuard]
   },
@@ -119,7 +120,7 @@ const routes: Routes = [
     ,canActivate : [AuthGuard]
   },
   {
-    path:'invoice-media',
+    path:'invoice',
     component:InvoiceMediaComponent,
     canActivate : [AuthGuard]
 

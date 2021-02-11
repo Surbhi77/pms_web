@@ -28,7 +28,7 @@ export class InvoiceProcessComponent implements OnInit {
     if(this.form.valid){
       
     localStorage.setItem('mobile',this.form.value.mobile)
-    this.router.navigateByUrl('/invoice')
+    this.router.navigateByUrl('/begin')
    
     }
     else{

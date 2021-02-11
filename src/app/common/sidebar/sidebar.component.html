@@ -22,7 +22,7 @@
 
 
             <li>
-                <a [routerLink]="['/invoice-process']" *ngIf="userType=='b'">Add Entry</a>
+                <a [routerLink]="['/begin-process']" *ngIf="userType=='b'">Add Entry</a>
             </li>
             <li>
                 <a [routerLink]="['/initiate_completed_list']" *ngIf="userType=='i'">Patient Logs</a>
@@ -36,7 +36,7 @@
             </li>
 
             <li>
-                <a href="javascript:void(0);" [routerLink]="['/invoice-media']">Invoice</a>
+                <a href="javascript:void(0);" [routerLink]="['/invoice']">Invoice</a>
             </li>
 
 

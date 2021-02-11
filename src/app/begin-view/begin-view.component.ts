@@ -812,25 +812,27 @@ getdigit() {
     console.log(event)
     if (event.checked) {
       this.anti.push(name)
+      this.check=false
       console.log(this.anti)
     } else {
       let i = this.anti.indexOf(name);
       this.anti.splice(i, 1)
+      this.check=true
       console.log(this.anti)
     }
-    if (this.anti.length && this.antichecked.length) {
-      this.check=false
-      this.secondFormGroup.patchValue({
-        'people_with_tdm': this.anti.toString()
-      });
-      this.secondFormGroup.updateValueAndValidity()
-    } else {
-      this.check=true
-      this.secondFormGroup.patchValue({
-        'people_with_tdm': ''
-      })
-      this.secondFormGroup.updateValueAndValidity()
-    }
+    // if (this.anti.length && this.antichecked.length) {
+    //   this.check=false
+    //   this.secondFormGroup.patchValue({
+    //     'people_with_tdm': this.anti.toString()
+    //   });
+    //   this.secondFormGroup.updateValueAndValidity()
+    // } else {
+    //   this.check=true
+    //   this.secondFormGroup.patchValue({
+    //     'people_with_tdm': ''
+    //   })
+    //   this.secondFormGroup.updateValueAndValidity()
+    // }
   }
   onSecondSubmit(redirect) {
 

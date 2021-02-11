@@ -8,7 +8,7 @@ import { KapSurveyComponent } from './kap-survey/kap-survey.component';
 
 import { HowItWorksComponent } from './how-it-works/how-it-works.component';
 import { InstrutionsComponent } from './instrutions/instrutions.component';
-import { InvoiceComponent } from './invoice/invoice.component';
+//import { InvoiceComponent } from './invoice/invoice.component';
 import {LoginComponent} from  './auth/login/login.component'
 import {DragDropModule} from '@angular/cdk/drag-drop';
 // import {MatAutocompleteModule} from '@angular/material/autocomplete';
@@ -72,6 +72,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { InvoiceMediaComponent } from './invoice-media/invoice-media.component';
 import { RatePopupComponent } from './rate-popup/rate-popup.component';
 import { MbscModule } from '@mobiscroll/angular-lite';
+import { InvoiceComponent } from './invoice/invoice.component';
 
 
 
