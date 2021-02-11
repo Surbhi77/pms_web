@@ -78,11 +78,11 @@ input[type=checkbox] {
     transition: all 0.3s;
     box-sizing: border-box;
     cursor: pointer;
-    position: absolute;
+    position: fixed;
     z-index: 99;
     height: 100%;
     width: 100%;
-    top: 22px;
+    top: 25px;
     left: 15px;
     height: 22px;
     width: 22px;
@@ -141,5 +141,18 @@ input[type=checkbox]:checked~.sidebarIconToggle>.diagonal.part-2 {
     margin-top: -9px;
 }
 
+
+@media (max-width:767.99px) {
+
+    .sidebarIconToggle {
+        display: block;
+        right: 15px;
+        left: auto;
+    }
+
+    #sidebarMenu {
+        transform: translateX(-101%);
+    }
+}
 
 /* sitebar css */

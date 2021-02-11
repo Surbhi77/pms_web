@@ -65,3 +65,10 @@ button.login-btn:hover {
     background: #0f406b;
     color: #fff;
 }
+
+@media (max-width:767.99px) {
+    .login-block {
+        background: #f5f5f5;
+        box-shadow: none;
+    }
+}

@@ -84,7 +84,24 @@ body {
 }
 
 @media (max-width:767.99px) {
+    .cdk-overlay-pane {
+        max-width: 100% !important;
+        width: 90% !important;
+    }
 
+    .right-body {
+        float: left;
+        width: 100%;
+    }
+
+    .mat-stepper-label-position-bottom .mat-horizontal-stepper-header,
+    .mat-vertical-stepper-header {
+        padding: 20px 15px;
+    }
+
+    .mat-vertical-content-container {
+        margin-left: 27px !important;
+    }
 }
 
 @media (min-width:768px) and (max-width: 1023.99px) {

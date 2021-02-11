@@ -15,7 +15,7 @@
     </div>  -->
             <ng-template matStepLabel>KAP Survey: Insulin Initiation and Barriers for Insulin Initiation</ng-template>
             <form [formGroup]="firstFormGroup">
-                <div class="agger_group">
+                <div class="row agger_group">
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <div class="check_nones">
                             <p> I prefer to delay the initiation of insulin therapy until it is absolutely essential (after trying a combination of several classes of oral hypoglycemic add agents at maximal doses) </p>
@@ -34,7 +34,7 @@
                     </div>
                 </div>
 
-                <div class="agger_group">
+                <div class="row agger_group">
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <div class="check_nones">
                             <p> I believe that the initiation of insulin therapy is one of the most difficult aspects of managing my patients with T2DM </p>
@@ -54,7 +54,8 @@
 
 
                 </div>
-                <div class="agger_group">
+
+                <div class="row agger_group">
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <div class="check_nones">
                             <p> I believe that most of my patients will eventually need to go on insulin regardless of how well they adhere to their treatment regimen</p>
@@ -74,7 +75,8 @@
 
 
                 </div>
-                <div class="agger_group">
+
+                <div class="row agger_group">
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <div class="check_nones">
                             <p> I believe that for most of my patients, the benefits of insulin therapy outweigh the risks of hypoglycemia and weight gain. </p>
@@ -94,7 +96,8 @@
 
 
                 </div>
-                <div class="agger_group">
+
+                <div class="row agger_group">
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <div class="check_nones">
                             <p> I believe that most of my patients would benefit from receiving insulin therapy prior to the development of diabetes complications. </p>
@@ -114,7 +117,8 @@
 
 
                 </div>
-                <div class="agger_group">
+
+                <div class="row agger_group">
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <div class="check_nones">
                             <p> I believe that proper patient education and training are the keys to successful initiation of insulin therapy. </p>
@@ -134,7 +138,8 @@
 
 
                 </div>
-                <div class="agger_group">
+
+                <div class="row agger_group">
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <div class="check_nones">
                             <p> I believe that for most of my patients, training on the proper administration and usage of insulin is not complicated. </p>
@@ -154,7 +159,8 @@
 
 
                 </div>
-                <div class="agger_group">
+
+                <div class="row agger_group">
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <div class="check_nones">
                             <p> I believe that most of my patients on oral diabetes therapy do not accept insulin therapy. </p>
@@ -174,17 +180,23 @@
                 </div>
 
 
-
-                <div class="col-sm-12 col-lg-12 col-md-12">
-                    <button (click)="submitFirst()" class="next_btn" mat-button matStepperNext>Next</button>
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12 col-md-12">
+                        <button (click)="submitFirst()" class="next_btn" mat-button matStepperNext>Next</button>
+                    </div>
                 </div>
             </form>
         </mat-step>
         <mat-step [stepControl]="secondFormGroup">
             <ng-template matStepLabel>Reasons for reluctance to initiate insulin</ng-template>
             <form [formGroup]="secondFormGroup">
-                <button (click)="popup1()" class="next_btn">How to rate</button>
-                <div class="agger_group">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12 col-md-12">
+                        <button (click)="popup1()" class="next_btn">How to rate</button>
+                    </div>
+                </div>
+
+                <div class="row agger_group">
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <div class="check_nones">
                             <p>I may be reluctant to initiate insulin therapy for my patients with T2DM who: (Can you rate with order of importance in your practice where 1 being top most and 10 being least )</p>
@@ -200,12 +212,13 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
 
-                <div class="col-sm-12 col-lg-12 col-md-12">
-                    <button mat-button matStepperPrevious class="next_btn">Back</button>
-                    <button mat-button matStepperNext class="next_btn">Next</button>
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12 col-md-12">
+                        <button mat-button matStepperPrevious class="next_btn">Back</button>
+                        <button mat-button matStepperNext class="next_btn">Next</button>
+                    </div>
                 </div>
             </form>
         </mat-step>
@@ -213,8 +226,13 @@
         <mat-step [stepControl]="thirdFormGroup">
             <ng-template matStepLabel>Physician perspectives of patient barriers to insulin therapy</ng-template>
             <form [formGroup]="thirdFormGroup">
-                <button (click)="popup1()" class="next_btn">How to rate</button>
-                <div class="agger_group">
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12 col-md-12">
+                        <button (click)="popup1()" class="next_btn">How to rate</button>
+                    </div>
+                </div>
+
+                <div class="row agger_group">
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <div class="check_nones">
                             <p>In the order of the important barrier(s) for patient acceptance of insulin therapy, rate the following
@@ -229,12 +247,13 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
 
-                <div class="col-sm-12 col-lg-12 col-md-12">
-                    <button mat-button matStepperPrevious class="next_btn">Back</button>
-                    <button mat-button matStepperNext class="next_btn">Next</button>
+                <div class="row">
+                    <div class="col-sm-12 col-lg-12 col-md-12">
+                        <button mat-button matStepperPrevious class="next_btn">Back</button>
+                        <button mat-button matStepperNext class="next_btn">Next</button>
+                    </div>
                 </div>
             </form>
         </mat-step>
@@ -242,9 +261,8 @@
         <mat-step [stepControl]="forthFormGroup">
             <ng-template matStepLabel>Insulinisation barriers and outcomes</ng-template>
             <form [formGroup]="forthFormGroup">
-                <div class="agger_group">
+                <div class="row agger_group">
                     <div class="col-sm-12 col-lg-12 col-md-12">
-
                         <div class="check_nones">
                             <p>Out of 100 patients who are initiated on insulins, what percentage of patients adhere to the regimen for the below duration (Sum should be equal to 100)</p>
                             <h5> Sum : {{sum}}</h5>
@@ -257,18 +275,18 @@
                                         <p class="step_titles">6 months</p>
                                     </div>
                                 </div>
-                                <div class="col-lg-2">
-                                    <section class="example-section">
-                                        <span>0%</span>
-                                        <mat-slider color="primary" formControlName="six_months" #gridsize (change)="updateSetting($event)" step="5" min="0" max="100" [value]="gridsize" class="example-margin"></mat-slider>
-                                        <span>100%</span>
-                                        <!-- <div *ngIf="f.six_months.touched && f.six_months.invalid" class="alert alert-danger">
-                    <div *ngIf="f.six_months.errors.required" class="errors">Please select it</div>
-                  </div> -->
-                                        <!-- <mat-error *ngIf="hasError('six_months', 'required')">Set value is required</mat-error> -->
-                                    </section>
-                                    <div class="get_vals">
-                                        <p class="gridSizeValue">{{gridsize.value}}</p>
+
+                                <div class="col-lg-4">
+                                    <div class="process-box">
+                                        <div class="get_vals">
+                                            <p class="gridSizeValue">{{gridsize.value}}</p>
+                                        </div>
+
+                                        <section class="example-section">
+                                            <span>0%</span>
+                                            <mat-slider color="primary" formControlName="six_months" #gridsize (change)="updateSetting($event)" step="5" min="0" max="100" [value]="gridsize" class="example-margin"></mat-slider>
+                                            <span>100%</span>
+                                        </section>
                                     </div>
                                 </div>
                             </div>
@@ -279,14 +297,18 @@
                                         <p class="step_titles">One years – two tears</p>
                                     </div>
                                 </div>
-                                <div class="col-lg-2">
-                                    <section class="example-section">
-                                        <span>0%</span>
-                                        <mat-slider formControlName="one_to_two_year" color="primary" #grid (change)="updateSet($event)" step="5" min="0" max="100" [value]="gridsize" class="example-margin"></mat-slider>
-                                        <span>100%</span>
-                                    </section>
-                                    <div class="get_vals">
-                                        <p class="gridSizeValue">{{grid.value}}</p>
+
+                                <div class="col-lg-4">
+                                    <div class="process-box">
+                                        <div class="get_vals">
+                                            <p class="gridSizeValue">{{grid.value}}</p>
+                                        </div>
+
+                                        <section class="example-section">
+                                            <span>0%</span>
+                                            <mat-slider formControlName="one_to_two_year" color="primary" #grid (change)="updateSet($event)" step="5" min="0" max="100" [value]="gridsize" class="example-margin"></mat-slider>
+                                            <span>100%</span>
+                                        </section>
                                     </div>
                                 </div>
                             </div>
@@ -297,15 +319,19 @@
                                         <p class="step_titles">Three – Five years</p>
                                     </div>
                                 </div>
-                                <div class="col-lg-2">
-                                    <section class="example-section">
-                                        <span>0%</span>
-                                        <mat-slider color="primary" formControlName="three_to_five_year" #value (change)="updatevalue($event)" step="5" min="0" max="100" [value]="value" class="example-margin">
-                                        </mat-slider>
-                                        <span>100%</span>
-                                    </section>
-                                    <div class="get_vals">
-                                        <p class="gridSizeValue">{{value.value}}</p>
+
+                                <div class="col-lg-4">
+                                    <div class="process-box">
+                                        <div class="get_vals">
+                                            <p class="gridSizeValue">{{value.value}}</p>
+                                        </div>
+
+                                        <section class="example-section">
+                                            <span>0%</span>
+                                            <mat-slider color="primary" formControlName="three_to_five_year" #value (change)="updatevalue($event)" step="5" min="0" max="100" [value]="value" class="example-margin">
+                                            </mat-slider>
+                                            <span>100%</span>
+                                        </section>
                                     </div>
                                 </div>
                             </div>
@@ -315,22 +341,25 @@
                                         <p class="step_titles"> Five years</p>
                                     </div>
                                 </div>
-                                <div class="col-lg-2">
-                                    <section class="example-section">
-                                        <span>0%</span>
-                                        <mat-slider color="primary" formControlName="five_years" #setvalue (change)="setvalues($event)" step="5" min="0" max="100" [value]="setvalue" class="example-margin"></mat-slider>
-                                        <span>100%</span>
-                                    </section>
-                                    <div class="get_vals">
-                                        <p class="gridSizeValue">{{setvalue.value}}</p>
+
+                                <div class="col-lg-4">
+                                    <div class="process-box">
+                                        <div class="get_vals">
+                                            <p class="gridSizeValue">{{setvalue.value}}</p>
+                                        </div>
+
+                                        <section class="example-section">
+                                            <span>0%</span>
+                                            <mat-slider color="primary" formControlName="five_years" #setvalue (change)="setvalues($event)" step="5" min="0" max="100" [value]="setvalue" class="example-margin"></mat-slider>
+                                            <span>100%</span>
+                                        </section>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
 
 
-                        <div class="check_nones pt-4">
+                        <div class="check_nones pt-5">
                             <p>Impact of Insulin in people with T2DM (Choose three clinically impactful options)</p>
                         </div>
 
@@ -341,6 +370,7 @@
                                 <mat-checkbox color="primary" [disabled]="impacts.length>=3" (change)="impactChange($event,'Reducing')" formControlName="Reducing" class="example-margin d-block mb-2">Reducing the inflammatory markers</mat-checkbox>
                                 <mat-checkbox color="primary" [disabled]="impacts.length>=3" (change)="impactChange($event,'risk')" formControlName="risk" class="example-margin d-block mb-2">Reducing the CV risk factors</mat-checkbox>
                             </div>
+
                             <div class="col-lg-6">
                                 <mat-checkbox color="primary" [disabled]="impacts.length>=3" (change)="impactChange($event,'Micro')" formControlName="Micro" class="example-margin d-block mb-2">Micro Angiopathy</mat-checkbox>
                                 <mat-checkbox color="primary" [disabled]="impacts.length>=3" (change)="impactChange($event,'Reduce')" formControlName="Reduce" class="example-margin d-block mb-2">Reduce Infections</mat-checkbox>
@@ -364,17 +394,17 @@
                                 <p *ngIf="checklimiterro" class="alert alert-danger">Choose two clinically relevant options</p>
                             </div>
                         </div>
-
                     </div>
 
                 </div>
             </form>
-            <div class="col-sm-12 col-lg-12 col-md-12">
-                <button mat-button matStepperPrevious class="next_btn">Back</button>
-                <button mat-button (click)="submit()" class="next_btn">Submit</button>
+
+            <div class="row">
+                <div class="col-sm-12 col-lg-12 col-md-12">
+                    <button mat-button matStepperPrevious class="next_btn">Back</button>
+                    <button mat-button (click)="submit()" class="next_btn">Submit</button>
+                </div>
             </div>
-
-
         </mat-step>
     </mat-vertical-stepper>
 
