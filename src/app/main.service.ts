@@ -75,5 +75,11 @@ export class MainService {
   checkinvoice(data:any){
     return this.http.post("http://360pmt.com/pms-app/Pms_app/check_invoice", data)
      }
+     checkMobile(params:any){
+      let url = "http://360pmt.com/pms-app/Pms_app/check_mobile";
+      return this.http.post(url,params)
+       
+      
+    }
 
 }
