@@ -291,7 +291,7 @@
                                             <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getvaluediabetes()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
-                                      
+
                                         <mat-error *ngIf="hasError2('duration_hypertension', 'required')"> duration hypertension is required.</mat-error>
 
                                     </mat-form-field>
@@ -330,7 +330,7 @@
                                         <mat-select formControlName="systolic">
                                             <mat-option *ngFor="let index of getvaluefast()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
-                                       
+
                                         <mat-error *ngIf="hasError2('systolic', 'required')"> systolic is required.</mat-error>
                                     </mat-form-field>
                                 </div>
@@ -347,7 +347,7 @@
                                         <mat-select formControlName="diastolic">
                                             <mat-option *ngFor="let index of getvaluefast()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
-                                       
+
                                         <mat-error *ngIf="hasError2('diastolic', 'required')"> systolic is required.</mat-error>
                                     </mat-form-field>
                                 </div>
@@ -464,7 +464,7 @@
                                         <mat-radio-button value="no">No</mat-radio-button>
                                         <ng-container *ngIf="f.medications.touched && f.medications.invalid">
                                             <mat-error *ngIf="f.medications.errors.required" class="errors">
-                                                Hypertension  medications field is required
+                                                Hypertension medications field is required
                                             </mat-error>
                                         </ng-container>
                                         <!-- <mat-error *ngIf="hasError2('medications', 'required')">medications field is required</mat-error> -->
@@ -510,7 +510,7 @@
                                         <mat-radio-button value="no">No</mat-radio-button>
                                         <ng-container *ngIf="f.dyslipidemia_medication.touched && f.dyslipidemia_medication.invalid">
                                             <mat-error *ngIf="f.dyslipidemia_medication.errors.required" class="errors">
-                                                Dyslipidemia  medications field is required
+                                                Dyslipidemia medications field is required
                                             </mat-error>
                                         </ng-container>
                                         <!-- <mat-error *ngIf="hasError2('dyslipidemia_medication', 'required')">medications field is required</mat-error> -->
@@ -555,7 +555,7 @@
                                         <mat-radio-button value="no">No</mat-radio-button>
                                         <ng-container *ngIf="f.coronary_artery_medication.touched && f.coronary_artery_medication.invalid">
                                             <mat-error *ngIf="f.coronary_artery_medication.errors.required" class="errors">
-                                                Coronary artery  medications field is required
+                                                Coronary artery medications field is required
                                             </mat-error>
                                         </ng-container>
                                         <!-- <mat-error *ngIf="hasError2('coronary_artery_medication', 'required')">medications field is required</mat-error> -->
@@ -867,7 +867,7 @@
                                 <div class="check_nones">
                                     <p>Glycosylated Hemoglobin (HbA1c)</p>
                                 </div>
-                                <div class="entry-inputs-block">
+                                <!-- <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Hemoglobin</mat-label>
 
@@ -884,6 +884,25 @@
                                         </mat-error>
 
                                     </mat-form-field>
+                                </div> -->
+                                <div class="entry-inputs-block">
+                                    <mat-form-field>
+                                        <div class="combo-select">
+                                            <div class="Hemoglobin-value-1">
+                                                <!-- <mat-label>Hemoglobin</mat-label> -->
+                                                <mat-select formControlName="glycosylated" class="col-md-4">
+                                                    <mat-option *ngFor="let index of getvalues()" value="{{index}}">{{index}}</mat-option>
+                                                </mat-select>
+                                            </div>
+                                            <p class="dot">.</p>
+                                            <div class="Hemoglobin-value-2">
+                                                <mat-select formControlName="glycosylated_decimal" class="col-md-4">
+                                                    <mat-option *ngFor="let index of getdigit()" value="{{index}}">{{index}}</mat-option>
+                                                </mat-select>
+                                            </div>
+                                        </div>
+                                        <mat-error *ngIf="hasError3('glycosylated', 'required')">Blood investigation hba1c field is required</mat-error>
+                                    </mat-form-field>
                                 </div>
                             </div>
 
@@ -892,7 +911,7 @@
                                     <p>HbA1c test performed in Lab (HPLC)</p>
                                 </div>
 
-                                
+
                                 <div class="entry-inputs-block">
                                     <mat-radio-group formControlName="hbac_lab" color="primary" aria-label="Select an option">
                                         <mat-radio-button value="1" class="mr-5">Yes</mat-radio-button>
@@ -923,8 +942,8 @@
                                 </div>
                             </div>
 
-                          
-                            
+
+
                         </div>
                     </div>
 

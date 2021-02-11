@@ -837,7 +837,7 @@
                                 <div class="check_nones">
                                     <p>Glycosylated Hemoglobin (HbA1c)</p>
                                 </div>
-                                <div class="entry-inputs-block">
+                                <!-- <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Hemoglobin</mat-label>
                                         <mat-select formControlName="glycosylated">
@@ -850,6 +850,25 @@
                                         </mat-select>
                                         <mat-error *ngIf="hasError3('glycosylated_decimal', 'required')">Glycosylated Hemoglobin select field is required
                                         </mat-error>
+                                    </mat-form-field>
+                                </div> -->
+                                <div class="entry-inputs-block">
+                                    <mat-form-field>
+                                        <div class="combo-select">
+                                            <div class="Hemoglobin-value-1">
+                                                <!-- <mat-label>Hemoglobin</mat-label> -->
+                                                <mat-select formControlName="glycosylated" class="col-md-4">
+                                                    <mat-option *ngFor="let index of getvalues()" value="{{index}}">{{index}}</mat-option>
+                                                </mat-select>
+                                            </div>
+                                            <p class="dot">.</p>
+                                            <div class="Hemoglobin-value-2">
+                                                <mat-select formControlName="glycosylated_decimal" class="col-md-4">
+                                                    <mat-option *ngFor="let index of getdigit()" value="{{index}}">{{index}}</mat-option>
+                                                </mat-select>
+                                            </div>
+                                        </div>
+                                        <mat-error *ngIf="hasError3('glycosylated', 'required')">Blood investigation hba1c field is required</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>

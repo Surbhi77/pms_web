@@ -109,7 +109,7 @@
 }
 
 .dot {
-    margin: 0;
+    margin: 0 13px;
 }
 
 .Hemoglobin-value-1 {
@@ -117,5 +117,10 @@
 }
 
 .Hemoglobin-value-2 {
-    width: 40%;
+    width: 45%;
+}
+
+.combo-select mat-select {
+    width: inherit;
+    display: contents;
 }
