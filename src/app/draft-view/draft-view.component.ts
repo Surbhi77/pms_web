@@ -181,7 +181,8 @@ export class DraftViewComponent implements OnInit {
       nph_insulin_dinner: new FormControl(''),
       glargine_insulin_breakfast: new FormControl(''),
       glargine_insulin_lunch: new FormControl(''),
-      glargine_insulin_dinner: new FormControl('')
+      glargine_insulin_dinner: new FormControl(''),
+      diabetes_valid:new FormControl('',Validators.required)
 
     })
 
@@ -748,36 +749,36 @@ checkAntiDiabetes(name){
   //   }
   // }
   
-  antiDiabetes(event, name) {
-    console.log(event)
-    if (event.checked ) {
-      this.anti_diabetes.push(name)
+  // antiDiabetes(event, name) {
+  //   console.log(event)
+  //   if (event.checked ) {
+  //     this.anti_diabetes.push(name)
      
-      this.check=false
-      this.secondFormGroup.patchValue({
-        'diabetes_valid':this.anti_diabetes
-      })
-      this.secondFormGroup.updateValueAndValidity()
-     
-      console.log(this.anti_diabetes)
-    } else {
-      let i = this.anti_diabetes.indexOf(name);
-      this.anti_diabetes.splice(i, 1)
-      this.check=true
-      this.secondFormGroup.patchValue({
-        'diabetes_valid':''
-      })
-      this.secondFormGroup.updateValueAndValidity()
-      console.log(this.anti_diabetes)
-    }
-    if (this.anti_diabetes.length < 0 && this.antidiabetes.length < 0) {
-      this.check=true
       
-    } else {
-      this.check=false
+  //     this.secondFormGroup.patchValue({
+  //       'diabetes_valid':this.anti_diabetes
+  //     })
+  //     this.secondFormGroup.updateValueAndValidity()
      
-    }
-  }
+  //     console.log(this.anti_diabetes)
+  //   } else {
+  //     let i = this.anti_diabetes.indexOf(name);
+  //     this.anti_diabetes.splice(i, 1)
+    
+  //     this.secondFormGroup.patchValue({
+  //       'diabetes_valid':''
+  //     })
+  //     this.secondFormGroup.updateValueAndValidity()
+  //     console.log(this.anti_diabetes)
+  //   }
+  //   if (this.anti_diabetes.length ) {
+  //     this.check=false
+      
+  //   } else {
+  //     this.check=true
+     
+  //   }
+  // }
   
   // onclick(event: any) {
   //   console.log(event)
@@ -1137,13 +1138,41 @@ checkAntiDiabetes(name){
       })
     }
   }
+  antiDiabetes(event,name){
+    if(event.checked){
+      this.anti_diabetes.push(name)
+      console.log(this.anti_diabetes)
+     // this.check=false
+      this.secondFormGroup.patchValue({
+        'diabetes_valid':this.anti_diabetes.toString()
+      });
+      this.secondFormGroup.updateValueAndValidity()
+    }else{
+      var i = this.anti_diabetes.indexOf(name);
+      this.anti_diabetes.splice(i,1);
+      if(this.anti_diabetes.length){
+        this.secondFormGroup.patchValue({
+          'diabetes_valid':''
+        })
+        this.secondFormGroup.updateValueAndValidity()
+      }
+    }
+    if (this.anti_diabetes.length ) {
+      this.check=false
+    }
+    else{
+      this.check = true
+    }
+  }
   secondForm(event: any) {
 
     console.log(event)
-    if (!this.secondFormGroup.valid || this.anti_diabetes.length ==0 ) {  
+    if (!this.secondFormGroup.valid || this.anti_diabetes.length == 0 ) {  
      console.log(!this.secondFormGroup.valid)
       this.secondFormGroup.markAllAsTouched()
+      if(this.anti_diabetes.length == 0 ){
       this.check = true
+      }
       console.log("not valid")
       this.toastr.error("Please fill all the fields")
     }
