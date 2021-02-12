@@ -47,6 +47,16 @@
     display: flex;
 }
 
+.Invoice_Info {
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
+}
+
+.Invoice_Info .mat-checkbox {
+    margin-top: 2px;
+}
+
 @media (max-width:767.99px) {
     .data_notfound h1 {
         font-size: 24px;
@@ -54,5 +64,9 @@
     
     .data_notfound {
         text-align: center;
+    }
+
+    .Invoice_Info {
+        align-items: center;
     }
 }
