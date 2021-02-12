@@ -124,3 +124,7 @@
     width: inherit;
     display: contents;
 }
+
+.full-radio mat-radio-button {
+    display: block;
+}

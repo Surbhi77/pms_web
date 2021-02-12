@@ -36,5 +36,11 @@ export class SidebarComponent implements OnInit {
     this.isChecked=true;
 
   }
+  logout(){
+    localStorage.clear()
+    // localStorage.removeItem('email')
+    // localStorage.removeItem('password')
+    this.router.navigateByUrl('/login')
+  }
   
 }

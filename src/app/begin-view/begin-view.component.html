@@ -19,7 +19,7 @@
                             <p>Demographic data</p>
                         </div>
                     </div>
-                    
+
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <div class="row">
                             <div class="col-sm-12 col-lg-12 col-md-12">
@@ -812,16 +812,16 @@
         <!---------------------------------Step 03----------------------------------------->
 
         <mat-step [stepControl]="thirdFormGroup">
-            <ng-template matStepLabel>Medical History</ng-template>
+            <ng-template matStepLabel>Blood Investigation</ng-template>
             <form [formGroup]="thirdFormGroup">
                 <div class="row">
 
                     <div class="col-sm-12 col-lg-12 col-md-12 d-block d-md-none">
                         <div class="Step-Head mb-3">
-                            <p>Medical History</p>
+                            <p>Blood Investigation</p>
                         </div>
                     </div>
-                    
+
                     <div class="col-sm-12 col-lg-12 col-md-12 mb-2">
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12 mb-3">
@@ -985,19 +985,19 @@
                                 <div *ngIf="i.dose_insulin.errors.required" class="errors text-danger">Please select any one option </div>
                             </div>
                         </div>
-    
-    
+
+
                     </div>
-    
+
                     <div class="col-lg-12 col-md-12 col-12 mt-3">
                         <div class="entry-inputs-block">
                             <mat-checkbox color="primary" formControlName="glargine_insulin" (change)="oncheked10($event)" [checked]="garglineArray.glargine_insulin" class="example-margin d-block mb-2">Insulin Glargine (IU)
                             </mat-checkbox>
                         </div>
-    
+
                         <div class="row" *ngIf="glargine_condition">
                             <div class="col-lg-4 col-md-4 col-12 mb-3">
-    
+
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Breakfast (IU)</mat-label>
@@ -1009,7 +1009,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-12 mb-3">
-    
+
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Lunch (IU)</mat-label>
@@ -1020,11 +1020,11 @@
                                     </mat-form-field>
                                 </div>
                             </div>
-    
-    
-    
+
+
+
                             <div class="col-lg-4 col-md-4 col-12 mb-3">
-    
+
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Dinner (IU)</mat-label>
@@ -1037,7 +1037,7 @@
                             </div>
                         </div>
                     </div>
-    
+
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <button mat-button matStepperPrevious *ngIf="!completed" class="next_btn">Back</button>
                         <button mat-button matStepperPrevious *ngIf="completed" (click)="btnClick();" class="next_btn">Back</button>

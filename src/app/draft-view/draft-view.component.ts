@@ -130,7 +130,7 @@ export class DraftViewComponent implements OnInit {
       DPP4_Inhibitors: new FormControl(''),
       DoubleDrugFixed: new FormControl(''),
       TripleDrugFixed: new FormControl(''),
-      complication: new FormControl(''),
+     // complication: new FormControl(''),
       duration: new FormControl(''),
       medications: new FormControl(''),
       dyslipidemia_duration: new FormControl(''),
@@ -145,6 +145,7 @@ export class DraftViewComponent implements OnInit {
       retinopathy_medication: new FormControl(''),
       nephropathy_duration: new FormControl(''),
       nephropathy_medication: new FormControl(''),
+      diabetes_valid:new FormControl('',Validators.required)
 
     });
     
@@ -182,7 +183,7 @@ export class DraftViewComponent implements OnInit {
       glargine_insulin_breakfast: new FormControl(''),
       glargine_insulin_lunch: new FormControl(''),
       glargine_insulin_dinner: new FormControl(''),
-      diabetes_valid:new FormControl('',Validators.required)
+     
 
     })
 
@@ -551,7 +552,7 @@ populateDetails(){
     this.anti_diabetes = JSON.parse(this.viewData.anti_diabetes_medication);
     console.log(this.antidiabetes)
     this.secondFormGroup.patchValue({
-      'anti_diabetes_medication':this.antidiabetes.anti_diabetes_medication
+      'anti_diabetes_medication':this.antidiabetes
     })
     this.secondFormGroup.updateValueAndValidity();
    }  
@@ -674,8 +675,18 @@ populateDetails(){
 checkAntiDiabetes(name){
     
     if(this.antidiabetes.indexOf(name)>-1){
+     
+      this.secondFormGroup.patchValue({
+        'diabetes_valid':''
+      });
+      this.secondFormGroup.updateValueAndValidity()
       return true
+
     }else{
+      this.secondFormGroup.patchValue({
+        'diabetes_valid':this.anti_diabetes.toString()
+      });
+      this.secondFormGroup.updateValueAndValidity()
       return false
     }
    
@@ -723,78 +734,7 @@ checkAntiDiabetes(name){
   getdigit() {
     return Array.from({ length: 11 }, (v, k) => k );
   }
-  // antiDiabetes(event,name){
-  //   if(event.checked){
-  //     this.anti_diabetes.push(name)
-     
-  //   }else{
-  //     var i = this.anti_diabetes.indexOf(name);
-  //     this.anti_diabetes.splice(i,1);
-     
-  //   }
-  //   if (this.anti_diabetes.length && this.antiDiabetes.length) {
-  //     this.check=false
-  //     // this.secondFormGroup.patchValue({
-  //     //   "anti":this.anti_diabetes.toString()
-  //     // })
-  //     // this.secondFormGroup.updateValueAndValidity()
-      
-  //   }
-  //   else{
-  //     this.check = true
-  //     // this.secondFormGroup.patchValue({
-  //     //   "anti":''
-  //     // })
-
-  //   }
-  // }
   
-  // antiDiabetes(event, name) {
-  //   console.log(event)
-  //   if (event.checked ) {
-  //     this.anti_diabetes.push(name)
-     
-      
-  //     this.secondFormGroup.patchValue({
-  //       'diabetes_valid':this.anti_diabetes
-  //     })
-  //     this.secondFormGroup.updateValueAndValidity()
-     
-  //     console.log(this.anti_diabetes)
-  //   } else {
-  //     let i = this.anti_diabetes.indexOf(name);
-  //     this.anti_diabetes.splice(i, 1)
-    
-  //     this.secondFormGroup.patchValue({
-  //       'diabetes_valid':''
-  //     })
-  //     this.secondFormGroup.updateValueAndValidity()
-  //     console.log(this.anti_diabetes)
-  //   }
-  //   if (this.anti_diabetes.length ) {
-  //     this.check=false
-      
-  //   } else {
-  //     this.check=true
-     
-  //   }
-  // }
-  
-  // onclick(event: any) {
-  //   console.log(event)
-  //   if (event.value == 'yes' ) {
-  //     console.log(event.value)
-    
-  //     this.complications = 'yes';
-  //     this.complications = true;
-  //   }
-  //   else {
-  //     this.complications = 'no';
-  //     this.complications = false;
-     
-
-  //   }
-  // }
 
   onchange(event: any) {
 
@@ -1099,7 +1039,7 @@ checkAntiDiabetes(name){
      
       const formData = new FormData()
       let date = new Date(this.firstFormGroup.value.date_visit)
-      console.log(this.nowDate)
+     
       formData.append("user_id", JSON.parse(localStorage.getItem('doctor_id')));
       //formData.append("mobile",JSON.parse(localStorage.getItem('mobile')));
       formData.append("pen_serial", this.firstFormGroup.value.pen_serial);
@@ -1138,6 +1078,7 @@ checkAntiDiabetes(name){
       })
     }
   }
+  
   antiDiabetes(event,name){
     if(event.checked){
       this.anti_diabetes.push(name)
@@ -1150,7 +1091,8 @@ checkAntiDiabetes(name){
     }else{
       var i = this.anti_diabetes.indexOf(name);
       this.anti_diabetes.splice(i,1);
-      if(this.anti_diabetes.length){
+      if(this.anti_diabetes.length == 0){
+       // this.check = true
         this.secondFormGroup.patchValue({
           'diabetes_valid':''
         })
@@ -1161,6 +1103,7 @@ checkAntiDiabetes(name){
       this.check=false
     }
     else{
+      
       this.check = true
     }
   }
@@ -1168,9 +1111,9 @@ checkAntiDiabetes(name){
 
     console.log(event)
     if (!this.secondFormGroup.valid || this.anti_diabetes.length == 0 ) {  
-     console.log(!this.secondFormGroup.valid)
+     console.log(this.secondFormGroup.value)
       this.secondFormGroup.markAllAsTouched()
-      if(this.anti_diabetes.length == 0 ){
+      if(this.anti_diabetes.length == 0 && this.antidiabetes.length==0){
       this.check = true
       }
       console.log("not valid")
@@ -1178,6 +1121,8 @@ checkAntiDiabetes(name){
     }
     else {
       this.check = false
+      
+      this.secondFormGroup.updateValueAndValidity()
       const formData = new FormData()
       if(this.hypertension){
         this.medical.hypertension_dur = (this.secondFormGroup.value.hypertension_dur==true)?this.secondFormGroup.value.hypertension_dur:false;

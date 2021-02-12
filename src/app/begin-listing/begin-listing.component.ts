@@ -65,7 +65,7 @@ export class BeginListingComponent implements OnInit {
 
   }
   deletedata(ids,i){
-    if(window.confirm("Are You want to sure delete data sucessfully")){
+    if(window.confirm("Are You sure ?")){
    let formdata= new FormData();
    formdata.append('id',ids)
    console.log(ids)

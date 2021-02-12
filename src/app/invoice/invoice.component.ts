@@ -680,6 +680,7 @@ export class InvoiceComponent implements OnInit {
 
     var formData: any = new FormData();
     if (this.fourthFormGroup.valid) {
+      if(this.glargine_condition){
       this.glargineinsulinobj.glargine_insulin = (this.fourthFormGroup.value.glargine_insulin == true) ? this.fourthFormGroup.value.glargine_insulin : false;
       console.log(this.glargineinsulinobj)
       this.glargineinsulinobj.glargine_insulin_breakfast = this.fourthFormGroup.value.glargine_insulin_breakfast;
@@ -687,9 +688,11 @@ export class InvoiceComponent implements OnInit {
       this.glargineinsulinobj.glargine_insulin_lunch = this.fourthFormGroup.value.glargine_insulin_lunch;
       this.glargineinsulinobj.glargine_insulin_dinner = this.fourthFormGroup.value.glargine_insulin_dinner;
       console.log(this.glargineinsulinobj)
+      formData.append('glargine_insulin', JSON.stringify(this.glargineinsulinobj));
+      }
       formData.append('dose_insulin', this.fourthFormGroup.value.dose_insulin);
       console.log(this.fourthFormGroup.value.dose_insulin);
-      formData.append('glargine_insulin', JSON.stringify(this.glargineinsulinobj));
+     
       formData.append('id',this.formId);
       formData.append('status','yes');
       this.service.postAddBegin(formData).subscribe(res => {
@@ -699,8 +702,9 @@ export class InvoiceComponent implements OnInit {
       })
     } else {
       console.log('not valid')
-      this.toastr.error("Please fill all the fields")
+    
       this.fourthFormGroup.markAllAsTouched()
+      this.toastr.error("Please fill all the fields")
     }
 
 

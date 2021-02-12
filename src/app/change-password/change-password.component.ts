@@ -44,6 +44,7 @@ export class ChangePasswordComponent implements OnInit {
        console.log(res)
 
         this.toastr.info("password change successfully")
+        this.router.navigateByUrl('/dashboard')
      })
 
 
