@@ -64,7 +64,7 @@
                                         <mat-radio-button value="female">Female</mat-radio-button>
                                         <!-- <mat-error *ngIf="hasError('sex', 'required')">sex field is required</mat-error> -->
                                         <div *ngIf="g.sex.touched && g.sex.invalid" class="text-danger">
-                                            <div *ngIf="g.sex.errors.required" class="errors">sex field is required</div>
+                                            <div *ngIf="g.sex.errors.required" class="errors">Sex field is required</div>
                                         </div>
                                     </mat-radio-group>
 
@@ -92,7 +92,7 @@
                                     <mat-form-field class="example-full-width">
                                         <mat-label>Enter Age in years</mat-label>
                                         <input type="number" matInput formControlName="age" placeholder="Ex. 24 Year" value="">
-                                        <mat-error *ngIf="hasError('age', 'required')">age field is required</mat-error>
+                                        <mat-error *ngIf="hasError('age', 'required')">Age field is required</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -104,7 +104,7 @@
                                         <mat-select formControlName="weight" (selectionChange)="weight($event)">
                                             <mat-option *ngFor="let index of getWeight();" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
-                                        <mat-error *ngIf="hasError('weight', 'required')">weight field is required</mat-error>
+                                        <mat-error *ngIf="hasError('weight', 'required')">Weight field is required</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -122,7 +122,7 @@
                                             <mat-option *ngFor="let index of getHeight() " value='{{index}}'>{{index}}</mat-option>
 
                                         </mat-select>
-                                        <mat-error *ngIf="hasError('height', 'required')">height field is required</mat-error>
+                                        <mat-error *ngIf="hasError('height', 'required')">Height field is required</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -167,7 +167,7 @@
                                 </div>
                                 <div class="entry-inputs-block">
                                     <mat-radio-group formControlName="employment" class="full-radio" color="primary" aria-label="Select an option">
-                                        <mat-radio-button value="None" class="mr-5">None</mat-radio-button>
+                                        <mat-radio-button value="none" class="mr-5">None</mat-radio-button>
                                         <mat-radio-button value="Employed" class="mr-5">Employed</mat-radio-button>
                                         <mat-radio-button value="Unemployed">Unemployed</mat-radio-button>
                                         <!-- <mat-error *ngIf="hasError('employment', 'required')">employment field is required</mat-error> -->
@@ -258,7 +258,7 @@
                                         <mat-radio-button value="0">No</mat-radio-button>
                                         <!-- <mat-error *ngIf="hasError2('family_diabetes', 'required')">family_diabetes field is required</mat-error> -->
                                         <div *ngIf="f.family_diabetes.touched && f.family_diabetes.invalid" class="text-danger">
-                                            <div *ngIf="f.family_diabetes.errors.required" class="errors">Employment field is required</div>
+                                            <div *ngIf="f.family_diabetes.errors.required" class="errors">Family Diabetes field is required</div>
                                         </div>
                                     </mat-radio-group>
 
@@ -316,7 +316,7 @@
                                         <mat-select formControlName="systolic">
                                             <mat-option *ngFor="let index of getSystolic()" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
-                                        <mat-error *ngIf="hasError2('systolic', 'required')">systolic field is required</mat-error>
+                                        <mat-error *ngIf="hasError2('systolic', 'required')">Systolic field is required</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -332,7 +332,7 @@
                                         <mat-select formControlName="diastolic">
                                             <mat-option *ngFor="let index of getDiastolic()" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
-                                        <mat-error *ngIf="hasError2('diastolic', 'required')">diastolic field is required</mat-error>
+                                        <mat-error *ngIf="hasError2('diastolic', 'required')">Diastolic field is required</mat-error>
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -452,7 +452,7 @@
                                             <mat-option value="0">Less than one year</mat-option>
                                             <mat-option *ngFor="let index of getHyperdur();" value='{{index}}'>{{index}}</mat-option>
                                         </mat-select>
-                                        <mat-error *ngIf="hasError2('duration', 'required')">duration field is required</mat-error>
+                                        <mat-error *ngIf="hasError2('duration', 'required')">Duration field is required</mat-error>
 
                                     </mat-form-field>
 
@@ -970,15 +970,15 @@
                                     <p>Insulin initiated with initiation dose & time</p>
                                 </div>
                             </div>
-    
+
                             <div class="col-lg-12 col-md-12 col-12 mb-3 mt-3">
                                 <div class="entry-inputs-block">
                                     <mat-checkbox color="primary" formControlName="human_premixed_thirty" (change)="oncheked8($event,'human_premixed_thirty')" class="example-margin d-block mb-2">Human Premixed 30/70 (In Units)</mat-checkbox>
                                 </div>
-    
+
                                 <div class="row" *ngIf="human_premixedthirty">
                                     <div class="col-lg-4 col-md-4 col-12 mb-3">
-    
+
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Breakfast</mat-label>
@@ -990,7 +990,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-12 mb-3">
-    
+
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Lunch</mat-label>
@@ -1002,7 +1002,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-12 mb-3">
-    
+
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Dinner</mat-label>
@@ -1019,10 +1019,10 @@
                                 <div class="entry-inputs-block">
                                     <mat-checkbox color="primary" formControlName="human_premixed_fifty" (change)="oncheked9($event,'human_premixed_fifty')" class="example-margin d-block mb-2">Human Premixed 50/50 (In Units)</mat-checkbox>
                                 </div>
-    
+
                                 <div class="row" *ngIf="human_premixedfifty">
                                     <div class="col-lg-4 col-md-4 col-12 mb-3">
-    
+
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Breakfast</mat-label>
@@ -1034,7 +1034,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-12 mb-3">
-    
+
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Lunch</mat-label>
@@ -1045,10 +1045,10 @@
                                             </mat-form-field>
                                         </div>
                                     </div>
-    
-    
+
+
                                     <div class="col-lg-4 col-md-4 col-12 mb-3">
-    
+
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Dinner</mat-label>
@@ -1065,10 +1065,10 @@
                                 <div class="entry-inputs-block">
                                     <mat-checkbox color="primary" formControlName="regular_insulin" (change)="oncheked10($event);" class="example-margin d-block mb-2">Regular insulin (In Units)</mat-checkbox>
                                 </div>
-    
+
                                 <div class="row" *ngIf="regular">
                                     <div class="col-lg-4 col-md-4 col-12 mb-3">
-    
+
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Breakfast</mat-label>
@@ -1080,7 +1080,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-12 mb-3">
-    
+
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Lunch</mat-label>
@@ -1091,9 +1091,9 @@
                                             </mat-form-field>
                                         </div>
                                     </div>
-    
+
                                     <div class="col-lg-4 col-md-4 col-12 mb-3">
-    
+
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Dinner</mat-label>
@@ -1106,15 +1106,15 @@
                                     </div>
                                 </div>
                             </div>
-    
+
                             <div class="col-lg-12 col-md-12 col-12 mb-3">
                                 <div class="entry-inputs-block">
                                     <mat-checkbox color="primary" formControlName="nph_insulin" (change)="oncheked11($event)" class="example-margin d-block mb-2">Regular NPH (In Units)</mat-checkbox>
                                 </div>
-    
+
                                 <div class="row" *ngIf="nph">
                                     <div class="col-lg-4 col-md-4 col-12 mb-3">
-    
+
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Breakfast</mat-label>
@@ -1126,7 +1126,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-12 mb-3">
-    
+
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Lunch</mat-label>
@@ -1138,7 +1138,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-12 mb-3">
-    
+
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Dinner</mat-label>
@@ -1155,10 +1155,10 @@
                                 <div class="entry-inputs-block">
                                     <mat-checkbox color="primary" formControlName="glargine_insulin" (change)="oncheked12($event)" class="example-margin d-block mb-2">Insulin Glargine (In Units)</mat-checkbox>
                                 </div>
-    
+
                                 <div class="row" *ngIf="glargine">
                                     <div class="col-lg-4 col-md-4 col-12 mb-3">
-    
+
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Breakfast</mat-label>
@@ -1170,7 +1170,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-12 mb-3">
-    
+
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Lunch</mat-label>
@@ -1181,11 +1181,11 @@
                                             </mat-form-field>
                                         </div>
                                     </div>
-    
-    
-    
+
+
+
                                     <div class="col-lg-4 col-md-4 col-12 mb-3">
-    
+
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Dinner</mat-label>
@@ -1196,16 +1196,16 @@
                                             </mat-form-field>
                                         </div>
                                     </div>
-    
+
                                 </div>
                                 <p *ngIf="humancheck" class="errors text-danger">Please Select At least one </p>
                             </div>
-    
+
                             <div class="col-sm-12 col-lg-12 col-md-12">
                                 <button mat-button matStepperPrevious class="next_btn">Back</button>
                                 <button mat-button type="submit" (click)="submit(true);" class="next_btn">Submit</button>
                             </div>
-    
+
                         </div>
                     </div>
                 </div>

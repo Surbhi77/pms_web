@@ -580,10 +580,10 @@ export class BeginViewComponent implements OnInit {
       this.secondFormGroup.updateValueAndValidity()
       return true
     }else{
-      this.secondFormGroup.patchValue({
-        'diabetes_valid':''
-      });
-      this.secondFormGroup.updateValueAndValidity()
+      // this.secondFormGroup.patchValue({
+      //   'diabetes_valid':''
+      // });
+      // this.secondFormGroup.updateValueAndValidity()
       return false
     }
     

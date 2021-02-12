@@ -674,23 +674,23 @@ populateDetails(){
 
 checkAntiDiabetes(name){
     
-    if(this.antidiabetes.indexOf(name)>-1){
-     
-      this.secondFormGroup.patchValue({
-        'diabetes_valid':''
-      });
-      this.secondFormGroup.updateValueAndValidity()
-      return true
-
-    }else{
-      this.secondFormGroup.patchValue({
-        'diabetes_valid':this.anti_diabetes.toString()
-      });
-      this.secondFormGroup.updateValueAndValidity()
-      return false
-    }
    
+  if(this.antidiabetes.indexOf(name)>-1){
+    this.secondFormGroup.patchValue({
+      'diabetes_valid':this.anti_diabetes.toString()
+    });
+    this.secondFormGroup.updateValueAndValidity()
+    return true
+  }else{
+    // this.secondFormGroup.patchValue({
+    //   'diabetes_valid':''
+    // });
+    // this.secondFormGroup.updateValueAndValidity()
+    return false
   }
+  
+ 
+}
  
   getCreatinine() {
     return Array.from({length:50 }, (_value , k=1) => ((k / 10)+0.1).toFixed(1) );
@@ -1079,6 +1079,34 @@ checkAntiDiabetes(name){
     }
   }
   
+  // antiDiabetes(event,name){
+  //   if(event.checked){
+  //     this.anti_diabetes.push(name)
+  //     console.log(this.anti_diabetes)
+  //    // this.check=false
+  //     this.secondFormGroup.patchValue({
+  //       'diabetes_valid':this.anti_diabetes.toString()
+  //     });
+  //     this.secondFormGroup.updateValueAndValidity()
+  //   }else{
+  //     var i = this.anti_diabetes.indexOf(name);
+  //     this.anti_diabetes.splice(i,1);
+  //     if(this.anti_diabetes.length == 0){
+  //      // this.check = true
+  //       this.secondFormGroup.patchValue({
+  //         'diabetes_valid':''
+  //       })
+  //       this.secondFormGroup.updateValueAndValidity()
+  //     }
+  //   }
+  //   if (this.anti_diabetes.length ) {
+  //     this.check=false
+  //   }
+  //   else{
+      
+  //     this.check = true
+  //   }
+  // }
   antiDiabetes(event,name){
     if(event.checked){
       this.anti_diabetes.push(name)
@@ -1101,9 +1129,9 @@ checkAntiDiabetes(name){
     }
     if (this.anti_diabetes.length ) {
       this.check=false
+      
     }
     else{
-      
       this.check = true
     }
   }

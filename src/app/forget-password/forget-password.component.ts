@@ -37,7 +37,7 @@ export class ForgetPasswordComponent implements OnInit {
       //   this.toastr.info("Login Successfully")
       //   }
 
-       this.toastr.info("forget password Link send on Emailid  successfully")
+       this.toastr.info("forget password Link send on your registered Email id...")
        this.router.navigateByUrl("/login");
     })
 

@@ -29,8 +29,11 @@ dialog {
     margin: auto !important;
 }
 
-@media (max-width:767.98) {
+@media (max-width:767.98px) {
     .next_btn {
+        letter-spacing: 1px;
+        position: absolute;
         left: 300px;
+        top: -17px;
     }
 }
