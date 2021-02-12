@@ -64,6 +64,7 @@
     background: #f39d2d;
 }
 
+
 input[type="checkbox"]:checked~#sidebarMenu {
     transform: translateX(0);
 }
