@@ -86,18 +86,20 @@
     min-width: 200px;
 }
 
-.p-half-r {
-    padding-right: 7.5px;
-}
-
-.p-half-l {
-    padding-left: 7.5px;
-}
-
 /* table croll  */
 
-.patient-list-tbl {
-    height: 380px;
-    overflow-y: scroll;
+.scroll-list {
+    overflow-y: auto;
     overflow-x: hidden;
+    max-height: 380px;
+}
+
+@media (max-width:767.99px) {
+    .scroll-list {
+        overflow-x: visible;
+    }
+
+    .w-200 {
+        min-width: auto;
+    }
 }

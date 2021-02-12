@@ -142,6 +142,23 @@ input[type=checkbox]:checked~.sidebarIconToggle>.diagonal.part-2 {
     margin-top: -9px;
 }
 
+.user-setup-nav {
+    display: flex !important;
+    justify-content: flex-start;
+    padding: 10px 0;
+}
+
+.user-setup-nav img {
+    filter: invert(1);
+}
+
+.user-setup-nav a:before {
+    display: none;
+}
+
+.sidebarMenuInner .user-setup-nav a {
+    padding: 10px !important;
+}
 
 @media (max-width:767.99px) {
 
@@ -154,6 +171,8 @@ input[type=checkbox]:checked~.sidebarIconToggle>.diagonal.part-2 {
     #sidebarMenu {
         transform: translateX(-101%);
     }
+
+    
 }
 
 /* sitebar css */

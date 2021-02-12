@@ -13,10 +13,17 @@
             <ng-template matStepLabel>Demographic data</ng-template>
             <form [formGroup]="firstFormGroup">
                 <div class="row">
+
+                    <div class="col-sm-12 col-lg-12 col-md-12 d-block d-md-none">
+                        <div class="Step-Head mb-3">
+                            <p>Demographic data</p>
+                        </div>
+                    </div>
+                    
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <div class="row">
                             <div class="col-sm-12 col-lg-12 col-md-12">
-                                <div class="check_nones mb-3">
+                                <div class="check_nones mb-2">
                                     <p>Pen Serial No.</p>
                                 </div>
                             </div>
@@ -48,7 +55,7 @@
                     </div>
 
                     <div class="col-sm-12 col-lg-12 col-md-12">
-                        <div class="check_nones">
+                        <div class="check_nones mb-2">
                             <p>Sex</p>
                         </div>
 
@@ -133,12 +140,12 @@
 
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p> Education</p>
                                 </div>
                                 <div class="entry-inputs-block">
 
-                                    <mat-radio-group formControlName="education" color="primary" formControlName="education" aria-label="Select an option" value="{{beginview.education}}">
+                                    <mat-radio-group formControlName="education" class="full-radio" color="primary" formControlName="education" aria-label="Select an option" value="{{beginview.education}}">
                                         <mat-radio-button value="none" class="mr-5">None</mat-radio-button>
                                         <mat-radio-button value="Primary" class="mr-5">Primary</mat-radio-button>
                                         <mat-radio-button value="High school">High School</mat-radio-button>
@@ -152,11 +159,11 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-12">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>Employment</p>
                                 </div>
                                 <div class="entry-inputs-block">
-                                    <mat-radio-group formControlName="employment" color="primary" formControlName="employment" aria-label="Select an option" value="{{beginview.employment}}">
+                                    <mat-radio-group formControlName="employment" class="full-radio" color="primary" formControlName="employment" aria-label="Select an option" value="{{beginview.employment}}">
                                         <mat-radio-button value="none" class="mr-5">None</mat-radio-button>
                                         <mat-radio-button value="Employed" class="mr-5">Employed</mat-radio-button>
                                         <mat-radio-button value="Unemployed">Unemployed</mat-radio-button>
@@ -183,6 +190,13 @@
             <ng-template matStepLabel>Medical History</ng-template>
             <form [formGroup]="secondFormGroup">
                 <div class="row">
+
+                    <div class="col-sm-12 col-lg-12 col-md-12 d-block d-md-none">
+                        <div class="Step-Head mb-3">
+                            <p>Medical History</p>
+                        </div>
+                    </div>
+
                     <div class="col-sm-12 col-lg-12 col-md-12 mb-3">
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12">
@@ -218,7 +232,7 @@
                         <div class="row">
 
                             <div class="col-lg-4 col-md-4 col-12">
-                                <div class="check_nones mb-3">
+                                <div class="check_nones mb-2">
                                     <p>Family history of Diabetes:</p>
                                 </div>
 
@@ -242,7 +256,7 @@
                     <div class="col-sm-12 col-lg-12 col-md-12 mb-3">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-12">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>Hypertension:</p>
                                 </div>
                             </div>
@@ -282,7 +296,7 @@
                     <div class="col-sm-12 col-lg-12 col-md-12 mb-3">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-12">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>Blood Pressure:</p>
                                 </div>
                             </div>
@@ -316,7 +330,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12 col-12">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>Blood Pressure:</p>
                                 </div>
                             </div>
@@ -339,7 +353,7 @@
                     <div class="col-sm-12 col-lg-12 col-md-12  mb-3">
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12 mb-3">
-                                <div class="check_nones mb-3">
+                                <div class="check_nones mb-2">
                                     <p>Smoking :</p>
                                 </div>
 
@@ -358,7 +372,7 @@
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12 mb-3">
-                                <div class="check_nones mb-3">
+                                <div class="check_nones mb-2">
                                     <p>Alcohol :</p>
                                 </div>
 
@@ -383,7 +397,7 @@
                     <div class="col-sm-12 col-lg-12 col-md-12 mb-3">
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12 mb-3">
-                                <div class="check_nones mb-3">
+                                <div class="check_nones mb-2">
                                     <p>Complications and Co morbid medical conditions:</p>
                                 </div>
 
@@ -417,7 +431,7 @@
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12" *ngIf="hypertension">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>Duration</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -433,8 +447,8 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-4 col-md-4 col-12" *ngIf="hypertension">
-                                <div class="check_nones mb-3">
+                            <div class="col-lg-4 col-md-4 col-12 mb-3" *ngIf="hypertension">
+                                <div class="check_nones mb-2">
 
                                     <p>Medication :</p>
                                 </div>
@@ -464,7 +478,7 @@
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12" *ngIf="dyslipidemia">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>Duration</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -479,8 +493,8 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-4 col-md-4 col-12" *ngIf="dyslipidemia">
-                                <div class="check_nones mb-3">
+                            <div class="col-lg-4 col-md-4 col-12 mb-3" *ngIf="dyslipidemia">
+                                <div class="check_nones mb-2">
                                     <p>Medication :</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -508,7 +522,7 @@
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12" *ngIf="coronary">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>Duration</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -523,8 +537,8 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-4 col-md-4 col-12" *ngIf="coronary">
-                                <div class="check_nones mb-3">
+                            <div class="col-lg-4 col-md-4 col-12 mb-3" *ngIf="coronary">
+                                <div class="check_nones mb-2">
                                     <p>Medication :</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -552,7 +566,7 @@
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12" *ngIf="stroke">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>Duration</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -567,8 +581,8 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-4 col-md-4 col-12" *ngIf="stroke">
-                                <div class="check_nones mb-3">
+                            <div class="col-lg-4 col-md-4 col-12 mb-3" *ngIf="stroke">
+                                <div class="check_nones mb-2">
                                     <p>Medication :</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -596,7 +610,7 @@
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12" *ngIf="neuropathy">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>Duration</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -611,8 +625,8 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-4 col-md-4 col-12" *ngIf="neuropathy">
-                                <div class="check_nones mb-3">
+                            <div class="col-lg-4 col-md-4 col-12 mb-3" *ngIf="neuropathy">
+                                <div class="check_nones mb-2">
                                     <p>Medication :</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -640,7 +654,7 @@
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12" *ngIf="retinopathy">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>Duration</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -655,8 +669,8 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-4 col-md-4 col-12" *ngIf="retinopathy">
-                                <div class="check_nones mb-3">
+                            <div class="col-lg-4 col-md-4 col-12 mb-3" *ngIf="retinopathy">
+                                <div class="check_nones mb-2">
                                     <p>Medication :</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -684,7 +698,7 @@
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-12" *ngIf="nephropathy">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>Duration</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -699,8 +713,8 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-4 col-md-4 col-12" *ngIf="nephropathy">
-                                <div class="check_nones mb-3">
+                            <div class="col-lg-4 col-md-4 col-12 mb-3" *ngIf="nephropathy">
+                                <div class="check_nones mb-2">
                                     <p>Medication :</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -721,7 +735,7 @@
                     <div class="col-sm-12 col-lg-12 col-md-12 mb-3">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-12">
-                                <div class="check_nones mb-3">
+                                <div class="check_nones mb-2">
                                     <p>Anti-Diabetes Medication (except Insulin) :</p>
                                 </div>
                             </div>
@@ -801,10 +815,17 @@
             <ng-template matStepLabel>Medical History</ng-template>
             <form [formGroup]="thirdFormGroup">
                 <div class="row">
+
+                    <div class="col-sm-12 col-lg-12 col-md-12 d-block d-md-none">
+                        <div class="Step-Head mb-3">
+                            <p>Medical History</p>
+                        </div>
+                    </div>
+                    
                     <div class="col-sm-12 col-lg-12 col-md-12 mb-2">
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-12 mb-3">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>Fasting Plasma Glucose (FPG)</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -819,7 +840,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-12 mb-3">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>Postprandial Plasma Glucose (PPG)</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -834,7 +855,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-12 mb-3">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>Glycosylated Hemoglobin (HbA1c)</p>
                                 </div>
                                 <!-- <div class="entry-inputs-block">
@@ -873,7 +894,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-12 mb-3">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>HbA1c test performed to Lab(HPLC)</p>
                                 </div>
                                 <!-- <div class="entry-inputs-block">
@@ -903,7 +924,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-12 mb-3">
-                                <div class="check_nones">
+                                <div class="check_nones mb-2">
                                     <p>S.Creatinine (mg/dl)</p>
                                 </div>
                                 <div class="entry-inputs-block">
@@ -938,81 +959,91 @@
             <ng-template matStepLabel>Insulinisation</ng-template>
             <form [formGroup]="fourthFormGroup">
 
-                <div class="col-lg-12 col-md-12 col-12">
-                    <div class="check_nones mb-3">
-                        <p>Dose of Insulin Glargine at initiation: </p>
-                    </div>
-                    <div class="entry-inputs-block">
-                        <mat-radio-group color="primary" formControlName="dose_insulin">
-                            <mat-radio-button value="0.1U/kg body weight" class="mr-2">0.1U/kg body weight
-                            </mat-radio-button>
-                            <mat-radio-button value="0.2U/kg body weight" class="mr-2">0.2U/Kg body weight
-                            </mat-radio-button>
-                            <br>
-                            <mat-radio-button value="10 U" class="mr-2">10 U</mat-radio-button>
-                            <mat-radio-button value="Other" class="mr-2">Others</mat-radio-button>
-                        </mat-radio-group>
-                        <div *ngIf="i.dose_insulin.touched && i.dose_insulin.invalid">
-                            <div *ngIf="i.dose_insulin.errors.required" class="errors text-danger">Please select any one option </div>
+                <div class="row">
+
+                    <div class="col-sm-12 col-lg-12 col-md-12 d-block d-md-none">
+                        <div class="Step-Head mb-3">
+                            <p>Insulinisation</p>
                         </div>
                     </div>
 
-
-                </div>
-                <div class="col-lg-12 col-md-12 col-12 mt-3">
-                    <div class="entry-inputs-block">
-                        <mat-checkbox color="primary" formControlName="glargine_insulin" (change)="oncheked10($event)" [checked]="garglineArray.glargine_insulin" class="example-margin d-block mb-2">Insulin Glargine (IU)
-                        </mat-checkbox>
-                    </div>
-
-                    <div class="row" *ngIf="glargine_condition">
-                        <div class="col-lg-4 col-md-4 col-12 mb-3">
-
-                            <div class="entry-inputs-block">
-                                <mat-form-field>
-                                    <mat-label>Breakfast (IU)</mat-label>
-                                    <mat-select formControlName="glargine_insulin_breakfast">
-                                        <mat-option *ngFor="let index of getmulvalues()" value="{{index}}">{{index}}</mat-option>
-                                    </mat-select>
-                                    <mat-error *ngIf="hasError4('glargine_insulin_breakfast', 'required')">Glargine insulin breakfast field is required</mat-error>
-                                </mat-form-field>
+                    <div class="col-lg-12 col-md-12 col-12">
+                        <div class="check_nones mb-2">
+                            <p>Dose of Insulin Glargine at initiation: </p>
+                        </div>
+                        <div class="entry-inputs-block">
+                            <mat-radio-group color="primary" formControlName="dose_insulin">
+                                <mat-radio-button value="0.1U/kg body weight" class="mr-2">0.1U/kg body weight
+                                </mat-radio-button>
+                                <mat-radio-button value="0.2U/kg body weight" class="mr-2">0.2U/Kg body weight
+                                </mat-radio-button>
+                                <br>
+                                <mat-radio-button value="10 U" class="mr-2">10 U</mat-radio-button>
+                                <mat-radio-button value="Other" class="mr-2">Others</mat-radio-button>
+                            </mat-radio-group>
+                            <div *ngIf="i.dose_insulin.touched && i.dose_insulin.invalid">
+                                <div *ngIf="i.dose_insulin.errors.required" class="errors text-danger">Please select any one option </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-12 mb-3">
-
-                            <div class="entry-inputs-block">
-                                <mat-form-field>
-                                    <mat-label>Lunch (IU)</mat-label>
-                                    <mat-select formControlName="glargine_insulin_lunch">
-                                        <mat-option *ngFor="let index of getmulvalues()" value="{{index}}">{{index}}</mat-option>
-                                    </mat-select>
-                                    <mat-error *ngIf="hasError4('glargine_insulin_lunch', 'required')">Glargine insulin lunch field is required</mat-error>
-                                </mat-form-field>
-                            </div>
+    
+    
+                    </div>
+    
+                    <div class="col-lg-12 col-md-12 col-12 mt-3">
+                        <div class="entry-inputs-block">
+                            <mat-checkbox color="primary" formControlName="glargine_insulin" (change)="oncheked10($event)" [checked]="garglineArray.glargine_insulin" class="example-margin d-block mb-2">Insulin Glargine (IU)
+                            </mat-checkbox>
                         </div>
-
-
-
-                        <div class="col-lg-4 col-md-4 col-12 mb-3">
-
-                            <div class="entry-inputs-block">
-                                <mat-form-field>
-                                    <mat-label>Dinner (IU)</mat-label>
-                                    <mat-select formControlName="glargine_insulin_dinner">
-                                        <mat-option *ngFor="let index of getmulvalues()" value="{{index}}">{{index}}</mat-option>
-                                    </mat-select>
-                                    <mat-error *ngIf="hasError4('glargine_insulin_dinner', 'required')">Glargine insulin dinner field is required</mat-error>
-                                </mat-form-field>
+    
+                        <div class="row" *ngIf="glargine_condition">
+                            <div class="col-lg-4 col-md-4 col-12 mb-3">
+    
+                                <div class="entry-inputs-block">
+                                    <mat-form-field>
+                                        <mat-label>Breakfast (IU)</mat-label>
+                                        <mat-select formControlName="glargine_insulin_breakfast">
+                                            <mat-option *ngFor="let index of getmulvalues()" value="{{index}}">{{index}}</mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="hasError4('glargine_insulin_breakfast', 'required')">Glargine insulin breakfast field is required</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-12 mb-3">
+    
+                                <div class="entry-inputs-block">
+                                    <mat-form-field>
+                                        <mat-label>Lunch (IU)</mat-label>
+                                        <mat-select formControlName="glargine_insulin_lunch">
+                                            <mat-option *ngFor="let index of getmulvalues()" value="{{index}}">{{index}}</mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="hasError4('glargine_insulin_lunch', 'required')">Glargine insulin lunch field is required</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+    
+    
+    
+                            <div class="col-lg-4 col-md-4 col-12 mb-3">
+    
+                                <div class="entry-inputs-block">
+                                    <mat-form-field>
+                                        <mat-label>Dinner (IU)</mat-label>
+                                        <mat-select formControlName="glargine_insulin_dinner">
+                                            <mat-option *ngFor="let index of getmulvalues()" value="{{index}}">{{index}}</mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="hasError4('glargine_insulin_dinner', 'required')">Glargine insulin dinner field is required</mat-error>
+                                    </mat-form-field>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-sm-12 col-lg-12 col-md-12">
-                    <button mat-button matStepperPrevious *ngIf="!completed" class="next_btn">Back</button>
-                    <button mat-button matStepperPrevious *ngIf="completed" (click)="btnClick();" class="next_btn">Back</button>
-                    <!-- <button mat-button class="next_btn"  *ngIf="!completed">Save as Draft</button> -->
-                    <button mat-button type="submit" class="next_btn" *ngIf="!completed" (click)="submit(true)">Submit</button>
+    
+                    <div class="col-sm-12 col-lg-12 col-md-12">
+                        <button mat-button matStepperPrevious *ngIf="!completed" class="next_btn">Back</button>
+                        <button mat-button matStepperPrevious *ngIf="completed" (click)="btnClick();" class="next_btn">Back</button>
+                        <!-- <button mat-button class="next_btn"  *ngIf="!completed">Save as Draft</button> -->
+                        <button mat-button type="submit" class="next_btn" *ngIf="!completed" (click)="submit(true)">Submit</button>
+                    </div>
                 </div>
 
 

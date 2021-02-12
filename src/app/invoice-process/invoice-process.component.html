@@ -6,9 +6,9 @@
             </div>
         </div>
     </div>
-    <form [formGroup]="form" class="mt-3">
-        <div>
 
+    <form [formGroup]="form" class="mt-3">
+        <div class="row">
             <div class="col-lg-12 col-md-12 col-12">
                 <div class="entry-inputs-block in_fulls">
                     <mat-form-field class="example-full-width">
@@ -25,6 +25,7 @@
                     </mat-form-field>
 
                 </div>
+
                 <div class="row">
                     <div class="col-12">
                         <div class="entry-inputs-block inline_check">
@@ -41,6 +42,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <button mat-button type="submit" (click)="submit()" class="next_btn">Submit</button>
             </div>
         </div>
