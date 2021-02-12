@@ -11,7 +11,7 @@ export class SidebarComponent implements OnInit {
   kdp_surveyfilled: boolean;
 
   constructor(private router:Router) { }
-   
+  isChecked:boolean;
   userType:any = [];
   ngOnInit(): void {
     this.userType = localStorage.getItem('userType')
@@ -25,7 +25,16 @@ export class SidebarComponent implements OnInit {
       this.kdp_surveyfilled = false
       this.router.navigateByUrl('/kap-survey')
     }
+
   }
   
+  sideClick(element){
+    this.isChecked=false;
+  }
+  
+  navbarhide(){
+    this.isChecked=true;
+
+  }
   
 }

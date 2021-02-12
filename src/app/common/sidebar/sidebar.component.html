@@ -1,5 +1,5 @@
 <div class="sitebar">
-    <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+    <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu" (click)="navbarhide()" [checked]="isChecked">
     <label for="openSidebarMenu" class="sidebarIconToggle">
         <div class="spinner diagonal part-1"></div>
         <div class="spinner horizontal"></div>
@@ -9,39 +9,41 @@
     <div id="sidebarMenu">
         <h5>Main Menu</h5>
         <ul class="sidebarMenuInner ">
+
             <li *ngIf="kdp_surveyfilled">
-                <a>KAP Survey</a>
+                <a (click)="sideClick($event)">KAP Survey</a>
             </li>
+
             <li *ngIf="!kdp_surveyfilled">
-                <a [routerLink]="['/kap-survey']">KAP Survey</a>
+                <a (click)="sideClick($event)" [routerLink]="['/kap-survey']">KAP Survey</a>
             </li>
 
             <li>
-                <a [routerLink]="['/add-entry-process']" *ngIf="userType=='i'">Add Entry</a>
-            </li>
-
-
-            <li>
-                <a [routerLink]="['/begin-process']" *ngIf="userType=='b'">Add Entry</a>
-            </li>
-            <li>
-                <a [routerLink]="['/initiate_completed_list']" *ngIf="userType=='i'">Patient Logs</a>
-            </li>
-            <li>
-                <a [routerLink]="['/begin-listing']" *ngIf="userType=='b'">Patient Logs</a>
-            </li>
-
-            <li>
-                <a routerLink="/how-it-works">How it works</a>
-            </li>
-
-            <li>
-                <a href="javascript:void(0);" [routerLink]="['/invoice']">Invoice</a>
+                <a (click)="sideClick($event)" [routerLink]="['/add-entry-process']" *ngIf="userType=='i'">Add Entry</a>
             </li>
 
 
             <li>
-                <a [routerLink]="['/quries']">Queries</a>
+                <a (click)="sideClick($event)" [routerLink]="['/begin-process']" *ngIf="userType=='b'">Add Entry</a>
+            </li>
+            <li>
+                <a (click)="sideClick($event)" [routerLink]="['/initiate_completed_list']" *ngIf="userType=='i'">Patient Logs</a>
+            </li>
+            <li>
+                <a (click)="sideClick($event)" [routerLink]="['/begin-listing']" *ngIf="userType=='b'">Patient Logs</a>
+            </li>
+
+            <li>
+                <a (click)="sideClick($event)" routerLink="/how-it-works">How it works</a>
+            </li>
+
+            <li>
+                <a (click)="sideClick($event)" href="javascript:void(0);" [routerLink]="['/invoice']">Invoice</a>
+            </li>
+
+
+            <li>
+                <a (click)="sideClick($event)" [routerLink]="['/quries']">Queries</a>
             </li>
             <!-- <li>
                 <a href="javascript:void(0);" [routerLink]="['/begin-listing']" *ngIf="userType=='b'">Begin-Listing</a>
