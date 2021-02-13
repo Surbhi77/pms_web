@@ -5,13 +5,13 @@
                 <nav class="navbar navbar-expand-md">
                     <div class="brand-logo " *ngIf="userType=='i'">
                         <a class="navbar-brand">
-                            <img src="/assets/image/Initiate-white.png" />
+                            <img src="./assets/image/Initiate-white.png" />
                             <span class="user-name">Welcome {{name}} !!</span>
                         </a>
                     </div>
                     <div class="brand-logo" *ngIf="userType=='b'">
                         <a class="navbar-brand">
-                            <img src="/assets/image/Begin.jpg" />
+                            <img src="./assets/image/Begin.jpg" />
                             <span class="user-name">Welcome {{name}} !!</span>
                         </a>
                     </div>
@@ -20,13 +20,13 @@
                         <ul class="navbar-nav ml-auto top-nav">
                             <li class="nav-item">
                                 <a class="nav-link" [routerLink]="['/change_password']">
-                                    <img src="/assets/image/settings.svg" />
+                                    <img src="./assets/image/settings.svg" />
                                 </a>
                             </li>
 
                             <li class="nav-item">
                                 <a class="nav-link" (click)="logout()">
-                                    <img src="/assets/image/logout.svg" />
+                                    <img src="./assets/image/logout.svg" />
                                 </a>
                             </li>
                         </ul>

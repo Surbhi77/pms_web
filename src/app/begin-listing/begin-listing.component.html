@@ -22,7 +22,7 @@
                             <tr *ngFor="let beginlist of beginlist">
                                 <td>
                                     <div class="patient-img">
-                                        <img src="/assets/image/patient-user.png" />
+                                        <img src="./assets/image/patient-user.png" />
                                     </div>
                                 </td>
                                 <td class="w-200">
@@ -37,7 +37,7 @@
                                     <div class="action-block">
                                         <a [routerLink]="['/begin-view',beginlist.id,'/completed']" class="view-btn">
                                             <!-- //<a href="#" class="view-btn"> -->
-                                            <img src="/assets/image/visibility.svg" width="20" />
+                                            <img src="./assets/image/visibility.svg" width="20" />
                                         </a>
 
                                         <a *ngIf="beginlist.helpcenter_status =='Approve'">
@@ -70,7 +70,7 @@
                             <tr *ngFor="let begindraftlist of begindraftlist; let i=index">
                                 <td>
                                     <div class="patient-img">
-                                        <img src="/assets/image/patient-user.png" />
+                                        <img src="./assets/image/patient-user.png" />
                                     </div>
                                 </td>
                                 <td class="w-200">
@@ -85,10 +85,10 @@
                                     <div class="action-block">
                                         <a [routerLink]="['/begin-view',begindraftlist.id]" class="view-btn">
                                             <!-- //<a href="#" class="view-btn"> -->
-                                            <img src="/assets/image/visibility.svg" width="20" />
+                                            <img src="./assets/image/visibility.svg" width="20" />
                                         </a>
                                         <a (click)="deletedata(begindraftlist.id,i)" class="delete-btn">
-                                            <img src="/assets/image/trash.svg" width="20" />
+                                            <img src="./assets/image/trash.svg" width="20" />
                                         </a>
                                     </div>
                                 </td>
