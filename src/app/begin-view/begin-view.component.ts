@@ -1151,7 +1151,7 @@ export class BeginViewComponent implements OnInit {
     } else {
       console.log('not valid')
       this.selectglagrine = true
-      //this.toastr.error("Please fill all the fields")
+      this.toastr.error("Please fill all the fields")
       console.log(this.fourthFormGroup.value)
       this.fourthFormGroup.markAllAsTouched()
     }
