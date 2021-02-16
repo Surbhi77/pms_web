@@ -990,7 +990,7 @@ export class AddEntryComponent implements OnInit {
           this.humancheck = false
         }
       console.log('not valid')
-      this.toastr.error("Please select Atleast one option")
+      //this.toastr.error("Please select Atleast one option")
        this.fourthFormGroup.markAllAsTouched()
      }
     }
