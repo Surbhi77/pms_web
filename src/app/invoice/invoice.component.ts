@@ -51,6 +51,7 @@ export class InvoiceComponent implements OnInit {
   //nph: boolean;
   glargine: boolean;
   response: any;
+  selectglagrine: boolean;
 
   constructor(private _formBuilder: FormBuilder, private service: MainService,private toastr: ToastrService,private router:Router) { }
 
@@ -146,6 +147,7 @@ export class InvoiceComponent implements OnInit {
       glargine_insulin_breakfast: new FormControl(''),
       glargine_insulin_lunch: new FormControl(''),
       glargine_insulin_dinner: new FormControl(''),
+      glarginevalidation:new FormControl('')
      
 
     })
@@ -640,28 +642,50 @@ export class InvoiceComponent implements OnInit {
   oncheked10(event: any) {
     console.log(event)
     if (event.checked == true) {
-
-      this.fourthFormGroup.controls['glargine_insulin_breakfast'].setValidators([Validators.required])
-      this.fourthFormGroup.controls['glargine_insulin_breakfast'].updateValueAndValidity()
-      this.fourthFormGroup.controls['glargine_insulin_lunch'].setValidators([Validators.required]);
-      this.fourthFormGroup.controls['glargine_insulin_lunch'].updateValueAndValidity()
-      this.fourthFormGroup.controls['glargine_insulin_dinner'].setValidators([Validators.required]);
-      this.fourthFormGroup.controls['glargine_insulin_dinner'].updateValueAndValidity()
-      this.fourthFormGroup.updateValueAndValidity()
+       
+          this.fourthFormGroup.controls['glarginevalidation'].setValidators([Validators.required])
+          this.fourthFormGroup.controls['glarginevalidation'].updateValueAndValidity()
+         
+      // this.fourthFormGroup.controls['glargine_insulin_breakfast'].setValidators([Validators.required])
+      // this.fourthFormGroup.controls['glargine_insulin_breakfast'].updateValueAndValidity()
+      // this.fourthFormGroup.controls['glargine_insulin_lunch'].setValidators([Validators.required]);
+      // this.fourthFormGroup.controls['glargine_insulin_lunch'].updateValueAndValidity()
+      // this.fourthFormGroup.controls['glargine_insulin_dinner'].setValidators([Validators.required]);
+      // this.fourthFormGroup.controls['glargine_insulin_dinner'].updateValueAndValidity()
+      // this.fourthFormGroup.updateValueAndValidity()
       this.glargine_condition = true
     }
     else {
-
-      this.fourthFormGroup.controls['glargine_insulin_breakfast'].clearValidators()
-      this.fourthFormGroup.controls['glargine_insulin_breakfast'].updateValueAndValidity();
-       this.fourthFormGroup.controls['glargine_insulin_lunch'].clearValidators();
-       this.fourthFormGroup.controls['glargine_insulin_lunch'].updateValueAndValidity();
-      this.fourthFormGroup.controls['glargine_insulin_dinner'].clearValidators();
-      this.fourthFormGroup.controls['glargine_insulin_dinner'].updateValueAndValidity();
-      this.fourthFormGroup.updateValueAndValidity()
+     
+       this.fourthFormGroup.controls['glarginevalidation'].clearValidators()
+       this.fourthFormGroup.controls['glarginevalidation'].updateValueAndValidity();
+      //  this.fourthFormGroup.controls['glargine_insulin_lunch'].clearValidators();
+      //  this.fourthFormGroup.controls['glargine_insulin_lunch'].updateValueAndValidity();
+      // this.fourthFormGroup.controls['glargine_insulin_dinner'].clearValidators();
+      // this.fourthFormGroup.controls['glargine_insulin_dinner'].updateValueAndValidity();
+      // this.fourthFormGroup.updateValueAndValidity()
 
       this.glargine_condition = false
     }
+  }
+  select1($event){
+    if($event.value==0){
+      this.fourthFormGroup.patchValue({
+        'glarginevalidation':''
+      })
+      this.fourthFormGroup.updateValueAndValidity()
+      this.selectglagrine = true
+      
+    }
+    else{
+      this.selectglagrine = false
+      this.fourthFormGroup.patchValue({
+        'glarginevalidation':$event.value
+      })
+      this.fourthFormGroup.updateValueAndValidity()
+     
+    }
+
   }
   
   
@@ -679,7 +703,11 @@ export class InvoiceComponent implements OnInit {
   submit() {
 
     var formData: any = new FormData();
-    if (this.fourthFormGroup.valid) {
+    if (this.fourthFormGroup.valid && this.fourthFormGroup.value.glarginevalidation!='') {
+     console.log()
+     
+     this.selectglagrine = false
+      
       if(this.glargine_condition){
       this.glargineinsulinobj.glargine_insulin = (this.fourthFormGroup.value.glargine_insulin == true) ? this.fourthFormGroup.value.glargine_insulin : false;
       console.log(this.glargineinsulinobj)
@@ -702,9 +730,9 @@ export class InvoiceComponent implements OnInit {
       })
     } else {
       console.log('not valid')
-    
+     this.selectglagrine = true
       this.fourthFormGroup.markAllAsTouched()
-      this.toastr.error("Please fill all the fields")
+      //this.toastr.error("Please fill all the fields")
     }
 
 

@@ -59,6 +59,11 @@ export class AddEntryComponent implements OnInit {
   check: boolean;
   humanArray:any = []
   humancheck: boolean;
+  humanchange: boolean;
+  human50change: boolean;
+  regular_insulinchange: boolean;
+  nph_insulinchange: boolean;
+  glargine_insulinchange: boolean;
 
 
   //isEditable = false;
@@ -174,7 +179,12 @@ export class AddEntryComponent implements OnInit {
        nph_insulin_dinner: new FormControl(''),
       glargine_insulin_breakfast: new FormControl(''),
       glargine_insulin_lunch: new FormControl(''),
-      glargine_insulin_dinner: new FormControl('')
+      glargine_insulin_dinner: new FormControl(''),
+      human_premixed:new FormControl(''),
+      human_premixed50:new FormControl(''),
+      regularinsulin:new FormControl(),
+      nphcheck:new FormControl(''),
+      glarginecheck:new FormControl('')
 
     })
    
@@ -639,27 +649,38 @@ export class AddEntryComponent implements OnInit {
       this.humanArray.push('human_premixedthirty')
      
       if (event.checked == true && name == 'human_premixed_thirty') {
-        this.fourthFormGroup.controls["human_premixed_thirty_breakfast"].setValidators([Validators.required]);
-        this.fourthFormGroup.controls["human_premixed_thirty_breakfast"].updateValueAndValidity();
-        this.fourthFormGroup.controls["human_premixed_thirty_lunch"].setValidators([Validators.required]);
-        this.fourthFormGroup.controls["human_premixed_thirty_lunch"].updateValueAndValidity();
-        this.fourthFormGroup.controls["human_premixed_thirty_dinner"].setValidators([Validators.required]);
-        this.fourthFormGroup.controls["human_premixed_thirty_dinner"].updateValueAndValidity();
+        
+       this.fourthFormGroup.controls["human_premixed"].setValidators([Validators.required]);
+       this.fourthFormGroup.controls["human_premixed"].updateValueAndValidity();
+ 
       }
     }
     else {
-      this.human_premixedthirty = true
-      this.humancheck = false
+      this.human_premixedthirty = false
+      this.humancheck = true
+      this.fourthFormGroup.controls["human_premixed"].clearValidators();
+      this.fourthFormGroup.controls["human_premixed"].updateValueAndValidity();
       let index = this.humanArray.indexOf('human_premixedthirty');
       this.humanArray.splice(index,1)
-      this.fourthFormGroup.controls["human_premixed_thirty_breakfast"].clearValidators();
-      this.fourthFormGroup.controls["human_premixed_thirty_breakfast"].updateValueAndValidity();
-      this.fourthFormGroup.controls["human_premixed_thirty_lunch"].clearValidators();
-      this.fourthFormGroup.controls["human_premixed_thirty_lunch"].updateValueAndValidity();
-      this.fourthFormGroup.controls["human_premixed_thirty_dinner"].clearValidators();
-      this.fourthFormGroup.controls["human_premixed_thirty_dinner"].updateValueAndValidity();
+      
     }
 
+  }
+  humanChange(event){
+    if(event.value==0){
+      this.fourthFormGroup.patchValue({
+        'human_premixed':''
+      })
+      this.fourthFormGroup.updateValueAndValidity()
+      this.humanchange = true
+    }
+    else{
+      this.fourthFormGroup.patchValue({
+        'human_premixed':event.value
+      })
+      this.fourthFormGroup.updateValueAndValidity()
+      this.humanchange = false
+    }
   }
   oncheked9(event: any, name: any) {
     if (event.checked == true) {
@@ -668,12 +689,9 @@ export class AddEntryComponent implements OnInit {
       this.humanArray.push('human_premixedfifty')
       this.humancheck=false
       if (event.checked == true && name == 'human_premixed_fifty') {
-        this.fourthFormGroup.controls["human_premixed_fifty_breakfast"].setValidators([Validators.required]);
-        this.fourthFormGroup.controls["human_premixed_fifty_breakfast"].updateValueAndValidity();
-        this.fourthFormGroup.controls["human_premixed_fifty_lunch"].setValidators([Validators.required]);
-        this.fourthFormGroup.controls["human_premixed_fifty_lunch"].updateValueAndValidity();
-        this.fourthFormGroup.controls["human_premixed_fifty_dinner"].setValidators([Validators.required]);
-        this.fourthFormGroup.controls["human_premixed_fifty_dinner"].updateValueAndValidity();
+        this.fourthFormGroup.controls["human_premixed50"].setValidators([Validators.required]);
+        this.fourthFormGroup.controls["human_premixed50"].updateValueAndValidity();
+        
       }
     }
     else {
@@ -681,12 +699,25 @@ export class AddEntryComponent implements OnInit {
       let index = this.humanArray.indexOf('human_premixedfifty');
       this.humanArray.splice(index,1)
       this.humancheck=true
-      this.fourthFormGroup.controls["human_premixed_fifty_breakfast"].clearValidators();
-      this.fourthFormGroup.controls["human_premixed_fifty_breakfast"].updateValueAndValidity();
-      this.fourthFormGroup.controls["human_premixed_fifty_lunch"].clearValidators();
-      this.fourthFormGroup.controls["human_premixed_fifty_lunch"].updateValueAndValidity();
-      this.fourthFormGroup.controls["human_premixed_fifty_dinner"].clearValidators();
-      this.fourthFormGroup.controls["human_premixed_fifty_dinner"].updateValueAndValidity();
+      this.fourthFormGroup.controls["human_premixed50"].clearValidators();
+      this.fourthFormGroup.controls["human_premixed50"].updateValueAndValidity();
+      
+    }
+  }
+  humanChange2(event){
+    if(event.value==0){
+      this.fourthFormGroup.patchValue({
+        'human_premixed50':''
+      })
+      this.fourthFormGroup.updateValueAndValidity()
+      this.human50change = true
+    }
+    else{
+      this.fourthFormGroup.patchValue({
+        'human_premixed50':event.value
+      })
+      this.fourthFormGroup.updateValueAndValidity()
+      this.human50change = false
     }
   }
   oncheked10(event: any) {
@@ -694,24 +725,34 @@ export class AddEntryComponent implements OnInit {
       this.regular = true
       this.humanArray.push('regular')
       this.humancheck=false
-      this.fourthFormGroup.get('regular_insulin_breakfast').setValidators(Validators.required)
-      this.fourthFormGroup.controls["regular_insulin_breakfast"].updateValueAndValidity();
-      this.fourthFormGroup.get('regular_insulin_lunch').setValidators(Validators.required)
-      this.fourthFormGroup.controls["regular_insulin_lunch"].updateValueAndValidity();
-      this.fourthFormGroup.get('regular_insulin_dinner').setValidators(Validators.required)
-      this.fourthFormGroup.controls["regular_insulin_dinner"].updateValueAndValidity();
+      this.fourthFormGroup.controls["regularinsulin"].setValidators([Validators.required]);
+      this.fourthFormGroup.controls["regularinsulin"].updateValueAndValidity();
+      
     }
     else {
       this.regular = false
+      this.fourthFormGroup.get('regularinsulin').clearValidators();
+      this.fourthFormGroup.controls["regularinsulin"].updateValueAndValidity();
       let index = this.humanArray.indexOf('regular');
       this.humanArray.splice(index,1)
       this.humancheck=true
-      this.fourthFormGroup.get('regular_insulin_breakfast').clearValidators();
-      this.fourthFormGroup.controls["regular_insulin_breakfast"].updateValueAndValidity();
-      this.fourthFormGroup.get('regular_insulin_lunch').clearValidators();
-      this.fourthFormGroup.controls["regular_insulin_lunch"].updateValueAndValidity();
-      this.fourthFormGroup.get('regular_insulin_dinner').clearValidators();
-      this.fourthFormGroup.controls["regular_insulin_dinner"].updateValueAndValidity();
+     
+    }
+  }
+  regularChange(event){
+    if(event.value==0){
+      this.fourthFormGroup.patchValue({
+        'regularinsulin':''
+      })
+      this.fourthFormGroup.updateValueAndValidity()
+      this.regular_insulinchange = true
+    }
+    else{
+      this.fourthFormGroup.patchValue({
+        'regularinsulin':event.value
+      })
+      this.fourthFormGroup.updateValueAndValidity()
+      this.regular_insulinchange = false
     }
   }
   oncheked11(event: any) { 
@@ -719,24 +760,34 @@ export class AddEntryComponent implements OnInit {
       this.nph = true
       this.humanArray.push('nph')
       this.humancheck=false
-      this.fourthFormGroup.get('nph_insulin_breakfast').setValidators(Validators.required)
-      this.fourthFormGroup.controls["nph_insulin_breakfast"].updateValueAndValidity();
-      this.fourthFormGroup.get('nph_insulin_lunch').setValidators(Validators.required)
-      this.fourthFormGroup.controls["nph_insulin_lunch"].updateValueAndValidity();
-      this.fourthFormGroup.get('nph_insulin_dinner').setValidators(Validators.required)
-      this.fourthFormGroup.controls["nph_insulin_dinner"].updateValueAndValidity();
+      this.fourthFormGroup.controls["nphcheck"].setValidators([Validators.required]);
+      this.fourthFormGroup.controls["nphcheck"].updateValueAndValidity();
+      
     }
     else {
       this.nph = false
+      this.fourthFormGroup.controls["nphcheck"].setValidators([Validators.required]);
+      this.fourthFormGroup.controls["nphcheck"].updateValueAndValidity();
       let index = this.humanArray.indexOf('nph');
       this.humanArray.splice(index,1)
       this.humancheck=true
-      this.fourthFormGroup.get('nph_insulin_breakfast').clearValidators();
-      this.fourthFormGroup.controls["nph_insulin_breakfast"].updateValueAndValidity();
-      this.fourthFormGroup.get('nph_insulin_lunch').clearValidators();
-      this.fourthFormGroup.controls["nph_insulin_lunch"].updateValueAndValidity();
-      this.fourthFormGroup.get('nph_insulin_dinner').clearValidators();
-      this.fourthFormGroup.controls["nph_insulin_dinner"].updateValueAndValidity();
+      
+    }
+  }
+  nphChange(event){
+    if(event.value==0){
+      this.fourthFormGroup.patchValue({
+        'nphcheck':''
+      })
+      this.fourthFormGroup.updateValueAndValidity()
+      this.nph_insulinchange = true
+    }
+    else{
+      this.fourthFormGroup.patchValue({
+        'nphcheck':event.value
+      })
+      this.fourthFormGroup.updateValueAndValidity()
+      this.nph_insulinchange = false
     }
   }
   oncheked12(event: any) {
@@ -744,24 +795,34 @@ export class AddEntryComponent implements OnInit {
       this.glargine = true
       this.humanArray.push('glargine')
       this.humancheck = false
-      this.fourthFormGroup.get('glargine_insulin_breakfast').setValidators(Validators.required)
-      this.fourthFormGroup.controls["glargine_insulin_breakfast"].updateValueAndValidity();
-      this.fourthFormGroup.get('glargine_insulin_lunch').setValidators(Validators.required)
-      this.fourthFormGroup.controls["glargine_insulin_lunch"].updateValueAndValidity();
-      this.fourthFormGroup.get('glargine_insulin_dinner').setValidators(Validators.required)
-      this.fourthFormGroup.controls["glargine_insulin_dinner"].updateValueAndValidity();
+      this.fourthFormGroup.controls["glarginecheck"].setValidators([Validators.required]);
+      this.fourthFormGroup.controls["glarginecheck"].updateValueAndValidity();
+    
     }
     else {
       this.glargine = false;
       let index = this.humanArray.indexOf('glargine');
       this.humanArray.splice(index,1)
       this.humancheck=true
-      this.fourthFormGroup.get('glargine_insulin_breakfast').clearValidators();
-      this.fourthFormGroup.controls["glargine_insulin_breakfast"].updateValueAndValidity();
-      this.fourthFormGroup.get('glargine_insulin_lunch').clearValidators();
-      this.fourthFormGroup.controls[" glargine_insulin_lunch"].updateValueAndValidity();
-      this.fourthFormGroup.get('glargine_insulin_dinner').clearValidators();
-      this.fourthFormGroup.controls["glargine_insulin_dinner"].updateValueAndValidity();
+      this.fourthFormGroup.controls["glarginecheck"].setValidators([Validators.required]);
+      this.fourthFormGroup.controls["glarginecheck"].updateValueAndValidity();
+      
+    }
+  }
+  glargineChange(event){
+    if(event.value==0){
+      this.fourthFormGroup.patchValue({
+        'glarginecheck':''
+      })
+      this.fourthFormGroup.updateValueAndValidity()
+      this.glargine_insulinchange = true
+    }
+    else{
+      this.fourthFormGroup.patchValue({
+        'glarginecheck':event.value
+      })
+      this.fourthFormGroup.updateValueAndValidity()
+      this.glargine_insulinchange = false
     }
   }
   // bmicalc(){
@@ -844,7 +905,7 @@ export class AddEntryComponent implements OnInit {
   submit(event:any) {
      
     if(this.fourthFormGroup.valid && this.humanArray.length){
-      this.humancheck=false
+      
       console.log(this.humancheck)
       const formData = new FormData()
       // this.vascular.vascular_dignosis = this.secondFormGroup.value.vascular_dignosis;nph_insulin_lunch
@@ -906,10 +967,30 @@ export class AddEntryComponent implements OnInit {
     }
     else{
     
+       // this.humancheck = true
+        if(this.fourthFormGroup.value.human_premixed=='' || this.fourthFormGroup.value.human_premixed50=='' || this.fourthFormGroup.value.regularinsulin=='' || this.fourthFormGroup.value.nphcheck=='' || this.fourthFormGroup.value.glarginecheck=='' ){
+          this.humanchange = true
+          this.human50change= true
+          this.regular_insulinchange = true
+          this.nph_insulinchange = true
+          this.glargine_insulinchange = true
+        }
+        else{
+          this.humanchange = false
+          this.human50change= false
+          this.regular_insulinchange = false
+          this.nph_insulinchange = false
+          this.glargine_insulinchange = false
+        }
+        if(this.humanArray.length==0)
+        {
         this.humancheck = true
-      
+        }
+        else{
+          this.humancheck = false
+        }
       console.log('not valid')
-      //this.toastr.error("Please fill all the fields")
+      this.toastr.error("Please select Atleast one option")
        this.fourthFormGroup.markAllAsTouched()
      }
     }

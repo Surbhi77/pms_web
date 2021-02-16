@@ -74,6 +74,7 @@ export class BeginViewComponent implements OnInit {
   isEditScreen: boolean;
   listingId: any;
   check: boolean = false;
+  selectglagrine: boolean;
   //showHypertensionDiv: boolean=false;
   constructor( private _formBuilder: FormBuilder,
     private router: Router,
@@ -169,11 +170,11 @@ export class BeginViewComponent implements OnInit {
     })
     this.fourthFormGroup =this._formBuilder.group({
       dose_insulin: new FormControl('',[Validators.required]),
-      glargine_insulin: new FormControl('',[Validators.required]),
-      glargine_insulin_breakfast: new FormControl('',[Validators.required]),
-      glargine_insulin_lunch: new FormControl('',[Validators.required]),
-      glargine_insulin_dinner: new FormControl('',[Validators.required]),
-     
+      glargine_insulin: new FormControl(''),
+      glargine_insulin_breakfast: new FormControl(''),
+      glargine_insulin_lunch: new FormControl(''),
+      glargine_insulin_dinner: new FormControl(''),
+      glarginevalidation:new FormControl('')
       
       // thirdCtrl: ['gg', Validators.required],
 
@@ -850,25 +851,28 @@ export class BeginViewComponent implements OnInit {
   oncheked10(event: any) {
     console.log(event)
     if (event.checked == true) {
-
-      // this.fourthFormGroup.controls['glargine_insulin_breakfast'].setValidators([Validators.required])
-      // this.fourthFormGroup.controls['glargine_insulin_breakfast'].updateValueAndValidity()
-      this.fourthFormGroup.controls['glargine_insulin_lunch'].setValidators([Validators.required]);
-      this.fourthFormGroup.controls['glargine_insulin_lunch'].updateValueAndValidity()
-      this.fourthFormGroup.controls['glargine_insulin_dinner'].setValidators([Validators.required]);
-      this.fourthFormGroup.controls['glargine_insulin_dinner'].updateValueAndValidity()
-      this.fourthFormGroup.updateValueAndValidity()
+      
+      this.fourthFormGroup.controls['glarginevalidation'].setValidators([Validators.required])
+      this.fourthFormGroup.controls['glarginevalidation'].updateValueAndValidity()
+      // // this.fourthFormGroup.controls['glargine_insulin_breakfast'].setValidators([Validators.required])
+      // // this.fourthFormGroup.controls['glargine_insulin_breakfast'].updateValueAndValidity()
+      // this.fourthFormGroup.controls['glargine_insulin_lunch'].setValidators([Validators.required]);
+      // this.fourthFormGroup.controls['glargine_insulin_lunch'].updateValueAndValidity()
+      // this.fourthFormGroup.controls['glargine_insulin_dinner'].setValidators([Validators.required]);
+      // this.fourthFormGroup.controls['glargine_insulin_dinner'].updateValueAndValidity()
+      // this.fourthFormGroup.updateValueAndValidity()
       this.glargine_condition = true
     }
     else {
-
+      this.fourthFormGroup.controls['glarginevalidation'].clearValidators()
+      this.fourthFormGroup.controls['glarginevalidation'].updateValueAndValidity();
       // this.fourthFormGroup.controls['glargine_insulin_breakfast'].clearValidators()
       // this.fourthFormGroup.controls['glargine_insulin_breakfast'].updateValueAndValidity();
-       this.fourthFormGroup.controls['glargine_insulin_lunch'].clearValidators();
-       this.fourthFormGroup.controls['glargine_insulin_lunch'].updateValueAndValidity();
-      this.fourthFormGroup.controls['glargine_insulin_dinner'].clearValidators();
-      this.fourthFormGroup.controls['glargine_insulin_dinner'].updateValueAndValidity();
-      this.fourthFormGroup.updateValueAndValidity()
+      //  this.fourthFormGroup.controls['glargine_insulin_lunch'].clearValidators();
+      //  this.fourthFormGroup.controls['glargine_insulin_lunch'].updateValueAndValidity();
+      // this.fourthFormGroup.controls['glargine_insulin_dinner'].clearValidators();
+      // this.fourthFormGroup.controls['glargine_insulin_dinner'].updateValueAndValidity();
+      // this.fourthFormGroup.updateValueAndValidity()
 
       this.glargine_condition = false
     }
@@ -881,6 +885,25 @@ export class BeginViewComponent implements OnInit {
     } else {
       this.medication = false
     }
+  }
+  select1($event){
+    if($event.value==0){
+      this.fourthFormGroup.patchValue({
+        'glarginevalidation':''
+      })
+      this.fourthFormGroup.updateValueAndValidity()
+      this.selectglagrine = true
+      
+    }
+    else{
+      this.selectglagrine = false
+      this.fourthFormGroup.patchValue({
+        'glarginevalidation':$event.value
+      })
+      this.fourthFormGroup.updateValueAndValidity()
+     
+    }
+
   }
   submitFirst(saveAsDraft:any) {
     if (this.firstFormGroup.valid) {
@@ -1093,7 +1116,8 @@ export class BeginViewComponent implements OnInit {
   submit(event:any) {
 
     var formData: any = new FormData();
-    if (this.fourthFormGroup.valid) {
+    if (this.fourthFormGroup.valid && this.fourthFormGroup.value.glarginevalidation!='') {
+      this.selectglagrine = false
       if(this.glargine_condition){
       this.glargineinsulinobj.glargine_insulin = (this.fourthFormGroup.value.glargine_insulin == true) ? this.fourthFormGroup.value.glargine_insulin : false;
       console.log(this.glargineinsulinobj)
@@ -1121,12 +1145,13 @@ export class BeginViewComponent implements OnInit {
       this.service.postAddBegin(formData).subscribe(res => {
       console.log(res)
       if(event){
-      this.toastr.info("The update data  successfully");
+      this.toastr.info(" Data updated successfully");
       this.router.navigateByUrl("/dashboard");}
       })
     } else {
       console.log('not valid')
-      this.toastr.error("Please fill all the fields")
+      this.selectglagrine = true
+      //this.toastr.error("Please fill all the fields")
       console.log(this.fourthFormGroup.value)
       this.fourthFormGroup.markAllAsTouched()
     }

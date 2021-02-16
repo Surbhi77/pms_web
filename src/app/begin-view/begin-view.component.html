@@ -1001,22 +1001,23 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Breakfast (IU)</mat-label>
-                                        <mat-select formControlName="glargine_insulin_breakfast">
+                                        <mat-select formControlName="glargine_insulin_breakfast" (selectionChange)="select1($event)">
                                             <mat-option *ngFor="let index of getmulvalues()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
-                                        <mat-error *ngIf="hasError4('glargine_insulin_breakfast', 'required')">Glargine insulin breakfast field is required</mat-error>
+                                        <!-- <mat-error *ngIf="hasError4('glargine_insulin_breakfast', 'required')">Glargine insulin breakfast field is required</mat-error> -->
                                     </mat-form-field>
                                 </div>
+                                <mat-error *ngIf="selectglagrine">Please Select Atleast One option</mat-error>
                             </div>
                             <div class="col-lg-4 col-md-4 col-12 mb-3">
 
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Lunch (IU)</mat-label>
-                                        <mat-select formControlName="glargine_insulin_lunch">
+                                        <mat-select formControlName="glargine_insulin_lunch" (selectionChange)="select1($event)">
                                             <mat-option *ngFor="let index of getmulvalues()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
-                                        <mat-error *ngIf="hasError4('glargine_insulin_lunch', 'required')">Glargine insulin lunch field is required</mat-error>
+                                        <!-- <mat-error *ngIf="hasError4('glargine_insulin_lunch', 'required')">Glargine insulin lunch field is required</mat-error> -->
                                     </mat-form-field>
                                 </div>
                             </div>
@@ -1028,13 +1029,14 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Dinner (IU)</mat-label>
-                                        <mat-select formControlName="glargine_insulin_dinner">
+                                        <mat-select formControlName="glargine_insulin_dinner" (selectionChange)="select1($event)">
                                             <mat-option *ngFor="let index of getmulvalues()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
-                                        <mat-error *ngIf="hasError4('glargine_insulin_dinner', 'required')">Glargine insulin dinner field is required</mat-error>
+                                        <!-- <mat-error *ngIf="hasError4('glargine_insulin_dinner', 'required')">Glargine insulin dinner field is required</mat-error> -->
                                     </mat-form-field>
                                 </div>
                             </div>
+
                         </div>
                     </div>
 
