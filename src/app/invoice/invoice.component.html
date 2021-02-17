@@ -1051,6 +1051,7 @@
                         <div class="entry-inputs-block">
                             <mat-checkbox color="primary" formControlName="glargine_insulin" (change)="oncheked10($event)" class="example-margin d-block mb-2">Insulin Glargine (IU)
                             </mat-checkbox>
+                            <p class="text-danger" *ngIf="glargineinsulinrequired">Please select Insulin Glargine </p>
                         </div>
 
                         <div class="row" *ngIf="glargine_condition">
@@ -1093,6 +1094,7 @@
                                         </mat-select>
                                         <!-- <mat-error *ngIf="hasError4('glargine_insulin_dinner', 'required')">Glargine insulin dinner field is required</mat-error> -->
                                     </mat-form-field>
+                                    <!-- <mat-error *ngIf="hasError4('glargine_insulin_dinner', 'required')">Glargine insulin dinner field is required</mat-error> -->
                                 </div>
                             </div>
 

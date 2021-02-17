@@ -20,7 +20,8 @@
     width: 75px;
     height: 2px;
     background: #0f406b;
-    bottom: 0;left: 0;
+    bottom: 0;
+    left: 0;
 }
 
 .patient-img img {
@@ -38,6 +39,10 @@
     justify-content: center;
 }
 
+.listing-details .patient-details {
+    margin-bottom: 10px;
+}
+
 .patient-details h4 {
     font-size: 16px;
     font-weight: 400;
@@ -52,28 +57,47 @@
 
 .action-block {
     display: flex;
-    justify-content: flex-end;
+}
+
+.action-block a i {
+    color: #fff;
+}
+
+.action-block .check-btn {
+    background: #008000 !important;
+}
+
+.action-block a img {
+    filter: invert(1);
+}
+
+.action-block .view-btn img {
+    width: 14px;
+}
+
+.action-block .check-btn img,
+.action-block .bg-danger img {
+    width: 10px;
+}
+
+.action-block .delete-btn img {
+    width: 14px;
 }
 
 .action-block a {
-    width: 25px;
-    height: 25px;
-    background: #333;
-    margin-left: 10px;
+    width: 22px;
+    height: 22px;
+    background: #0f406b;
+    margin-right: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
+    border-radius: 5px;
     text-decoration: none;
 }
 
 .action-block .delete-btn {
     background: #ff0000 !important;
-}
-
-.action-block a img {
-    filter: invert(1);
-    width: 14px;
 }
 
 .patient-list-tbl td {
@@ -85,6 +109,7 @@
 .w-200 {
     min-width: 200px;
 }
+
 
 /* table croll  */
 
@@ -98,7 +123,6 @@
     .scroll-list {
         overflow-x: visible;
     }
-
     .w-200 {
         min-width: auto;
     }

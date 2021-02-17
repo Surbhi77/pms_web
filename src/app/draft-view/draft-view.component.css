@@ -109,7 +109,11 @@
 }
 
 .dot {
-    margin: 0 13px;
+    width: 10%;
+    margin: 0;
+    text-align: center;
+    font-size: 40px;
+    line-height: 0;
 }
 
 .Hemoglobin-value-1 {

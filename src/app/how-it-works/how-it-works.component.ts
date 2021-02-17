@@ -13,22 +13,25 @@ export class HowItWorksComponent implements OnInit {
   data:any=[]
   beginvideo:boolean=false;
   initiatevideo:boolean=false
+  userType: string;
   constructor(private service:MainService,private router:Router) { }
 
   ngOnInit(): void {
+    this.userType = localStorage.getItem('userType')
+    console.log(this.userType)
     if(localStorage.getItem("kdp_survey") != "yes"){
       this.router.navigateByUrl('/kap-survey')
     }
-    this.service.howitworks().subscribe((res:any)=>{
-      this.data = res.data;
-      console.log(res)
-    })
-  }
-  beginclick(){
-    this.beginvideo = true;
-  }
-  initiateclick(){
-    this.initiatevideo =true
-  }
+  //   this.service.howitworks().subscribe((res:any)=>{
+  //     this.data = res.data;
+  //     console.log(res)
+  //   })
+  // }
+  // beginclick(){
+  //   this.beginvideo = true;
+  // }
+  // initiateclick(){
+  //   this.initiatevideo =true
+   }
 
 }

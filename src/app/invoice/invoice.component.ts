@@ -52,6 +52,7 @@ export class InvoiceComponent implements OnInit {
   glargine: boolean;
   response: any;
   selectglagrine: boolean;
+  glargineinsulinrequired: boolean;
 
   constructor(private _formBuilder: FormBuilder, private service: MainService,private toastr: ToastrService,private router:Router) { }
 
@@ -642,7 +643,7 @@ export class InvoiceComponent implements OnInit {
   oncheked10(event: any) {
     console.log(event)
     if (event.checked == true) {
-       
+      this.glargineinsulinrequired=false
           this.fourthFormGroup.controls['glarginevalidation'].setValidators([Validators.required])
           this.fourthFormGroup.controls['glarginevalidation'].updateValueAndValidity()
          
@@ -656,7 +657,7 @@ export class InvoiceComponent implements OnInit {
       this.glargine_condition = true
     }
     else {
-     
+      this.glargineinsulinrequired=true
        this.fourthFormGroup.controls['glarginevalidation'].clearValidators()
        this.fourthFormGroup.controls['glarginevalidation'].updateValueAndValidity();
       //  this.fourthFormGroup.controls['glargine_insulin_lunch'].clearValidators();
@@ -730,11 +731,17 @@ export class InvoiceComponent implements OnInit {
       })
     } else {
       console.log('not valid')
+      if(this.fourthFormGroup.value.glarginevalidation==''){
      this.selectglagrine = true
+      }
+     
       this.fourthFormGroup.markAllAsTouched()
-      this.toastr.error("Please fill all the fields")
+      if(this.fourthFormGroup.value.glargine_insulin ==''){
+        //this.toastr.error("Please select a checkbox")
+        this.glargineinsulinrequired=true
+         }
+      
+      
     }
-
-
   }
 }

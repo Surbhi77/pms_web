@@ -907,6 +907,12 @@ export class AddEntryComponent implements OnInit {
     if(this.fourthFormGroup.valid && this.humanArray.length){
       
       console.log(this.humancheck)
+      this.humancheck = false
+      this.humanchange = false
+      this.human50change= false
+      this.regular_insulinchange = false
+      this.nph_insulinchange = false
+      this.glargine_insulinchange = false
       const formData = new FormData()
       // this.vascular.vascular_dignosis = this.secondFormGroup.value.vascular_dignosis;nph_insulin_lunch
       // this.vascular.complication = this.secondFormGroup.value.complication;
@@ -975,20 +981,12 @@ export class AddEntryComponent implements OnInit {
           this.nph_insulinchange = true
           this.glargine_insulinchange = true
         }
-        else{
-          this.humanchange = false
-          this.human50change= false
-          this.regular_insulinchange = false
-          this.nph_insulinchange = false
-          this.glargine_insulinchange = false
-        }
+        
         if(this.humanArray.length==0)
         {
         this.humancheck = true
         }
-        else{
-          this.humancheck = false
-        }
+      
       console.log('not valid')
       //this.toastr.error("Please select Atleast one option")
        this.fourthFormGroup.markAllAsTouched()

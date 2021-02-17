@@ -993,6 +993,7 @@
                         <div class="entry-inputs-block">
                             <mat-checkbox color="primary" formControlName="glargine_insulin" (change)="oncheked10($event)" [checked]="garglineArray.glargine_insulin" class="example-margin d-block mb-2">Insulin Glargine (IU)
                             </mat-checkbox>
+                            <p class="text-danger" *ngIf="glargineinsulinrequired">Please select Insulin Glargine </p>
                         </div>
 
                         <div class="row" *ngIf="glargine_condition">

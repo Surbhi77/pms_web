@@ -1380,7 +1380,13 @@ checkAntiDiabetes(name){
   submit(event:any) {
      
     if(this.fourthFormGroup.valid && this.humanArray.length ){
+    
       this.humancheck = false
+      this.humanchange = false
+      this.human50change= false
+      this.regular_insulinchange = false
+      this.nph_insulinchange = false
+      this.glargine_insulinchange = false
       const formData = new FormData()
       // this.vascular.vascular_dignosis = this.secondFormGroup.value.vascular_dignosis;
       // this.vascular.complication = this.secondFormGroup.value.complication;
@@ -1452,6 +1458,7 @@ checkAntiDiabetes(name){
     }
     else{
       console.log('not valid')
+       this.humancheck = true
       if(this.fourthFormGroup.value.human_premixed=='' || this.fourthFormGroup.value.human_premixed50=='' || this.fourthFormGroup.value.regularinsulin=='' || this.fourthFormGroup.value.nphcheck=='' || this.fourthFormGroup.value.glarginecheck=='' ){
         this.humanchange = true
         this.human50change= true
@@ -1459,19 +1466,10 @@ checkAntiDiabetes(name){
         this.nph_insulinchange = true
         this.glargine_insulinchange = true
       }
-      else{
-        this.humanchange = false
-        this.human50change= false
-        this.regular_insulinchange = false
-        this.nph_insulinchange = false
-        this.glargine_insulinchange = false
-      }
+      
       if(this.humanArray.length==0)
       {
       this.humancheck = true
-      }
-      else{
-        this.humancheck = false
       }
      
      // this.toastr.error("Please fill all fields")

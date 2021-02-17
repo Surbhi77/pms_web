@@ -26,29 +26,28 @@
                                     </div>
                                 </td>
                                 <td class="w-200">
-                                    <div class="patient-details">
+                                    <div class="listing-details">
+                                        <div class="patient-details">
+                                            <h4>Mobile:{{beginlist.mobile}}</h4>
+                                            <p>Age:{{beginlist.age}}</p>
+                                        </div>
 
-                                        <h4>Mobile:{{beginlist.mobile}}</h4>
-                                        <p>Age:{{beginlist.age}}</p>
+                                        <div class="action-block">
+                                            <a [routerLink]="['/begin-view',beginlist.id,'/completed']" class="view-btn">
+                                                <!-- //<a href="#" class="view-btn"> -->
+                                                <img src="./assets/image/visibility.svg" />
+                                            </a>
 
+                                            <a class="check-btn" *ngIf="beginlist.helpcenter_status =='Approve'">
+                                                <img src="./assets/image/checked.svg" />
+                                            </a>
+
+                                            <a class="bg-danger" *ngIf="beginlist.helpcenter_status =='Rejected'">
+                                                <img src="./assets/image/close.svg" />
+                                            </a>
+                                        </div>
                                     </div>
                                 </td>
-                                <td class="w-200">
-                                    <div class="action-block">
-                                        <a [routerLink]="['/begin-view',beginlist.id,'/completed']" class="view-btn">
-                                            <!-- //<a href="#" class="view-btn"> -->
-                                            <img src="./assets/image/visibility.svg" width="20" />
-                                        </a>
-
-                                        <a *ngIf="beginlist.helpcenter_status =='Approve'">
-                                            <i class="fas fa-check"></i>
-                                        </a>
-                                        <a *ngIf="beginlist.helpcenter_status =='Rejected'" class="bg-danger">
-                                            <i class="fas fa-times"></i>
-                                        </a>
-                                    </div>
-                                </td>
-
                             </tr>
                         </tbody>
                     </table>
@@ -74,28 +73,23 @@
                                     </div>
                                 </td>
                                 <td class="w-200">
-                                    <div class="patient-details">
-
-                                        <h4>Mobile:{{begindraftlist.mobile}}</h4>
-                                        <p>Age:{{begindraftlist.age}}</p>
-
-                                    </div>
-                                </td>
-                                <td class="w-200">
-                                    <div class="action-block">
-                                        <a [routerLink]="['/begin-view',begindraftlist.id]" class="view-btn">
-                                            <!-- //<a href="#" class="view-btn"> -->
-                                            <img src="./assets/image/visibility.svg" width="20" />
-                                        </a>
-                                        <a (click)="deletedata(begindraftlist.id,i)" class="delete-btn">
-                                            <img src="./assets/image/trash.svg" width="20" />
-                                        </a>
+                                    <div class="listing-details">
+                                        <div class="patient-details">
+                                            <h4>Mobile:{{begindraftlist.mobile}}</h4>
+                                            <p>Age:{{begindraftlist.age}}</p>
+                                        </div>
+                                        <div class="action-block">
+                                            <a [routerLink]="['/begin-view',begindraftlist.id]" class="view-btn">
+                                                <!-- //<a href="#" class="view-btn"> -->
+                                                <img src="./assets/image/visibility.svg" width="20" />
+                                            </a>
+                                            <a (click)="deletedata(begindraftlist.id,i)" class="delete-btn">
+                                                <img src="./assets/image/trash.svg" width="20" />
+                                            </a>
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
-
-
-
                         </tbody>
                     </table>
                 </div>

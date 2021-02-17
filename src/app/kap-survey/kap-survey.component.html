@@ -18,7 +18,7 @@
                 <div class="row agger_group">
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <div class="check_nones">
-                            <p> I prefer to delay the initiation of insulin therapy until it is absolutely essential (after trying a combination of several classes of oral hypoglycemic add agents at maximal doses) </p>
+                            <p> I prefer to delay the initiation of insulin therapy until it is absolutely essential (after trying a combination of several classes of oral hypoglycemic agents at maximal doses) </p>
                         </div>
 
                         <div class="aggree">
@@ -199,7 +199,7 @@
                 <div class="row agger_group">
                     <div class="col-sm-12 col-lg-12 col-md-12">
                         <div class="check_nones">
-                            <p>I may be reluctant to initiate insulin therapy for my patients with T2DM who: (Can you rate with order of importance in your practice where 1 being top most and 10 being least )</p>
+                            <p>I may be reluctant to initiate insulin therapy for my patients with T2DM who: (Can you rate in the order of importance in your practice where 1 being top most and 10 being least )</p>
                         </div>
 
                         <div class="aggree">
@@ -360,37 +360,39 @@
 
 
                         <div class="check_nones pt-5">
-                            <p>Impact of Insulin in people with T2DM (Choose three clinically impactful options)</p>
+                            <p>Impact of Insulin in people with T2DM </p>
+                            <p>Choose three clinically impactful options</p>
                         </div>
 
                         <div class="row">
                             <div class="col-lg-6">
-                                <mat-checkbox color="primary" [disabled]="impacts.length>=3" (change)="impactChange($event,'Beta')" formControlName="Beta" class="example-margin d-block mb-2">Beta Cell preservation</mat-checkbox>
-                                <mat-checkbox color="primary" [disabled]="impacts.length>=3" (change)="impactChange($event,'role')" formControlName="role" class="example-margin d-block mb-2">The role of Insulin in reducing Micro albuminuria</mat-checkbox>
-                                <mat-checkbox color="primary" [disabled]="impacts.length>=3" (change)="impactChange($event,'Reducing')" formControlName="Reducing" class="example-margin d-block mb-2">Reducing the inflammatory markers</mat-checkbox>
-                                <mat-checkbox color="primary" [disabled]="impacts.length>=3" (change)="impactChange($event,'risk')" formControlName="risk" class="example-margin d-block mb-2">Reducing the CV risk factors</mat-checkbox>
+                                <mat-checkbox color="primary" (change)="impactChange($event,'Beta')" formControlName="Beta" class="example-margin d-block mb-2">Beta Cell preservation</mat-checkbox>
+                                <mat-checkbox color="primary" (change)="impactChange($event,'role')" formControlName="role" class="example-margin d-block mb-2">The role of Insulin in reducing Micro albuminuria</mat-checkbox>
+                                <mat-checkbox color="primary" (change)="impactChange($event,'Reducing')" formControlName="Reducing" class="example-margin d-block mb-2">Reducing the inflammatory markers</mat-checkbox>
+                                <mat-checkbox color="primary" (change)="impactChange($event,'risk')" formControlName="risk" class="example-margin d-block mb-2">Reducing the CV risk factors</mat-checkbox>
                             </div>
 
                             <div class="col-lg-6">
-                                <mat-checkbox color="primary" [disabled]="impacts.length>=3" (change)="impactChange($event,'Micro')" formControlName="Micro" class="example-margin d-block mb-2">Micro Angiopathy</mat-checkbox>
-                                <mat-checkbox color="primary" [disabled]="impacts.length>=3" (change)="impactChange($event,'Reduce')" formControlName="Reduce" class="example-margin d-block mb-2">Reduce Infections</mat-checkbox>
-                                <mat-checkbox color="primary" [disabled]="impacts.length>=3" (change)="impactChange($event,'Neuropathy')" formControlName="Neuropathy" class="example-margin d-block mb-2">Neuropathy</mat-checkbox>
-                                <mat-checkbox color="primary" [disabled]="impacts.length>=3" (change)="impactChange($event,'CIMT')" formControlName="CIMT" class="example-margin d-block mb-2">Reduces CIMT</mat-checkbox>
+                                <mat-checkbox color="primary" (change)="impactChange($event,'Micro')" formControlName="Micro" class="example-margin d-block mb-2">Micro Angiopathy</mat-checkbox>
+                                <mat-checkbox color="primary" (change)="impactChange($event,'Reduce')" formControlName="Reduce" class="example-margin d-block mb-2">Reduce Infections</mat-checkbox>
+                                <mat-checkbox color="primary" (change)="impactChange($event,'Neuropathy')" formControlName="Neuropathy" class="example-margin d-block mb-2">Neuropathy</mat-checkbox>
+                                <mat-checkbox color="primary" (change)="impactChange($event,'CIMT')" formControlName="CIMT" class="example-margin d-block mb-2">Reduces CIMT</mat-checkbox>
 
                             </div>
                             <p *ngIf="checkmulti" class="alert alert-danger">Choose three clinically impactful options</p>
                         </div>
 
                         <div class="check_nones pt-4">
-                            <p> What factors influence in prescribing Insulin to T2DM patients (Choose two clinically relevant options)</p>
+                            <p> What factors influence in prescribing Insulin to T2DM patients </p>
+                            <p>Choose two clinically relevant options</p>
                         </div>
 
                         <div class="row">
                             <div class="col-lg-4">
-                                <mat-checkbox color="primary" [disabled]="patients.length>=2" (change)="tdmpatientsChange($event,'Comorbid')" formControlName="Comorbid" class="example-margin d-block mb-2">Co-morbid conditions</mat-checkbox>
-                                <mat-checkbox color="primary" [disabled]="patients.length>=2" (change)="tdmpatientsChange($event,'High')" formControlName="High" class="example-margin d-block mb-2">High risk factors</mat-checkbox>
-                                <mat-checkbox color="primary" [disabled]="patients.length>=2" (change)="tdmpatientsChange($event,'Infections')" formControlName="Infections" class="example-margin d-block mb-2">Infections</mat-checkbox>
-                                <mat-checkbox color="primary" [disabled]="patients.length>=2" (change)="tdmpatientsChange($event,'HighA1c')" formControlName="HighA1c" class="example-margin d-block mb-2">High A1c (>9)</mat-checkbox>
+                                <mat-checkbox color="primary" (change)="tdmpatientsChange($event,'Comorbid')" formControlName="Comorbid" class="example-margin d-block mb-2">Co-morbid conditions</mat-checkbox>
+                                <mat-checkbox color="primary" (change)="tdmpatientsChange($event,'High')" formControlName="High" class="example-margin d-block mb-2">High risk factors</mat-checkbox>
+                                <mat-checkbox color="primary" (change)="tdmpatientsChange($event,'Infections')" formControlName="Infections" class="example-margin d-block mb-2">Infections</mat-checkbox>
+                                <mat-checkbox color="primary" (change)="tdmpatientsChange($event,'HighA1c')" formControlName="HighA1c" class="example-margin d-block mb-2">High A1c (>9)</mat-checkbox>
                                 <p *ngIf="checklimiterro" class="alert alert-danger">Choose two clinically relevant options</p>
                             </div>
                         </div>

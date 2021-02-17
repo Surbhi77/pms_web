@@ -122,7 +122,7 @@ export class KapSurveyComponent implements OnInit {
         one_to_two_year: new FormControl(''),
         three_to_five_year: new FormControl(''),
         five_years: new FormControl(''),
-        people_with_tdm: new FormControl(''),
+        people_with_tdm: new FormControl('',[Validators.required]),
         Beta: new FormControl(''),
         role: new FormControl(''),
         Reducing: new FormControl(''),
@@ -135,7 +135,8 @@ export class KapSurveyComponent implements OnInit {
         High: new FormControl(''),
         Infections: new FormControl(''),
         HighA1c: new FormControl(''),
-        forthform: ['', Validators.required]
+        forthform: ['', Validators.required],
+        insulin_to_tdmpatients:new FormControl('',[Validators.required])
     });
   }
 
@@ -145,27 +146,26 @@ export class KapSurveyComponent implements OnInit {
   reluctance = [
     '	Are reluctant to start it ',
     '	Do not adhere to their appointments and treatment regimen ',
-    '	Do not adhere to their self-monitoring of blood sugar ',
-    '	Are from a low socioeconomic level (poor patient’s cognitive abilities) ',
+    '	Do not adhere to their self-monitoring of blood glucose',
+    '	Are from a low socioeconomic status',
     '	Are ≥75 years of age because of the risk of hypoglycemia',
     '	Have excess weight (BMI ≥ 35) because of the risk for weight gain ',
     '	Have cardiovascular diseases ',
-    '	I may be reluctant to initiate insulin therapy for my patients with T2DM because ',
     '	I do not follow the medical updates on insulin therapy ',
     '	I do not have enough staff for patient education and training'
 
 
   ];
   Physician = [
-    "  The fear of the Injection",
-    " The fear of hypoglycemia",
-    " The fear of weight gain",
-    " The cost of insulin",
+    " Fear of the Injection",
+    " Fear of hypoglycemia",
+    " Fear of weight gain",
+    " Cost of insulin",
     " Skepticism about Insulin efficacy",
-    " The perception of the initiation of insulin as a personal failure in controlling T2DM ",
-    " The perception of the initiation of insulin as worsening of the disease",
-    " The worry about their ability to manage insulin therapy and to adhere to physicians recommendations ",
-    " The perception of the initiation of insulin therapy as a threat to their quality of life"
+    " Perception of the initiation of insulin as a personal failure in controlling T2DM ",
+    " Perception of the initiation of insulin as worsening of the disease",
+    " Worry about their ability to manage insulin therapy and to adhere to physicians recommendations ",
+    " Perception of the initiation of insulin therapy as a threat to their quality of life"
   ]
 
   drop(event: CdkDragDrop<string[]>) {
@@ -183,31 +183,33 @@ export class KapSurveyComponent implements OnInit {
       let i = this.impacts.indexOf(name);
       this.impacts.splice(i, 1)
     }
-    if (this.impacts.length) {
+    if (this.impacts.length>2) {
+      this.checkmulti = false
       this.forthFormGroup.patchValue({
         'people_with_tdm': this.impacts.toString()
       });
       this.forthFormGroup.updateValueAndValidity()
     } else {
+      this.checkmulti = true;
       this.forthFormGroup.patchValue({
         'people_with_tdm': ''
       })
 
     }
-    if (this.impacts.length > 2) {
-      this.checkmulti = false
-      console.log("check box ")
-    } else {
-      this.checkmulti = true;
+    // if (this.impacts.length > 2) {
+    //   this.checkmulti = false
+    //   console.log("check box ")
+    // } else {
+    //   this.checkmulti = true;
 
-    }
+    // }
   }
 
 
   tdmpatientsChange(event, name) {
     console.log(event)
 
-    if (event.checked) {
+    if (event.checked){
       this.patients.push(name)
     } else {
       let i = this.patients.indexOf(name);
@@ -216,27 +218,25 @@ export class KapSurveyComponent implements OnInit {
     }
 
 
-    if (this.patients.length) {
+    if (this.patients.length > 1) {
+      this.checklimiterro = false
       this.forthFormGroup.patchValue({
         'insulin_to_tdmpatients': this.patients.toString()
       });
       this.forthFormGroup.updateValueAndValidity()
     } else {
+      this.checklimiterro = true;
       this.forthFormGroup.patchValue({
         'insulin_to_tdmpatients': ''
       })
     }
-    if (this.patients.length > 1) {
-      this.checklimiterro = false
+    // if (this.patients.length > 1) {
+    //   this.checklimiterro = false
       
-      console.log("check box ")
-    } else {
-      this.checklimiterro = true;
-     
-
-    }
-
-
+    //   console.log("check box ")
+    // } else {
+    //   this.checklimiterro = true;
+    // }
   }
   dropped(event: CdkDragDrop<string[]>) {
     console.log(event)
@@ -273,7 +273,7 @@ export class KapSurveyComponent implements OnInit {
    
    
     var formData: any = new FormData();
-    if (this.thirdFormGroup.valid && this.patients.length > 1 && this.impacts.length > 2 && this.sum ==100) {
+    if (this.thirdFormGroup.valid && this.patients.length == 2 && this.impacts.length == 3 && this.sum ==100) {
      
      
         console.log(this.firstFormGroup.value)
@@ -347,11 +347,13 @@ export class KapSurveyComponent implements OnInit {
         console.log(res)
         localStorage.setItem("kdp_survey",'yes')
        let kdp_survey = localStorage.getItem('kdp_survey')
+
         if(kdp_survey=='no'){
           this.router.navigateByUrl('/kap-survey')
         }
         else{
         this.router.navigateByUrl('/dashboard')
+        this.toastr.info("Form submitted successfully")
         }
        
       })
@@ -359,11 +361,19 @@ export class KapSurveyComponent implements OnInit {
     }
     else {
       console.log('not valid')
-      if(this.sum != 100){
-        this.toastr.error("Som of insulinisation barriers should be equal to 100")
+      if(this.sum != 100 ){
+        this.toastr.error("Som of insulinisation barriers should be equal to 100");
+        
       
        }
-       this.toastr.error("Please fill all fields")
+      // this.toastr.error("Please fill all fields")
+      if( this.patients.length != 2){
+      this.toastr.error('Choose two clinically relevant options')
+      }
+      if(this.impacts.length != 3 ){
+       this.toastr.error("Choose three clinically impactful options");
+       }
+      
       this.thirdFormGroup.markAllAsTouched()
       }
      

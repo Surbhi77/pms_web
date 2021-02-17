@@ -14,6 +14,9 @@ export class DashboardComponent implements OnInit {
   constructor(private router:Router) { }
   userType:any = []
   ngOnInit(): void {
+    if(localStorage.getItem("kdp_survey") != "yes"){
+      this.router.navigateByUrl('/kap-survey')
+    }
     this.userType = localStorage.getItem('userType')
     this.name = localStorage.getItem('name')
     this.kdp_survey = localStorage.getItem('kdp_survey')

@@ -75,6 +75,7 @@ export class BeginViewComponent implements OnInit {
   listingId: any;
   check: boolean = false;
   selectglagrine: boolean;
+  glargineinsulinrequired: boolean;
   //showHypertensionDiv: boolean=false;
   constructor( private _formBuilder: FormBuilder,
     private router: Router,
@@ -851,7 +852,7 @@ export class BeginViewComponent implements OnInit {
   oncheked10(event: any) {
     console.log(event)
     if (event.checked == true) {
-      
+      this.glargineinsulinrequired=false
       this.fourthFormGroup.controls['glarginevalidation'].setValidators([Validators.required])
       this.fourthFormGroup.controls['glarginevalidation'].updateValueAndValidity()
       // // this.fourthFormGroup.controls['glargine_insulin_breakfast'].setValidators([Validators.required])
@@ -864,6 +865,7 @@ export class BeginViewComponent implements OnInit {
       this.glargine_condition = true
     }
     else {
+      this.glargineinsulinrequired=true
       this.fourthFormGroup.controls['glarginevalidation'].clearValidators()
       this.fourthFormGroup.controls['glarginevalidation'].updateValueAndValidity();
       // this.fourthFormGroup.controls['glargine_insulin_breakfast'].clearValidators()
@@ -1118,6 +1120,7 @@ export class BeginViewComponent implements OnInit {
     var formData: any = new FormData();
     if (this.fourthFormGroup.valid && this.fourthFormGroup.value.glarginevalidation!='') {
       this.selectglagrine = false
+      this.glargineinsulinrequired=false
       if(this.glargine_condition){
       this.glargineinsulinobj.glargine_insulin = (this.fourthFormGroup.value.glargine_insulin == true) ? this.fourthFormGroup.value.glargine_insulin : false;
       console.log(this.glargineinsulinobj)
@@ -1145,13 +1148,17 @@ export class BeginViewComponent implements OnInit {
       this.service.postAddBegin(formData).subscribe(res => {
       console.log(res)
       if(event){
-      this.toastr.info(" Data updated successfully");
+      this.toastr.info("Data updated successfully");
       this.router.navigateByUrl("/dashboard");}
       })
     } else {
       console.log('not valid')
       this.selectglagrine = true
-      this.toastr.error("Please fill all the fields")
+      //this.toastr.error("Please fill all the fields")
+      if(this.fourthFormGroup.value.glargine_insulin ==''){
+        //this.toastr.error("Please select a checkbox")
+        this.glargineinsulinrequired=true
+         }
       console.log(this.fourthFormGroup.value)
       this.fourthFormGroup.markAllAsTouched()
     }
