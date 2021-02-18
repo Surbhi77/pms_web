@@ -84,5 +84,8 @@ export class MainService {
        
       
     }
+    GetAgreement(id:any){
+   return this.http.post("http://360pmt.com/pms-app/Pms_app/get_serviceagreement",id)
+    }
 
 }

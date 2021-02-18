@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogConfig, MatDialogRef} from '@angular/material/dialog';
@@ -17,9 +18,29 @@ export class TermsCheckingComponent implements OnInit {
   gst:any;
   aggrement: any;
   kdp_survey: string;
-  constructor(private fb:FormBuilder ,private service: MainService, private router:Router, public dialog: MatDialog,public dialogRef: MatDialogRef<TermsCheckingComponent>) { }
+  termsData: any;
+  message: boolean=false;
+  response: any;
+  constructor(private fb:FormBuilder ,private http:HttpClient, private service: MainService, private router:Router, public dialog: MatDialog,public dialogRef: MatDialogRef<TermsCheckingComponent>) { }
 
   ngOnInit(): void {
+    // this.http.get('http://360pmt.com/pms-app/Pms_app/page/terms-condition').subscribe((res:any)=>{
+    //   this.termsData = res.data
+    // })
+    let formData = new FormData()
+    formData.append('doctor_id', JSON.parse(localStorage.getItem('doctor_id')))
+    this.service.GetAgreement(formData).subscribe((res:any)=>{
+      console.log(res)
+      this.termsData = res.data;
+      this.response = res
+      if(this.termsData==null){
+        this.message = true
+        console.log(this.message)
+      }else{
+        this.message = false
+     
+      }
+    })
    
     this.form = this.fb.group({
       user_id:new FormControl(''),
