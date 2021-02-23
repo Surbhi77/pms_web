@@ -921,7 +921,7 @@
                                                 <!-- <mat-error *ngIf="hasError4('human_premixed_thirty_breakfast', 'required')">Breakfast field is required</mat-error> -->
                                             </mat-form-field>
                                         </div>
-                                        <mat-error *ngIf="humanchange">Please Select Atleast One option</mat-error>
+
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-12 mb-3">
 
@@ -948,6 +948,9 @@
                                             </mat-form-field>
                                         </div>
                                     </div>
+                                    <div class="col-12">
+                                        <mat-error *ngIf="humanchange">Please Select Atleast One option</mat-error>
+                                    </div>
 
                                 </div>
                             </div>
@@ -968,7 +971,7 @@
                                                 <!-- <mat-error *ngIf="hasError4('human_premixed_fifty_breakfast', 'required')">Breakfast field is required</mat-error> -->
                                             </mat-form-field>
                                         </div>
-                                        <mat-error *ngIf="human50change">Please Select Atleast One option</mat-error>
+
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-12 mb-3">
 
@@ -996,6 +999,9 @@
                                             </mat-form-field>
                                         </div>
                                     </div>
+                                    <div class="col-12">
+                                        <mat-error *ngIf="human50change">Please Select Atleast One option</mat-error>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12 col-12 mb-3">
@@ -1015,7 +1021,7 @@
                                                 <!-- <mat-error *ngIf="hasError4('regular_insulin_breakfast', 'required')">Breakfast field is required</mat-error> -->
                                             </mat-form-field>
                                         </div>
-                                        <mat-error *ngIf="regular_insulinchange">Please Select Atleast One option</mat-error>
+
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-12 mb-3">
 
@@ -1042,6 +1048,9 @@
                                             </mat-form-field>
                                         </div>
                                     </div>
+                                    <div class="col-12">
+                                        <mat-error *ngIf="regular_insulinchange">Please Select Atleast One option</mat-error>
+                                    </div>
                                 </div>
                             </div>
 
@@ -1062,7 +1071,7 @@
                                                 <!-- <mat-error *ngIf="hasError4('nph_insulin_breakfast', 'required')">Breakfast field is required</mat-error> -->
                                             </mat-form-field>
                                         </div>
-                                        <mat-error *ngIf="nph_insulinchange">Please Select Atleast One option</mat-error>
+
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-12 mb-3">
 
@@ -1090,14 +1099,19 @@
                                             </mat-form-field>
                                         </div>
                                     </div>
+                                    <div class="col-12">
+                                        <mat-error *ngIf="nph_insulinchange">Please Select Atleast One option</mat-error>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12 col-12 mb-3">
                                 <div class="entry-inputs-block">
                                     <mat-checkbox color="primary" formControlName="glargine_insulin" [checked]="glargine_insulinArray.glargine_insulin" (change)="oncheked12($event)" class="example-margin d-block mb-2"> Insulin Glargine (In Units)</mat-checkbox>
+
                                 </div>
 
                                 <div class="row" *ngIf="glargine">
+
                                     <div class="col-lg-4 col-md-4 col-12 mb-3">
 
                                         <div class="entry-inputs-block">
@@ -1109,7 +1123,7 @@
                                                 <!-- <mat-error *ngIf="hasError4('glargine_insulin_breakfast', 'required')">Breakfast field is required</mat-error> -->
                                             </mat-form-field>
                                         </div>
-                                        <mat-error *ngIf="glargine_insulinchange">Please Select Atleast One option</mat-error>
+
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-12 mb-3">
 
@@ -1138,8 +1152,13 @@
                                             </mat-form-field>
                                         </div>
                                     </div>
+                                    <div class="col-12 ">
+                                        <mat-error *ngIf="glargine_insulinchange">Please Select Atleast One option</mat-error>
+                                    </div>
+
+
                                 </div>
-                                <p *ngIf="humancheck" class="text-danger">Please Select At least one </p>
+                                <!-- <p *ngIf="humancheck" class="text-danger">Please Select At least one </p> -->
                             </div>
                         </div>
                         <div class="col-sm-12 col-lg-12 col-md-12">

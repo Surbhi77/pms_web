@@ -1469,7 +1469,8 @@ checkAntiDiabetes(name){
       
       if(this.humanArray.length==0)
       {
-      this.humancheck = true
+      //this.humancheck = true
+      this.toastr.error("Please Select Atleast one option")
       }
      
      // this.toastr.error("Please fill all fields")
