@@ -16,10 +16,10 @@ export class InstrutionsComponent implements OnInit {
     if(localStorage.getItem("kdp_survey") != "yes"){
       this.router.navigateByUrl('/kap-survey')
     }
-    this.service.instructions().subscribe(res=>{
-      this.instructions = res
-      console.log(res)
-    })
+    // this.service.instructions().subscribe(res=>{
+    //   this.instructions = res
+    //   console.log(res)
+    // })
   }
 
 }

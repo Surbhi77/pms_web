@@ -7,85 +7,74 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class MainService {
+  private apiURL = "https://360pmt.com/pms-app/Pms_app"
   constructor(private http:HttpClient) { }
   addInitiate(addinitiate:any){
-    return this.http.post("https://360pmt.com/pms-app/Pms_app/add_initiate", addinitiate)
+    return this.http.post( this.apiURL + '/add_initiate/', addinitiate)
   }
   postAddBegin(addbegin:any){
-    return this.http.post("https://360pmt.com/pms-app/Pms_app/add_begin",addbegin)
+    return this.http.post( this.apiURL + '/add_begin',addbegin)
     }
   postkdp_survey(kdpsurvey:any){
-    return this.http.post("https://360pmt.com/pms-app/Pms_app/kdp_survey",kdpsurvey)
+    return this.http.post( this.apiURL + '/kdp_survey',kdpsurvey)
 
    }
     beginListing(id:any){
-    return this.http.post("https://360pmt.com/pms-app/Pms_app/begin_completed_list",id);
+    return this.http.post(this.apiURL + "/begin_completed_list" ,id);
     
   }
-  // beginDraftListing(list:any){
-  //   return this.http.post("https://360pmt.com/pms-app/Pms_app/begin_list",list);
-  // }
   beginDraftListing(list:any){
-    return this.http.post("http://360pmt.com/pms-app/Pms_app/draft_begin_list",list);
+    return this.http.post(this.apiURL + "/draft_begin_list",list);
   }
   beginview(show:any){
-    return this.http.post("https://360pmt.com/pms-app/Pms_app/begin_view",show);
+    return this.http.post(this.apiURL + "/begin_view",show);
 
   }
   initiateList(list:any){
-    return this.http.post("https://360pmt.com/pms-app/Pms_app/initiate_completed_list",list)
+    return this.http.post(this.apiURL + "/initiate_completed_list",list)
   }
   draftList(list:any){
-    return this.http.post("https://360pmt.com/pms-app/Pms_app/draft_list",list)
+    return this.http.post(this.apiURL + "/draft_list",list)
   }
   draftView(view:any){
-    return this.http.post("https://360pmt.com/pms-app/Pms_app/draft_view",view)
+    return this.http.post(this.apiURL + "/draft_view",view)
   }
   deleteDraftdata(id:number){
-    return this.http.post("https://360pmt.com/pms-app/Pms_app/draft_delete",id)
+    return this.http.post(this.apiURL + "/draft_delete",id)
   }
   beginDraftDelete(id){
-    return this.http.post("https://360pmt.com/pms-app/Pms_app/begin_delete",id);
+    return this.http.post(this.apiURL + "/begin_delete",id);
   }
   login(logindata:any){
-    return this.http.post('https://360pmt.com/pms-app/Pms_app/login',logindata)
-  }
-  instructions(){
-    return this.http.get('https://360pmt.com/pms-app/Pms_app/page/instruction')
-  }
-  howitworks(){
-    return this.http.get('https://360pmt.com/pms-app/Pms_app/page/how-its-works')
+    return this.http.post(this.apiURL + '/login',logindata)
   }
   quries(qur:any){
-    return this.http.post('https://360pmt.com/pms-app/pms_app/enquiry',qur)
+    return this.http.post( this.apiURL + '/enquiry',qur)
   }
   check_terms(check:any){
-    return this.http.post('https://360pmt.com/pms-app/Pms_app/terms_checking',check)
+    return this.http.post( this.apiURL + '/terms_checking',check)
 
   }
   agreement(data:any){
-   return this.http.post("https://360pmt.com/pms-app/Pms_app/agreement",data)
+   return this.http.post(this.apiURL + "/agreement",data)
   }
   changePass(data:any){
-    return this.http.post("https://360pmt.com/pms-app/Pms_app/change_password", data)
+    return this.http.post( this.apiURL + "/change_password", data)
   }
   invoicemedia(data:any){
- return this.http.post("http://360pmt.com/pms-app/Pms_app/userinvoice", data)
+ return this.http.post(this.apiURL + "/userinvoice", data)
   }
-  checkinvoice(data:any){
-    return this.http.post("http://360pmt.com/pms-app/Pms_app/check_invoice", data)
-     }
-     forgetpassword(data:any){
-      return this.http.post("https://360pmt.com/pms-app/Pms_app/forget_password", data)
-       }
+ checkinvoice(data:any){
+ return this.http.post(this.apiURL + "/check_invoice", data)
+}
+ forgetpassword(data:any){
+  return this.http.post(this.apiURL + "/forget_password", data)
+   }
      checkMobile(params:any){
-      let url = "http://360pmt.com/pms-app/Pms_app/check_mobile";
-      return this.http.post(url,params)
-       
-      
+      return this.http.post(this.apiURL + "/check_mobile",params)
     }
     GetAgreement(id:any){
-   return this.http.post("http://360pmt.com/pms-app/Pms_app/get_serviceagreement",id)
+   return this.http.post(this.apiURL + "/get_serviceagreement",id)
     }
 
 }
