@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class MainService {
-  private apiURL = "https://360pmt.com/pms-app/Pms_app"
+  private apiURL = "http://20.198.84.242/pms-app/Pms_app"
   constructor(private http:HttpClient) { }
   addInitiate(addinitiate:any){
     return this.http.post( this.apiURL + '/add_initiate/', addinitiate)
