@@ -83,58 +83,50 @@ body {
     letter-spacing: 1px;
 }
 
+.mat-step-text-label {
+    white-space: normal !important;
+}
+
 @media (max-width:767.99px) {
     .cdk-overlay-pane {
         max-width: 100% !important;
         width: 90% !important;
     }
-
     .right-body {
         float: left;
         width: 100%;
     }
-
     .mat-stepper-label-position-bottom .mat-horizontal-stepper-header,
     .mat-vertical-stepper-header {
         padding: 20px 15px;
     }
-
     .mat-vertical-content-container {
         margin-left: 27px !important;
     }
-
     .mat-horizontal-stepper-header-container .mat-step-text-label {
         text-indent: -9999px;
     }
-
     .mat-horizontal-stepper-header-container .mat-step-label {
         min-width: auto;
     }
-
     .Step-Head {
         padding: 10px;
         background: #0f406b;
     }
-    
     .Step-Head p {
         margin: 0;
         color: #fff;
         text-transform: uppercase;
     }
-
     .mat-horizontal-stepper-header {
         padding: 0 15px;
     }
-
     .mat-horizontal-content-container {
         padding: 0 15px 15px 15px;
     }
-
     .page-content {
         padding: 15px 15px 15px;
     }
 }
 
-@media (min-width:768px) and (max-width: 1023.99px) {
-    
-}
+@media (min-width:768px) and (max-width: 1023.99px) {}

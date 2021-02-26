@@ -867,6 +867,7 @@
                                     <mat-form-field>
                                         <mat-label>S.Creatinine</mat-label>
                                         <mat-select formControlName="s_creatinine" [value]="bloodInvetigateObj.s_creatinine">
+                                            <mat-option value="0">None</mat-option>
                                             <mat-option *ngFor="let index of getCreatinine();" value='{{index}}'>{{index}}</mat-option>
 
                                         </mat-select>
@@ -916,6 +917,7 @@
                                             <mat-form-field>
                                                 <mat-label>Breakfast</mat-label>
                                                 <mat-select formControlName="human_premixed_thirty_breakfast" (selectionChange)="humanChange($event)" [value]="human_premixedthirtyArray.human_premixed_thirty_breakfast">
+                                                    <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
                                                 <!-- <mat-error *ngIf="hasError4('human_premixed_thirty_breakfast', 'required')">Breakfast field is required</mat-error> -->
@@ -929,6 +931,7 @@
                                             <mat-form-field>
                                                 <mat-label>Lunch</mat-label>
                                                 <mat-select formControlName="human_premixed_thirty_lunch" (selectionChange)="humanChange($event)">
+                                                    <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
                                                 <!-- <mat-error *ngIf="hasError4('human_premixed_thirty_lunch', 'required')">Lunch field is required</mat-error> -->
@@ -942,6 +945,7 @@
                                             <mat-form-field>
                                                 <mat-label>Dinner</mat-label>
                                                 <mat-select formControlName="human_premixed_thirty_dinner" (selectionChange)="humanChange($event)" [value]="human_premixedthirtyArray.human_premixed_thirty_dinner">
+                                                    <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
                                                 <!-- <mat-error *ngIf="hasError4('human_premixed_thirty_dinner', 'required')">Dinner field is required</mat-error> -->
@@ -966,6 +970,7 @@
                                             <mat-form-field>
                                                 <mat-label>Breakfast</mat-label>
                                                 <mat-select formControlName="human_premixed_fifty_breakfast" [value]="human_premixedfiftyArray.human_premixed_50_breakfast" (selectionChange)="humanChange2($event)">
+                                                    <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
                                                 <!-- <mat-error *ngIf="hasError4('human_premixed_fifty_breakfast', 'required')">Breakfast field is required</mat-error> -->
@@ -979,6 +984,7 @@
                                             <mat-form-field>
                                                 <mat-label>Lunch</mat-label>
                                                 <mat-select formControlName="human_premixed_fifty_lunch" (selectionChange)="humanChange2($event)">
+                                                    <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
                                                 <!-- <mat-error *ngIf="hasError4('human_premixed_fifty_lunch', 'required')">Lunch field is required</mat-error> -->
@@ -993,6 +999,7 @@
                                             <mat-form-field>
                                                 <mat-label>Dinner</mat-label>
                                                 <mat-select formControlName="human_premixed_fifty_dinner" (selectionChange)="humanChange2($event)" [value]="human_premixedfiftyArray.human_premixed_fifty_dinner">
+                                                    <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
                                                 <!-- <mat-error *ngIf="hasError4('human_premixed_fifty_dinner', 'required')">Dinner field is required</mat-error> -->
@@ -1016,6 +1023,7 @@
                                             <mat-form-field>
                                                 <mat-label>Breakfast</mat-label>
                                                 <mat-select (selectionChange)="regularChange($event)" formControlName="regular_insulin_breakfast" [value]="regular_insulinArray.regular_insulin_breakfast">
+                                                    <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
                                                 <!-- <mat-error *ngIf="hasError4('regular_insulin_breakfast', 'required')">Breakfast field is required</mat-error> -->
@@ -1029,6 +1037,7 @@
                                             <mat-form-field>
                                                 <mat-label>Lunch</mat-label>
                                                 <mat-select (selectionChange)="regularChange($event)" formControlName="regular_insulin_lunch">
+                                                    <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
                                                 <!-- <mat-error *ngIf="hasError4('regular_insulin_lunch', 'required')">Lunch field is required</mat-error> -->
@@ -1042,6 +1051,7 @@
                                             <mat-form-field>
                                                 <mat-label>Dinner</mat-label>
                                                 <mat-select (selectionChange)="regularChange($event)" formControlName="regular_insulin_dinner" [value]="regular_insulinArray.regular_insulin_dinner">
+                                                    <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
                                                 <!-- <mat-error *ngIf="hasError4('regular_insulin_dinner', 'required')">Dinner field is required</mat-error> -->
@@ -1066,6 +1076,7 @@
                                             <mat-form-field>
                                                 <mat-label>Breakfast</mat-label>
                                                 <mat-select (selectionChange)=" nphChange($event)" formControlName="nph_insulin_breakfast" value="{{nph_insulinArray.nph_insulin_breakfast}}">
+                                                    <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
                                                 <!-- <mat-error *ngIf="hasError4('nph_insulin_breakfast', 'required')">Breakfast field is required</mat-error> -->
@@ -1079,6 +1090,7 @@
                                             <mat-form-field>
                                                 <mat-label>Lunch</mat-label>
                                                 <mat-select (selectionChange)=" nphChange($event)" formControlName="nph_insulin_lunch">
+                                                    <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
                                                 <!-- <mat-error *ngIf="hasError4('nph_insulin_lunch', 'required')">Lunch field is required</mat-error> -->
@@ -1093,6 +1105,7 @@
                                             <mat-form-field>
                                                 <mat-label>Dinner</mat-label>
                                                 <mat-select (selectionChange)=" nphChange($event)" formControlName="nph_insulin_dinner" value="{{nph_insulinArray.nph_insulin_dinner}}">
+                                                    <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
                                                 <!-- <mat-error *ngIf="hasError4('nph_insulin_dinner', 'required')">Dinner field is required</mat-error> -->
@@ -1118,6 +1131,7 @@
                                             <mat-form-field>
                                                 <mat-label>Breakfast</mat-label>
                                                 <mat-select (selectionChange)="glargineChange($event)" formControlName="glargine_insulin_breakfast" value="{{glargine_insulinArray.glargine_insulin_breakfast}}">
+                                                    <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
                                                 <!-- <mat-error *ngIf="hasError4('glargine_insulin_breakfast', 'required')">Breakfast field is required</mat-error> -->
@@ -1131,6 +1145,7 @@
                                             <mat-form-field>
                                                 <mat-label>Lunch</mat-label>
                                                 <mat-select (selectionChange)="glargineChange($event)" formControlName="glargine_insulin_lunch">
+                                                    <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
                                                 <!-- <mat-error *ngIf="hasError4('glargine_insulin_lunch', 'required')">Lunch field is required</mat-error> -->
@@ -1146,6 +1161,7 @@
                                             <mat-form-field>
                                                 <mat-label>Dinner</mat-label>
                                                 <mat-select (selectionChange)="glargineChange($event)" formControlName="glargine_insulin_dinner" value="{{glargine_insulinArray.glargine_insulin_dinner}}">
+                                                    <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
                                                 <!-- <mat-error *ngIf="hasError4('glargine_insulin_dinner', 'required')">Dinner field is required</mat-error> -->

@@ -175,13 +175,13 @@ export class BeginViewComponent implements OnInit {
       glargine_insulin_breakfast: new FormControl(''),
       glargine_insulin_lunch: new FormControl(''),
       glargine_insulin_dinner: new FormControl(''),
-      glarginevalidation:new FormControl('')
+      glarginevalidation:new FormControl(0)
       
       // thirdCtrl: ['gg', Validators.required],
 
     })
     
-    
+    console.log(this.fourthFormGroup.value.glarginevalidation)
    
 
     let routeParams = this.route.snapshot.params;
@@ -888,25 +888,82 @@ export class BeginViewComponent implements OnInit {
       this.medication = false
     }
   }
+
+  glargineval:any = 0;
   select1($event){
+    
     if($event.value==0){
+      this.form.value.glarginevalidation= this.form.value.glarginevalidation - 1
       this.fourthFormGroup.patchValue({
-        'glarginevalidation':''
+        'glarginevalidation':this.form.value.glarginevalidation
       })
       this.fourthFormGroup.updateValueAndValidity()
       this.selectglagrine = true
       
     }
     else{
+      this.form.value.glarginevalidation= this.form.value.glarginevalidation + 1
       this.selectglagrine = false
       this.fourthFormGroup.patchValue({
-        'glarginevalidation':$event.value
+        'glarginevalidation': this.form.value.glarginevalidation
+      })
+
+      // let i = this.glargineval.indexOf()
+      // this.glargineval.splice(i,1)
+      this.fourthFormGroup.updateValueAndValidity()
+     
+    }
+    console.log('glargineval',this.glargineval);
+
+  }
+  select2($event){
+    if($event.value==0 ){
+      this.form.value.glarginevalidation= this.form.value.glarginevalidation - 1
+      this.fourthFormGroup.patchValue({
+        'glarginevalidation': this.form.value.glarginevalidation
+      })
+      
+      this.fourthFormGroup.updateValueAndValidity()
+      this.selectglagrine = true
+      
+    }
+    else{
+      this.form.value.glarginevalidation= this.form.value.glarginevalidation + 1
+      this.selectglagrine = false
+      this.fourthFormGroup.patchValue({
+        'glarginevalidation': this.form.value.glarginevalidation
       })
       this.fourthFormGroup.updateValueAndValidity()
      
     }
+    console.log('glargineval',this.glargineval);
 
   }
+  select3($event){
+  
+    if($event.value==0 ){
+      this.form.value.glarginevalidation= this.form.value.glarginevalidation - 1
+      this.fourthFormGroup.patchValue({
+        'glarginevalidation': this.form.value.glarginevalidation
+      })
+      this.fourthFormGroup.updateValueAndValidity()
+      this.selectglagrine = true
+      
+    }
+    else{
+      this.form.value.glarginevalidation= this.form.value.glarginevalidation + 1
+      this.selectglagrine = false
+      this.fourthFormGroup.patchValue({
+        'glarginevalidation': this.form.value.glarginevalidation
+      })
+      this.fourthFormGroup.updateValueAndValidity()
+     
+    }
+    console.log('glargineval',this.glargineval);
+
+  }
+  
+  
   submitFirst(saveAsDraft:any) {
     if (this.firstFormGroup.valid) {
       let date = new Date(this.firstFormGroup.value.date_visit);
@@ -1118,7 +1175,10 @@ export class BeginViewComponent implements OnInit {
   submit(event:any) {
 
     var formData: any = new FormData();
-    if (this.fourthFormGroup.valid && this.fourthFormGroup.value.glarginevalidation!='') {
+    if (this.fourthFormGroup.valid && this.fourthFormGroup.value.glarginevalidation!=0) {
+      if(this.glargineval=="0"){
+        this.selectglagrine = false
+      }
       this.selectglagrine = false
       this.glargineinsulinrequired=false
       if(this.glargine_condition){
@@ -1155,9 +1215,12 @@ export class BeginViewComponent implements OnInit {
       console.log('not valid')
       this.selectglagrine = true
       //this.toastr.error("Please fill all the fields")
-      if(this.fourthFormGroup.value.glargine_insulin ==''){
+      if(this.fourthFormGroup.value.glargine_insulin ==''  ){
         //this.toastr.error("Please select a checkbox")
         this.glargineinsulinrequired=true
+         }
+         if(  this.form.value.glarginevalidation==0){
+          this.selectglagrine = true
          }
       console.log(this.fourthFormGroup.value)
       this.fourthFormGroup.markAllAsTouched()

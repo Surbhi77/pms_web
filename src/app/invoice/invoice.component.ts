@@ -53,6 +53,7 @@ export class InvoiceComponent implements OnInit {
   response: any;
   selectglagrine: boolean;
   glargineinsulinrequired: boolean;
+  
 
   constructor(private _formBuilder: FormBuilder, private service: MainService,private toastr: ToastrService,private router:Router) { }
 
@@ -669,8 +670,14 @@ export class InvoiceComponent implements OnInit {
       this.glargine_condition = false
     }
   }
+  glargineval:any = [];
   select1($event){
-    if($event.value==0){
+    if($event.value!=0){
+    this.glargineval.push($event.value)
+    
+    }
+    
+    if($event.value==0 && this.glargineval==''){
       this.fourthFormGroup.patchValue({
         'glarginevalidation':''
       })
@@ -679,16 +686,20 @@ export class InvoiceComponent implements OnInit {
       
     }
     else{
+      
       this.selectglagrine = false
       this.fourthFormGroup.patchValue({
         'glarginevalidation':$event.value
       })
+
+      let i = this.glargineval.indexOf()
+      this.glargineval.splice(i,1)
       this.fourthFormGroup.updateValueAndValidity()
      
     }
+    console.log('glargineval',this.glargineval);
 
   }
-  
   
   onchange($event: any) {
     console.log($event)

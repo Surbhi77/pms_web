@@ -809,8 +809,12 @@ export class AddEntryComponent implements OnInit {
       
     }
   }
+  glargineval = '';
   glargineChange(event){
-    if(event.value==0){
+    if(event.value!=0){
+      this.glargineval = event.value
+      }
+    if(event.value==0 &&  this.glargineval==''){
       this.fourthFormGroup.patchValue({
         'glarginecheck':''
       })
@@ -824,7 +828,35 @@ export class AddEntryComponent implements OnInit {
       this.fourthFormGroup.updateValueAndValidity()
       this.glargine_insulinchange = false
     }
+    console.log('glargineval',this.glargineval);
   }
+  // glargineval = '';
+  // select1($event){
+  //   if($event.value!=0){
+  //   this.glargineval = $event.value
+  //   }
+    
+  //   if($event.value==0 &&  this.glargineval==''){
+  //     this.fourthFormGroup.patchValue({
+  //       'glarginevalidation':''
+  //     })
+  //     this.fourthFormGroup.updateValueAndValidity()
+  //     this.selectglagrine = true
+      
+  //   }
+  //   else{
+      
+  //     this.selectglagrine = false
+  //     this.fourthFormGroup.patchValue({
+  //       'glarginevalidation':$event.value
+  //     })
+  //     this.fourthFormGroup.updateValueAndValidity()
+     
+  //   }
+  //   console.log('glargineval',this.glargineval);
+
+  // }
+  
   // bmicalc(){
     
   //   this.bmi =(this.firstFormGroup.value.weight/((this.firstFormGroup.value.height*this.firstFormGroup.value.height)/100))*100

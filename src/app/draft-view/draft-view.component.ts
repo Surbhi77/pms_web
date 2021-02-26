@@ -1075,12 +1075,7 @@ checkAntiDiabetes(name){
       this.humancheck=false
       this.fourthFormGroup.controls["glarginecheck"].setValidators([Validators.required]);
       this.fourthFormGroup.controls["glarginecheck"].updateValueAndValidity();
-      // this.fourthFormGroup.get('glargine_insulin_breakfast').setValidators(Validators.required)
-      // this.fourthFormGroup.controls["glargine_insulin_breakfast"].updateValueAndValidity();
-      // this.fourthFormGroup.get('glargine_insulin_lunch').setValidators(Validators.required)
-      // this.fourthFormGroup.controls["glargine_insulin_lunch"].updateValueAndValidity();
-      // this.fourthFormGroup.get('glargine_insulin_dinner').setValidators(Validators.required)
-      // this.fourthFormGroup.controls["glargine_insulin_dinner"].updateValueAndValidity();
+     
     }
     else {
       this.glargine = false
@@ -1090,16 +1085,15 @@ checkAntiDiabetes(name){
       this.humanArray.splice(index,1)
       this.fourthFormGroup.controls["glarginecheck"].setValidators([Validators.required]);
       this.fourthFormGroup.controls["glarginecheck"].updateValueAndValidity();
-      // this.fourthFormGroup.get('glargine_insulin_breakfast').clearValidators();
-      // this.fourthFormGroup.controls["glargine_insulin_breakfast"].updateValueAndValidity();
-      // this.fourthFormGroup.get('glargine_insulin_lunch').clearValidators();
-      // this.fourthFormGroup.controls[" glargine_insulin_lunch"].updateValueAndValidity();
-      // this.fourthFormGroup.get('glargine_insulin_dinner').clearValidators();
-      // this.fourthFormGroup.controls["glargine_insulin_dinner"].updateValueAndValidity();
+      
     }
   }
+  glargineval = '';
   glargineChange(event){
-    if(event.value==0){
+    if(event.value!=0){
+      this.glargineval = event.value
+      }
+    if(event.value==0 &&  this.glargineval==''){
       this.fourthFormGroup.patchValue({
         'glarginecheck':''
       })
@@ -1113,7 +1107,8 @@ checkAntiDiabetes(name){
       this.fourthFormGroup.updateValueAndValidity()
       this.glargine_insulinchange = false
     }
-  }
+    console.log('glargineval',this.glargineval);
+  }y
   date(e){
     var date = new Date(e.value),
       yr = date.getFullYear(),
