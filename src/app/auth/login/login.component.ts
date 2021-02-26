@@ -48,8 +48,7 @@ export class LoginComponent implements OnInit {
       let formdata = new FormData()
       
      
-      localStorage.setItem('email' , this.loginForm.value.email);
-      localStorage.setItem('password' , this.loginForm.value.password);
+      
      
 
       formdata.append("email", this.loginForm.value.email);
@@ -64,6 +63,8 @@ export class LoginComponent implements OnInit {
       // localStorage.setItem('user_id', this.userType.doctor_id)
       // this.router.navigateByUrl('/kap-survey')
       if(res && res.data){
+      localStorage.setItem('email' , this.loginForm.value.email);
+      localStorage.setItem('password' , this.loginForm.value.password);
       localStorage.setItem('userType', this.userType.type)   
       localStorage.setItem('doctor_id',this.userType.doctor_id)
       localStorage.setItem('name',this.userType.name)
