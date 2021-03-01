@@ -149,7 +149,7 @@ export class InvoiceComponent implements OnInit {
       glargine_insulin_breakfast: new FormControl(''),
       glargine_insulin_lunch: new FormControl(''),
       glargine_insulin_dinner: new FormControl(''),
-      glarginevalidation:new FormControl('')
+      glarginevalidation:new FormControl(0)
      
 
     })
@@ -670,14 +670,13 @@ export class InvoiceComponent implements OnInit {
       this.glargine_condition = false
     }
   }
-  glargineval:any = [];
+  glargineval:any = 0;
   select1($event){
-    if($event.value!=0){
-    this.glargineval.push($event.value)
-    
+    if($event.value==0){
+      this.glargineval = $event.value
     }
-    
-    if($event.value==0 && this.glargineval==''){
+    if($event.value==0 && this.glargineval!=0){
+      //this.fourthFormGroup.value.glarginevalidation= this.fourthFormGroup.value.glarginevalidation - 1
       this.fourthFormGroup.patchValue({
         'glarginevalidation':''
       })
@@ -686,20 +685,72 @@ export class InvoiceComponent implements OnInit {
       
     }
     else{
-      
+      //this.fourthFormGroup.value.glarginevalidation= this.fourthFormGroup.value.glarginevalidation + 1
       this.selectglagrine = false
       this.fourthFormGroup.patchValue({
         'glarginevalidation':$event.value
       })
 
-      let i = this.glargineval.indexOf()
-      this.glargineval.splice(i,1)
+      // let i = this.glargineval.indexOf()
+      // this.glargineval.splice(i,1)
       this.fourthFormGroup.updateValueAndValidity()
      
     }
     console.log('glargineval',this.glargineval);
 
   }
+  select2($event){
+    if($event.value==0){
+      this.glargineval = $event.value
+    }
+    if($event.value==0 && this.glargineval!=0){
+      //this.fourthFormGroup.value.glarginevalidation= this.fourthFormGroup.value.glarginevalidation - 1
+      this.fourthFormGroup.patchValue({
+        'glarginevalidation': ''
+      })
+      
+      this.fourthFormGroup.updateValueAndValidity()
+      this.selectglagrine = true
+      
+    }
+    else{
+      //this.fourthFormGroup.value.glarginevalidation= this.fourthFormGroup.value.glarginevalidation + 1
+      this.selectglagrine = false
+      this.fourthFormGroup.patchValue({
+        'glarginevalidation':$event.value
+      })
+      this.fourthFormGroup.updateValueAndValidity()
+     
+    }
+    console.log('glargineval',this.glargineval);
+
+  }
+  select3($event){
+    if($event.value==0){
+      this.glargineval = $event.value
+    }
+    if($event.value==0 &&  this.glargineval!=0){
+     // this.fourthFormGroup.value.glarginevalidation= this.fourthFormGroup.value.glarginevalidation - 1
+      this.fourthFormGroup.patchValue({
+        'glarginevalidation':''
+      })
+      this.fourthFormGroup.updateValueAndValidity()
+      this.selectglagrine = true
+      
+    }
+    else{
+     // this.fourthFormGroup.value.glarginevalidation= this.fourthFormGroup.value.glarginevalidation + 1
+      this.selectglagrine = false
+      this.fourthFormGroup.patchValue({
+        'glarginevalidation': $event.value
+      })
+      this.fourthFormGroup.updateValueAndValidity()
+     
+    }
+    console.log('glargineval',this.glargineval);
+
+  }
+  
   
   onchange($event: any) {
     console.log($event)
@@ -715,7 +766,7 @@ export class InvoiceComponent implements OnInit {
   submit() {
 
     var formData: any = new FormData();
-    if (this.fourthFormGroup.valid && this.fourthFormGroup.value.glarginevalidation!='') {
+    if (this.fourthFormGroup.valid && this.fourthFormGroup.value.glarginevalidation>0) {
      console.log()
      
      this.selectglagrine = false
@@ -742,9 +793,12 @@ export class InvoiceComponent implements OnInit {
       })
     } else {
       console.log('not valid')
-      if(this.fourthFormGroup.value.glarginevalidation==''){
-     this.selectglagrine = true
+      if(this.fourthFormGroup.value.glargine_insulin==0){
+      this.selectglagrine = true
       }
+      if( this.fourthFormGroup.value.glarginevalidation==0){
+        this.selectglagrine = true
+       }
      
       this.fourthFormGroup.markAllAsTouched()
       if(this.fourthFormGroup.value.glargine_insulin ==''){
