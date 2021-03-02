@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { RatePopupComponent } from '../rate-popup/rate-popup.component';
 import { ToastrService } from 'ngx-toastr';
+import { NotificationPopupComponent } from '../notification-popup/notification-popup.component';
 
 
 @Component({
@@ -352,6 +353,7 @@ export class KapSurveyComponent implements OnInit {
           this.router.navigateByUrl('/kap-survey')
         }
         else{
+          this.dialog.open(NotificationPopupComponent, { disableClose: true, width:"40%" })
         this.router.navigateByUrl('/dashboard')
         this.toastr.info("Form submitted successfully")
         }

@@ -76,5 +76,11 @@ export class MainService {
     GetAgreement(id:any){
    return this.http.post(this.apiURL + "/get_serviceagreement",id)
     }
+    getNotifications(params:any){
+      let url = "http://20.198.84.242/pms-app/Pms_app/invoice_cheeck_notification";
+      return this.http.post(url,params).pipe(
+        
+      )
+    }
 
 }

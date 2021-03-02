@@ -188,11 +188,11 @@ export class DraftViewComponent implements OnInit {
       glargine_insulin_breakfast: new FormControl(''),
       glargine_insulin_lunch: new FormControl(''),
       glargine_insulin_dinner: new FormControl(''),
-      human_premixed:new FormControl(0),
-      human_premixed50:new FormControl(0),
-      regularinsulin:new FormControl(0),
-      nphcheck:new FormControl(0),
-      glarginecheck:new FormControl(0)
+      human_premixed:new FormControl(''),
+      human_premixed50:new FormControl(''),
+      regularinsulin:new FormControl(''),
+      nphcheck:new FormControl(''),
+      glarginecheck:new FormControl('')
      
 
     })
@@ -920,64 +920,48 @@ checkAntiDiabetes(name){
     }
 
   }
-  hp30val;
-  humanChange1(event){
-    if(event.value==0){
-      this.hp30val = event.value
-    }
-    if(event.value==0 && this.hp30val!=0){
-      this.fourthFormGroup.patchValue({
-        'human_premixed':''
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.humanchange = true
-    }
-    else{
-      this.fourthFormGroup.patchValue({
-        'human_premixed':event.value
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.humanchange = false
-    }
-  }
-  humanChange2(event){
-     if(event.value==0){
-      this.hp30val = event.value
-    }
-    if(event.value==0 && this.hp30val!=0){
-      this.fourthFormGroup.patchValue({
-        'human_premixed':''
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.humanchange = true
-    }
-    else{
-      this.fourthFormGroup.patchValue({
-        'human_premixed':event.value
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.humanchange = false
-    }
-  }
-  humanChange3(event){
-    if(event.value==0){
-      this.hp30val = event.value
-    }
-    if(event.value==0 && this.hp30val!=0){
-      this.fourthFormGroup.patchValue({
-        'human_premixed':''
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.humanchange = true
-    }
-    else{
-      this.fourthFormGroup.patchValue({
-        'human_premixed':event.value
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.humanchange = false
+  hp30val=[];
+  humanChange1(event,type){
+    if(event.value == 0){
+      let index = this.hp30val.indexOf(type);
+      if(index>=0){
+        this.hp30val.splice(index,1)
+      }
+      if(this.hp30val.length>0){
+        this.fourthFormGroup.patchValue({
+          'human_premixed':'filled'
+        });
+        this.humanchange = false
+        this.fourthFormGroup.updateValueAndValidity();
+      }else{
+        this.fourthFormGroup.patchValue({
+          'human_premixed':''
+        })
+        this.fourthFormGroup.updateValueAndValidity();
+        this.humanchange = true
+      }
+    }else{
+      let index = this.hp30val.indexOf(type);
+      if(index<0){
+        this.hp30val.push(type)
+      }
+      if(this.hp30val.length>0){
+        this.fourthFormGroup.patchValue({
+          'human_premixed':'filled'
+        });
+        this.fourthFormGroup.updateValueAndValidity();
+        this.humanchange = false
+      }else{
+        this.fourthFormGroup.patchValue({
+          'human_premixed':''
+        })
+        this.humanchange = true
+
+        this.fourthFormGroup.updateValueAndValidity();
+      }
     }
   }
+  
   oncheked9(event: any, name: any) {
     if (event.checked == true) {
       this.human_premixedfifty = true
@@ -1006,63 +990,47 @@ checkAntiDiabetes(name){
       // this.fourthFormGroup.controls["human_premixed_fifty_dinner"].updateValueAndValidity();
     }
   }
-  hp50val;
-  humanChange4(event){
-    if(event.value==0){
-      this.hp50val = event.value;
+  hp50val =[];
+  humanChange2(event,type){
+    if(event.value == 0){
+      let index = this.hp50val.indexOf(type);
+      if(index>=0){
+        this.hp50val.splice(index,1)
+      }
+      if(this.hp50val.length>0){
+        this.fourthFormGroup.patchValue({
+          'human_premixed50':'filled'
+        });
+        this.human50change = false
+        this.fourthFormGroup.updateValueAndValidity();
+      }else{
+        this.fourthFormGroup.patchValue({
+          'human_premixed50':''
+        })
+        this.fourthFormGroup.updateValueAndValidity();
+        this.human50change = true
+      }
+    }else{
+      let index = this.hp50val.indexOf(type);
+      if(index<0){
+        this.hp50val.push(type)
+      }
+      if(this.hp50val.length>0){
+        this.fourthFormGroup.patchValue({
+          'human_premixed50':'filled'
+        });
+        this.fourthFormGroup.updateValueAndValidity();
+        this.human50change = false
+      }else{
+        this.fourthFormGroup.patchValue({
+          'human_premixed50':''
+        })
+        this.human50change = true
+
+        this.fourthFormGroup.updateValueAndValidity();
+      }
     }
-    if(event.value==0 && this.hp50val!=0){
-      this.fourthFormGroup.patchValue({
-        'human_premixed50':''
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.human50change = true
-    }
-    else{
-      this.fourthFormGroup.patchValue({
-        'human_premixed50':event.value
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.human50change = false
-    }
-  }
-  humanChange5(event){
-    if(event.value==0){
-      this.hp50val = event.value;
-    }
-    if(event.value==0 && this.hp50val!=0){
-      this.fourthFormGroup.patchValue({
-        'human_premixed50':''
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.human50change = true
-    }
-    else{
-      this.fourthFormGroup.patchValue({
-        'human_premixed50':event.value
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.human50change = false
-    }
-  }
-  humanChange6(event){
-    if(event.value==0){
-      this.hp50val = event.value;
-    }
-    if(event.value==0 && this.hp50val!=0){
-      this.fourthFormGroup.patchValue({
-        'human_premixed50':''
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.human50change = true
-    }
-    else{
-      this.fourthFormGroup.patchValue({
-        'human_premixed50':event.value
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.human50change = false
-    }
+
   }
   oncheked10(event: any) {
     if (event.checked == true) {
@@ -1091,63 +1059,48 @@ checkAntiDiabetes(name){
       // this.fourthFormGroup.controls["regular_insulin_dinner"].updateValueAndValidity();
     }
   }
-  regularinsuilinval;
-  regularChange1(event){
-    if(event.value==0){
-      this.regularinsuilinval = event.value;
+  regularinsuilinval =[];
+  regularChange(event, type){
+    if(event.value == 0){
+      let index = this.regularinsuilinval.indexOf(type);
+      if(index>=0){
+        this.regularinsuilinval.splice(index,1)
+      }
+      if(this.regularinsuilinval.length>0){
+        this.fourthFormGroup.patchValue({
+          'regularinsulin':'filled'
+        });
+        this.regular_insulinchange = false
+        this.fourthFormGroup.updateValueAndValidity();
+      }else{
+        this.fourthFormGroup.patchValue({
+          'regularinsulin':''
+        })
+        this.fourthFormGroup.updateValueAndValidity();
+        this.regular_insulinchange = true
+      }
+    }else{
+      let index = this.regularinsuilinval.indexOf(type);
+      if(index<0){
+        this.regularinsuilinval.push(type)
+      }
+      if(this.regularinsuilinval.length>0){
+        this.fourthFormGroup.patchValue({
+          'regularinsulin':'filled'
+        });
+        this.fourthFormGroup.updateValueAndValidity();
+        this.regular_insulinchange = false
+      }else{
+        this.fourthFormGroup.patchValue({
+          'regularinsulin':''
+        })
+        this.regular_insulinchange = true
+
+        this.fourthFormGroup.updateValueAndValidity();
+      }
     }
-    if(event.value==0 && this.regularinsuilinval!=0){
-      this.fourthFormGroup.patchValue({
-        'regularinsulin':''
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.regular_insulinchange = true
-    }
-    else{
-      this.fourthFormGroup.patchValue({
-        'regularinsulin':event.value
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.regular_insulinchange = false
-    }
-  }
-  regularChange2(event){
-    if(event.value==0){
-      this.regularinsuilinval = event.value;
-    }
-    if(event.value==0 && this.regularinsuilinval!=0){
-      this.fourthFormGroup.patchValue({
-        'regularinsulin':''
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.regular_insulinchange = true
-    }
-    else{
-      this.fourthFormGroup.patchValue({
-        'regularinsulin':event.value
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.regular_insulinchange = false
-    }
-  }
-  regularChange3(event){
-    if(event.value==0){
-      this.regularinsuilinval = event.value;
-    }
-    if(event.value==0 && this.regularinsuilinval!=0){
-      this.fourthFormGroup.patchValue({
-        'regularinsulin':''
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.regular_insulinchange = true
-    }
-    else{
-      this.fourthFormGroup.patchValue({
-        'regularinsulin':event.value
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.regular_insulinchange = false
-    }
+
+    
   }
   oncheked11(event: any) {
     if (event.checked == true) {
@@ -1178,64 +1131,48 @@ checkAntiDiabetes(name){
       // this.fourthFormGroup.controls["nph_insulin_dinner"].updateValueAndValidity();
     }
   }
-  nphval;
-  nphChange1(event){
-    if(event.value==0){
-      this.nphval = event.value;
-    }
-    if(event.value==0 && this.nphval!=0){
-      this.fourthFormGroup.patchValue({
-        'nphcheck':''
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.nph_insulinchange = true
-    }
-    else{
-      this.fourthFormGroup.patchValue({
-        'nphcheck':event.value
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.nph_insulinchange = false
-    }
-  }
-  nphChange2(event){
-    if(event.value==0){
-      this.nphval = event.value;
-    }
-    if(event.value==0 && this.nphval!=0){
-      this.fourthFormGroup.patchValue({
-        'nphcheck':''
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.nph_insulinchange = true
-    }
-    else{
-      this.fourthFormGroup.patchValue({
-        'nphcheck':event.value
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.nph_insulinchange = false
-    }
-  }
-  nphChange3(event){
-    if(event.value==0){
-      this.nphval = event.value;
-    }
-    if(event.value==0 && this.nphval!=0){
-      this.fourthFormGroup.patchValue({
-        'nphcheck':''
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.nph_insulinchange = true
-    }
-    else{
-      this.fourthFormGroup.patchValue({
-        'nphcheck':event.value
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.nph_insulinchange = false
+  nphval = [];
+  nphChange(event ,type){
+    if(event.value == 0){
+      let index = this.nphval.indexOf(type);
+      if(index>=0){
+        this.nphval.splice(index,1)
+      }
+      if(this.nphval.length>0){
+        this.fourthFormGroup.patchValue({
+          'nphcheck':'filled'
+        });
+        this.nph_insulinchange = false
+        this.fourthFormGroup.updateValueAndValidity();
+      }else{
+        this.fourthFormGroup.patchValue({
+          'nphcheck':''
+        })
+        this.fourthFormGroup.updateValueAndValidity();
+        this.nph_insulinchange = true
+      }
+    }else{
+      let index = this.nphval.indexOf(type);
+      if(index<0){
+        this.nphval.push(type)
+      }
+      if(this.nphval.length>0){
+        this.fourthFormGroup.patchValue({
+          'nphcheck':'filled'
+        });
+        this.fourthFormGroup.updateValueAndValidity();
+        this.nph_insulinchange = false
+      }else{
+        this.fourthFormGroup.patchValue({
+          'nphcheck':''
+        })
+        this.nph_insulinchange = true
+
+        this.fourthFormGroup.updateValueAndValidity();
+      }
     }
   }
+
   oncheked12(event: any) {
     if (event.checked == true) {
       this.glargine = true
@@ -1256,66 +1193,47 @@ checkAntiDiabetes(name){
       
     }
   }
-  glargineval = 0;
-  glargineChange1(event){
-    if(event.value==0){
-      this.glargineval = event.value
+  glargineval:any = [];
+  glargineChange($event,type){
+    if($event.value == 0){
+      let index = this.glargineval.indexOf(type);
+      if(index>=0){
+        this.glargineval.splice(index,1)
       }
-    if(event.value==0 && this.glargineval!=0){
-      this.fourthFormGroup.patchValue({
-        'glarginecheck':''
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.glargine_insulinchange = true
-    }
-    else{
-      this.fourthFormGroup.patchValue({
-        'glarginecheck':event.value
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.glargine_insulinchange = false
-    }
-    console.log('glargineval',this.glargineval);
-  }
-  glargineChange2(event){
-    if(event.value==0){
-      this.glargineval = event.value
+      if(this.glargineval.length>0){
+        this.fourthFormGroup.patchValue({
+          'glarginecheck':'filled'
+        });
+        this.glargine_insulinchange = false
+        this.fourthFormGroup.updateValueAndValidity();
+      }else{
+        this.fourthFormGroup.patchValue({
+          'glarginecheck':''
+        })
+        this.fourthFormGroup.updateValueAndValidity();
+        this.glargine_insulinchange = true
       }
-    if(event.value==0 &&  this.glargineval!=0){
-      this.fourthFormGroup.patchValue({
-        'glarginecheck':''
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.glargine_insulinchange = true
-    }
-    else{
-      this.fourthFormGroup.patchValue({
-        'glarginecheck':event.value
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.glargine_insulinchange = false
-    }
-    console.log('glargineval',this.glargineval);
-  }
-  glargineChange3(event){
-    if(event.value==0){
-      this.glargineval = event.value
+    }else{
+      let index = this.glargineval.indexOf(type);
+      if(index<0){
+        this.glargineval.push(type)
       }
-    if(event.value==0 &&  this.glargineval!=0){
-      this.fourthFormGroup.patchValue({
-        'glarginecheck':''
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.glargine_insulinchange = true
+      if(this.glargineval.length>0){
+        this.fourthFormGroup.patchValue({
+          'glarginecheck':'filled'
+        });
+        this.fourthFormGroup.updateValueAndValidity();
+        this.glargine_insulinchange = false
+      }else{
+        this.fourthFormGroup.patchValue({
+          'glarginecheck':''
+        })
+        this.glargine_insulinchange = true
+
+        this.fourthFormGroup.updateValueAndValidity();
+      }
     }
-    else{
-      this.fourthFormGroup.patchValue({
-        'glarginecheck':event.value
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.glargine_insulinchange = false
-    }
-    console.log('glargineval',this.glargineval);
+
   }
   date(e){
     var date = new Date(e.value),
@@ -1582,7 +1500,7 @@ checkAntiDiabetes(name){
  
   submit(event:any) {
      
-    if(this.fourthFormGroup.valid && this.humanArray.length && this.fourthFormGroup.value.human_premixed!=0 || this.fourthFormGroup.value.human_premixed50!=0 || this.fourthFormGroup.value.regularinsulin!=0 || this.fourthFormGroup.value.nphcheck!=0 || this.fourthFormGroup.value.glarginecheck!=0 ){
+    if(this.fourthFormGroup.valid && this.humanArray.length){
     
       this.humancheck = false
       this.humanchange = false
@@ -1662,11 +1580,20 @@ checkAntiDiabetes(name){
     else{
       console.log('not valid')
        this.humancheck = true
-      if(this.fourthFormGroup.value.human_premixed==0 || this.fourthFormGroup.value.human_premixed50==0 || this.fourthFormGroup.value.regularinsulin==0 || this.fourthFormGroup.value.nphcheck==0 || this.fourthFormGroup.value.glarginecheck==0 ){
+      if(this.fourthFormGroup.value.human_premixed=='' ){
         this.humanchange = true
+         
+      }
+      if(this.fourthFormGroup.value.human_premixed50=='' ){
         this.human50change= true
+      }
+      if(this.fourthFormGroup.value.regularinsulin==''){
         this.regular_insulinchange = true
+      }
+      if(this.fourthFormGroup.value.nphcheck==''){
         this.nph_insulinchange = true
+      }
+      if(this.fourthFormGroup.value.glarginecheck==''){
         this.glargine_insulinchange = true
       }
       

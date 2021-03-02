@@ -1003,7 +1003,7 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Breakfast (IU)</mat-label>
-                                        <mat-select formControlName="glargine_insulin_breakfast" (selectionChange)="select1($event)">
+                                        <mat-select formControlName="glargine_insulin_breakfast" (selectionChange)="select1($event,'glargine_insulin_breakfast')">
                                             <mat-option value="0">None</mat-option>
                                             <mat-option *ngFor="let index of getmulvalues()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
@@ -1017,7 +1017,7 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Lunch (IU)</mat-label>
-                                        <mat-select formControlName="glargine_insulin_lunch" (selectionChange)="select2($event)">
+                                        <mat-select formControlName="glargine_insulin_lunch" (selectionChange)="select1($event,'glargine_insulin_lunch')">
                                             <mat-option value="0">None</mat-option>
                                             <mat-option *ngFor="let index of getmulvalues()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>
@@ -1033,7 +1033,7 @@
                                 <div class="entry-inputs-block">
                                     <mat-form-field>
                                         <mat-label>Dinner (IU)</mat-label>
-                                        <mat-select formControlName="glargine_insulin_dinner" (selectionChange)="select3($event)">
+                                        <mat-select formControlName="glargine_insulin_dinner" (selectionChange)="select1($event,'glargine_insulin_dinner')">
                                             <mat-option value="0">None</mat-option>
                                             <mat-option *ngFor="let index of getmulvalues()" value="{{index}}">{{index}}</mat-option>
                                         </mat-select>

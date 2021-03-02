@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { MainService } from '../main.service';
+import { NotificationPopupComponent } from '../notification-popup/notification-popup.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,8 +13,10 @@ export class DashboardComponent implements OnInit {
   kdp_survey: string;
   kdp_surveyfilled: boolean;
   name: string;
+  date:any= new Date();resdata: any;
+;
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private service:MainService,public dialog: MatDialog) { }
   userType:any = []
   ngOnInit(): void {
     if(localStorage.getItem("kdp_survey") != "yes"){
@@ -27,7 +32,36 @@ export class DashboardComponent implements OnInit {
     else{
       this.kdp_surveyfilled = false
     }
+   
+    if(localStorage.getItem('lastNoti') != this.date.toLocaleDateString()  ){
+        this.getNotification();
   
+     }
+   else{
+     if(localStorage.getItem('lastNoti') ==null){
+      this.getNotification();
+      
+     }
+        
+       
+    }
+    
+  
+  }
+  getNotification() {
+    let formdata = new FormData();
+    formdata.append('user_id',localStorage.getItem("doctor_id"));
+    this.service.getNotifications(formdata).subscribe( (res:any)=>{
+      console.log(res.status);
+      this.resdata = res;
+      localStorage.setItem("notificationData",JSON.stringify(this.resdata))
+      console.log(res)
+      if(res.status == 'true'){
+        
+        localStorage.setItem("lastNoti",this.date.toLocaleDateString())
+        this.dialog.open(NotificationPopupComponent, { width:"40%" })
+      }
+    })
   }
   logout(){
     localStorage.clear();

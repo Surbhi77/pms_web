@@ -916,7 +916,7 @@
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Breakfast</mat-label>
-                                                <mat-select formControlName="human_premixed_thirty_breakfast" (selectionChange)="humanChange1($event)" [value]="human_premixedthirtyArray.human_premixed_thirty_breakfast">
+                                                <mat-select formControlName="human_premixed_thirty_breakfast" (selectionChange)="humanChange1($event,'human_premixed_thirty_breakfast')" [value]="human_premixedthirtyArray.human_premixed_thirty_breakfast">
                                                     <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
@@ -930,7 +930,7 @@
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Lunch</mat-label>
-                                                <mat-select formControlName="human_premixed_thirty_lunch" (selectionChange)="humanChange2($event)">
+                                                <mat-select formControlName="human_premixed_thirty_lunch" (selectionChange)="humanChange1($event,'human_premixed_thirty_lunch')">
                                                     <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
@@ -944,7 +944,7 @@
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Dinner</mat-label>
-                                                <mat-select formControlName="human_premixed_thirty_dinner" (selectionChange)="humanChange3($event)" [value]="human_premixedthirtyArray.human_premixed_thirty_dinner">
+                                                <mat-select formControlName="human_premixed_thirty_dinner" (selectionChange)="humanChange1($event,'human_premixed_thirty_dinner')" [value]="human_premixedthirtyArray.human_premixed_thirty_dinner">
                                                     <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
@@ -969,7 +969,7 @@
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Breakfast</mat-label>
-                                                <mat-select formControlName="human_premixed_fifty_breakfast" [value]="human_premixedfiftyArray.human_premixed_50_breakfast" (selectionChange)="humanChange4($event)">
+                                                <mat-select formControlName="human_premixed_fifty_breakfast" [value]="human_premixedfiftyArray.human_premixed_50_breakfast" (selectionChange)="humanChange2($event,'human_premixed_fifty_breakfast')">
                                                     <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
@@ -983,7 +983,7 @@
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Lunch</mat-label>
-                                                <mat-select formControlName="human_premixed_fifty_lunch" (selectionChange)="humanChange5($event)">
+                                                <mat-select formControlName="human_premixed_fifty_lunch" (selectionChange)="humanChange2($event,'human_premixed_fifty_lunch')">
                                                     <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
@@ -998,7 +998,7 @@
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Dinner</mat-label>
-                                                <mat-select formControlName="human_premixed_fifty_dinner" (selectionChange)="humanChange6($event)" [value]="human_premixedfiftyArray.human_premixed_fifty_dinner">
+                                                <mat-select formControlName="human_premixed_fifty_dinner" (selectionChange)="humanChange2($event,'human_premixed_fifty_dinner')" [value]="human_premixedfiftyArray.human_premixed_fifty_dinner">
                                                     <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
@@ -1022,7 +1022,7 @@
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Breakfast</mat-label>
-                                                <mat-select (selectionChange)="regularChange1($event)" formControlName="regular_insulin_breakfast" [value]="regular_insulinArray.regular_insulin_breakfast">
+                                                <mat-select (selectionChange)="regularChange($event,'regular_insulin_breakfast')" formControlName="regular_insulin_breakfast" [value]="regular_insulinArray.regular_insulin_breakfast">
                                                     <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
@@ -1036,7 +1036,7 @@
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Lunch</mat-label>
-                                                <mat-select (selectionChange)="regularChange2($event)" formControlName="regular_insulin_lunch">
+                                                <mat-select (selectionChange)="regularChange($event,'regular_insulin_lunch')" formControlName="regular_insulin_lunch">
                                                     <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
@@ -1050,7 +1050,7 @@
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Dinner</mat-label>
-                                                <mat-select (selectionChange)="regularChange3($event)" formControlName="regular_insulin_dinner" [value]="regular_insulinArray.regular_insulin_dinner">
+                                                <mat-select (selectionChange)="regularChange($event,'regular_insulin_dinner')" formControlName="regular_insulin_dinner" [value]="regular_insulinArray.regular_insulin_dinner">
                                                     <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
@@ -1075,7 +1075,7 @@
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Breakfast</mat-label>
-                                                <mat-select (selectionChange)=" nphChange1($event)" formControlName="nph_insulin_breakfast" value="{{nph_insulinArray.nph_insulin_breakfast}}">
+                                                <mat-select (selectionChange)=" nphChange($event,'nph_insulin_breakfast')" formControlName="nph_insulin_breakfast" value="{{nph_insulinArray.nph_insulin_breakfast}}">
                                                     <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
@@ -1089,7 +1089,7 @@
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Lunch</mat-label>
-                                                <mat-select (selectionChange)=" nphChange2($event)" formControlName="nph_insulin_lunch">
+                                                <mat-select (selectionChange)=" nphChange($event,'nph_insulin_lunch')" formControlName="nph_insulin_lunch">
                                                     <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
@@ -1104,7 +1104,7 @@
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Dinner</mat-label>
-                                                <mat-select (selectionChange)=" nphChange3($event)" formControlName="nph_insulin_dinner" value="{{nph_insulinArray.nph_insulin_dinner}}">
+                                                <mat-select (selectionChange)=" nphChange($event,'nph_insulin_dinner')" formControlName="nph_insulin_dinner" value="{{nph_insulinArray.nph_insulin_dinner}}">
                                                     <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
@@ -1130,7 +1130,7 @@
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Breakfast</mat-label>
-                                                <mat-select (selectionChange)="glargineChange1($event)" formControlName="glargine_insulin_breakfast" value="{{glargine_insulinArray.glargine_insulin_breakfast}}">
+                                                <mat-select (selectionChange)="glargineChange($event,'glargine_insulin_breakfast')" formControlName="glargine_insulin_breakfast" value="{{glargine_insulinArray.glargine_insulin_breakfast}}">
                                                     <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
@@ -1144,7 +1144,7 @@
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Lunch</mat-label>
-                                                <mat-select (selectionChange)="glargineChange2($event)" formControlName="glargine_insulin_lunch">
+                                                <mat-select (selectionChange)="glargineChange($event,'glargine_insulin_lunch')" formControlName="glargine_insulin_lunch">
                                                     <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>
@@ -1160,7 +1160,7 @@
                                         <div class="entry-inputs-block">
                                             <mat-form-field>
                                                 <mat-label>Dinner</mat-label>
-                                                <mat-select (selectionChange)="glargineChange3($event)" formControlName="glargine_insulin_dinner" value="{{glargine_insulinArray.glargine_insulin_dinner}}">
+                                                <mat-select (selectionChange)="glargineChange($event,'glargine_insulin_dinner')" formControlName="glargine_insulin_dinner" value="{{glargine_insulinArray.glargine_insulin_dinner}}">
                                                     <mat-option value="0">None</mat-option>
                                                     <mat-option *ngFor="let index of getinsulin();" value='{{index}}'>{{index}}</mat-option>
                                                 </mat-select>

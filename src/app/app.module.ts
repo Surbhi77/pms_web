@@ -74,6 +74,7 @@ import { RatePopupComponent } from './rate-popup/rate-popup.component';
 import { MbscModule } from '@mobiscroll/angular-lite';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { NotificationPopupComponent } from './notification-popup/notification-popup.component';
 
 
 
@@ -107,7 +108,8 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
     TermsCheckingComponent,
     InvoiceMediaComponent,
     RatePopupComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+    NotificationPopupComponent
     
    
   ],

@@ -670,33 +670,46 @@ export class InvoiceComponent implements OnInit {
       this.glargine_condition = false
     }
   }
-  glargineval:any = 0;
-  select1($event){
-    if($event.value==0){
-      this.glargineval = $event.value
-    }
-    if($event.value==0 && this.glargineval!=0){
-      //this.fourthFormGroup.value.glarginevalidation= this.fourthFormGroup.value.glarginevalidation - 1
-      this.fourthFormGroup.patchValue({
-        'glarginevalidation':''
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.selectglagrine = true
-      
-    }
-    else{
-      //this.fourthFormGroup.value.glarginevalidation= this.fourthFormGroup.value.glarginevalidation + 1
-      this.selectglagrine = false
-      this.fourthFormGroup.patchValue({
-        'glarginevalidation':$event.value
-      })
+  glargineval:any = [];
+  select1($event,type){
+    if($event.value == 0){
+      let index = this.glargineval.indexOf(type);
+      if(index>=0){
+        this.glargineval.splice(index,1)
+      }
+      if(this.glargineval.length>0){
+        this.fourthFormGroup.patchValue({
+          'glarginevalidation':'filled'
+        });
+        this.selectglagrine = false
+        this.fourthFormGroup.updateValueAndValidity();
+      }else{
+        this.fourthFormGroup.patchValue({
+          'glarginevalidation':''
+        })
+        this.fourthFormGroup.updateValueAndValidity();
+        this.selectglagrine = true
+      }
+    }else{
+      let index = this.glargineval.indexOf(type);
+      if(index<0){
+        this.glargineval.push(type)
+      }
+      if(this.glargineval.length>0){
+        this.fourthFormGroup.patchValue({
+          'glarginevalidation':'filled'
+        });
+        this.fourthFormGroup.updateValueAndValidity();
+        this.selectglagrine = false
+      }else{
+        this.fourthFormGroup.patchValue({
+          'glarginevalidation':''
+        })
+        this.selectglagrine = true
 
-      // let i = this.glargineval.indexOf()
-      // this.glargineval.splice(i,1)
-      this.fourthFormGroup.updateValueAndValidity()
-     
+        this.fourthFormGroup.updateValueAndValidity();
+      }
     }
-    console.log('glargineval',this.glargineval);
 
   }
   select2($event){
@@ -766,7 +779,7 @@ export class InvoiceComponent implements OnInit {
   submit() {
 
     var formData: any = new FormData();
-    if (this.fourthFormGroup.valid && this.fourthFormGroup.value.glarginevalidation>0) {
+    if (this.fourthFormGroup.valid ) {
      console.log()
      
      this.selectglagrine = false
@@ -796,7 +809,7 @@ export class InvoiceComponent implements OnInit {
       if(this.fourthFormGroup.value.glargine_insulin==0){
       this.selectglagrine = true
       }
-      if( this.fourthFormGroup.value.glarginevalidation==0){
+      if( this.fourthFormGroup.value.glarginevalidation==''){
         this.selectglagrine = true
        }
      
