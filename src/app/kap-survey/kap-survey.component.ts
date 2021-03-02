@@ -353,7 +353,7 @@ export class KapSurveyComponent implements OnInit {
           this.router.navigateByUrl('/kap-survey')
         }
         else{
-          this.dialog.open(NotificationPopupComponent, { disableClose: true, width:"40%" })
+         
         this.router.navigateByUrl('/dashboard')
         this.toastr.info("Form submitted successfully")
         }
