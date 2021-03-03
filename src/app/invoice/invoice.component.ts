@@ -149,7 +149,7 @@ export class InvoiceComponent implements OnInit {
       glargine_insulin_breakfast: new FormControl(''),
       glargine_insulin_lunch: new FormControl(''),
       glargine_insulin_dinner: new FormControl(''),
-      glarginevalidation:new FormControl(0)
+      glarginevalidation:new FormControl('')
      
 
     })
@@ -712,57 +712,57 @@ export class InvoiceComponent implements OnInit {
     }
 
   }
-  select2($event){
-    if($event.value==0){
-      this.glargineval = $event.value
-    }
-    if($event.value==0 && this.glargineval!=0){
-      //this.fourthFormGroup.value.glarginevalidation= this.fourthFormGroup.value.glarginevalidation - 1
-      this.fourthFormGroup.patchValue({
-        'glarginevalidation': ''
-      })
+  // select2($event){
+  //   if($event.value==0){
+  //     this.glargineval = $event.value
+  //   }
+  //   if($event.value==0 && this.glargineval!=0){
+  //     //this.fourthFormGroup.value.glarginevalidation= this.fourthFormGroup.value.glarginevalidation - 1
+  //     this.fourthFormGroup.patchValue({
+  //       'glarginevalidation': ''
+  //     })
       
-      this.fourthFormGroup.updateValueAndValidity()
-      this.selectglagrine = true
+  //     this.fourthFormGroup.updateValueAndValidity()
+  //     this.selectglagrine = true
       
-    }
-    else{
-      //this.fourthFormGroup.value.glarginevalidation= this.fourthFormGroup.value.glarginevalidation + 1
-      this.selectglagrine = false
-      this.fourthFormGroup.patchValue({
-        'glarginevalidation':$event.value
-      })
-      this.fourthFormGroup.updateValueAndValidity()
+  //   }
+  //   else{
+  //     //this.fourthFormGroup.value.glarginevalidation= this.fourthFormGroup.value.glarginevalidation + 1
+  //     this.selectglagrine = false
+  //     this.fourthFormGroup.patchValue({
+  //       'glarginevalidation':$event.value
+  //     })
+  //     this.fourthFormGroup.updateValueAndValidity()
      
-    }
-    console.log('glargineval',this.glargineval);
+  //   }
+  //   console.log('glargineval',this.glargineval);
 
-  }
-  select3($event){
-    if($event.value==0){
-      this.glargineval = $event.value
-    }
-    if($event.value==0 &&  this.glargineval!=0){
-     // this.fourthFormGroup.value.glarginevalidation= this.fourthFormGroup.value.glarginevalidation - 1
-      this.fourthFormGroup.patchValue({
-        'glarginevalidation':''
-      })
-      this.fourthFormGroup.updateValueAndValidity()
-      this.selectglagrine = true
+  // }
+  // select3($event){
+  //   if($event.value==0){
+  //     this.glargineval = $event.value
+  //   }
+  //   if($event.value==0 &&  this.glargineval!=0){
+  //    // this.fourthFormGroup.value.glarginevalidation= this.fourthFormGroup.value.glarginevalidation - 1
+  //     this.fourthFormGroup.patchValue({
+  //       'glarginevalidation':''
+  //     })
+  //     this.fourthFormGroup.updateValueAndValidity()
+  //     this.selectglagrine = true
       
-    }
-    else{
-     // this.fourthFormGroup.value.glarginevalidation= this.fourthFormGroup.value.glarginevalidation + 1
-      this.selectglagrine = false
-      this.fourthFormGroup.patchValue({
-        'glarginevalidation': $event.value
-      })
-      this.fourthFormGroup.updateValueAndValidity()
+  //   }
+  //   else{
+  //    // this.fourthFormGroup.value.glarginevalidation= this.fourthFormGroup.value.glarginevalidation + 1
+  //     this.selectglagrine = false
+  //     this.fourthFormGroup.patchValue({
+  //       'glarginevalidation': $event.value
+  //     })
+  //     this.fourthFormGroup.updateValueAndValidity()
      
-    }
-    console.log('glargineval',this.glargineval);
+  //   }
+  //   console.log('glargineval',this.glargineval);
 
-  }
+  // }
   
   
   onchange($event: any) {
@@ -806,19 +806,17 @@ export class InvoiceComponent implements OnInit {
       })
     } else {
       console.log('not valid')
-      if(this.fourthFormGroup.value.glargine_insulin==0){
-      this.selectglagrine = true
-      }
+    
       if( this.fourthFormGroup.value.glarginevalidation==''){
         this.selectglagrine = true
        }
      
-      this.fourthFormGroup.markAllAsTouched()
-      if(this.fourthFormGroup.value.glargine_insulin ==''){
+     
+      if(this.fourthFormGroup.value.glargine_insulin == 0){
         //this.toastr.error("Please select a checkbox")
         this.glargineinsulinrequired=true
          }
-      
+         this.fourthFormGroup.markAllAsTouched()
       
     }
   }

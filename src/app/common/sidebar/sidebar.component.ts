@@ -37,10 +37,16 @@ export class SidebarComponent implements OnInit {
 
   }
   logout(){
-    localStorage.clear()
-    // localStorage.removeItem('email')
-    // localStorage.removeItem('password')
-    this.router.navigateByUrl('/login')
-  }
+     localStorage.clear();
+    //  localStorage.removeItem("email");
+    //  localStorage.removeItem("password");
+    //  localStorage.removeItem("userType");
+    //  localStorage.removeItem("doctor_id");
+    //  localStorage.removeItem("name");
+    //  localStorage.removeItem("aggrement");
+    //  localStorage.removeItem("kdp_survey");
+    //  localStorage.removeItem("notificationData")
+     this.router.navigateByUrl('/login')
+   }
   
 }

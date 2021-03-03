@@ -86,9 +86,9 @@ export class TermsCheckingComponent implements OnInit {
       
   }
   logout(){
-    localStorage.removeItem('userType')
-    localStorage.removeItem('email')
-    localStorage.removeItem('password')
+    localStorage.clear()
+    // localStorage.removeItem('email')
+    // localStorage.removeItem('password')
     this.router.navigateByUrl('/login')
   }
 
